@@ -16,6 +16,11 @@ class Creo_Rombooking_Bookings {
 	const PURPOSE_MAX = 200;
 
 	/**
+	 * The most people a booking can be for.
+	 */
+	const PEOPLE_MAX = 999;
+
+	/**
 	 * How many days ahead members can book.
 	 */
 	const DAYS_AHEAD = 365;
@@ -32,12 +37,13 @@ class Creo_Rombooking_Bookings {
 	/**
 	 * Validates and normalizes the booking form.
 	 *
-	 * @param array $input         The form: roomId, date, start, end, purpose, repeat, endMode, count, endDate, phone.
-	 * @param int   $user_id       The member.
-	 * @param bool  $require_phone Whether to require a phone number when the member has none; not for previews.
+	 * @param array $input   The form: roomId, date, start, end, purpose, people, repeat, endMode, count, endDate, phone.
+	 * @param int   $user_id The member.
+	 * @param bool  $submit  Whether the form is being submitted. Previews do not require
+	 *                       the number of people or a phone number.
 	 * @return array{data: array, errors: array<string, string>}
 	 */
-	public function validate( array $input, $user_id, $require_phone = true ) {
+	public function validate( array $input, $user_id, $submit = true ) {
 		$errors = array();
 		$room   = $this->find_room( (int) ( $input['roomId'] ?? 0 ) );
 		$date   = (string) ( $input['date'] ?? '' );
@@ -73,6 +79,18 @@ class Creo_Rombooking_Bookings {
 			$errors['purpose'] = sprintf( __( 'The purpose can be at most %d characters.', 'creo-rombooking' ), self::PURPOSE_MAX );
 		}
 
+		$people = (int) ( $input['people'] ?? 0 );
+		if ( $people < 0 || $people > self::PEOPLE_MAX || ( $submit && $people === 0 ) ) {
+			$errors['people'] = __( 'Enter how many people will use the room.', 'creo-rombooking' );
+		} elseif ( $room && $room['capacity'] && $people > $room['capacity'] ) {
+			$errors['people'] = sprintf(
+				/* translators: 1: room name, 2: capacity */
+				_n( '%1$s has room for %2$d person.', '%1$s has room for %2$d people.', $room['capacity'], 'creo-rombooking' ),
+				$room['name'],
+				$room['capacity']
+			);
+		}
+
 		$count    = null;
 		$end_date = null;
 		if ( $repeat !== 'none' ) {
@@ -93,7 +111,7 @@ class Creo_Rombooking_Bookings {
 		}
 
 		$phone = null;
-		if ( $require_phone && creo_rombooking_get_phone( $user_id )['number'] === null ) {
+		if ( $submit && creo_rombooking_get_phone( $user_id )['number'] === null ) {
 			$phone = self::normalize_phone( (string) ( $input['phone'] ?? '' ) );
 			if ( $phone === null ) {
 				$errors['phone'] = __( 'Enter a Norwegian mobile number with 8 digits.', 'creo-rombooking' );
@@ -106,6 +124,7 @@ class Creo_Rombooking_Bookings {
 			'start'   => $start,
 			'end'     => $end,
 			'purpose' => $purpose,
+			'people'  => $people,
 			'repeat'  => $repeat,
 			'count'   => $count,
 			'endDate' => $end_date,
@@ -425,6 +444,7 @@ class Creo_Rombooking_Bookings {
 				'start_min'     => $data['start'],
 				'end_min'       => $data['end'],
 				'purpose'       => $data['purpose'],
+				'people'        => $data['people'],
 				'status'        => $status,
 				'conflict_with' => $occurrence['conflictWith'],
 				'created_at'    => current_time( 'mysql' ),

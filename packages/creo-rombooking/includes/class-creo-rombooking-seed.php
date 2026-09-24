@@ -193,35 +193,35 @@ class Creo_Rombooking_Seed {
 	 * @return int The number of series created.
 	 */
 	protected function seed_weekly_bookings() {
-		// Room, weekday (0 = Sunday), from, to, owner, purpose. `null` owner = the test member.
+		// Room, weekday (0 = Sunday), from, to, owner, purpose, people. `null` owner = the test member.
 		$weekly = array(
-			array( 'storsal', 0, '10:00', '13:00', 'Stabsteamet', 'Søndagssamling' ),
-			array( 'storsal', 3, '18:00', '21:00', 'Kor A', 'Korøving' ),
-			array( 'storsal', 6, '11:00', '15:00', 'Tone Eksempel', 'Bursdagsfeiring' ),
-			array( 'kafe', 0, '13:00', '14:30', 'Kaféteamet', 'Kirkekaffe' ),
-			array( 'kafe', 2, '10:00', '12:00', 'Seniortreffet', 'Formiddagstreff' ),
-			array( 'kafe', 3, '17:30', '19:00', null, 'Middag for frivillige' ),
-			array( 'kafe', 5, '19:00', '22:00', 'Ungdomsgruppa', 'Fredagskafé' ),
-			array( 'm1', 1, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte' ),
-			array( 'm1', 2, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte' ),
-			array( 'm1', 3, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte' ),
-			array( 'm1', 4, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte' ),
-			array( 'm1', 5, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte' ),
-			array( 'm1', 4, '17:00', '18:30', null, 'Planlegging av basar' ),
-			array( 'm2', 1, '18:00', '20:00', 'Samtalegruppa', 'Samtalegruppe' ),
-			array( 'm2', 3, '10:00', '11:30', 'Babysang', 'Babysang' ),
-			array( 'm2', 3, '19:00', '21:00', 'Kari Prøvesen', 'Styremøte' ),
-			array( 'barn', 0, '10:00', '13:00', 'Barneteamet', 'Søndagsskole' ),
-			array( 'barn', 3, '17:00', '18:30', 'Barnekoret', 'Barnekorøving' ),
-			array( 'gym', 2, '18:00', '20:00', 'Innebandygruppa', 'Innebandy' ),
-			array( 'gym', 3, '16:00', '17:30', 'Turngruppa', 'Turn for barn' ),
-			array( 'gym', 6, '10:00', '13:00', 'Idrettslaget', 'Trening' ),
+			array( 'storsal', 0, '10:00', '13:00', 'Stabsteamet', 'Søndagssamling', 180 ),
+			array( 'storsal', 3, '18:00', '21:00', 'Kor A', 'Korøving', 35 ),
+			array( 'storsal', 6, '11:00', '15:00', 'Tone Eksempel', 'Bursdagsfeiring', 40 ),
+			array( 'kafe', 0, '13:00', '14:30', 'Kaféteamet', 'Kirkekaffe', 50 ),
+			array( 'kafe', 2, '10:00', '12:00', 'Seniortreffet', 'Formiddagstreff', 25 ),
+			array( 'kafe', 3, '17:30', '19:00', null, 'Middag for frivillige', 30 ),
+			array( 'kafe', 5, '19:00', '22:00', 'Ungdomsgruppa', 'Fredagskafé', 40 ),
+			array( 'm1', 1, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte', 5 ),
+			array( 'm1', 2, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte', 5 ),
+			array( 'm1', 3, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte', 5 ),
+			array( 'm1', 4, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte', 5 ),
+			array( 'm1', 5, '09:00', '10:00', 'Per Demodal', 'Ukentlig arbeidsmøte', 5 ),
+			array( 'm1', 4, '17:00', '18:30', null, 'Planlegging av basar', 6 ),
+			array( 'm2', 1, '18:00', '20:00', 'Samtalegruppa', 'Samtalegruppe', 7 ),
+			array( 'm2', 3, '10:00', '11:30', 'Babysang', 'Babysang', 8 ),
+			array( 'm2', 3, '19:00', '21:00', 'Kari Prøvesen', 'Styremøte', 7 ),
+			array( 'barn', 0, '10:00', '13:00', 'Barneteamet', 'Søndagsskole', 15 ),
+			array( 'barn', 3, '17:00', '18:30', 'Barnekoret', 'Barnekorøving', 18 ),
+			array( 'gym', 2, '18:00', '20:00', 'Innebandygruppa', 'Innebandy', 20 ),
+			array( 'gym', 3, '16:00', '17:30', 'Turngruppa', 'Turn for barn', 25 ),
+			array( 'gym', 6, '10:00', '13:00', 'Idrettslaget', 'Trening', 30 ),
 		);
 
 		$weeks_back  = 7;
 		$occurrences = 20;
 
-		foreach ( $weekly as list( $room, $weekday, $from, $to, $owner, $purpose ) ) {
+		foreach ( $weekly as list( $room, $weekday, $from, $to, $owner, $purpose, $people ) ) {
 			// Monday is day 0 of the week here; Sunday is the last day.
 			$day_of_week = ( $weekday + 6 ) % 7;
 			$first       = ( new DateTimeImmutable( $this->monday ) )->modify( ( $day_of_week - 7 * $weeks_back ) . ' days' );
@@ -233,7 +233,7 @@ class Creo_Rombooking_Seed {
 				if ( $this->is_closed( $room, $date ) ) {
 					continue;
 				}
-				$this->insert_booking( $user_id, $room, $date, $from, $to, $purpose, 'approved', $series_id );
+				$this->insert_booking( $user_id, $room, $date, $from, $to, $purpose, $people, 'approved', $series_id );
 			}
 		}
 
@@ -247,15 +247,15 @@ class Creo_Rombooking_Seed {
 	 */
 	protected function seed_single_bookings() {
 		$bookings = array(
-			array( 'm1', '2026-09-23', '12:00', '13:30', 'Mari Testrud', 'Styremøte', 'requested' ),
-			array( 'gym', '2026-09-23', '19:00', '21:00', 'Jonas Prøvesen', 'Volleyball', 'requested' ),
-			array( 'storsal', '2026-10-02', '18:00', '21:00', 'Lars Eksempelsen', 'Foredragskveld', 'requested' ),
-			array( 'gym', '2026-10-13', '15:30', '17:00', 'Nærskolen', 'Ekstra kroppsøving', 'approved' ),
-			array( 'gym', '2026-11-03', '16:00', '18:00', 'Idrettslaget', 'Kamp', 'approved' ),
+			array( 'm1', '2026-09-23', '12:00', '13:30', 'Mari Testrud', 'Styremøte', 7, 'requested' ),
+			array( 'gym', '2026-09-23', '19:00', '21:00', 'Jonas Prøvesen', 'Volleyball', 14, 'requested' ),
+			array( 'storsal', '2026-10-02', '18:00', '21:00', 'Lars Eksempelsen', 'Foredragskveld', 120, 'requested' ),
+			array( 'gym', '2026-10-13', '15:30', '17:00', 'Nærskolen', 'Ekstra kroppsøving', 28, 'approved' ),
+			array( 'gym', '2026-11-03', '16:00', '18:00', 'Idrettslaget', 'Kamp', 40, 'approved' ),
 		);
 
-		foreach ( $bookings as list( $room, $date, $from, $to, $owner, $purpose, $status ) ) {
-			$this->insert_booking( $this->owner( $owner ), $room, $this->date( $date ), $from, $to, $purpose, $status );
+		foreach ( $bookings as list( $room, $date, $from, $to, $owner, $purpose, $people, $status ) ) {
+			$this->insert_booking( $this->owner( $owner ), $room, $this->date( $date ), $from, $to, $purpose, $people, $status );
 		}
 
 		return count( $bookings );
@@ -270,11 +270,11 @@ class Creo_Rombooking_Seed {
 		$count = 0;
 
 		// Conflicts with the Saturday birthday party in Storsalen.
-		$this->insert_booking( $this->owner( 'Jonas Prøvesen' ), 'storsal', $this->date( '2026-09-26' ), '11:00', '15:00', 'Konsertøving for koret', 'requested', null, true );
+		$this->insert_booking( $this->owner( 'Jonas Prøvesen' ), 'storsal', $this->date( '2026-09-26' ), '11:00', '15:00', 'Konsertøving for koret', 50, 'requested', null, true );
 		++$count;
 
 		// Conflicts with the weekly work meeting in Møterom 1.
-		$this->insert_booking( $this->owner( 'Mari Testrud' ), 'm1', $this->date( '2026-10-01' ), '09:00', '10:30', 'Planleggingsmøte for basaren', 'requested', null, true );
+		$this->insert_booking( $this->owner( 'Mari Testrud' ), 'm1', $this->date( '2026-10-01' ), '09:00', '10:30', 'Planleggingsmøte for basaren', 6, 'requested', null, true );
 		++$count;
 
 		// Eight Tuesdays in Gymsal: one falls on a closed day and one conflicts.
@@ -287,7 +287,7 @@ class Creo_Rombooking_Seed {
 			if ( $this->is_closed( 'gym', $date ) ) {
 				continue;
 			}
-			$this->insert_booking( $user_id, 'gym', $date, '16:00', '17:30', 'Lek og idrett for barn', 'requested', $series_id, true );
+			$this->insert_booking( $user_id, 'gym', $date, '16:00', '17:30', 'Lek og idrett for barn', 25, 'requested', $series_id, true );
 			++$count;
 		}
 
@@ -352,12 +352,13 @@ class Creo_Rombooking_Seed {
 	 * @param string   $from           Start time (HH:MM).
 	 * @param string   $to             End time (HH:MM).
 	 * @param string   $purpose        The purpose.
+	 * @param int      $people         The number of people.
 	 * @param string   $status         `requested` or `approved`.
 	 * @param int|null $series_id      The series, if any.
 	 * @param bool     $check_conflict Whether to link the booking to an approved booking it overlaps.
 	 * @return int The booking ID.
 	 */
-	protected function insert_booking( $user_id, $room, $date, $from, $to, $purpose, $status, $series_id = null, $check_conflict = false ) {
+	protected function insert_booking( $user_id, $room, $date, $from, $to, $purpose, $people, $status, $series_id = null, $check_conflict = false ) {
 		global $wpdb;
 
 		$table     = Creo_Rombooking_Schema::table( 'bookings' );
@@ -387,6 +388,7 @@ class Creo_Rombooking_Seed {
 				'start_min'     => $start_min,
 				'end_min'       => $end_min,
 				'purpose'       => $purpose,
+				'people'        => $people,
 				'status'        => $status,
 				'conflict_with' => $conflict ? (int) $conflict : null,
 				'created_at'    => current_time( 'mysql' ),

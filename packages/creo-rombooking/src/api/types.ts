@@ -69,6 +69,8 @@ export interface BookingInput {
 	start: number;
 	end: number;
 	purpose: string;
+	/** 0 until the member fills it in. */
+	people: number;
 	repeat: Repeat;
 	endMode: 'count' | 'date';
 	count: number;

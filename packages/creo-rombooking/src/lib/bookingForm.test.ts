@@ -1,6 +1,7 @@
 import {
 	approvalMessage,
 	initialForm,
+	isMobileNumber,
 	submitLabel,
 	validateForm,
 	withStart,
@@ -72,6 +73,61 @@ describe('validateForm', () => {
 			'endDate'
 		);
 		expect(validateForm({ ...byDate, endDate: '2026-10-07' })).toEqual({});
+	});
+});
+
+describe('validateForm: number of people', () => {
+	const room = { name: 'Møterom 2', capacity: 8 };
+
+	it('requires the number of people only when the form is sent', () => {
+		expect(validateForm(form, { room })).toEqual({});
+		expect(validateForm(form, { room, submitting: true })).toHaveProperty(
+			'people'
+		);
+		expect(
+			validateForm({ ...form, people: 4 }, { room, submitting: true })
+		).toEqual({});
+	});
+
+	it('names the room when there are too many people', () => {
+		expect(validateForm({ ...form, people: 9 }, { room })).toEqual({
+			people: 'Møterom 2 has room for 8 people.',
+		});
+		expect(validateForm({ ...form, people: 8 }, { room })).toEqual({});
+	});
+
+	it('rejects negative numbers', () => {
+		expect(validateForm({ ...form, people: -1 }, { room })).toHaveProperty(
+			'people'
+		);
+	});
+});
+
+describe('validateForm: phone number', () => {
+	const sending = { ...form, people: 2 };
+
+	it('asks for a mobile number only when the member has none', () => {
+		expect(validateForm(sending, { submitting: true })).toEqual({});
+		expect(
+			validateForm(sending, { submitting: true, askForPhone: true })
+		).toHaveProperty('phone');
+		expect(validateForm(sending, { askForPhone: true })).toEqual({});
+	});
+
+	it.each(['412 34 567', '+47 912 34 567', '0047-41234567'])(
+		'accepts %s',
+		(phone) => {
+			expect(
+				validateForm(
+					{ ...sending, phone },
+					{ submitting: true, askForPhone: true }
+				)
+			).toEqual({});
+		}
+	);
+
+	it.each(['1234', '212 34 567', '412 34 5678'])('rejects %s', (phone) => {
+		expect(isMobileNumber(phone)).toBe(false);
 	});
 });
 

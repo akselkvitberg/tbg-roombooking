@@ -39,6 +39,7 @@ class Creo_Rombooking_Bookings_Test extends WP_UnitTestCase {
 				'start'   => 720,
 				'end'     => 780,
 				'purpose' => 'Planlegging',
+				'people'  => 6,
 				'repeat'  => 'none',
 			),
 			$values
@@ -67,6 +68,7 @@ class Creo_Rombooking_Bookings_Test extends WP_UnitTestCase {
 		$booking = $this->booking( $result['bookings'][0]['id'] );
 		$this->assertSame( 'approved', $booking['status'] );
 		$this->assertSame( 'Planlegging', $booking['purpose'] );
+		$this->assertSame( '6', $booking['people'] );
 		$this->assertNull( $booking['conflict_with'] );
 
 		$sms = $this->last_sms();
@@ -220,6 +222,9 @@ class Creo_Rombooking_Bookings_Test extends WP_UnitTestCase {
 			'before 08:00'         => array( array( 'start' => 450 ), 'start' ),
 			'after 22:00'          => array( array( 'end' => 1350 ), 'start' ),
 			'too long purpose'     => array( array( 'purpose' => str_repeat( 'a', 201 ) ), 'purpose' ),
+			'no people'            => array( array( 'people' => 0 ), 'people' ),
+			'negative people'      => array( array( 'people' => -3 ), 'people' ),
+			'more than capacity'   => array( array( 'people' => 9 ), 'people' ),
 			'one time'             => array(
 				array(
 					'repeat' => 'weekly',
@@ -243,6 +248,19 @@ class Creo_Rombooking_Bookings_Test extends WP_UnitTestCase {
 				'endDate',
 			),
 		);
+	}
+
+	public function test_the_capacity_error_names_the_room() {
+		$result = ( new Creo_Rombooking_Bookings() )->validate( $this->input( array( 'people' => 9 ) ), $this->member );
+
+		$this->assertSame( 'Møterom 2 has room for 8 people.', $result['errors']['people'] );
+	}
+
+	public function test_previews_do_not_require_the_number_of_people() {
+		$bookings = new Creo_Rombooking_Bookings();
+
+		$this->assertArrayNotHasKey( 'people', $bookings->validate( $this->input( array( 'people' => 0 ) ), $this->member, false )['errors'] );
+		$this->assertArrayHasKey( 'people', $bookings->validate( $this->input( array( 'people' => 9 ) ), $this->member, false )['errors'] );
 	}
 
 	public function test_inactive_rooms_cannot_be_booked() {

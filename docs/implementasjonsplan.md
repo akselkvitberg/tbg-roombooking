@@ -128,7 +128,7 @@ og legge pluginen til `option_active_plugins` i `tests/phpunit/bootstrap.php`.
 | `opening_hours` | room_id, ukedag, fra, til (flere intervaller per dag tillatt) |
 | `closures` | room_id, dato, fra?, til?, type (`stengt`/`sperret`), begrunnelse |
 | `series` | id, user_id, room_id, regel (`weekly`/`biweekly`/`monthly`), start, sluttdato eller antall |
-| `bookings` | id, series_id?, room_id, user_id, dato, fra, til, formål (≤ 200 tegn), status (`requested`/`approved`/`rejected`/`cancelled`), konflikt_med?, opprettet |
+| `bookings` | id, series_id?, room_id, user_id, dato, fra, til, formål (≤ 200 tegn), antall personer, status (`requested`/`approved`/`rejected`/`cancelled`), konflikt_med?, opprettet |
 | `proposals` | id, booking_id, foreslått rom/dato/fra/til, melding, svarfrist, status (`pending`/`accepted`/`declined`/`expired`) |
 | `events` (logg) | booking_id, aktør, handling, begrunnelse, sms_tekst, tidspunkt |
 
@@ -254,11 +254,10 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Konflikt (fase 3) | En tid er i konflikt når den overlapper en godkjent booking eller en ventende forespørsel; forespørselen kobles til den godkjente bookingen først |
 | Månedlig gjentakelse (fase 3) | Samme dato hver måned; måneder uten datoen (f.eks. 31.) hoppes over |
 | Telefonnummer ved booking (fase 3) | Norsk mobilnummer (8 siffer, starter med 4 eller 9), lagres som `+47 XXX XX XXX` |
+| Antall personer | Påkrevd felt i skjemaet, maks rommets kapasitet. Brukes til forslag om rom med nok plass i admin-innboksen |
 
 ## 9. Åpne spørsmål
 1. **Telefon i tokenet:** hvilket claim heter det, og er det tilgjengelig på serversiden (ID-token/brukerinfo lagret av
    `bcc-login`)? Kan verifiseres med en testbruker; frem til da brukes antakelsen over + reservefeltet.
 2. **SMS-leverandør**, og skal det sendes SMS også ved autogodkjenning?
-3. **«Antall personer»** vises i prototypens admin-visning, men står ikke i feltlisten for skjemaet. Skal det være et
-   felt (brukes til forslag om rom med nok plass)?
-4. **Svarfrist** for forslag: prototypen har 24 t / 48 t / 3 dager – ok som standardvalg?
+3. **Svarfrist** for forslag: prototypen har 24 t / 48 t / 3 dager – ok som standardvalg?

@@ -39,6 +39,7 @@ class Creo_Rombooking_Availability_Test extends WP_UnitTestCase {
 			'start_min' => Creo_Rombooking_Seed::minutes( $from ),
 			'end_min'   => Creo_Rombooking_Seed::minutes( $to ),
 			'purpose'   => "Formål $id",
+			'people'    => 10 + $id,
 			'status'    => $status,
 			'user_name' => "Person $user_id",
 		);
@@ -203,6 +204,7 @@ class Creo_Rombooking_Availability_Test extends WP_UnitTestCase {
 			array(
 				'id'       => 3,
 				'purpose'  => 'Formål 3',
+				'people'   => 13,
 				'seriesId' => null,
 			),
 			$periods[2]['booking'],
@@ -219,6 +221,7 @@ class Creo_Rombooking_Availability_Test extends WP_UnitTestCase {
 			array(
 				'id'       => 1,
 				'purpose'  => 'Formål 1',
+				'people'   => 11,
 				'seriesId' => null,
 				'userId'   => self::OTHER,
 				'userName' => 'Person 20',

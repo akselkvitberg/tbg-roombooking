@@ -38,6 +38,7 @@ class Creo_Rombooking_REST_Bookings_Test extends WP_UnitTestCase {
 				'start'   => 540,
 				'end'     => 660,
 				'purpose' => 'Test',
+				'people'  => 4,
 				'repeat'  => 'weekly',
 				'endMode' => 'count',
 				'count'   => 2,

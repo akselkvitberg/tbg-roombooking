@@ -11,7 +11,7 @@ class Creo_Rombooking_Schema {
 	/**
 	 * Bump this when the table definitions change.
 	 */
-	const VERSION = 1;
+	const VERSION = 2;
 
 	const OPTION = 'creo_rombooking_db_version';
 
@@ -120,6 +120,7 @@ class Creo_Rombooking_Schema {
 				start_min smallint(5) unsigned NOT NULL,
 				end_min smallint(5) unsigned NOT NULL,
 				purpose varchar(200) NOT NULL DEFAULT '',
+				people smallint(5) unsigned NOT NULL DEFAULT 0,
 				status varchar(10) NOT NULL DEFAULT 'requested',
 				conflict_with bigint(20) unsigned DEFAULT NULL,
 				created_at datetime NOT NULL,

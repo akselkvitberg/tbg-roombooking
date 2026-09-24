@@ -5,6 +5,7 @@ import type {
 	BookingInput,
 	FieldErrors,
 	OccurrenceStatus,
+	Room,
 	Status,
 } from '../api/types';
 
@@ -12,6 +13,7 @@ import { addDays } from './dates';
 
 export const MAX_OCCURRENCES = 26;
 export const PURPOSE_MAX = 200;
+export const PEOPLE_MAX = 999;
 
 export interface Selection {
 	roomId: number;
@@ -33,6 +35,7 @@ export function initialForm(selection: Selection): BookingInput {
 		start: selection.start,
 		end: selection.end,
 		purpose: '',
+		people: 0,
 		repeat: 'none',
 		endMode: 'count',
 		count: 6,
@@ -60,13 +63,65 @@ export function withStart(
 	return { ...form, start, end: Math.min(start + length, dayEnd) };
 }
 
+export interface ValidateOptions {
+	/** The chosen room. */
+	room?: Pick<Room, 'name' | 'capacity'>;
+	/** Whether the form is being sent. */
+	submitting?: boolean;
+	/** Whether the member must enter a phone number. */
+	askForPhone?: boolean;
+}
+
 /**
- * Errors the form can find without asking the server.
+ * Whether a phone number is a Norwegian mobile number, as the server checks it.
  *
- * @param form The form.
+ * @param phone The number as entered, e.g. «412 34 567» or «+47 41234567».
  */
-export function validateForm(form: BookingInput): FieldErrors {
+export function isMobileNumber(phone: string): boolean {
+	const digits = phone.replace(/[\s\-().]/g, '').replace(/^(\+47|0047)/, '');
+	return /^[49]\d{7}$/.test(digits);
+}
+
+/**
+ * Errors the form can find without asking the server. A missing number of
+ * people or phone number is only an error when the form is sent, so it does
+ * not stop the preview.
+ *
+ * @param form                The form.
+ * @param options             The room, and whether the form is being sent.
+ * @param options.room
+ * @param options.submitting
+ * @param options.askForPhone
+ */
+export function validateForm(
+	form: BookingInput,
+	{ room, submitting = false, askForPhone = false }: ValidateOptions = {}
+): FieldErrors {
 	const errors: FieldErrors = {};
+
+	if (
+		!Number.isInteger(form.people) ||
+		form.people < 0 ||
+		form.people > PEOPLE_MAX ||
+		(submitting && form.people === 0)
+	) {
+		errors.people = __(
+			'Enter how many people will use the room.',
+			'creo-rombooking'
+		);
+	} else if (room?.capacity && form.people > room.capacity) {
+		errors.people = sprintf(
+			/* translators: 1: room name, 2: capacity */
+			_n(
+				'%1$s has room for %2$d person.',
+				'%1$s has room for %2$d people.',
+				room.capacity,
+				'creo-rombooking'
+			),
+			room.name,
+			room.capacity
+		);
+	}
 
 	if (form.end <= form.start) {
 		errors.end = __(
@@ -94,6 +149,13 @@ export function validateForm(form: BookingInput): FieldErrors {
 	) {
 		errors.endDate = __(
 			'The end date must be after the start date.',
+			'creo-rombooking'
+		);
+	}
+
+	if (submitting && askForPhone && !isMobileNumber(form.phone ?? '')) {
+		errors.phone = __(
+			'Enter a Norwegian mobile number with 8 digits.',
 			'creo-rombooking'
 		);
 	}

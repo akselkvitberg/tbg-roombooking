@@ -14,6 +14,7 @@ import type {
 import usePreview from '../../hooks/usePreview';
 import {
 	approvalMessage,
+	PEOPLE_MAX,
 	PURPOSE_MAX,
 	submitLabel,
 	validateForm,
@@ -55,6 +56,7 @@ const FIELD_ORDER: (keyof BookingInput)[] = [
 	'date',
 	'start',
 	'end',
+	'people',
 	'purpose',
 	'count',
 	'endDate',
@@ -70,10 +72,18 @@ export default function BookingForm(props: Props) {
 	const [sendError, setSendError] = useState<string | null>(null);
 	const summaryRef = useRef<HTMLDivElement>(null);
 
-	const clientErrors = validateForm(form);
+	const room = rooms.find((r) => r.id === form.roomId);
+	const clientErrors = validateForm(form, {
+		room,
+		submitting: showAll,
+		askForPhone: props.askForPhone,
+	});
+	// The number of people and phone number do not change which dates are available.
 	const { preview, loading } = usePreview(
 		form,
-		Object.keys(clientErrors).length === 0
+		Object.keys(clientErrors).every(
+			(field) => field === 'people' || field === 'phone'
+		)
 	);
 	const errors: FieldErrors = {
 		...(preview?.errors ?? {}),
@@ -82,11 +92,14 @@ export default function BookingForm(props: Props) {
 	};
 	const visible = Object.fromEntries(
 		Object.entries(errors).filter(
-			([field]) => showAll || IMMEDIATE.includes(field as keyof BookingInput)
+			([field]) =>
+				showAll ||
+				IMMEDIATE.includes(field as keyof BookingInput) ||
+				// Too many people for the room is shown right away.
+				(field === 'people' && form.people > 0)
 		)
 	) as FieldErrors;
 
-	const room = rooms.find((r) => r.id === form.roomId);
 	const repeating = form.repeat !== 'none';
 	const counts = preview?.counts ?? null;
 	const approval = preview?.approval ?? room?.approval ?? null;
@@ -94,6 +107,10 @@ export default function BookingForm(props: Props) {
 		counts && approval && room
 			? approvalMessage(counts, approval, room.name, repeating)
 			: null;
+
+	// The error for too many people says the same, so the hint gives way to it.
+	const showCapacity =
+		!!room && room.capacity > 0 && !(visible.people && form.people > 0);
 
 	const update = (changes: Partial<BookingInput>) => {
 		setForm((current) => ({ ...current, ...changes }));
@@ -105,7 +122,16 @@ export default function BookingForm(props: Props) {
 		setShowAll(true);
 		setSendError(null);
 
-		if (Object.keys(errors).length > 0) {
+		if (
+			Object.keys({
+				...errors,
+				...validateForm(form, {
+					room,
+					submitting: true,
+					askForPhone: props.askForPhone,
+				}),
+			}).length > 0
+		) {
 			summaryRef.current?.focus();
 			return;
 		}
@@ -281,6 +307,45 @@ export default function BookingForm(props: Props) {
 						</select>
 						{fieldError('end')}
 					</div>
+				</div>
+
+				<div className="creo-rombooking-field">
+					<label htmlFor={id('people')}>
+						{__('Number of people', 'creo-rombooking')}
+					</label>
+					<input
+						{...fieldProps(
+							'people',
+							showCapacity ? `${id('people')}-hint` : undefined
+						)}
+						className="creo-rombooking-input creo-rombooking-input-short"
+						type="number"
+						min={1}
+						max={room?.capacity || PEOPLE_MAX}
+						inputMode="numeric"
+						required
+						aria-required="true"
+						value={form.people || ''}
+						onChange={(event) =>
+							update({ people: parseInt(event.target.value, 10) || 0 })
+						}
+					/>
+					{showCapacity && (
+						<p id={`${id('people')}-hint`} className="creo-rombooking-help">
+							{sprintf(
+								/* translators: 1: room name, 2: capacity */
+								_n(
+									'%1$s has room for %2$d person.',
+									'%1$s has room for %2$d people.',
+									room.capacity,
+									'creo-rombooking'
+								),
+								room.name,
+								room.capacity
+							)}
+						</p>
+					)}
+					{fieldError('people')}
 				</div>
 
 				<div className="creo-rombooking-field">

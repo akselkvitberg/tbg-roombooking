@@ -309,6 +309,7 @@ class Creo_Rombooking_Availability {
 				'booking' => array(
 					'id'       => (int) $booking['id'],
 					'purpose'  => $booking['purpose'],
+					'people'   => (int) $booking['people'],
 					'seriesId' => $booking['series_id'] ? (int) $booking['series_id'] : null,
 				),
 			);
@@ -319,6 +320,7 @@ class Creo_Rombooking_Availability {
 				'booking' => array(
 					'id'       => (int) $booking['id'],
 					'purpose'  => $booking['purpose'],
+					'people'   => (int) $booking['people'],
 					'seriesId' => $booking['series_id'] ? (int) $booking['series_id'] : null,
 					'userId'   => (int) $booking['user_id'],
 					'userName' => $booking['user_name'] ?? '',
@@ -498,7 +500,7 @@ class Creo_Rombooking_Availability {
 		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		$rows = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT b.id, b.series_id, b.room_id, b.user_id, b.date, b.start_min, b.end_min, b.purpose, b.status, u.display_name AS user_name
+				"SELECT b.id, b.series_id, b.room_id, b.user_id, b.date, b.start_min, b.end_min, b.purpose, b.people, b.status, u.display_name AS user_name
 				FROM $table b
 				LEFT JOIN {$wpdb->users} u ON u.ID = b.user_id
 				WHERE b.room_id IN ($ids) AND b.date BETWEEN %s AND %s AND b.status IN ('approved', 'requested')

@@ -167,6 +167,9 @@
             "The number of times must be between 2 and %d.": [
                 "Antall ganger m\u00e5 v\u00e6re mellom 2 og %d."
             ],
+            "Enter a Norwegian mobile number with 8 digits.": [
+                "Skriv et norsk mobilnummer med 8 siffer."
+            ],
             "Book %d times": [
                 "Book %d ganger"
             ],
@@ -305,6 +308,16 @@
             ],
             "Waiting for approval": [
                 "Venter p\u00e5 godkjenning"
+            ],
+            "Enter how many people will use the room.": [
+                "Skriv hvor mange personer som skal bruke rommet."
+            ],
+            "%1$s has room for %2$d person.": [
+                "%1$s har plass til %2$d person.",
+                "%1$s har plass til %2$d personer."
+            ],
+            "Number of people": [
+                "Antall personer"
             ]
         }
     }

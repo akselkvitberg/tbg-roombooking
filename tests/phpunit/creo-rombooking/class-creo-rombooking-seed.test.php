@@ -32,7 +32,7 @@ class Creo_Rombooking_Seed_Test extends WP_UnitTestCase {
 
 		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$conflicts = $wpdb->get_results(
-			"SELECT r.name, b.date, b.purpose, e.purpose AS existing
+			"SELECT r.name, b.date, b.purpose, b.people, e.purpose AS existing
 			FROM $bookings b
 			JOIN $rooms r ON r.id = b.room_id
 			JOIN $bookings e ON e.id = b.conflict_with
@@ -47,24 +47,28 @@ class Creo_Rombooking_Seed_Test extends WP_UnitTestCase {
 					'name'     => 'Storsalen',
 					'date'     => '2026-09-26',
 					'purpose'  => 'Konsertøving for koret',
+					'people'   => '50',
 					'existing' => 'Bursdagsfeiring',
 				),
 				array(
 					'name'     => 'Møterom 1',
 					'date'     => '2026-10-01',
 					'purpose'  => 'Planleggingsmøte for basaren',
+					'people'   => '6',
 					'existing' => 'Ukentlig arbeidsmøte',
 				),
 				array(
 					'name'     => 'Gymsal',
 					'date'     => '2026-10-13',
 					'purpose'  => 'Lek og idrett for barn',
+					'people'   => '25',
 					'existing' => 'Ekstra kroppsøving',
 				),
 				array(
 					'name'     => 'Gymsal',
 					'date'     => '2026-11-03',
 					'purpose'  => 'Lek og idrett for barn',
+					'people'   => '25',
 					'existing' => 'Kamp',
 				),
 			),

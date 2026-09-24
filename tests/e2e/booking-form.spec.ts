@@ -32,6 +32,7 @@ test.describe('Booking form', () => {
 		await expect(dialog.getByLabel('Til')).toHaveValue('900');
 		await expect(dialog.getByRole('status')).toContainText('Autogodkjennes');
 
+		await dialog.getByLabel('Antall personer').fill('4');
 		await dialog.getByLabel('Formål').fill('Planleggingsmøte');
 		await expect(dialog).toContainText('16 av 200 tegn');
 		await dialog.getByRole('button', { name: 'Book rommet' }).click();
@@ -54,6 +55,7 @@ test.describe('Booking form', () => {
 		const dialog = page.getByRole('dialog', { name: 'Ny booking' });
 		await dialog.getByLabel('Ukentlig').check();
 		await dialog.getByRole('spinbutton', { name: 'Antall ganger' }).fill('3');
+		await dialog.getByLabel('Antall personer').fill('20');
 
 		const preview = dialog.getByRole('region', {
 			name: 'Forhåndsvisning av forekomster',
@@ -86,6 +88,7 @@ test.describe('Booking form', () => {
 		const dialog = page.getByRole('dialog', { name: 'Ny booking' });
 		await expect(dialog).toContainText('Tidsrommet er opptatt');
 		await expect(dialog.getByRole('status')).toContainText('Går til admin');
+		await dialog.getByLabel('Antall personer').fill('6');
 
 		await dialog.getByRole('button', { name: 'Send forespørsel' }).click();
 
@@ -107,6 +110,12 @@ test.describe('Booking form', () => {
 		await expect(dialog.getByLabel('Til')).toHaveAccessibleDescription(
 			'Til-tiden må være etter fra-tiden.'
 		);
+
+		// Barnerom has room for 20.
+		await dialog.getByLabel('Antall personer').fill('30');
+		await expect(
+			dialog.getByLabel('Antall personer')
+		).toHaveAccessibleDescription('Barnerom har plass til 20 personer.');
 
 		// Barnerom closes at 20:00.
 		await dialog.getByLabel('Fra').selectOption({ label: '20:00' });
@@ -157,6 +166,10 @@ test.describe('Booking form without a phone number', () => {
 		const summary = dialog.getByRole('alert');
 		await expect(summary).toBeFocused();
 		await expect(summary).toContainText('Rett opp før du sender');
+		await expect(summary.getByRole('link')).toHaveText([
+			'Skriv hvor mange personer som skal bruke rommet.',
+			'Skriv et norsk mobilnummer med 8 siffer.',
+		]);
 		await summary
 			.getByRole('link', { name: 'Skriv et norsk mobilnummer med 8 siffer.' })
 			.click();
@@ -164,6 +177,7 @@ test.describe('Booking form without a phone number', () => {
 		await expectAccessible(page);
 
 		await dialog.getByLabel('Mobilnummer').fill('412 34 567');
+		await dialog.getByLabel('Antall personer').fill('3');
 		await dialog.getByRole('button', { name: 'Book rommet' }).click();
 		await expect(page.getByRole('status').first()).toContainText(
 			'Bookingen er bekreftet.'

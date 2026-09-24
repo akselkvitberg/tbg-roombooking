@@ -13,7 +13,7 @@ import type { BookingInput, Preview } from '../api/types';
 export default function usePreview(form: BookingInput, enabled: boolean) {
 	const [preview, setPreview] = useState<Preview | null>(null);
 	const [loading, setLoading] = useState(false);
-	const key = JSON.stringify({ ...form, purpose: '', phone: '' });
+	const key = JSON.stringify({ ...form, purpose: '', people: 0, phone: '' });
 
 	useEffect(() => {
 		if (!enabled) {
@@ -25,8 +25,11 @@ export default function usePreview(form: BookingInput, enabled: boolean) {
 		setLoading(true);
 
 		const timer = setTimeout(() => {
-			// The purpose and phone number do not affect the preview.
-			previewBooking({ ...form, purpose: '', phone: '' }, controller.signal)
+			// The purpose, number of people and phone number do not affect the preview.
+			previewBooking(
+				{ ...form, purpose: '', people: 0, phone: '' },
+				controller.signal
+			)
 				.then(setPreview)
 				.catch(() => {
 					// Aborted, or the connection failed; submitting shows the error.
