@@ -257,20 +257,22 @@ class Creo_Rombooking_Mine extends Creo_Rombooking_Service {
 	 */
 	protected function booking_data( array $row, array $series ) {
 		return array(
-			'id'          => (int) $row['id'],
-			'room'        => array(
+			'id'           => (int) $row['id'],
+			'room'         => array(
 				'id'   => (int) $row['room_id'],
 				'name' => $row['room_name'],
 			),
-			'date'        => $row['date'],
-			'start'       => (int) $row['start_min'],
-			'end'         => (int) $row['end_min'],
-			'purpose'     => $row['purpose'],
-			'people'      => (int) $row['people'],
-			'status'      => $row['status'],
-			'seriesId'    => $row['series_id'] ? (int) $row['series_id'] : null,
-			'rule'        => $row['series_id'] ? ( $series[ (int) $row['series_id'] ] ?? null ) : null,
-			'cancellable' => $this->is_cancellable( $row ),
+			'date'         => $row['date'],
+			'start'        => (int) $row['start_min'],
+			'end'          => (int) $row['end_min'],
+			'purpose'      => $row['purpose'],
+			'people'       => (int) $row['people'],
+			'status'       => $row['status'],
+			'seriesId'     => $row['series_id'] ? (int) $row['series_id'] : null,
+			'rule'         => $row['series_id'] ? ( $series[ (int) $row['series_id'] ] ?? null ) : null,
+			'cancellable'  => $this->is_cancellable( $row ),
+			// How to get in and use the room, only for confirmed bookings.
+			'instructions' => $row['status'] === 'approved' ? $row['room_instructions'] : '',
 		);
 	}
 

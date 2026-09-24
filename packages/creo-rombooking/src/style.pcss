@@ -958,6 +958,63 @@
 			}
 		}
 	}
+
+	/* Room setup */
+
+	& .creo-rombooking-room-thumb {
+		@apply h-14 w-20 flex-none rounded-md border border-solid border-gray-200 bg-gray-100 object-cover dark:border-gray-600 dark:bg-slate-700;
+	}
+
+	& .creo-rombooking-icon.is-up,
+	& .creo-rombooking-icon.is-down {
+		transform: rotate(90deg);
+	}
+
+	& .creo-rombooking-link-button {
+		@apply m-0 inline-flex cursor-pointer items-center gap-1 border-0 bg-transparent p-0 text-sm font-medium text-dark-green underline dark:text-light-green;
+	}
+
+	& .creo-rombooking-room-form {
+		@apply flex flex-col gap-6;
+	}
+
+	& .creo-rombooking-label {
+		@apply text-sm font-medium;
+	}
+
+	& .creo-rombooking-image-picker {
+		@apply flex flex-wrap items-center gap-4;
+
+		& img,
+		& .creo-rombooking-image-empty {
+			@apply h-24 w-36 rounded-md border border-solid border-gray-200 object-cover dark:border-gray-600;
+		}
+
+		& .creo-rombooking-image-empty {
+			@apply flex items-center justify-center bg-gray-100 text-gray-500 dark:bg-slate-700 dark:text-gray-300;
+		}
+	}
+
+	& .creo-rombooking-hours {
+		@apply max-w-xl;
+
+		& .creo-rombooking-table {
+			min-width: 22rem;
+		}
+
+		& .creo-rombooking-input {
+			@apply h-9 w-24;
+		}
+
+		& input[type="checkbox"] {
+			@apply h-[18px] w-[18px] text-dark-green dark:text-light-green;
+			accent-color: currentcolor;
+		}
+	}
+
+	& .creo-rombooking-instructions {
+		@apply m-0 mt-1 whitespace-pre-line;
+	}
 }
 
 .dark .creo-rombooking :focus-visible {

@@ -152,7 +152,7 @@ Forekomster «Utenfor åpningstid» utelates fra serier. Utløpte forslag ryddes
   - `POST admin/bookings/{id}/cancel` (påkrevd begrunnelse, valgfritt forslag om annet rom) (fase 4)
   - `GET admin/check?roomId=&date=&start=&end=&ignore=` (er rommet ledig?) · `GET admin/sms-log?page=` (fase 4)
   - `GET admin/availability` (samme perioder, med navn og formål) · `POST admin/bookings/{id}/move` (flytt rom/dato/tid, fase 7)
-  - CRUD for `rooms`, `opening-hours`, `closures` (fase 8)
+  - `GET|POST admin/rooms` · `POST admin/rooms/{id}` · `POST admin/rooms/order` · `POST admin/rooms/{id}/closures` · `DELETE admin/rooms/{id}/closures/{closure}` (fase 8)
 
 ---
 
@@ -216,7 +216,8 @@ Ingen SMS sendes lokalt. Meldingene lagres i hendelsesloggen og kan leses i fane
 Playwright. Skjermbilder og axe-rapport legges ved som artefakter.
 
 ### 6.5 Uten Docker-bygg (Claude-sesjoner i skyen)
-Docker kan startes med `dockerd`, og images hentes via registry-speilet `mirror.gcr.io` (Docker Hub gir 429 herfra).
+`bin/php-server.sh` starter PHPs server med fire arbeidsprosesser (`PHP_CLI_SERVER_WORKERS`), slik at WordPress sine
+kall til seg selv (f.eks. WP-Cron) ikke venter på siden som startet dem. Docker kan startes med `dockerd`, og images hentes via registry-speilet `mirror.gcr.io` (Docker Hub gir 429 herfra).
 `wp-env` fungerer likevel ikke her: images bygges med `apk update` over HTTPS, og byggcontainerne når verken
 sesjonens proxy eller stoler på dens sertifikat. Derfor finnes `bin/php-server.sh`, som kjører WordPress med PHPs
 innebygde server mot MySQL (f.eks. `mysql:8`-containeren), med samme oppsettskript og eksempeldata.
@@ -239,7 +240,7 @@ Rekkefølgen følger bestillingen: matrise i dagvisning (desktop og mobil) og sk
 | **5. Ukevisning** (skjerm 2) | WeekMatrix med blokker, ett rom om gangen (romvelger), dagene som kolonner, tastatur (opp/ned i dagen, venstre/høyre mellom dager, Page Up/Down bytter uke) | Mobil: sideveis rulling i gridet, valgt dag i synsfeltet |
 | **6. Mine bookinger** (skjerm 5) | Forslag som venter på svar (Aksepter/Avslå + svarfrist), kommende bookinger og forespørsler (serier samlet), avslått/avbestilt siste 30 dager med begrunnelse, avbestilling «denne» eller «denne og alle senere», også fra matrisen | Designet i fase 6 i samme stil som admin-innboksen (mangler i prototypen) |
 | **7. Admin-matrise** (skjerm 7) | Fanen «Oversikt»: dagvisning med navn i cellene (navn, formål og antall i skjermlesernavnet), dra en booking til annet rom/tid (markør viser ny starttid), tastaturalternativ via bookingens detaljer («Flytt …»), avbestilling med begrunnelse (skjerm 9) | Flytting bekreftes alltid i en dialog med påkrevd begrunnelse |
-| **8. Rom-oppsett** (skjerm 8) | Liste + skjema, åpningstider per ukedag, unntak, bilde via mediebiblioteket, rominstruks med advarsel mot koder/passord | — |
+| **8. Rom-oppsett** (skjerm 8) | Fanen «Rom»: liste med rekkefølge (opp/ned-knapper), skjema med navn, plasser, godkjenning, aktiv, bilde fra mediebiblioteket, åpningstider per ukedag og rominstruks med advarsel mot koder/passord; stengte dager og sperrede tider med antall berørte bookinger | Rominstruksen vises på bekreftede bookinger under «Mine bookinger» |
 | **9. Kvalitet og overlevering** | Playwright-e2e + axe, bundle-størrelse, oversettelser, instruks for flytting til creo-wp | — |
 
 Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
@@ -268,6 +269,7 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Avbestilling (fase 6) | Medlemmet kan avbestille til bookingen starter, uten begrunnelse, og får SMS som kvittering. Admin varsles ikke |
 | Flytting i oversikten (fase 7) | Dra-og-slipp åpner flyttedialogen utfylt med nytt rom og ny starttid (samme varighet); tastaturbrukere åpner bookingen og velger «Flytt …». Begrunnelse er påkrevd og sendes på SMS. I serier flyttes bare den ene datoen |
 | Avbestilling fra admin (skjerm 9) | Åpnes fra bookingens detaljer i oversikten, og fra konfliktene i innboksen |
+| Rom (fase 8) | Rom slettes aldri (bookinger peker på dem); de gjøres inaktive og kan da ikke bookes. Skjemaet har ett tidsrom per ukedag (datamodellen tåler flere). Nye unntak endrer ikke eksisterende bookinger, men admin får vite hvor mange som berøres |
 | Ukevisning (fase 5) | Ett rom om gangen, som i prototypen. Uke 1 følger ISO 8601. På mobil (ikke i prototypen) ruller dagene sideveis inne i gridet |
 | Innsendte forespørsler (fase 4) | Innboksen viser forespørsler fra i dag og fremover, eldste først innen hver gruppe |
 

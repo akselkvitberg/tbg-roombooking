@@ -813,6 +813,165 @@
             ],
             "%s. Choose to see details, move or cancel.": [
                 "%s. Velg for \u00e5 se detaljer, flytte eller avbestille."
+            ],
+            "%s is saved.": [
+                "%s er lagret."
+            ],
+            "The closing time must be after the opening time.": [
+                "Stengetiden m\u00e5 v\u00e6re etter \u00e5pningstiden."
+            ],
+            "Room instructions": [
+                "Rominstruks"
+            ],
+            "Blocked": [
+                "Sperret"
+            ],
+            "the whole day": [
+                "hele dagen"
+            ],
+            "Closed and blocked times": [
+                "Stengte dager og sperrede tider"
+            ],
+            "Closed: the room cannot be used, e.g. during maintenance. Blocked: the room is set aside, e.g. for cleaning. Members see the reason in the matrix. Existing bookings are not changed.": [
+                "Stengt: rommet kan ikke brukes, for eksempel ved vedlikehold. Sperret: rommet er satt av, for eksempel til rengj\u00f8ring. Medlemmene ser begrunnelsen i matrisen. Eksisterende bookinger endres ikke."
+            ],
+            "Remove %s": [
+                "Fjern %s"
+            ],
+            "Remove": [
+                "Fjern"
+            ],
+            "%s has no closed or blocked times ahead.": [
+                "%s har ingen stengte dager eller sperrede tider fremover."
+            ],
+            "Add a closed or blocked time": [
+                "Legg til stengt dag eller sperret tid"
+            ],
+            "Type": [
+                "Type"
+            ],
+            "The whole day": [
+                "Hele dagen"
+            ],
+            "Shown to members, e.g. \u00abMaintenance\u00bb. Do not write codes or passwords.": [
+                "Vises for medlemmene, for eksempel \u00abVedlikehold\u00bb. Ikke skriv koder eller passord."
+            ],
+            "Add": [
+                "Legg til"
+            ],
+            "Image": [
+                "Bilde"
+            ],
+            "Choose an image of the room": [
+                "Velg et bilde av rommet"
+            ],
+            "Use the image": [
+                "Bruk bildet"
+            ],
+            "Change the image": [
+                "Bytt bilde"
+            ],
+            "Choose an image": [
+                "Velg bilde"
+            ],
+            "Remove the image": [
+                "Fjern bildet"
+            ],
+            "The media library could not be opened.": [
+                "Mediebiblioteket kunne ikke \u00e5pnes."
+            ],
+            "Write a name of at most 100 characters.": [
+                "Skriv et navn p\u00e5 maks 100 tegn."
+            ],
+            "Write the number of places, from 1 to 9999.": [
+                "Skriv antall plasser, fra 1 til 9999."
+            ],
+            "Correct before you save": [
+                "Rett opp f\u00f8r du lagrer"
+            ],
+            "About the room": [
+                "Om rommet"
+            ],
+            "Number of places": [
+                "Antall plasser"
+            ],
+            "Description": [
+                "Beskrivelse"
+            ],
+            "Approval": [
+                "Godkjenning"
+            ],
+            "Automatic when the time is available": [
+                "Automatisk n\u00e5r tiden er ledig"
+            ],
+            "The administrator approves": [
+                "Admin godkjenner"
+            ],
+            "The room can be booked": [
+                "Rommet kan bookes"
+            ],
+            "Rooms are not deleted, so that earlier bookings are kept. Turn this off for a room that is no longer used.": [
+                "Rom slettes ikke, slik at tidligere bookinger beholdes. Sl\u00e5 av dette for et rom som ikke brukes lenger."
+            ],
+            "Opening hours": [
+                "\u00c5pningstider"
+            ],
+            "Outside the opening hours, the room is shown as closed and cannot be booked.": [
+                "Utenfor \u00e5pningstiden vises rommet som stengt og kan ikke bookes."
+            ],
+            "Open": [
+                "\u00c5pent"
+            ],
+            "Open on %s": [
+                "\u00c5pent p\u00e5 %s"
+            ],
+            "Opens on %s": [
+                "\u00c5pner p\u00e5 %s"
+            ],
+            "Closes on %s": [
+                "Stenger p\u00e5 %s"
+            ],
+            "Never write codes or passwords": [
+                "Skriv aldri koder eller passord"
+            ],
+            "Everyone with a confirmed booking of the room sees the instructions under My bookings. Write how to get in and what to do afterwards, but not door codes, alarm codes, passwords or where keys are hidden.": [
+                "Alle som har en bekreftet booking av rommet, ser instruksen under Mine bookinger. Skriv hvordan man kommer inn og hva man skal gj\u00f8re etterp\u00e5, men ikke d\u00f8rkoder, alarmkoder, passord eller hvor n\u00f8kler ligger gjemt."
+            ],
+            "Instructions": [
+                "Instruks"
+            ],
+            "Create the room": [
+                "Opprett rommet"
+            ],
+            "Save the room": [
+                "Lagre rommet"
+            ],
+            "%s is moved.": [
+                "%s er flyttet."
+            ],
+            "Edit %s": [
+                "Rediger %s"
+            ],
+            "Back to the rooms": [
+                "Tilbake til rommene"
+            ],
+            "Could not load the rooms.": [
+                "Kunne ikke hente rommene."
+            ],
+            "%d closures ahead": [
+                "%d unntak fremover"
+            ],
+            "Cannot be booked": [
+                "Kan ikke bookes"
+            ],
+            "Move %s up": [
+                "Flytt %s opp"
+            ],
+            "Move %s down": [
+                "Flytt %s ned"
+            ],
+            "Edit": [
+                "Rediger"
             ]
         }
     }

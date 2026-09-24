@@ -15,6 +15,8 @@ export interface MyBooking {
 	seriesId: number | null;
 	rule: 'weekly' | 'biweekly' | 'monthly' | null;
 	cancellable: boolean;
+	/** How to use the room, for confirmed bookings. */
+	instructions: string;
 	/** For declined and cancelled bookings: what happened last, and why. */
 	action?: string;
 	reason?: string;

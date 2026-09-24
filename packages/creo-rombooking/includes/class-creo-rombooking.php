@@ -104,6 +104,11 @@ class Creo_Rombooking {
 		wp_enqueue_script( 'creoRombookingPublic' );
 		wp_enqueue_style( 'creoRombookingPublic' );
 
+		// Administrators choose room images from the media library.
+		if ( creo_rombooking_can_manage() ) {
+			wp_enqueue_media();
+		}
+
 		$user  = wp_get_current_user();
 		$phone = creo_rombooking_get_phone( $user->ID );
 

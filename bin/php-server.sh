@@ -61,7 +61,8 @@ if ! $WP core is-installed 2>/dev/null; then
 fi
 
 if ! curl --silent --head "http://localhost:$port" >/dev/null; then
-  nohup php -S "0.0.0.0:$port" -t "$wp_dir" >"$root_dir/.tmp/php-server.log" 2>&1 &
+  # Several workers, so that WordPress's requests to itself (e.g. WP-Cron) do not wait for the page that made them.
+  PHP_CLI_SERVER_WORKERS=4 nohup php -S "0.0.0.0:$port" -t "$wp_dir" >"$root_dir/.tmp/php-server.log" 2>&1 &
 fi
 
 bash "$root_dir/bin/wp-setup.sh"

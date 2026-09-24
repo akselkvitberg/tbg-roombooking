@@ -39,6 +39,18 @@ export function cancelTarget(
 	};
 }
 
+function Instructions({ text }: { text: string }) {
+	if (!text) {
+		return null;
+	}
+	return (
+		<details className="creo-rombooking-details">
+			<summary>{__('Room instructions', 'creo-rombooking')}</summary>
+			<p className="creo-rombooking-instructions">{text}</p>
+		</details>
+	);
+}
+
 function StatusTag({ booking }: { booking: MyBooking }) {
 	if (booking.status === 'approved') {
 		return (
@@ -112,6 +124,7 @@ export default function BookingEntry({ entry, locale, onCancel }: Props) {
 						{booking.purpose && ` · ${booking.purpose}`}
 					</p>
 					<StatusTag booking={booking} />
+					<Instructions text={booking.instructions} />
 					{booking.reason && (
 						<p className="creo-rombooking-help">
 							{sprintf(
@@ -204,6 +217,7 @@ export default function BookingEntry({ entry, locale, onCancel }: Props) {
 						</span>
 					)}
 				</div>
+				<Instructions text={next.instructions} />
 				<details className="creo-rombooking-details">
 					<summary>{__('Show the dates', 'creo-rombooking')}</summary>
 					<ul>

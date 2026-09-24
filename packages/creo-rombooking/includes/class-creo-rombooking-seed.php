@@ -108,6 +108,13 @@ class Creo_Rombooking_Seed {
 			'gym'     => array( 'Gymsal', 80, 'manual', 'Gymsal med garderober.' ),
 		);
 
+		// How to use the rooms. Never codes or passwords: members see this text.
+		$instructions = array(
+			'storsal' => 'Nøkkel hentes hos vaktmesteren. Slå av lydanlegget og lyset når dere går.',
+			'kafe'    => 'Tøm oppvaskmaskinen og tørk av benkene før dere går.',
+			'm1'      => 'Skjermen kobles til med kabelen på bordet.',
+		);
+
 		$order = 0;
 		foreach ( $rooms as $key => list( $name, $capacity, $approval, $description ) ) {
 			$wpdb->insert( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
@@ -117,7 +124,7 @@ class Creo_Rombooking_Seed {
 					'description'  => $description,
 					'capacity'     => $capacity,
 					'approval'     => $approval,
-					'instructions' => '',
+					'instructions' => $instructions[ $key ] ?? '',
 					'active'       => 1,
 					'sort_order'   => $order++,
 				)

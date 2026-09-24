@@ -173,6 +173,63 @@ class Creo_Rombooking_REST {
 
 		register_rest_route(
 			self::NAMESPACE,
+			'/admin/rooms',
+			array(
+				array(
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => fn() => rest_ensure_response( ( new Creo_Rombooking_Rooms() )->get_rooms() ),
+					'permission_callback' => array( $this, 'can_manage' ),
+				),
+				array(
+					'methods'             => WP_REST_Server::CREATABLE,
+					'callback'            => fn( WP_REST_Request $request ) => $this->respond( ( new Creo_Rombooking_Rooms() )->save( null, $request->get_params() ) ),
+					'permission_callback' => array( $this, 'can_manage' ),
+				),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/admin/rooms/order',
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => fn( WP_REST_Request $request ) => $this->respond( ( new Creo_Rombooking_Rooms() )->reorder( (array) ( $request['ids'] ?? array() ) ) ),
+				'permission_callback' => array( $this, 'can_manage' ),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/admin/rooms/(?P<id>\d+)',
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => fn( WP_REST_Request $request ) => $this->respond( ( new Creo_Rombooking_Rooms() )->save( (int) $request['id'], $request->get_params() ) ),
+				'permission_callback' => array( $this, 'can_manage' ),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/admin/rooms/(?P<id>\d+)/closures',
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => fn( WP_REST_Request $request ) => $this->respond( ( new Creo_Rombooking_Rooms() )->add_closure( (int) $request['id'], $request->get_params() ) ),
+				'permission_callback' => array( $this, 'can_manage' ),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/admin/rooms/(?P<id>\d+)/closures/(?P<closure>\d+)',
+			array(
+				'methods'             => WP_REST_Server::DELETABLE,
+				'callback'            => fn( WP_REST_Request $request ) => $this->respond( ( new Creo_Rombooking_Rooms() )->delete_closure( (int) $request['id'], (int) $request['closure'] ) ),
+				'permission_callback' => array( $this, 'can_manage' ),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
 			'/admin/sms-log',
 			array(
 				'methods'             => WP_REST_Server::READABLE,
@@ -219,6 +276,14 @@ class Creo_Rombooking_REST {
 				'permission_callback' => array( $this, 'can_manage' ),
 			)
 		);
+	}
+
+	/**
+	 * @param array|WP_Error $result A result or an error.
+	 * @return WP_REST_Response|WP_Error
+	 */
+	protected function respond( $result ) {
+		return is_wp_error( $result ) ? $result : rest_ensure_response( $result );
 	}
 
 	/**

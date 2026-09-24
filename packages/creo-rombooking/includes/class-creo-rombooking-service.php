@@ -110,7 +110,7 @@ abstract class Creo_Rombooking_Service {
 		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
 		return $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT b.*, r.name AS room_name, r.capacity, r.approval, u.display_name AS user_name, s.start_date AS series_start
+				"SELECT b.*, r.name AS room_name, r.capacity, r.approval, r.instructions AS room_instructions, u.display_name AS user_name, s.start_date AS series_start
 				FROM $bookings b
 				JOIN $rooms r ON r.id = b.room_id
 				LEFT JOIN {$wpdb->users} u ON u.ID = b.user_id

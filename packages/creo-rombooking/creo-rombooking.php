@@ -33,6 +33,7 @@ require __DIR__ . '/includes/class-creo-rombooking-bookings.php';
 require __DIR__ . '/includes/class-creo-rombooking-service.php';
 require __DIR__ . '/includes/class-creo-rombooking-admin.php';
 require __DIR__ . '/includes/class-creo-rombooking-mine.php';
+require __DIR__ . '/includes/class-creo-rombooking-rooms.php';
 require __DIR__ . '/includes/class-creo-rombooking-rest.php';
 require __DIR__ . '/includes/class-creo-rombooking-block.php';
 require __DIR__ . '/includes/class-creo-rombooking.php';

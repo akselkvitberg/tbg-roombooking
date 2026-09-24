@@ -24,6 +24,7 @@ const booking = (
 	seriesId,
 	rule: seriesId ? 'weekly' : null,
 	cancellable: true,
+	instructions: '',
 	...values,
 });
 

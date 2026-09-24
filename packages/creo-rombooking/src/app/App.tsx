@@ -8,6 +8,7 @@ import AdminInboxView from '../views/AdminInboxView';
 import AdminMatrixView from '../views/AdminMatrixView';
 import BookView from '../views/BookView';
 import MyBookingsView from '../views/MyBookingsView';
+import RoomSetupView from '../views/RoomSetupView';
 import SmsLogView from '../views/SmsLogView';
 
 interface Props {
@@ -83,8 +84,9 @@ export default function App({ settings }: Props) {
 				{current.id === 'admin-matrix' && (
 					<AdminMatrixView settings={settings} />
 				)}
+				{current.id === 'rooms' && <RoomSetupView settings={settings} />}
 				{current.id === 'sms' && <SmsLogView settings={settings} />}
-				{!['book', 'mine', 'requests', 'admin-matrix', 'sms'].includes(
+				{!['book', 'mine', 'requests', 'admin-matrix', 'rooms', 'sms'].includes(
 					current.id
 				) && (
 					<EmptyState title={current.label}>

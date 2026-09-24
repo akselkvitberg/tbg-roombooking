@@ -31,7 +31,7 @@ msgid "Creo Multiservice AS"
 msgstr "Creo Multiservice AS"
 
 #: includes/class-creo-rombooking-block.php:54
-#: includes/class-creo-rombooking-rest.php:270
+#: includes/class-creo-rombooking-rest.php:335
 msgid "You must be logged in to book rooms."
 msgstr "Du må være innlogget for å booke rom."
 
@@ -48,7 +48,7 @@ msgid "Loading room booking…"
 msgstr "Laster rombooking …"
 
 #: build/creoRombookingEditor.js:1
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "Room booking"
 msgstr "Rombooking"
 
@@ -57,29 +57,30 @@ msgid "The booking calendar is shown here for logged-in members."
 msgstr "Bookingkalenderen vises her for innloggede medlemmer."
 
 #: build/creoRombookingPublic.js:75
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "Book a room"
 msgstr "Book rom"
 
 #: build/creoRombookingPublic.js:75
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "My bookings"
 msgstr "Mine bookinger"
 
 #: build/creoRombookingPublic.js:39
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "Requests"
 msgstr "Forespørsler"
 
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "Overview"
 msgstr "Oversikt"
 
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:83
+#: build/creoRombookingPublic.js:88
 msgid "Rooms"
 msgstr "Rom"
 
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "This part is not built yet."
 msgstr "Denne delen er ikke laget ennå."
 
@@ -93,24 +94,24 @@ msgctxt "block description"
 msgid "Room booking for members, with requests and conflict handling for administrators."
 msgstr "Rombooking for medlemmer, med forespørsler og konflikthåndtering for administratorer."
 
-#: includes/class-creo-rombooking-rest.php:251
+#: includes/class-creo-rombooking-rest.php:316
 msgid "Room booking is only available to members."
 msgstr "Rombooking er bare tilgjengelig for medlemmer."
 
-#: includes/class-creo-rombooking-rest.php:261
+#: includes/class-creo-rombooking-rest.php:326
 msgid "Only administrators can do this."
 msgstr "Bare administratorer kan gjøre dette."
 
-#: includes/class-creo-rombooking-rest.php:283
+#: includes/class-creo-rombooking-rest.php:348
 msgid "The date must be in the format YYYY-MM-DD."
 msgstr "Datoen må ha formatet ÅÅÅÅ-MM-DD."
 
-#: includes/class-creo-rombooking-rest.php:397
+#: includes/class-creo-rombooking-rest.php:462
 msgid "The last date must be on or after the first date."
 msgstr "Sluttdatoen kan ikke være før startdatoen."
 
 #. translators: %d: number of days
-#: includes/class-creo-rombooking-rest.php:404
+#: includes/class-creo-rombooking-rest.php:469
 msgid "You can get at most %d days at a time."
 msgstr "Du kan hente maks %d dager om gangen."
 
@@ -121,6 +122,7 @@ msgstr "Du kan hente maks %d dager om gangen."
 #: build/creoRombookingPublic.js:63
 #: build/creoRombookingPublic.js:66
 #: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:84
 msgid "Close"
 msgstr "Lukk"
 
@@ -160,6 +162,7 @@ msgstr "Rom"
 #: build/creoRombookingPublic.js:55
 #: build/creoRombookingPublic.js:60
 #: build/creoRombookingPublic.js:61
+#: build/creoRombookingPublic.js:77
 msgid "Date"
 msgstr "Dato"
 
@@ -193,6 +196,7 @@ msgstr "Forespurt"
 
 #: build/creoRombookingPublic.js:35
 #: build/creoRombookingPublic.js:48
+#: build/creoRombookingPublic.js:75
 msgid "Closed"
 msgstr "Stengt"
 
@@ -282,6 +286,7 @@ msgid "View"
 msgstr "Visning"
 
 #: build/creoRombookingPublic.js:61
+#: build/creoRombookingPublic.js:78
 msgid "Day"
 msgstr "Dag"
 
@@ -306,6 +311,7 @@ msgstr "Kunne ikke laste ledige tider."
 #: build/creoRombookingPublic.js:63
 #: build/creoRombookingPublic.js:66
 #: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:84
 msgid "Try again"
 msgstr "Prøv igjen"
 
@@ -344,6 +350,7 @@ msgstr "Velg fra- og til-tid."
 #: includes/class-creo-rombooking-admin.php:201
 #: includes/class-creo-rombooking-admin.php:565
 #: includes/class-creo-rombooking-bookings.php:71
+#: includes/class-creo-rombooking-rooms.php:139
 #: build/creoRombookingPublic.js:14
 #: build/creoRombookingPublic.js:40
 #: build/creoRombookingPublic.js:44
@@ -463,6 +470,7 @@ msgid "Room booking: %1$s. %2$d confirmed, %3$d waiting for approval."
 msgstr "Rombooking: %1$s. %2$d bekreftet, %3$d venter på godkjenning."
 
 #: includes/class-creo-rombooking-bookings.php:386
+#: includes/class-creo-rombooking-rooms.php:426
 #: includes/class-creo-rombooking-service.php:175
 msgid "Correct the errors before you send."
 msgstr "Rett opp feilene før du sender."
@@ -546,12 +554,16 @@ msgstr "Rett opp før du sender"
 #: build/creoRombookingPublic.js:16
 #: build/creoRombookingPublic.js:41
 #: build/creoRombookingPublic.js:55
+#: build/creoRombookingPublic.js:77
+#: build/creoRombookingPublic.js:78
 msgid "From"
 msgstr "Fra"
 
 #: build/creoRombookingPublic.js:16
 #: build/creoRombookingPublic.js:41
 #: build/creoRombookingPublic.js:55
+#: build/creoRombookingPublic.js:77
+#: build/creoRombookingPublic.js:78
 msgid "To"
 msgstr "Til"
 
@@ -569,11 +581,15 @@ msgstr "Formål"
 
 #: build/creoRombookingPublic.js:17
 #: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:77
+#: build/creoRombookingPublic.js:78
+#: build/creoRombookingPublic.js:81
 msgid "(optional)"
 msgstr "(valgfritt)"
 
 #. translators: 1: characters used, 2: maximum
 #: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:82
 msgid "%1$d of %2$d characters"
 msgstr "%1$d av %2$d tegn"
 
@@ -765,6 +781,7 @@ msgstr "%1$s er for lite for %2$d personer."
 
 #: includes/class-creo-rombooking-admin.php:197
 #: includes/class-creo-rombooking-admin.php:562
+#: includes/class-creo-rombooking-rooms.php:136
 msgid "Choose a date from today on."
 msgstr "Velg en dato fra i dag og fremover."
 
@@ -908,6 +925,7 @@ msgstr "Skriv en begrunnelse. Den sendes på SMS."
 
 #. translators: %d: maximum number of characters
 #: includes/class-creo-rombooking-admin.php:1244
+#: includes/class-creo-rombooking-rooms.php:146
 msgid "The reason can be at most %d characters."
 msgstr "Begrunnelsen kan være på maks %d tegn."
 
@@ -1048,6 +1066,7 @@ msgstr "Erstattes av"
 #: build/creoRombookingPublic.js:20
 #: build/creoRombookingPublic.js:21
 #: build/creoRombookingPublic.js:42
+#: build/creoRombookingPublic.js:77
 msgid "Reason"
 msgstr "Begrunnelse"
 
@@ -1085,6 +1104,8 @@ msgstr[0] "%1$s · %2$d person. Når bookingen er flyttet, godkjennes den nye fo
 msgstr[1] "%1$s · %2$d personer. Når bookingen er flyttet, godkjennes den nye forespørselen."
 
 #: build/creoRombookingPublic.js:23
+#: build/creoRombookingPublic.js:83
+#: build/creoRombookingPublic.js:84
 msgid "New room"
 msgstr "Nytt rom"
 
@@ -1165,6 +1186,7 @@ msgstr "Venter"
 #: build/creoRombookingPublic.js:30
 #: build/creoRombookingPublic.js:35
 #: build/creoRombookingPublic.js:43
+#: build/creoRombookingPublic.js:78
 msgid "Name"
 msgstr "Navn"
 
@@ -1340,45 +1362,47 @@ msgstr "Ingen forespørsler venter"
 msgid "New requests and conflicts are shown here, with conflicts first."
 msgstr "Nye forespørsler og konflikter vises her, med konflikter øverst."
 
-#: build/creoRombookingPublic.js:75
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:87
+#: build/creoRombookingPublic.js:88
 msgid "Text message log"
 msgstr "SMS-logg"
 
-#: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:87
 msgid "No text messages are sent yet. This is what would have been sent, newest first."
 msgstr "Ingen SMS sendes ennå. Her er det som ville blitt sendt, nyeste først."
 
-#: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:87
 msgid "Could not load the log."
 msgstr "Kunne ikke hente loggen."
 
 #: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:84
+#: build/creoRombookingPublic.js:87
 msgid "Loading…"
 msgstr "Laster …"
 
-#: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:87
 msgid "No text messages yet"
 msgstr "Ingen SMS ennå"
 
-#: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:87
 msgid "Messages about bookings, approvals and cancellations are shown here."
 msgstr "Meldinger om bookinger, godkjenninger og avbestillinger vises her."
 
-#: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:87
 msgid "Pages"
 msgstr "Sider"
 
-#: build/creoRombookingPublic.js:75
+#: build/creoRombookingPublic.js:87
 msgid "Newer"
 msgstr "Nyere"
 
 #. translators: 1: page, 2: number of pages
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "Page %1$d of %2$d"
 msgstr "Side %1$d av %2$d"
 
-#: build/creoRombookingPublic.js:76
+#: build/creoRombookingPublic.js:88
 msgid "Older"
 msgstr "Eldre"
 
@@ -1462,15 +1486,15 @@ msgstr "Forslaget er avslått."
 msgid "Room booking: The proposal of %s was not answered in time and has expired."
 msgstr "Rombooking: Forslaget om %s ble ikke besvart i tide og er utløpt."
 
-#: includes/class-creo-rombooking-mine.php:374
+#: includes/class-creo-rombooking-mine.php:376
 msgid "The proposal was not found."
 msgstr "Fant ikke forslaget."
 
-#: includes/class-creo-rombooking-mine.php:377
+#: includes/class-creo-rombooking-mine.php:379
 msgid "The deadline for answering has passed."
 msgstr "Svarfristen har gått ut."
 
-#: includes/class-creo-rombooking-mine.php:380
+#: includes/class-creo-rombooking-mine.php:382
 msgid "The proposal has already been answered."
 msgstr "Forslaget er allerede besvart."
 
@@ -1722,3 +1746,297 @@ msgstr "Velg en booking for å se hvem som har booket, flytte eller avbestille d
 #: build/creoRombookingPublic.js:63
 msgid "%s. Choose to see details, move or cancel."
 msgstr "%s. Velg for å se detaljer, flytte eller avbestille."
+
+#: includes/class-creo-rombooking-rooms.php:46
+#: includes/class-creo-rombooking-rooms.php:124
+msgid "The room was not found."
+msgstr "Fant ikke rommet."
+
+#. translators: %s: room name
+#: includes/class-creo-rombooking-rooms.php:82
+#: build/creoRombookingPublic.js:78
+msgid "%s is saved."
+msgstr "%s er lagret."
+
+#: includes/class-creo-rombooking-rooms.php:103
+msgid "The order must include every room once."
+msgstr "Rekkefølgen må ha med hvert rom én gang."
+
+#: includes/class-creo-rombooking-rooms.php:110
+msgid "The order is saved."
+msgstr "Rekkefølgen er lagret."
+
+#: includes/class-creo-rombooking-rooms.php:142
+msgid "Choose closed or blocked."
+msgstr "Velg stengt eller sperret."
+
+#: includes/class-creo-rombooking-rooms.php:178
+msgid "The closure is saved."
+msgstr "Unntaket er lagret."
+
+#. translators: %d: number of bookings
+#: includes/class-creo-rombooking-rooms.php:182
+msgid "%d booking is in the period. It has not been changed; move or cancel it in the overview."
+msgid_plural "%d bookings are in the period. They have not been changed; move or cancel them in the overview."
+msgstr[0] "%d booking ligger i perioden. Den er ikke endret; flytt eller avbestill den i oversikten."
+msgstr[1] "%d bookinger ligger i perioden. De er ikke endret; flytt eller avbestill dem i oversikten."
+
+#: includes/class-creo-rombooking-rooms.php:225
+msgid "The closure was not found."
+msgstr "Fant ikke unntaket."
+
+#: includes/class-creo-rombooking-rooms.php:228
+msgid "The closure is removed."
+msgstr "Unntaket er fjernet."
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-rooms.php:246
+msgid "Write a name of at most %d characters."
+msgstr "Skriv et navn på maks %d tegn."
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-rooms.php:250
+msgid "The description can be at most %d characters."
+msgstr "Beskrivelsen kan være på maks %d tegn."
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-rooms.php:254
+msgid "The instructions can be at most %d characters."
+msgstr "Rominstruksen kan være på maks %d tegn."
+
+#. translators: %d: maximum number of places
+#: includes/class-creo-rombooking-rooms.php:258
+msgid "Write the number of places, from 1 to %d."
+msgstr "Skriv antall plasser, fra 1 til %d."
+
+#: includes/class-creo-rombooking-rooms.php:261
+msgid "Choose how bookings are approved."
+msgstr "Velg hvordan bookinger godkjennes."
+
+#: includes/class-creo-rombooking-rooms.php:264
+msgid "Choose an image."
+msgstr "Velg et bilde."
+
+#: includes/class-creo-rombooking-rooms.php:274
+#: build/creoRombookingPublic.js:77
+msgid "The closing time must be after the opening time."
+msgstr "Stengetiden må være etter åpningstiden."
+
+#: includes/class-creo-rombooking-rooms.php:279
+msgid "The opening hours of a day overlap."
+msgstr "Åpningstidene for en dag overlapper."
+
+#: build/creoRombookingPublic.js:67
+#: build/creoRombookingPublic.js:81
+msgid "Room instructions"
+msgstr "Rominstruks"
+
+#: build/creoRombookingPublic.js:75
+msgid "Blocked"
+msgstr "Sperret"
+
+#: build/creoRombookingPublic.js:75
+msgid "the whole day"
+msgstr "hele dagen"
+
+#: build/creoRombookingPublic.js:75
+msgid "Closed and blocked times"
+msgstr "Stengte dager og sperrede tider"
+
+#: build/creoRombookingPublic.js:75
+msgid "Closed: the room cannot be used, e.g. during maintenance. Blocked: the room is set aside, e.g. for cleaning. Members see the reason in the matrix. Existing bookings are not changed."
+msgstr "Stengt: rommet kan ikke brukes, for eksempel ved vedlikehold. Sperret: rommet er satt av, for eksempel til rengjøring. Medlemmene ser begrunnelsen i matrisen. Eksisterende bookinger endres ikke."
+
+#. translators: %s: date and time
+#: build/creoRombookingPublic.js:76
+msgid "Remove %s"
+msgstr "Fjern %s"
+
+#: build/creoRombookingPublic.js:76
+msgid "Remove"
+msgstr "Fjern"
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:77
+msgid "%s has no closed or blocked times ahead."
+msgstr "%s har ingen stengte dager eller sperrede tider fremover."
+
+#: build/creoRombookingPublic.js:77
+msgid "Add a closed or blocked time"
+msgstr "Legg til stengt dag eller sperret tid"
+
+#: build/creoRombookingPublic.js:77
+msgid "Type"
+msgstr "Type"
+
+#: build/creoRombookingPublic.js:77
+msgid "The whole day"
+msgstr "Hele dagen"
+
+#: build/creoRombookingPublic.js:77
+msgid "Shown to members, e.g. «Maintenance». Do not write codes or passwords."
+msgstr "Vises for medlemmene, for eksempel «Vedlikehold». Ikke skriv koder eller passord."
+
+#: build/creoRombookingPublic.js:77
+msgid "Add"
+msgstr "Legg til"
+
+#: build/creoRombookingPublic.js:77
+msgid "Image"
+msgstr "Bilde"
+
+#: build/creoRombookingPublic.js:77
+msgid "Choose an image of the room"
+msgstr "Velg et bilde av rommet"
+
+#: build/creoRombookingPublic.js:77
+msgid "Use the image"
+msgstr "Bruk bildet"
+
+#: build/creoRombookingPublic.js:77
+msgid "Change the image"
+msgstr "Bytt bilde"
+
+#: build/creoRombookingPublic.js:77
+msgid "Choose an image"
+msgstr "Velg bilde"
+
+#: build/creoRombookingPublic.js:77
+msgid "Remove the image"
+msgstr "Fjern bildet"
+
+#: build/creoRombookingPublic.js:77
+msgid "The media library could not be opened."
+msgstr "Mediebiblioteket kunne ikke åpnes."
+
+#: build/creoRombookingPublic.js:77
+msgid "Write a name of at most 100 characters."
+msgstr "Skriv et navn på maks 100 tegn."
+
+#: build/creoRombookingPublic.js:77
+msgid "Write the number of places, from 1 to 9999."
+msgstr "Skriv antall plasser, fra 1 til 9999."
+
+#: build/creoRombookingPublic.js:78
+msgid "Correct before you save"
+msgstr "Rett opp før du lagrer"
+
+#: build/creoRombookingPublic.js:78
+msgid "About the room"
+msgstr "Om rommet"
+
+#: build/creoRombookingPublic.js:78
+msgid "Number of places"
+msgstr "Antall plasser"
+
+#: build/creoRombookingPublic.js:78
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: build/creoRombookingPublic.js:78
+msgid "Approval"
+msgstr "Godkjenning"
+
+#: build/creoRombookingPublic.js:78
+msgid "Automatic when the time is available"
+msgstr "Automatisk når tiden er ledig"
+
+#: build/creoRombookingPublic.js:78
+msgid "The administrator approves"
+msgstr "Admin godkjenner"
+
+#: build/creoRombookingPublic.js:78
+msgid "The room can be booked"
+msgstr "Rommet kan bookes"
+
+#: build/creoRombookingPublic.js:78
+msgid "Rooms are not deleted, so that earlier bookings are kept. Turn this off for a room that is no longer used."
+msgstr "Rom slettes ikke, slik at tidligere bookinger beholdes. Slå av dette for et rom som ikke brukes lenger."
+
+#: build/creoRombookingPublic.js:78
+msgid "Opening hours"
+msgstr "Åpningstider"
+
+#: build/creoRombookingPublic.js:78
+msgid "Outside the opening hours, the room is shown as closed and cannot be booked."
+msgstr "Utenfor åpningstiden vises rommet som stengt og kan ikke bookes."
+
+#: build/creoRombookingPublic.js:78
+msgid "Open"
+msgstr "Åpent"
+
+#. translators: %s: weekday
+#: build/creoRombookingPublic.js:79
+msgid "Open on %s"
+msgstr "Åpent på %s"
+
+#. translators: %s: weekday
+#: build/creoRombookingPublic.js:80
+msgid "Opens on %s"
+msgstr "Åpner på %s"
+
+#. translators: %s: weekday
+#: build/creoRombookingPublic.js:81
+msgid "Closes on %s"
+msgstr "Stenger på %s"
+
+#: build/creoRombookingPublic.js:81
+msgid "Never write codes or passwords"
+msgstr "Skriv aldri koder eller passord"
+
+#: build/creoRombookingPublic.js:81
+msgid "Everyone with a confirmed booking of the room sees the instructions under My bookings. Write how to get in and what to do afterwards, but not door codes, alarm codes, passwords or where keys are hidden."
+msgstr "Alle som har en bekreftet booking av rommet, ser instruksen under Mine bookinger. Skriv hvordan man kommer inn og hva man skal gjøre etterpå, men ikke dørkoder, alarmkoder, passord eller hvor nøkler ligger gjemt."
+
+#: build/creoRombookingPublic.js:81
+msgid "Instructions"
+msgstr "Instruks"
+
+#: build/creoRombookingPublic.js:82
+msgid "Create the room"
+msgstr "Opprett rommet"
+
+#: build/creoRombookingPublic.js:82
+msgid "Save the room"
+msgstr "Lagre rommet"
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:83
+msgid "%s is moved."
+msgstr "%s er flyttet."
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:84
+msgid "Edit %s"
+msgstr "Rediger %s"
+
+#: build/creoRombookingPublic.js:84
+msgid "Back to the rooms"
+msgstr "Tilbake til rommene"
+
+#: build/creoRombookingPublic.js:84
+msgid "Could not load the rooms."
+msgstr "Kunne ikke hente rommene."
+
+#. translators: %d: number of closed or blocked times
+#: build/creoRombookingPublic.js:85
+msgid "%d closures ahead"
+msgstr "%d unntak fremover"
+
+#: build/creoRombookingPublic.js:85
+msgid "Cannot be booked"
+msgstr "Kan ikke bookes"
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:86
+msgid "Move %s up"
+msgstr "Flytt %s opp"
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:87
+msgid "Move %s down"
+msgstr "Flytt %s ned"
+
+#: build/creoRombookingPublic.js:87
+msgid "Edit"
+msgstr "Rediger"

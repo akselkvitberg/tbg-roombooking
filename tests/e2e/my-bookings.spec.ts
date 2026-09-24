@@ -58,6 +58,15 @@ test.describe('My bookings', () => {
 				.last()
 		).toContainText('Venter på godkjenning');
 
+		// Confirmed bookings show how to use the room.
+		const meetings = upcoming(page).getByRole('listitem', {
+			name: /^Møterom 1 · Ukentlig/,
+		});
+		await meetings.getByText('Rominstruks').click();
+		await expect(meetings).toContainText(
+			'Skjermen kobles til med kabelen på bordet.'
+		);
+
 		await expectAccessible(page);
 	});
 
