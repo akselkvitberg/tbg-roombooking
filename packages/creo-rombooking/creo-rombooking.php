@@ -26,6 +26,8 @@ require __DIR__ . '/includes/helpers.php';
 require __DIR__ . '/includes/updater.php';
 require __DIR__ . '/includes/class-creo-rombooking-schema.php';
 require __DIR__ . '/includes/class-creo-rombooking-seed.php';
+require __DIR__ . '/includes/class-creo-rombooking-availability.php';
+require __DIR__ . '/includes/class-creo-rombooking-rest.php';
 require __DIR__ . '/includes/class-creo-rombooking-block.php';
 require __DIR__ . '/includes/class-creo-rombooking.php';
 

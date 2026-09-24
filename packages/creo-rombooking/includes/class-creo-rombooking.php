@@ -30,6 +30,7 @@ class Creo_Rombooking {
 		}
 
 		new Creo_Rombooking_Block();
+		new Creo_Rombooking_REST();
 	}
 
 	/**

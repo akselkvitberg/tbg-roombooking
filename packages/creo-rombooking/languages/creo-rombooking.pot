@@ -9,28 +9,29 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-24T10:19:49+00:00\n"
+"POT-Creation-Date: 2026-09-24T10:55:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: creo-rombooking\n"
 
 #. Plugin Name of the plugin
-#: creo-rombooking.php:4
+#: creo-rombooking.php
 msgid "Creo Rombooking"
 msgstr ""
 
 #. Description of the plugin
-#: creo-rombooking.php:5
+#: creo-rombooking.php
 #: build/creoRombookingEditor.js:1
 msgid "Room booking for members, with requests and conflict handling for administrators."
 msgstr ""
 
 #. Author of the plugin
-#: creo-rombooking.php:9
+#: creo-rombooking.php
 msgid "Creo Multiservice AS"
 msgstr ""
 
 #: includes/class-creo-rombooking-block.php:54
+#: includes/class-creo-rombooking-rest.php:104
 msgid "You must be logged in to book rooms."
 msgstr ""
 
@@ -44,6 +45,27 @@ msgstr ""
 
 #: includes/class-creo-rombooking-block.php:73
 msgid "Loading room booking…"
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:85
+msgid "Room booking is only available to members."
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:95
+msgid "Only administrators can do this."
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:117
+msgid "The date must be in the format YYYY-MM-DD."
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:176
+msgid "The last date must be on or after the first date."
+msgstr ""
+
+#. translators: %d: number of days
+#: includes/class-creo-rombooking-rest.php:183
+msgid "You can get at most %d days at a time."
 msgstr ""
 
 #: build/creoRombookingEditor.js:1
@@ -73,10 +95,6 @@ msgstr ""
 
 #: build/creoRombookingPublic.js:1
 msgid "Rooms"
-msgstr ""
-
-#: build/creoRombookingPublic.js:1
-msgid "See available times and book rooms in the church building."
 msgstr ""
 
 #: build/creoRombookingPublic.js:1

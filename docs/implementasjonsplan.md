@@ -137,11 +137,15 @@ autogodkjenning godkjennes straks hvis tiden er ledig, ellers blir forespørsele
 Forekomster «Utenfor åpningstid» utelates fra serier. Utløpte forslag ryddes med WP-Cron.
 
 ### 4.5 REST API (`/wp-json/creo-rombooking/v1`, `wp_rest`-nonce + capability-sjekk)
-- `GET rooms` · `GET availability?from=&to=&room=` (status per luke, uten navn for medlemmer)
+- `GET rooms` · `GET availability?from=&to=&rooms=` (maks 14 dager). Svaret har én liste med perioder per rom og dag,
+  der like nabo-luker er slått sammen (`{start, end, status}`, minutter etter midnatt). Status er `free`, `busy`,
+  `requested`, `closed` (med årsak: utenfor åpningstid, stengt eller sperret), `mine` og `mine-requested`. Ved overlapp gjelder
+  prioriteten stengt > din booking > opptatt > din forespørsel > forespurt > ledig. Medlemmer ser aldri navn eller formål på
+  andres bookinger, heller ikke administratorer i medlemsvisningen.
 - `POST bookings/preview` (forekomster med Ledig/Konflikt/Utenfor) · `POST bookings`
 - `GET me/bookings` · `POST bookings/{id}/cancel` (`scope=this|following`) · `POST proposals/{id}/accept|decline`
 - Admin: `GET requests` (konflikter først) · `POST requests/{id}/approve|reject|propose|move-existing|approve-and-cancel-existing`
-  · `POST series/{id}/approve-free` · `GET admin/availability` (med navn) · `PATCH bookings/{id}` (flytt rom/tid)
+  · `POST series/{id}/approve-free` · `GET admin/availability` (samme perioder, med navn og formål) · `PATCH bookings/{id}` (flytt rom/tid)
   · `POST bookings/{id}/admin-cancel` (påkrevd begrunnelse, valgfritt forslag) · CRUD for `rooms`, `opening-hours`, `closures`
   · `GET rooms/{id}/suggestions?date=&from=&to=&capacity=` (ledige rom med nok plass)
 

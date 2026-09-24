@@ -1,38 +1,37 @@
-# Copyright (C) 2026 Creo Multiservice AS
-# This file is distributed under the same license as the Creo Rombooking plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Creo Rombooking 26.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/creo-rombooking\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Norwegian Bokmål\n"
-"Language: nb_NO\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-24T10:19:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: nb_NO\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: creo-rombooking\n"
 
 #. Plugin Name of the plugin
-#: creo-rombooking.php:4
+#: creo-rombooking.php
 msgid "Creo Rombooking"
 msgstr "Creo Rombooking"
 
 #. Description of the plugin
-#: creo-rombooking.php:5
+#: creo-rombooking.php
 #: build/creoRombookingEditor.js:1
 msgid "Room booking for members, with requests and conflict handling for administrators."
 msgstr "Rombooking for medlemmer, med forespørsler og konflikthåndtering for administratorer."
 
 #. Author of the plugin
-#: creo-rombooking.php:9
+#: creo-rombooking.php
 msgid "Creo Multiservice AS"
 msgstr "Creo Multiservice AS"
 
 #: includes/class-creo-rombooking-block.php:54
+#: includes/class-creo-rombooking-rest.php:104
 msgid "You must be logged in to book rooms."
 msgstr "Du må være innlogget for å booke rom."
 
@@ -78,10 +77,6 @@ msgid "Rooms"
 msgstr "Rom"
 
 #: build/creoRombookingPublic.js:1
-msgid "See available times and book rooms in the church building."
-msgstr "Se ledige tider og book rom i menighetshuset."
-
-#: build/creoRombookingPublic.js:1
 msgid "This part is not built yet."
 msgstr "Denne delen er ikke laget ennå."
 
@@ -94,3 +89,24 @@ msgstr "Rombooking"
 msgctxt "block description"
 msgid "Room booking for members, with requests and conflict handling for administrators."
 msgstr "Rombooking for medlemmer, med forespørsler og konflikthåndtering for administratorer."
+
+#: includes/class-creo-rombooking-rest.php:85
+msgid "Room booking is only available to members."
+msgstr "Rombooking er bare tilgjengelig for medlemmer."
+
+#: includes/class-creo-rombooking-rest.php:95
+msgid "Only administrators can do this."
+msgstr "Bare administratorer kan gjøre dette."
+
+#: includes/class-creo-rombooking-rest.php:117
+msgid "The date must be in the format YYYY-MM-DD."
+msgstr "Datoen må ha formatet ÅÅÅÅ-MM-DD."
+
+#: includes/class-creo-rombooking-rest.php:176
+msgid "The last date must be on or after the first date."
+msgstr "Sluttdatoen kan ikke være før startdatoen."
+
+#. translators: %d: number of days
+#: includes/class-creo-rombooking-rest.php:183
+msgid "You can get at most %d days at a time."
+msgstr "Du kan hente maks %d dager om gangen."
