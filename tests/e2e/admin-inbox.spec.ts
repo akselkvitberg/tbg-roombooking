@@ -134,7 +134,7 @@ test.describe('Admin inbox', () => {
 	test('handles a series date by date and as a whole', async ({ page }) => {
 		await openInbox(page);
 		await queue(page)
-			.getByRole('button', { name: /^Gymsal/ })
+			.getByRole('button', { name: /^Gymsal.*Serie/ })
 			.click();
 
 		const table = page.getByRole('table');
@@ -161,7 +161,7 @@ test.describe('Admin inbox', () => {
 			.click();
 		await expect(toast(page)).toContainText('Resten av serien er avslått.');
 		await expect(
-			queue(page).getByRole('button', { name: /^Gymsal/ })
+			queue(page).getByRole('button', { name: /^Gymsal.*Serie/ })
 		).toHaveCount(0);
 	});
 });

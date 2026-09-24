@@ -31,7 +31,8 @@ export default async function globalSetup(config: FullConfig) {
 		await page.fill('#user_login', user);
 		await page.fill('#user_pass', 'password');
 		await page.click('#wp-submit');
-		await page.waitForURL(/wp-admin|\/$/);
+		// The first request after a build can be slow with PHP's built-in server.
+		await page.waitForURL(/wp-admin|\/$/, { timeout: 60_000 });
 		await page.context().storageState({ path: storageState(user) });
 		await page.close();
 	}

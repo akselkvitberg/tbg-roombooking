@@ -143,7 +143,7 @@ Forekomster «Utenfor åpningstid» utelates fra serier. Utløpte forslag ryddes
   prioriteten stengt > din booking > opptatt > din forespørsel > forespurt > ledig. Medlemmer ser aldri navn eller formål på
   andres bookinger, heller ikke administratorer i medlemsvisningen.
 - `POST bookings/preview` (forekomster med Ledig/Konflikt/Utenfor) · `POST bookings`
-- `GET me/bookings` · `POST bookings/{id}/cancel` (`scope=this|following`) · `POST proposals/{id}/accept|decline`
+- `GET me/bookings` · `POST me/bookings/{id}/cancel` (`scope=this|following`) · `POST me/proposals/{id}/accept|decline` (fase 6)
 - Admin (alle under `admin/`, krever `creo_rombooking_manage`):
   - `GET admin/requests`: konflikter, serier, til godkjenning, med eksisterende booking, forslag til ledige rom med nok
     plass og rom den eksisterende bookingen kan flyttes til (fase 4)
@@ -237,7 +237,7 @@ Rekkefølgen følger bestillingen: matrise i dagvisning (desktop og mobil) og sk
 | **3. Bookingskjema** (skjerm 4) | BookingForm, validering, `Recurrence` + `preview`, melding om auto/manuell godkjenning, «opptatt → til admin», telefonnummerfelt når nummer mangler, bekreftelse | Booking lagres og vises som «Din booking»/«Forespurt» |
 | **4. Admin-innboks** (skjerm 6, 9) | Forespørsler med konflikter øverst, side om side, forslag til ledige rom, alle fire handlinger, serie-handlinger, avbestillingsdialog med påkrevd begrunnelse, SMS-logg | Alle flytene i prototypen fungerer mot ekte data |
 | **5. Ukevisning** (skjerm 2) | WeekMatrix med blokker, ett rom om gangen (romvelger), dagene som kolonner, tastatur (opp/ned i dagen, venstre/høyre mellom dager, Page Up/Down bytter uke) | Mobil: sideveis rulling i gridet, valgt dag i synsfeltet |
-| **6. Mine bookinger** (skjerm 5) | Kommende/ventende, avbestilling denne/senere, forslagskort med Aksepter/Avslå + svarfrist | Design avklares først (mangler i prototypen) |
+| **6. Mine bookinger** (skjerm 5) | Forslag som venter på svar (Aksepter/Avslå + svarfrist), kommende bookinger og forespørsler (serier samlet), avslått/avbestilt siste 30 dager med begrunnelse, avbestilling «denne» eller «denne og alle senere», også fra matrisen | Designet i fase 6 i samme stil som admin-innboksen (mangler i prototypen) |
 | **7. Admin-matrise** (skjerm 7) | Navn i cellene, dra til annet rom + tastaturalternativ | — |
 | **8. Rom-oppsett** (skjerm 8) | Liste + skjema, åpningstider per ukedag, unntak, bilde via mediebiblioteket, rominstruks med advarsel mot koder/passord | — |
 | **9. Kvalitet og overlevering** | Playwright-e2e + axe, bundle-størrelse, oversettelser, instruks for flytting til creo-wp | — |
@@ -264,6 +264,8 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Konflikt i admin (fase 4) | En forespørsel er i konflikt når den overlapper en **godkjent** booking. Å godkjenne én av to forespørsler til samme tid gjør den andre til en konflikt |
 | SMS for serier (fase 4) | Beslutninger på enkeltdatoer i en serie gir én samlet SMS når ingen datoer venter lenger; «Avslå resten» tar med begrunnelsen |
 | Flytt eksisterende (fase 4) | Bare mulig når forespørselen kolliderer med nøyaktig én booking; rom med nok plass som er ledige samme tid foreslås |
+| Svar på forslag (fase 6) | «Aksepter» flytter bookingen til foreslått rom/tid og bekrefter den, hvis tiden fortsatt er ledig. «Avslå» avbestiller bookingen/forespørselen. Ubesvarte forslag utløper (WP-Cron hver time, og når listen leses), og medlemmet får SMS |
+| Avbestilling (fase 6) | Medlemmet kan avbestille til bookingen starter, uten begrunnelse, og får SMS som kvittering. Admin varsles ikke |
 | Ukevisning (fase 5) | Ett rom om gangen, som i prototypen. Uke 1 følger ISO 8601. På mobil (ikke i prototypen) ruller dagene sideveis inne i gridet |
 | Innsendte forespørsler (fase 4) | Innboksen viser forespørsler fra i dag og fremover, eldste først innen hver gruppe |
 

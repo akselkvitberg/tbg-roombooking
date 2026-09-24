@@ -839,6 +839,113 @@
 	& .creo-rombooking-empty > .creo-rombooking-icon {
 		@apply mx-auto mb-2 text-dark-green dark:text-light-green;
 	}
+
+	/* My bookings */
+
+	& .creo-rombooking-section > h3 {
+		@apply m-0 text-lg font-semibold;
+	}
+
+	& .creo-rombooking-bookings {
+		@apply m-0 flex list-none flex-col gap-2 p-0;
+
+		&.is-closed .creo-rombooking-booking {
+			@apply bg-gray-50 dark:bg-slate-900;
+		}
+	}
+
+	& .creo-rombooking-booking {
+		@apply m-0 flex items-start gap-4 rounded-lg border border-solid border-gray-300 bg-white p-4 dark:border-gray-600 dark:bg-slate-800;
+
+		& h4 {
+			@apply m-0 text-base font-semibold;
+		}
+
+		& .creo-rombooking-grow {
+			@apply gap-1.5;
+		}
+
+		& .creo-rombooking-grow > p {
+			@apply m-0;
+		}
+
+		/* Tags keep their own width in the column. */
+		& .creo-rombooking-grow > .creo-rombooking-tag {
+			@apply self-start;
+		}
+	}
+
+	& .creo-rombooking-dateblock {
+		@apply flex w-14 flex-none flex-col items-center rounded-md border border-solid border-gray-300 py-1 text-xs uppercase text-gray-600 dark:border-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-dateblock-day {
+		@apply text-xl font-semibold leading-tight text-gray-900 dark:text-white;
+	}
+
+	& .creo-rombooking-details {
+		@apply text-sm;
+
+		& summary {
+			@apply cursor-pointer font-medium text-dark-green dark:text-light-green;
+		}
+
+		& ul {
+			@apply m-0 mt-2 flex list-none flex-col p-0;
+		}
+
+		& li {
+			@apply m-0 flex flex-wrap items-center gap-2 border-0 border-t border-solid border-gray-200 py-1.5 dark:border-slate-700;
+		}
+
+		& li > .creo-rombooking-grow {
+			@apply whitespace-nowrap;
+		}
+	}
+
+	& .creo-rombooking-card.is-proposal {
+		@apply border-l-4 border-l-amber-500;
+	}
+
+	& .creo-rombooking-proposal-part {
+		@apply rounded-md border border-solid border-gray-200 p-3 dark:border-gray-600;
+
+		& p {
+			@apply m-0;
+		}
+
+		&.is-proposed {
+			@apply border-2 border-dark-green bg-light-green-60 dark:border-light-green dark:bg-slate-700;
+		}
+	}
+
+	& .creo-rombooking-quote {
+		@apply m-0 border-0 border-l-4 border-solid border-gray-300 py-1 pl-3 dark:border-gray-500;
+
+		& p {
+			@apply m-0;
+		}
+	}
+
+	& .creo-rombooking-deadline {
+		@apply m-0 flex items-center gap-1.5 text-sm font-medium;
+	}
+
+	/* On narrow screens the button goes below the text. */
+	@media (width < 640px) {
+
+		& .creo-rombooking-booking {
+			@apply flex-wrap gap-3;
+
+			& > .creo-rombooking-grow {
+				flex-basis: calc(100% - 4.5rem);
+			}
+
+			& > .creo-rombooking-button {
+				@apply ml-[4.25rem];
+			}
+		}
+	}
 }
 
 .dark .creo-rombooking :focus-visible {

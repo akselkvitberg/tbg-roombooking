@@ -1,9 +1,11 @@
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import type { Room, Status } from '../../api/types';
 import { initialForm } from '../../lib/bookingForm';
 import { formatLongDate, formatTimeRange } from '../../lib/dates';
 import Dialog from '../Dialog';
+import CancelMineDialog from '../mine/CancelMineDialog';
 
 import BookingForm from './BookingForm';
 
@@ -14,6 +16,11 @@ export interface Selection {
 	end: number;
 	status: Status;
 	purpose?: string;
+	/** For the member's own booking. */
+	bookingId?: number;
+	seriesId?: number | null;
+	/** Whether the time has started. */
+	past?: boolean;
 }
 
 interface Props {
@@ -35,6 +42,27 @@ interface Props {
 export default function BookingDialog(props: Props) {
 	const { selection, locale, onClose } = props;
 	const { room, date, start, end, status } = selection;
+	const [cancelling, setCancelling] = useState(false);
+	const canCancel = !!selection.bookingId && !selection.past;
+
+	if (cancelling && selection.bookingId) {
+		return (
+			<CancelMineDialog
+				booking={{
+					id: selection.bookingId,
+					roomName: room.name,
+					date,
+					start,
+					end,
+					purpose: selection.purpose ?? '',
+					inSeries: !!selection.seriesId,
+				}}
+				locale={locale}
+				onDone={(message) => props.onBooked(message, 'ok')}
+				onClose={onClose}
+			/>
+		);
+	}
 
 	if (status === 'mine' || status === 'mine-requested') {
 		return (
@@ -42,13 +70,24 @@ export default function BookingDialog(props: Props) {
 				title={__('Your booking', 'creo-rombooking')}
 				onClose={onClose}
 				footer={
-					<button
-						type="button"
-						className="creo-rombooking-button is-secondary"
-						onClick={onClose}
-					>
-						{__('Close', 'creo-rombooking')}
-					</button>
+					<>
+						<button
+							type="button"
+							className="creo-rombooking-button is-secondary"
+							onClick={onClose}
+						>
+							{__('Close', 'creo-rombooking')}
+						</button>
+						{canCancel && (
+							<button
+								type="button"
+								className="creo-rombooking-button is-danger"
+								onClick={() => setCancelling(true)}
+							>
+								{__('Cancel the booking…', 'creo-rombooking')}
+							</button>
+						)}
+					</>
 				}
 			>
 				<dl className="creo-rombooking-summary">
@@ -73,7 +112,7 @@ export default function BookingDialog(props: Props) {
 				</dl>
 				<p className="creo-rombooking-muted">
 					{__(
-						'You can see and cancel your bookings under My bookings.',
+						'All your bookings are listed under My bookings.',
 						'creo-rombooking'
 					)}
 				</p>

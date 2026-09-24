@@ -83,6 +83,7 @@ class Creo_Rombooking_Seed {
 		$series   = $this->seed_weekly_bookings();
 		$bookings = $this->seed_single_bookings();
 		$requests = $this->seed_requests();
+		$this->seed_member_examples();
 
 		return array(
 			'rooms'    => count( $this->rooms ),
@@ -301,6 +302,36 @@ class Creo_Rombooking_Seed {
 	}
 
 	/**
+	 * A request and a proposal for the test member, for «My bookings».
+	 */
+	protected function seed_member_examples() {
+		global $wpdb;
+
+		$member = $this->owner( null );
+
+		$id = $this->insert_booking( $member, 'gym', $this->date( '2026-10-01' ), '19:00', '21:00', 'Innebandy for ungdom', 16, 'requested' );
+		$this->sent_ago( 'bookings', $id, 30 );
+
+		// Overlaps the gymnastics group until 17:30, so the administrator proposes a later start.
+		$id = $this->insert_booking( $member, 'gym', $this->date( '2026-09-30' ), '16:30', '18:30', 'Fotballtrening for barn', 20, 'proposed' );
+		$this->sent_ago( 'bookings', $id, 26 );
+		$wpdb->insert( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			Creo_Rombooking_Schema::table( 'proposals' ),
+			array(
+				'booking_id' => $id,
+				'room_id'    => $this->rooms['gym'],
+				'date'       => $this->date( '2026-09-30' ),
+				'start_min'  => self::minutes( '17:30' ),
+				'end_min'    => self::minutes( '19:30' ),
+				'message'    => 'Turngruppa har salen til 17:30. Passer det å starte da?',
+				'expires_at' => current_datetime()->modify( '+30 hours' )->format( 'Y-m-d H:i:s' ),
+				'status'     => 'pending',
+				'created_at' => current_time( 'mysql' ),
+			)
+		);
+	}
+
+	/**
 	 * Whether a room is closed the whole day.
 	 *
 	 * @param string $room The prototype room key.
@@ -359,7 +390,7 @@ class Creo_Rombooking_Seed {
 	 * @param string   $to             End time (HH:MM).
 	 * @param string   $purpose        The purpose.
 	 * @param int      $people         The number of people.
-	 * @param string   $status         `requested` or `approved`.
+	 * @param string   $status         `requested`, `approved` or `proposed`.
 	 * @param int|null $series_id      The series, if any.
 	 * @param bool     $check_conflict Whether to link the booking to an approved booking it overlaps.
 	 * @return int The booking ID.

@@ -55,9 +55,6 @@
             "Time": [
                 "Tid"
             ],
-            "You can see and cancel your bookings under My bookings.": [
-                "Du kan se og avbestille bookingene dine under Mine bookinger."
-            ],
             "Available": [
                 "Ledig"
             ],
@@ -318,6 +315,9 @@
             ],
             "Choose another room or time than the request.": [
                 "Velg et annet rom eller en annen tid enn foresp\u00f8rselen."
+            ],
+            "Reason: %s": [
+                "Begrunnelse: %s"
             ],
             "%1$s at %2$s": [
                 "%1$s kl. %2$s"
@@ -647,6 +647,139 @@
             ],
             "Choose room": [
                 "Velg rom"
+            ],
+            "Cancel the booking?": [
+                "Avbestille bookingen?"
+            ],
+            "What do you want to cancel?": [
+                "Hva vil du avbestille?"
+            ],
+            "Only this date": [
+                "Bare denne datoen"
+            ],
+            "This and all later dates": [
+                "Denne og alle senere datoer"
+            ],
+            "%d date in the series": [
+                "%d dato i serien",
+                "%d datoer i serien"
+            ],
+            "The rest of the series": [
+                "Resten av serien"
+            ],
+            "The time becomes available for others. You get a text message as a receipt.": [
+                "Tiden blir ledig for andre. Du f\u00e5r SMS som kvittering."
+            ],
+            "Keep the booking": [
+                "Behold bookingen"
+            ],
+            "Cancel the dates": [
+                "Avbestill datoene"
+            ],
+            "Cancel the booking": [
+                "Avbestill bookingen"
+            ],
+            "Cancel the booking\u2026": [
+                "Avbestill bookingen \u2026"
+            ],
+            "All your bookings are listed under My bookings.": [
+                "Alle bookingene dine st\u00e5r under Mine bookinger."
+            ],
+            "The proposal was not answered in time": [
+                "Forslaget ble ikke besvart i tide"
+            ],
+            "You declined the proposal": [
+                "Du avslo forslaget"
+            ],
+            "Declined by the administrator": [
+                "Avsl\u00e5tt av admin"
+            ],
+            "Cancelled by you": [
+                "Avbestilt av deg"
+            ],
+            "Cancelled by the administrator": [
+                "Avbestilt av admin"
+            ],
+            "Next: %1$s \u00b7 %2$d date left": [
+                "Neste: %1$s \u00b7 %2$d dato igjen",
+                "Neste: %1$s \u00b7 %2$d datoer igjen"
+            ],
+            "%d waiting for approval": [
+                "%d venter p\u00e5 godkjenning",
+                "%d venter p\u00e5 godkjenning"
+            ],
+            "Show the dates": [
+                "Vis datoene"
+            ],
+            "Cancel %s": [
+                "Avbestill %s"
+            ],
+            "Your booking of %s is cancelled \u2013 new proposal": [
+                "Bookingen din av %s er avbestilt \u2013 nytt forslag"
+            ],
+            "Proposal instead of %s": [
+                "Forslag i stedet for %s"
+            ],
+            "Waiting for your answer": [
+                "Venter p\u00e5 svar fra deg"
+            ],
+            "You had": [
+                "Du hadde"
+            ],
+            "You asked for": [
+                "Du ba om"
+            ],
+            "The administrator proposes": [
+                "Admin foresl\u00e5r"
+            ],
+            "Message from the administrator": [
+                "Melding fra admin"
+            ],
+            "Answer by %s. Without an answer, the proposal expires.": [
+                "Svar innen %s. Uten svar utl\u00f8per forslaget."
+            ],
+            "Accept": [
+                "Aksepter"
+            ],
+            "Decline the proposal?": [
+                "Avsl\u00e5 forslaget?"
+            ],
+            "Go back": [
+                "Tilbake"
+            ],
+            "Decline the proposal": [
+                "Avsl\u00e5 forslaget"
+            ],
+            "Your booking stays cancelled. You can book another time.": [
+                "Bookingen din forblir avbestilt. Du kan booke en annen tid."
+            ],
+            "Your request is closed. You can book another time.": [
+                "Foresp\u00f8rselen din avsluttes. Du kan booke en annen tid."
+            ],
+            "Could not load your bookings.": [
+                "Kunne ikke hente bookingene dine."
+            ],
+            "Proposals to answer": [
+                "Forslag du m\u00e5 svare p\u00e5"
+            ],
+            "You have no upcoming bookings": [
+                "Du har ingen kommende bookinger"
+            ],
+            "Bookings and requests you make are shown here.": [
+                "Bookinger og foresp\u00f8rsler du lager, vises her."
+            ],
+            "Upcoming": [
+                "Kommende"
+            ],
+            "Declined or cancelled": [
+                "Avsl\u00e5tt eller avbestilt"
+            ],
+            "a booking\u0004Cancel": [
+                "Avbestill"
+            ],
+            "%2$d date from %1$s": [
+                "%2$d dato fra %1$s",
+                "%2$d datoer fra %1$s"
             ]
         }
     }

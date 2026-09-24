@@ -24,6 +24,8 @@ class Creo_Rombooking {
 		add_action( 'plugins_loaded', array( __CLASS__, 'maybe_install' ) );
 		add_action( 'init', array( $this, 'load_textdomain' ), 1 );
 		add_action( 'init', array( $this, 'register_assets' ), 5 );
+		add_action( 'init', array( __CLASS__, 'schedule_events' ) );
+		add_action( Creo_Rombooking_Mine::EXPIRE_HOOK, array( 'Creo_Rombooking_Mine', 'expire_proposals' ) );
 
 		if ( creo_rombooking_is_dev() ) {
 			add_filter( 'creo_rombooking_token_phone', array( $this, 'dev_token_phone' ), 10, 2 );
@@ -63,6 +65,19 @@ class Creo_Rombooking {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Expires unanswered proposals every hour.
+	 */
+	public static function schedule_events() {
+		if ( ! wp_next_scheduled( Creo_Rombooking_Mine::EXPIRE_HOOK ) ) {
+			wp_schedule_event( time(), 'hourly', Creo_Rombooking_Mine::EXPIRE_HOOK );
+		}
+	}
+
+	public static function deactivate() {
+		wp_clear_scheduled_hook( Creo_Rombooking_Mine::EXPIRE_HOOK );
 	}
 
 	public function load_textdomain() {

@@ -123,6 +123,9 @@ export default function BookView({ settings }: Props) {
 			...range,
 			status: segment.status,
 			purpose: segment.period.booking?.purpose,
+			bookingId: segment.period.booking?.id,
+			seriesId: segment.period.booking?.seriesId,
+			past: segment.past,
 		});
 	};
 

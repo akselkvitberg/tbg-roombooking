@@ -30,7 +30,9 @@ require __DIR__ . '/includes/class-creo-rombooking-availability.php';
 require __DIR__ . '/includes/class-creo-rombooking-recurrence.php';
 require __DIR__ . '/includes/class-creo-rombooking-notifier.php';
 require __DIR__ . '/includes/class-creo-rombooking-bookings.php';
+require __DIR__ . '/includes/class-creo-rombooking-service.php';
 require __DIR__ . '/includes/class-creo-rombooking-admin.php';
+require __DIR__ . '/includes/class-creo-rombooking-mine.php';
 require __DIR__ . '/includes/class-creo-rombooking-rest.php';
 require __DIR__ . '/includes/class-creo-rombooking-block.php';
 require __DIR__ . '/includes/class-creo-rombooking.php';
@@ -41,5 +43,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 }
 
 register_activation_hook( __FILE__, array( 'Creo_Rombooking', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'Creo_Rombooking', 'deactivate' ) );
 
 Creo_Rombooking::get_instance();

@@ -83,6 +83,36 @@ class Creo_Rombooking_REST {
 
 		register_rest_route(
 			self::NAMESPACE,
+			'/me/bookings',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => fn() => rest_ensure_response( ( new Creo_Rombooking_Mine( get_current_user_id() ) )->get_bookings() ),
+				'permission_callback' => array( $this, 'can_book' ),
+			)
+		);
+
+		$member_actions = array(
+			'/me/bookings/(?P<id>\d+)/cancel'   => fn( $mine, $id, $params ) => $mine->cancel( $id, $params ),
+			'/me/proposals/(?P<id>\d+)/accept'  => fn( $mine, $id ) => $mine->accept( $id ),
+			'/me/proposals/(?P<id>\d+)/decline' => fn( $mine, $id ) => $mine->decline( $id ),
+		);
+		foreach ( $member_actions as $route => $handler ) {
+			register_rest_route(
+				self::NAMESPACE,
+				$route,
+				array(
+					'methods'             => WP_REST_Server::CREATABLE,
+					'callback'            => function ( WP_REST_Request $request ) use ( $handler ) {
+						$result = $handler( new Creo_Rombooking_Mine( get_current_user_id() ), (int) $request['id'], $request->get_params() );
+						return is_wp_error( $result ) ? $result : rest_ensure_response( $result );
+					},
+					'permission_callback' => array( $this, 'can_book' ),
+				)
+			);
+		}
+
+		register_rest_route(
+			self::NAMESPACE,
 			'/admin/requests',
 			array(
 				'methods'             => WP_REST_Server::READABLE,
