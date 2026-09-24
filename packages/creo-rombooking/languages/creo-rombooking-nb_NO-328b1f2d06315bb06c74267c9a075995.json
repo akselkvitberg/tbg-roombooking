@@ -140,12 +140,6 @@
             "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens.": [
                 "Velg en ledig tid for \u00e5 booke. Med tastatur: piltastene flytter, Home og End g\u00e5r til start og slutt p\u00e5 raden, Page Up og Page Down bytter dag, og Enter \u00e5pner."
             ],
-            "Week view": [
-                "Ukevisning"
-            ],
-            "The week view comes in a later version.": [
-                "Ukevisningen kommer i en senere versjon."
-            ],
             "Could not load available times.": [
                 "Kunne ikke laste ledige tider."
             ],
@@ -632,6 +626,27 @@
             ],
             "when the booking was made\u0004Booked": [
                 "Booket"
+            ],
+            "Previous week": [
+                "Forrige uke"
+            ],
+            "Next week": [
+                "Neste uke"
+            ],
+            "%1$s, week %2$d": [
+                "%1$s, uke %2$d"
+            ],
+            "%s (today)": [
+                "%s (i dag)"
+            ],
+            "Week %d": [
+                "Uke %d"
+            ],
+            "Choose an available time to book. With a keyboard: the up and down arrows move within a day, the left and right arrows change day, Home and End go to the start and end of the day, Page Up and Page Down change week, and Enter opens.": [
+                "Velg en ledig tid for \u00e5 booke. Med tastatur: pil opp og ned flytter innenfor en dag, pil venstre og h\u00f8yre bytter dag, Home og End g\u00e5r til start og slutt p\u00e5 dagen, Page Up og Page Down bytter uke, og Enter \u00e5pner."
+            ],
+            "Choose room": [
+                "Velg rom"
             ]
         }
     }

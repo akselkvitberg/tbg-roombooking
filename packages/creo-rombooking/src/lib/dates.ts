@@ -126,3 +126,39 @@ export function formatShortDate(date: string, locale: string): string {
 export function formatDayMonth(date: string, locale: string): string {
 	return format(date, locale, { day: 'numeric', month: 'short' });
 }
+
+/**
+ * The Monday of the week a date is in.
+ *
+ * @param date The date.
+ */
+export function startOfWeek(date: string): string {
+	const day = parseDate(date).getUTCDay();
+	return addDays(date, -((day + 6) % 7));
+}
+
+/**
+ * The ISO 8601 week number, as used in Norway.
+ *
+ * @param date The date.
+ */
+export function isoWeek(date: string): number {
+	const thursday = parseDate(addDays(startOfWeek(date), 3));
+	const firstOfYear = Date.UTC(thursday.getUTCFullYear(), 0, 1);
+	return Math.floor((thursday.getTime() - firstOfYear) / 86400000 / 7) + 1;
+}
+
+/**
+ * E.g. «21.–27. sep. 2026» or «28. sep.–4. okt. 2026», for the week starting on a Monday.
+ *
+ * @param monday The Monday.
+ * @param locale The locale, e.g. `nb-NO`.
+ */
+export function formatWeekRange(monday: string, locale: string): string {
+	return new Intl.DateTimeFormat(locale, {
+		day: 'numeric',
+		month: 'short',
+		year: 'numeric',
+		timeZone: 'UTC',
+	}).formatRange(parseDate(monday), parseDate(addDays(monday, 6)));
+}

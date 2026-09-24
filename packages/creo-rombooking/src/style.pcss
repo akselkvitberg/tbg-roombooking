@@ -326,6 +326,81 @@
 		@apply font-normal tabular-nums;
 	}
 
+	/* Week */
+
+	& .creo-rombooking-toggle.is-wrapping {
+		@apply flex-wrap self-start;
+	}
+
+	/* Positioned, so that hidden text for screen readers stays inside the scrolling area. */
+	& .creo-rombooking-week-scroll {
+		@apply relative overflow-x-auto rounded-lg border border-solid border-gray-300 bg-white dark:border-gray-600 dark:bg-slate-900;
+	}
+
+	& .creo-rombooking-week {
+		@apply grid;
+		grid-template-columns: 56px repeat(7, minmax(4.5rem, 1fr));
+
+		&[aria-busy="true"] {
+			@apply opacity-60;
+		}
+	}
+
+	& .creo-rombooking-week-times {
+		@apply sticky left-0 z-10 flex flex-col border-0 border-r border-solid border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-slate-800;
+	}
+
+	& .creo-rombooking-week-corner,
+	& .creo-rombooking-week-head {
+		@apply h-10 flex-none border-0 border-b border-solid border-gray-300 dark:border-gray-600;
+	}
+
+	& .creo-rombooking-week-time {
+		@apply flex-none px-1.5 pt-0.5 text-xs tabular-nums text-gray-600 dark:text-gray-300;
+		height: calc(2 * var(--creo-rombooking-slot-height));
+	}
+
+	& .creo-rombooking-week-day {
+		@apply flex min-w-0 flex-col border-0 border-l border-solid border-gray-300 first-of-type:border-l-0 dark:border-gray-600;
+	}
+
+	& .creo-rombooking-week-head {
+		@apply flex items-center justify-center gap-1 bg-gray-50 text-sm dark:bg-slate-800;
+
+		&.is-today {
+			@apply bg-light-green-60 dark:bg-slate-700;
+			box-shadow: inset 0 -2px 0 var(--wp--preset--color--dark-green);
+		}
+	}
+
+	& .creo-rombooking-week-cell {
+		@apply min-w-0 flex-none border-0 border-t border-solid border-gray-100 dark:border-slate-800;
+
+		&[data-hour-start] {
+			@apply border-gray-200 dark:border-slate-700;
+		}
+
+		& .creo-rombooking-segment.is-grid:not(.is-free) {
+			@apply items-start py-1;
+		}
+	}
+
+	& .creo-rombooking-week-cell:has(.creo-rombooking-segment:not(.is-free)) {
+		@apply px-1 py-0.5;
+	}
+
+	/* Narrow day columns: the icon goes above the text, so that the text gets the whole width. */
+	@media (width < 640px) {
+
+		& .creo-rombooking-week {
+			grid-template-columns: 48px repeat(7, minmax(5.5rem, 1fr));
+		}
+
+		& .creo-rombooking-week-cell .creo-rombooking-segment.is-grid:not(.is-free) {
+			@apply flex-col gap-0.5 px-1;
+		}
+	}
+
 	/* List on small screens */
 
 	& .creo-rombooking-list {

@@ -48,7 +48,7 @@ msgid "Loading room booking…"
 msgstr "Laster rombooking …"
 
 #: build/creoRombookingEditor.js:1
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Room booking"
 msgstr "Rombooking"
 
@@ -56,28 +56,28 @@ msgstr "Rombooking"
 msgid "The booking calendar is shown here for logged-in members."
 msgstr "Bookingkalenderen vises her for innloggede medlemmer."
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Book a room"
 msgstr "Book rom"
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "My bookings"
 msgstr "Mine bookinger"
 
 #: build/creoRombookingPublic.js:39
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Requests"
 msgstr "Forespørsler"
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Overview"
 msgstr "Oversikt"
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Rooms"
 msgstr "Rom"
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "This part is not built yet."
 msgstr "Denne delen er ikke laget ennå."
 
@@ -115,7 +115,7 @@ msgstr "Du kan hente maks %d dager om gangen."
 #: build/creoRombookingPublic.js:11
 #: build/creoRombookingPublic.js:39
 #: build/creoRombookingPublic.js:55
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Close"
 msgstr "Lukk"
 
@@ -141,7 +141,7 @@ msgstr "Forespørselen sendes til admin, som avgjør om den kan godkjennes. Du f
 #: build/creoRombookingPublic.js:46
 #: build/creoRombookingPublic.js:50
 #: build/creoRombookingPublic.js:55
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Room"
 msgstr "Rom"
 
@@ -281,36 +281,28 @@ msgstr "Dag"
 msgid "Week"
 msgstr "Uke"
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens."
 msgstr "Velg en ledig tid for å booke. Med tastatur: pil opp og ned flytter, Home og End går til første og siste tid, Page Up og Page Down bytter dag, og Enter åpner."
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens."
 msgstr "Velg en ledig tid for å booke. Med tastatur: piltastene flytter, Home og End går til start og slutt på raden, Page Up og Page Down bytter dag, og Enter åpner."
 
-#: build/creoRombookingPublic.js:56
-msgid "Week view"
-msgstr "Ukevisning"
-
-#: build/creoRombookingPublic.js:56
-msgid "The week view comes in a later version."
-msgstr "Ukevisningen kommer i en senere versjon."
-
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Could not load available times."
 msgstr "Kunne ikke laste ledige tider."
 
 #: build/creoRombookingPublic.js:39
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Try again"
 msgstr "Prøv igjen"
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Loading available times…"
 msgstr "Laster ledige tider …"
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "There are no rooms to book yet."
 msgstr "Det er ingen rom å booke ennå."
 
@@ -1303,45 +1295,45 @@ msgstr "Ingen forespørsler venter"
 msgid "New requests and conflicts are shown here, with conflicts first."
 msgstr "Nye forespørsler og konflikter vises her, med konflikter øverst."
 
-#: build/creoRombookingPublic.js:56
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:59
+#: build/creoRombookingPublic.js:60
 msgid "Text message log"
 msgstr "SMS-logg"
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "No text messages are sent yet. This is what would have been sent, newest first."
 msgstr "Ingen SMS sendes ennå. Her er det som ville blitt sendt, nyeste først."
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Could not load the log."
 msgstr "Kunne ikke hente loggen."
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Loading…"
 msgstr "Laster …"
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "No text messages yet"
 msgstr "Ingen SMS ennå"
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Messages about bookings, approvals and cancellations are shown here."
 msgstr "Meldinger om bookinger, godkjenninger og avbestillinger vises her."
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Pages"
 msgstr "Sider"
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Newer"
 msgstr "Nyere"
 
 #. translators: 1: page, 2: number of pages
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Page %1$d of %2$d"
 msgstr "Side %1$d av %2$d"
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Older"
 msgstr "Eldre"
 
@@ -1349,3 +1341,34 @@ msgstr "Eldre"
 msgctxt "when the booking was made"
 msgid "Booked"
 msgstr "Booket"
+
+#: build/creoRombookingPublic.js:56
+msgid "Previous week"
+msgstr "Forrige uke"
+
+#: build/creoRombookingPublic.js:56
+msgid "Next week"
+msgstr "Neste uke"
+
+#. translators: 1: room name, 2: week number
+#: build/creoRombookingPublic.js:57
+msgid "%1$s, week %2$d"
+msgstr "%1$s, uke %2$d"
+
+#. translators: %s: date
+#: build/creoRombookingPublic.js:58
+msgid "%s (today)"
+msgstr "%s (i dag)"
+
+#. translators: %d: week number
+#: build/creoRombookingPublic.js:59
+msgid "Week %d"
+msgstr "Uke %d"
+
+#: build/creoRombookingPublic.js:59
+msgid "Choose an available time to book. With a keyboard: the up and down arrows move within a day, the left and right arrows change day, Home and End go to the start and end of the day, Page Up and Page Down change week, and Enter opens."
+msgstr "Velg en ledig tid for å booke. Med tastatur: pil opp og ned flytter innenfor en dag, pil venstre og høyre bytter dag, Home og End går til start og slutt på dagen, Page Up og Page Down bytter uke, og Enter åpner."
+
+#: build/creoRombookingPublic.js:59
+msgid "Choose room"
+msgstr "Velg rom"

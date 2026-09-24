@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-24T12:57:48+00:00\n"
+"POT-Creation-Date: 2026-09-24T13:58:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: creo-rombooking\n"
@@ -434,7 +434,7 @@ msgid "Many are booking right now. Try again."
 msgstr ""
 
 #: build/creoRombookingEditor.js:1
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Room booking"
 msgstr ""
 
@@ -527,7 +527,7 @@ msgstr[1] ""
 #: build/creoRombookingPublic.js:11
 #: build/creoRombookingPublic.js:39
 #: build/creoRombookingPublic.js:55
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Close"
 msgstr ""
 
@@ -560,7 +560,7 @@ msgstr ""
 #: build/creoRombookingPublic.js:46
 #: build/creoRombookingPublic.js:50
 #: build/creoRombookingPublic.js:55
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Room"
 msgstr ""
 
@@ -984,7 +984,7 @@ msgid "Approve all available (%d)"
 msgstr ""
 
 #: build/creoRombookingPublic.js:39
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Requests"
 msgstr ""
 
@@ -997,7 +997,7 @@ msgid "Could not load the requests."
 msgstr ""
 
 #: build/creoRombookingPublic.js:39
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Try again"
 msgstr ""
 
@@ -1227,7 +1227,15 @@ msgid "Choose date"
 msgstr ""
 
 #: build/creoRombookingPublic.js:56
+msgid "Previous week"
+msgstr ""
+
+#: build/creoRombookingPublic.js:56
 msgid "Previous day"
+msgstr ""
+
+#: build/creoRombookingPublic.js:56
+msgid "Next week"
 msgstr ""
 
 #: build/creoRombookingPublic.js:56
@@ -1250,93 +1258,108 @@ msgstr ""
 msgid "Week"
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
-msgid "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens."
+#. translators: 1: room name, 2: week number
+#: build/creoRombookingPublic.js:57
+msgid "%1$s, week %2$d"
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#. translators: %s: date
+#: build/creoRombookingPublic.js:58
+msgid "%s (today)"
+msgstr ""
+
+#. translators: %d: week number
+#: build/creoRombookingPublic.js:59
+msgid "Week %d"
+msgstr ""
+
+#: build/creoRombookingPublic.js:59
 msgid "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
-msgid "Week view"
+#: build/creoRombookingPublic.js:59
+msgid "Choose an available time to book. With a keyboard: the up and down arrows move within a day, the left and right arrows change day, Home and End go to the start and end of the day, Page Up and Page Down change week, and Enter opens."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
-msgid "The week view comes in a later version."
+#: build/creoRombookingPublic.js:59
+msgid "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
+msgid "Choose room"
+msgstr ""
+
+#: build/creoRombookingPublic.js:59
 msgid "Could not load available times."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Loading available times…"
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "There are no rooms to book yet."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:59
+#: build/creoRombookingPublic.js:60
 msgid "Text message log"
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "No text messages are sent yet. This is what would have been sent, newest first."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Could not load the log."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Loading…"
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "No text messages yet"
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Messages about bookings, approvals and cancellations are shown here."
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Pages"
 msgstr ""
 
-#: build/creoRombookingPublic.js:56
+#: build/creoRombookingPublic.js:59
 msgid "Newer"
 msgstr ""
 
 #. translators: 1: page, 2: number of pages
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Older"
 msgstr ""
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Book a room"
 msgstr ""
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "My bookings"
 msgstr ""
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Overview"
 msgstr ""
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "Rooms"
 msgstr ""
 
-#: build/creoRombookingPublic.js:57
+#: build/creoRombookingPublic.js:60
 msgid "This part is not built yet."
 msgstr ""
 

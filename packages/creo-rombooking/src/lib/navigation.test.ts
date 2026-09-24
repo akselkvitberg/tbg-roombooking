@@ -1,4 +1,4 @@
-import { indexAt, navigate, Span } from './navigation';
+import { indexAt, navigate, Span, weekKey } from './navigation';
 
 const rows: Span[][] = [
 	[
@@ -94,5 +94,23 @@ describe('navigate', () => {
 	it('ignores other keys', () => {
 		expect(navigate(rows, at(0, 480), 'a')).toBeNull();
 		expect(navigate(rows, at(0, 480), 'Enter')).toBeNull();
+	});
+});
+
+describe('weekKey', () => {
+	it('moves within a day with up and down, and between days with left and right', () => {
+		expect(
+			navigate(rows, { row: 0, minute: 480 }, weekKey('ArrowDown'))
+		).toEqual({
+			type: 'move',
+			position: { row: 0, minute: 510 },
+		});
+		expect(
+			navigate(rows, { row: 0, minute: 540 }, weekKey('ArrowRight'))
+		).toEqual({
+			type: 'move',
+			position: { row: 1, minute: 540 },
+		});
+		expect(weekKey('PageDown')).toBe('PageDown');
 	});
 });

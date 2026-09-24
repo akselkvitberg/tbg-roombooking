@@ -236,7 +236,7 @@ Rekkefølgen følger bestillingen: matrise i dagvisning (desktop og mobil) og sk
 | **2. Matrise dag + mobil** (skjerm 1, 3) | DayMatrix, StatusCell, Legend, datovelger, dag/uke-bryter, tastaturnavigasjon, MobileDayList | Klikk/Enter på celle åpner skjema; axe uten feil |
 | **3. Bookingskjema** (skjerm 4) | BookingForm, validering, `Recurrence` + `preview`, melding om auto/manuell godkjenning, «opptatt → til admin», telefonnummerfelt når nummer mangler, bekreftelse | Booking lagres og vises som «Din booking»/«Forespurt» |
 | **4. Admin-innboks** (skjerm 6, 9) | Forespørsler med konflikter øverst, side om side, forslag til ledige rom, alle fire handlinger, serie-handlinger, avbestillingsdialog med påkrevd begrunnelse, SMS-logg | Alle flytene i prototypen fungerer mot ekte data |
-| **5. Ukevisning** (skjerm 2) | WeekMatrix med blokker | — |
+| **5. Ukevisning** (skjerm 2) | WeekMatrix med blokker, ett rom om gangen (romvelger), dagene som kolonner, tastatur (opp/ned i dagen, venstre/høyre mellom dager, Page Up/Down bytter uke) | Mobil: sideveis rulling i gridet, valgt dag i synsfeltet |
 | **6. Mine bookinger** (skjerm 5) | Kommende/ventende, avbestilling denne/senere, forslagskort med Aksepter/Avslå + svarfrist | Design avklares først (mangler i prototypen) |
 | **7. Admin-matrise** (skjerm 7) | Navn i cellene, dra til annet rom + tastaturalternativ | — |
 | **8. Rom-oppsett** (skjerm 8) | Liste + skjema, åpningstider per ukedag, unntak, bilde via mediebiblioteket, rominstruks med advarsel mot koder/passord | — |
@@ -264,6 +264,7 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Konflikt i admin (fase 4) | En forespørsel er i konflikt når den overlapper en **godkjent** booking. Å godkjenne én av to forespørsler til samme tid gjør den andre til en konflikt |
 | SMS for serier (fase 4) | Beslutninger på enkeltdatoer i en serie gir én samlet SMS når ingen datoer venter lenger; «Avslå resten» tar med begrunnelsen |
 | Flytt eksisterende (fase 4) | Bare mulig når forespørselen kolliderer med nøyaktig én booking; rom med nok plass som er ledige samme tid foreslås |
+| Ukevisning (fase 5) | Ett rom om gangen, som i prototypen. Uke 1 følger ISO 8601. På mobil (ikke i prototypen) ruller dagene sideveis inne i gridet |
 | Innsendte forespørsler (fase 4) | Innboksen viser forespørsler fra i dag og fremover, eldste først innen hver gruppe |
 
 ## 9. Åpne spørsmål

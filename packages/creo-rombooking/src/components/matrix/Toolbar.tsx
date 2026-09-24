@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-import { addDays, formatLongDate, isDateString } from '../../lib/dates';
+import { addDays, isDateString } from '../../lib/dates';
 import Icon from '../Icon';
 
 export type View = 'day' | 'week';
@@ -8,14 +8,16 @@ export type View = 'day' | 'week';
 interface Props {
 	date: string;
 	today: string;
-	locale: string;
 	view: View;
+	/** E.g. «Onsdag 30. september 2026» or «Storsalen · Uke 40 · 28. sep.–4. okt. 2026». */
+	heading: string;
 	onDateChange: (date: string) => void;
 	onViewChange: (view: View) => void;
 }
 
 export default function Toolbar(props: Props) {
-	const { date, today, locale, view, onDateChange, onViewChange } = props;
+	const { date, today, view, heading, onDateChange, onViewChange } = props;
+	const step = view === 'week' ? 7 : 1;
 
 	return (
 		<div className="creo-rombooking-toolbar">
@@ -27,11 +29,13 @@ export default function Toolbar(props: Props) {
 				<button
 					type="button"
 					className="creo-rombooking-icon-button is-outlined"
-					onClick={() => onDateChange(addDays(date, -1))}
+					onClick={() => onDateChange(addDays(date, -step))}
 				>
 					<Icon name="chevronLeft" size={20} />
 					<span className="creo-rombooking-sr">
-						{__('Previous day', 'creo-rombooking')}
+						{view === 'week'
+							? __('Previous week', 'creo-rombooking')
+							: __('Previous day', 'creo-rombooking')}
 					</span>
 				</button>
 				<label className="creo-rombooking-sr" htmlFor="creo-rombooking-date">
@@ -51,11 +55,13 @@ export default function Toolbar(props: Props) {
 				<button
 					type="button"
 					className="creo-rombooking-icon-button is-outlined"
-					onClick={() => onDateChange(addDays(date, 1))}
+					onClick={() => onDateChange(addDays(date, step))}
 				>
 					<Icon name="chevronRight" size={20} />
 					<span className="creo-rombooking-sr">
-						{__('Next day', 'creo-rombooking')}
+						{view === 'week'
+							? __('Next week', 'creo-rombooking')
+							: __('Next day', 'creo-rombooking')}
 					</span>
 				</button>
 				<button
@@ -69,7 +75,7 @@ export default function Toolbar(props: Props) {
 			</div>
 
 			<h2 className="creo-rombooking-heading" aria-live="polite">
-				{formatLongDate(date, locale)}
+				{heading}
 			</h2>
 
 			<div

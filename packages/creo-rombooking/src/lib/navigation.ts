@@ -85,3 +85,20 @@ export function navigate(
 			return null;
 	}
 }
+
+/**
+ * In the week view the days are columns and time runs downwards, so up and
+ * down move within a day and left and right move between days. Returns the
+ * key that `navigate()` expects, with days as its rows.
+ *
+ * @param key `KeyboardEvent.key` in the week view.
+ */
+export function weekKey(key: string): string {
+	const keys: Record<string, string> = {
+		ArrowDown: 'ArrowRight',
+		ArrowUp: 'ArrowLeft',
+		ArrowRight: 'ArrowDown',
+		ArrowLeft: 'ArrowUp',
+	};
+	return keys[key] ?? key;
+}
