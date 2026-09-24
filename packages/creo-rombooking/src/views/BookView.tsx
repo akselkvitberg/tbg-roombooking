@@ -3,6 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import BookingDialog, { Selection } from '../components/booking/BookingDialog';
 import EmptyState from '../components/EmptyState';
+import Icon from '../components/Icon';
 import DayMatrix, { MatrixRow, roomMeta } from '../components/matrix/DayMatrix';
 import Legend from '../components/matrix/Legend';
 import MobileDayList from '../components/matrix/MobileDayList';
@@ -30,6 +31,12 @@ export default function BookView({ settings }: Props) {
 	const [view, setView] = useState<View>('day');
 	const [roomId, setRoomId] = useState<number | null>(null);
 	const [selection, setSelection] = useState<Selection | null>(null);
+	const [toast, setToast] = useState<{
+		message: string;
+		kind: 'ok' | 'info';
+	} | null>(null);
+	// The member gives a phone number with the first booking; later bookings do not ask.
+	const [hasPhone, setHasPhone] = useState(settings.user.hasPhone);
 	const [ref, width] = useElementWidth<HTMLDivElement>();
 	const compact = width !== null && width < COMPACT_WIDTH;
 
@@ -67,11 +74,13 @@ export default function BookView({ settings }: Props) {
 	const choose = (row: MatrixRow, index: number) => {
 		const segment = row.segments[index];
 		const range = suggestedRange(row.segments, index);
+		setToast(null);
 		setSelection({
 			room: row.room,
 			date: dataDate,
 			...range,
 			status: segment.status,
+			purpose: segment.period.booking?.purpose,
 		});
 	};
 
@@ -117,6 +126,28 @@ export default function BookView({ settings }: Props) {
 			)}
 
 			<Legend />
+
+			<div role="status" className="creo-rombooking-live">
+				{toast && (
+					<div
+						className={`creo-rombooking-message ${
+							toast.kind === 'ok' ? 'is-ok' : 'is-info'
+						}`}
+					>
+						<Icon name={toast.kind === 'ok' ? 'check' : 'info'} size={20} />
+						<div>
+							<strong>{toast.message}</strong>
+						</div>
+						<button
+							type="button"
+							className="creo-rombooking-button is-secondary"
+							onClick={() => setToast(null)}
+						>
+							{__('Close', 'creo-rombooking')}
+						</button>
+					</div>
+				)}
+			</div>
 
 			{view === 'week' && (
 				<EmptyState title={__('Week view', 'creo-rombooking')}>
@@ -182,11 +213,20 @@ export default function BookView({ settings }: Props) {
 				</>
 			)}
 
-			{selection && (
+			{selection && rooms && availability && (
 				<BookingDialog
 					selection={selection}
+					rooms={rooms}
 					locale={locale}
+					askForPhone={!hasPhone}
+					day={availability.day}
 					onClose={() => setSelection(null)}
+					onBooked={(message, kind) => {
+						setSelection(null);
+						setToast({ message, kind });
+						setHasPhone(true);
+						reload();
+					}}
 				/>
 			)}
 		</div>

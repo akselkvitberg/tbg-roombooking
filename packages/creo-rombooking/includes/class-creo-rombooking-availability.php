@@ -242,6 +242,61 @@ class Creo_Rombooking_Availability {
 	}
 
 	/**
+	 * Checks a time on several dates in one room, using the same rules as the
+	 * matrix: `outside` when any part is closed, `conflict` when any part is
+	 * booked or requested, otherwise `free`.
+	 *
+	 * @param int      $room_id The room.
+	 * @param string[] $dates   The dates (Y-m-d).
+	 * @param int      $start   Start minute.
+	 * @param int      $end     End minute.
+	 * @return array<string, array{status: string, conflictWith: int|null}> By date.
+	 */
+	public function check( $room_id, array $dates, $start, $end ) {
+		if ( ! $dates ) {
+			return array();
+		}
+
+		$room_id  = (int) $room_id;
+		$from     = min( $dates );
+		$to       = max( $dates );
+		$hours    = $this->load_opening_hours( array( $room_id ) )[ $room_id ] ?? array();
+		$closures = $this->load_closures( array( $room_id ), $from, $to )[ $room_id ] ?? array();
+		$bookings = $this->load_bookings( array( $room_id ), $from, $to )[ $room_id ] ?? array();
+
+		// Booking IDs are needed to link a request to the booking it conflicts with.
+		$details = new self( 0, true );
+		$result  = array();
+
+		foreach ( $dates as $date ) {
+			$weekday = (int) ( new DateTimeImmutable( $date ) )->format( 'w' );
+			$periods = $details->calculate( $hours[ $weekday ] ?? array(), $closures[ $date ] ?? array(), $bookings[ $date ] ?? array() );
+			$status  = 'free';
+			$with    = null;
+
+			foreach ( $periods as $period ) {
+				if ( $period['end'] <= $start || $period['start'] >= $end || $period['status'] === 'free' ) {
+					continue;
+				}
+				if ( $period['status'] === 'closed' ) {
+					$status = 'outside';
+					$with   = null;
+					break;
+				}
+				$status = 'conflict';
+				$with   = $with ?? ( $period['booking']['id'] ?? null );
+			}
+
+			$result[ $date ] = array(
+				'status'       => $status,
+				'conflictWith' => $with,
+			);
+		}
+
+		return $result;
+	}
+
+	/**
 	 * What the viewer may see about a booking.
 	 *
 	 * @param array $booking A row from the bookings table, with `user_name`.

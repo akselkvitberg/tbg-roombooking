@@ -28,6 +28,13 @@
 		outline-offset: 2px;
 	}
 
+	/* The theme's form styles add a blue focus ring; use the theme's green instead. */
+	& input,
+	& select,
+	& textarea {
+		--tw-ring-color: var(--wp--preset--color--dark-green);
+	}
+
 	& .creo-rombooking-button,
 	& a.creo-rombooking-button[href] {
 		@apply inline-flex cursor-pointer items-center whitespace-nowrap rounded-full border-2 border-transparent px-3 py-1.5 text-sm font-medium no-underline transition-colors;
@@ -370,6 +377,139 @@
 		}
 	}
 
+	/* Booking form */
+
+	& .creo-rombooking-grid2 {
+		@apply grid gap-4 sm:grid-cols-2;
+	}
+
+	& select.creo-rombooking-input {
+		@apply pr-8;
+	}
+
+	& .creo-rombooking-field textarea.creo-rombooking-input {
+		@apply h-auto min-h-[4rem] py-2 leading-normal;
+		resize: vertical;
+	}
+
+	& .creo-rombooking-input[aria-invalid="true"] {
+		@apply border-2 border-red-700 dark:border-red-400;
+	}
+
+	& .creo-rombooking-input:disabled {
+		@apply cursor-not-allowed bg-gray-100 text-gray-500 dark:bg-slate-700 dark:text-gray-400;
+	}
+
+	& .creo-rombooking-optional {
+		@apply font-normal text-gray-600 dark:text-gray-400;
+	}
+
+	& .creo-rombooking-error {
+		@apply m-0 flex items-start gap-1 text-sm font-medium text-red-700 dark:text-red-300;
+	}
+
+	& .creo-rombooking-fieldset {
+		@apply m-0 min-w-0 border-0 p-0;
+
+		& legend {
+			@apply mb-1.5 p-0 text-sm font-medium;
+		}
+	}
+
+	& .creo-rombooking-pills {
+		@apply flex flex-wrap gap-2;
+	}
+
+	& .creo-rombooking-pill,
+	& .creo-rombooking-radio {
+		@apply inline-flex cursor-pointer items-center gap-2 text-sm font-medium;
+
+		/* The theme's form styles color checked radio buttons with the text color. */
+		& input {
+			@apply m-0 h-[18px] w-[18px] flex-none text-dark-green dark:text-light-green;
+			accent-color: currentcolor;
+		}
+	}
+
+	& .creo-rombooking-pill {
+		@apply min-h-[40px] rounded-lg border border-solid border-gray-400 px-3 dark:border-gray-500;
+
+		&:has(input:checked) {
+			@apply border-2 border-dark-green bg-light-green-60 px-[11px] dark:border-light-green dark:bg-slate-700;
+		}
+	}
+
+	& .creo-rombooking-ends {
+		@apply grid items-center gap-x-3 gap-y-2;
+		grid-template-columns: max-content minmax(0, 12rem);
+	}
+
+	& .creo-rombooking-live:empty {
+		display: none;
+	}
+
+	& .creo-rombooking-occurrences {
+		@apply overflow-hidden rounded-lg border border-solid border-gray-200 dark:border-gray-600;
+
+		& ul {
+			@apply m-0 max-h-56 list-none overflow-auto p-0;
+		}
+
+		& li {
+			@apply m-0 grid items-center gap-2 border-0 border-t border-solid border-gray-100 px-3 py-1.5 text-sm tabular-nums first:border-t-0 dark:border-slate-700;
+			grid-template-columns: 11rem 7rem minmax(0, 1fr);
+		}
+
+		& li.is-outside .creo-rombooking-occurrence-date,
+		& li.is-outside .creo-rombooking-occurrence-time {
+			@apply text-gray-600 line-through dark:text-gray-400;
+		}
+	}
+
+	& .creo-rombooking-occurrences-head {
+		@apply flex flex-wrap items-baseline justify-between gap-3 border-0 border-b border-solid border-gray-200 bg-gray-50 px-3 py-2.5 dark:border-gray-600 dark:bg-slate-900;
+
+		& h3 {
+			@apply m-0 text-sm font-semibold;
+		}
+	}
+
+	& .creo-rombooking-tag {
+		@apply inline-flex items-center gap-1 justify-self-start whitespace-nowrap rounded-full border border-solid px-2 py-0.5 text-xs font-medium;
+
+		&.is-free {
+			@apply border-green-300 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-900 dark:text-green-50;
+		}
+
+		&.is-conflict {
+			@apply border-amber-500 bg-amber-50 text-amber-900 dark:border-amber-400 dark:bg-amber-900 dark:text-amber-50;
+		}
+
+		&.is-outside {
+			@apply border-gray-300 bg-gray-100 text-gray-700 dark:border-gray-500 dark:bg-slate-700 dark:text-gray-200;
+		}
+	}
+
+	& .creo-rombooking-message.is-ok {
+		@apply border-green-300 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-900 dark:text-green-50;
+	}
+
+	& .creo-rombooking-message.is-info {
+		@apply border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-400 dark:bg-blue-900 dark:text-blue-50;
+	}
+
+	& .creo-rombooking-message ul {
+		@apply m-0 mt-1 list-disc pl-5;
+	}
+
+	& .creo-rombooking-message a {
+		@apply text-inherit underline;
+	}
+
+	& .creo-rombooking-message:focus {
+		outline: 2px solid currentcolor;
+	}
+
 	/* Dialog */
 
 	& .creo-rombooking-summary {
@@ -400,6 +540,12 @@
 
 .dark .creo-rombooking :focus-visible {
 	outline-color: var(--wp--preset--color--light-green);
+}
+
+.dark .creo-rombooking input,
+.dark .creo-rombooking select,
+.dark .creo-rombooking textarea {
+	--tw-ring-color: var(--wp--preset--color--light-green);
 }
 
 .dark .creo-rombooking .creo-rombooking-segment:focus-visible {

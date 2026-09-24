@@ -60,3 +60,37 @@ export interface Availability {
 	};
 	days: Day[];
 }
+
+export type Repeat = 'none' | 'weekly' | 'biweekly' | 'monthly';
+
+export interface BookingInput {
+	roomId: number;
+	date: string;
+	start: number;
+	end: number;
+	purpose: string;
+	repeat: Repeat;
+	endMode: 'count' | 'date';
+	count: number;
+	endDate: string;
+	phone?: string;
+}
+
+export type FieldErrors = Partial<Record<keyof BookingInput, string>>;
+
+export type OccurrenceStatus = 'free' | 'conflict' | 'outside';
+
+export interface Preview {
+	approval: Approval | null;
+	occurrences: { date: string; status: OccurrenceStatus }[];
+	counts: Record<OccurrenceStatus, number> | null;
+	errors: FieldErrors;
+}
+
+export interface BookingResult {
+	bookings: { id: number; date: string; status: 'approved' | 'requested' }[];
+	approved: number;
+	requested: number;
+	skipped: number;
+	message: string;
+}

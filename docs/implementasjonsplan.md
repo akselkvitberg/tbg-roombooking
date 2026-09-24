@@ -250,6 +250,10 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Telefonnummer | Fra tokenet; ellers feltet «Legg inn telefonnummer» ved booking |
 | Språk | Engelske kildestrenger + `nb_NO.po`; bare norsk i PoC-en |
 | Admin-skjermer | På nettsiden, bak admin-rollen |
+| Bookinghorisont (fase 3) | Maks ett år frem i tid, også for serier; maks 26 forekomster per serie (som i prototypen) |
+| Konflikt (fase 3) | En tid er i konflikt når den overlapper en godkjent booking eller en ventende forespørsel; forespørselen kobles til den godkjente bookingen først |
+| Månedlig gjentakelse (fase 3) | Samme dato hver måned; måneder uten datoen (f.eks. 31.) hoppes over |
+| Telefonnummer ved booking (fase 3) | Norsk mobilnummer (8 siffer, starter med 4 eller 9), lagres som `+47 XXX XX XXX` |
 
 ## 9. Åpne spørsmål
 1. **Telefon i tokenet:** hvilket claim heter det, og er det tilgjengelig på serversiden (ID-token/brukerinfo lagret av
@@ -258,4 +262,3 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 3. **«Antall personer»** vises i prototypens admin-visning, men står ikke i feltlisten for skjemaet. Skal det være et
    felt (brukes til forslag om rom med nok plass)?
 4. **Svarfrist** for forslag: prototypen har 24 t / 48 t / 3 dager – ok som standardvalg?
-5. **Maks bookinghorisont:** hvor langt frem kan medlemmer booke, og hvor lange kan serier være?

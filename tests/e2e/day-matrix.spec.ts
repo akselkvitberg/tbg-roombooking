@@ -137,9 +137,13 @@ test.describe('Day view (desktop)', () => {
 
 		const dialog = page.getByRole('dialog', { name: 'Ny booking' });
 		await expect(dialog).toBeVisible();
-		await expect(dialog).toContainText('Møterom 2');
+		await expect(dialog.getByLabel('Rom')).toHaveValue(/\d+/);
+		await expect(dialog.getByLabel('Rom').locator('option:checked')).toHaveText(
+			/^Møterom 2/
+		);
 		// One hour is suggested when the next half hour is free too.
-		await expect(dialog).toContainText('12:00–13:00');
+		await expect(dialog.getByLabel('Fra')).toHaveValue('720');
+		await expect(dialog.getByLabel('Til')).toHaveValue('780');
 		await expectAccessible(page);
 
 		await page.keyboard.press('Escape');

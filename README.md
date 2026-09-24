@@ -39,7 +39,7 @@ pnpm wp creo-rombooking sms-log        # vis SMS-er som ville blitt sendt
 pnpm lint                              # ESLint, Stylelint, tsc og PHPCS
 pnpm test:php                          # PHPUnit i wp-env
 pnpm test:js                           # Jest (ren logikk i appen)
-pnpm test:e2e                          # Playwright + axe mot http://localhost:8888
+pnpm test:e2e                          # Playwright + axe mot http://localhost:8888 (tilbakestiller eksempeldata)
 pnpm i18n-update                       # oppdater .pot/.po/.mo/.json
 ```
 
@@ -57,6 +57,8 @@ bin/php-server.sh --reset      # start på nytt
 
 Playwright kan bruke en forhåndsinstallert Chromium med
 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/sti/til/chromium pnpm test:e2e`, og en annen adresse med `WP_BASE_URL`.
+E2e-testene booker rom, så de tilbakestiller eksempeldataene først. Med `bin/php-server.sh`:
+`E2E_RESET_COMMAND="vendor/bin/wp --path=.tmp/wordpress creo-rombooking seed --reset" pnpm test:e2e`.
 
 ## CI
 

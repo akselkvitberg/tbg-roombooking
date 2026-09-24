@@ -440,7 +440,7 @@ class Creo_Rombooking_Seed {
 	}
 
 	/**
-	 * Deletes all bookings data and the made-up owners.
+	 * Deletes all booking data, the made-up owners and saved phone numbers.
 	 */
 	public static function reset() {
 		require_once ABSPATH . 'wp-admin/includes/user.php';
@@ -455,6 +455,9 @@ class Creo_Rombooking_Seed {
 		foreach ( $owners as $user ) {
 			wp_delete_user( $user->ID );
 		}
+
+		// Forget phone numbers entered when booking, so that test users start over.
+		delete_metadata( 'user', 0, 'creo_rombooking_phone', '', true );
 
 		Creo_Rombooking_Schema::uninstall();
 		Creo_Rombooking_Schema::install();

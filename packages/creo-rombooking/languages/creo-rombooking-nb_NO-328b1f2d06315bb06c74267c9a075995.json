@@ -58,9 +58,6 @@
             "You can see and cancel your bookings under My bookings.": [
                 "Du kan se og avbestille bookingene dine under Mine bookinger."
             ],
-            "The booking form comes in the next version.": [
-                "Bookingskjemaet kommer i neste versjon."
-            ],
             "Available": [
                 "Ledig"
             ],
@@ -160,6 +157,154 @@
             ],
             "There are no rooms to book yet.": [
                 "Det er ingen rom \u00e5 booke enn\u00e5."
+            ],
+            "The end time must be after the start time.": [
+                "Til-tiden m\u00e5 v\u00e6re etter fra-tiden."
+            ],
+            "The end date must be after the start date.": [
+                "Sluttdatoen m\u00e5 v\u00e6re etter startdatoen."
+            ],
+            "The number of times must be between 2 and %d.": [
+                "Antall ganger m\u00e5 v\u00e6re mellom 2 og %d."
+            ],
+            "Book %d times": [
+                "Book %d ganger"
+            ],
+            "Book the room": [
+                "Book rommet"
+            ],
+            "Send %d requests": [
+                "Send %d foresp\u00f8rsler"
+            ],
+            "Send request": [
+                "Send foresp\u00f8rsel"
+            ],
+            "Book and send request": [
+                "Book og send foresp\u00f8rsel"
+            ],
+            "Goes to the administrator": [
+                "G\u00e5r til admin"
+            ],
+            "The time is booked. The administrator considers the request, and you get a text message with the answer.": [
+                "Tidsrommet er opptatt. Admin vurderer foresp\u00f8rselen, og du f\u00e5r SMS med svaret."
+            ],
+            "The available ones must be approved too, because %s needs approval.": [
+                "De ledige m\u00e5 ogs\u00e5 godkjennes, fordi %s krever godkjenning."
+            ],
+            "The available ones are confirmed right away.": [
+                "De ledige bekreftes med en gang."
+            ],
+            "Partly to the administrator": [
+                "Delvis til admin"
+            ],
+            "%1$d of %2$d date is in conflict and is sent to the administrator. %3$s You get a text message.": [
+                "%1$d av %2$d forekomst er i konflikt og sendes til admin. %3$s Du f\u00e5r SMS.",
+                "%1$d av %2$d forekomster er i konflikt og sendes til admin. %3$s Du f\u00e5r SMS."
+            ],
+            "Needs approval": [
+                "Krever godkjenning"
+            ],
+            "%s is approved by the administrator. You get a text message when the request has been handled.": [
+                "%s godkjennes av admin. Du f\u00e5r SMS n\u00e5r foresp\u00f8rselen er behandlet."
+            ],
+            "Approved automatically": [
+                "Autogodkjennes"
+            ],
+            "%s is confirmed right away when the time is available. You get a text message as a receipt.": [
+                "%s bekreftes med en gang n\u00e5r tiden er ledig. Du f\u00e5r SMS som kvittering."
+            ],
+            "Could not send. Try again.": [
+                "Kunne ikke sende. Pr\u00f8v igjen."
+            ],
+            "Correct the errors before you send": [
+                "Rett opp f\u00f8r du sender"
+            ],
+            "From": [
+                "Fra"
+            ],
+            "To": [
+                "Til"
+            ],
+            "Purpose": [
+                "Form\u00e5l"
+            ],
+            "(optional)": [
+                "(valgfritt)"
+            ],
+            "%1$d of %2$d characters": [
+                "%1$d av %2$d tegn"
+            ],
+            "Repeat": [
+                "Gjenta"
+            ],
+            "Does not repeat": [
+                "Nei"
+            ],
+            "Weekly": [
+                "Ukentlig"
+            ],
+            "Every other week": [
+                "Annenhver uke"
+            ],
+            "Monthly": [
+                "M\u00e5nedlig"
+            ],
+            "Ends": [
+                "Slutter"
+            ],
+            "After a number of times": [
+                "Etter antall ganger"
+            ],
+            "Number of times": [
+                "Antall ganger"
+            ],
+            "On a date": [
+                "P\u00e5 dato"
+            ],
+            "End date": [
+                "Sluttdato"
+            ],
+            "Mobile number": [
+                "Mobilnummer"
+            ],
+            "We send the answer by text message. The number is saved for next time.": [
+                "Vi sender svar p\u00e5 SMS. Nummeret lagres til neste gang."
+            ],
+            "Cancel": [
+                "Avbryt"
+            ],
+            "Sending\u2026": [
+                "Sender \u2026"
+            ],
+            "Conflict \u2013 goes to the administrator": [
+                "Konflikt \u2013 g\u00e5r til admin"
+            ],
+            "Outside opening hours \u2013 left out": [
+                "Utenfor \u00e5pningstid \u2013 utelates"
+            ],
+            "Preview of the dates": [
+                "Forh\u00e5ndsvisning av forekomster"
+            ],
+            "%d available": [
+                "%d ledig",
+                "%d ledige"
+            ],
+            "%d conflict": [
+                "%d konflikt",
+                "%d konflikter"
+            ],
+            "%d left out": [
+                "%d utelates",
+                "%d utelates"
+            ],
+            "Status": [
+                "Status"
+            ],
+            "Confirmed": [
+                "Bekreftet"
+            ],
+            "Waiting for approval": [
+                "Venter p\u00e5 godkjenning"
             ]
         }
     }

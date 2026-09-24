@@ -12,7 +12,9 @@ const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
 export default defineConfig({
 	testDir: './tests/e2e',
 	globalSetup: './tests/e2e/global-setup.ts',
+	// The tests change the same example data, so they run one at a time.
 	fullyParallel: false,
+	workers: 1,
 	forbidOnly: !!process.env.CI,
 	retries: 0,
 	reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',

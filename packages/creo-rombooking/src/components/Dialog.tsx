@@ -8,6 +8,8 @@ interface Props {
 	onClose: () => void;
 	children: React.ReactNode;
 	footer?: React.ReactNode;
+	/** Render the children as they are, for content with its own body and footer, like a form. */
+	bare?: boolean;
 }
 
 /**
@@ -18,7 +20,7 @@ interface Props {
  * @param props The component props.
  */
 export default function Dialog(props: Props) {
-	const { title, onClose, children, footer } = props;
+	const { title, onClose, children, footer, bare } = props;
 	const ref = useRef<HTMLDialogElement>(null);
 	const titleId = useRef(
 		`creo-rombooking-dialog-${Math.random().toString(36).slice(2)}`
@@ -62,8 +64,16 @@ export default function Dialog(props: Props) {
 					</span>
 				</button>
 			</div>
-			<div className="creo-rombooking-dialog-body">{children}</div>
-			{footer && <div className="creo-rombooking-dialog-foot">{footer}</div>}
+			{bare ? (
+				children
+			) : (
+				<>
+					<div className="creo-rombooking-dialog-body">{children}</div>
+					{footer && (
+						<div className="creo-rombooking-dialog-foot">{footer}</div>
+					)}
+				</>
+			)}
 		</dialog>
 	);
 }

@@ -63,6 +63,26 @@ class Creo_Rombooking_REST {
 
 		register_rest_route(
 			self::NAMESPACE,
+			'/bookings/preview',
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => array( $this, 'preview_booking' ),
+				'permission_callback' => array( $this, 'can_book' ),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/bookings',
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => array( $this, 'create_booking' ),
+				'permission_callback' => array( $this, 'can_book' ),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
 			'/admin/availability',
 			array(
 				'methods'             => WP_REST_Server::READABLE,
@@ -160,6 +180,61 @@ class Creo_Rombooking_REST {
 	 */
 	public function get_admin_availability( WP_REST_Request $request ) {
 		return $this->availability_response( $request, true );
+	}
+
+	/**
+	 * POST /bookings/preview: checks each date of the booking form while the
+	 * member fills it in. Incomplete forms are not an error here; the
+	 * response lists what to correct.
+	 *
+	 * @param WP_REST_Request $request The request.
+	 * @return WP_REST_Response
+	 */
+	public function preview_booking( WP_REST_Request $request ) {
+		$bookings  = new Creo_Rombooking_Bookings();
+		$validated = $bookings->validate( $request->get_params(), get_current_user_id(), false );
+
+		if ( $validated['errors'] ) {
+			return rest_ensure_response(
+				array(
+					'approval'    => $validated['data']['room']['approval'] ?? null,
+					'occurrences' => array(),
+					'counts'      => null,
+					'errors'      => $validated['errors'],
+				)
+			);
+		}
+
+		$preview = $bookings->preview( $validated['data'] );
+
+		// Which booking a date conflicts with is not for members to know.
+		$preview['occurrences'] = array_map(
+			fn( $occurrence ) => array(
+				'date'   => $occurrence['date'],
+				'status' => $occurrence['status'],
+			),
+			$preview['occurrences']
+		);
+
+		return rest_ensure_response( $preview );
+	}
+
+	/**
+	 * POST /bookings: creates a booking or a series.
+	 *
+	 * @param WP_REST_Request $request The request.
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public function create_booking( WP_REST_Request $request ) {
+		$result = ( new Creo_Rombooking_Bookings() )->create( $request->get_params(), get_current_user_id() );
+
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+
+		$response = rest_ensure_response( $result );
+		$response->set_status( 201 );
+		return $response;
 	}
 
 	/**

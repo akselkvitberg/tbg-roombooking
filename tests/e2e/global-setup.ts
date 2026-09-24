@@ -1,16 +1,27 @@
+import { execSync } from 'child_process';
+
 import { chromium, FullConfig } from '@playwright/test';
 
-export const users = ['medlem', 'admin', 'gjest'] as const;
+export const users = ['medlem', 'medlem-uten-tlf', 'admin', 'gjest'] as const;
 export type User = (typeof users)[number];
 
 export const storageState = (user: User) => `test-results/.auth/${user}.json`;
 
 /**
- * Logs in each test user once and saves the cookies.
+ * Resets the example data, since the tests book rooms, and logs in each
+ * test user once and saves the cookies.
+ *
+ * `E2E_RESET_COMMAND` overrides the reset command, e.g. for `bin/php-server.sh`:
+ * `vendor/bin/wp --path=.tmp/wordpress creo-rombooking seed --reset`.
  *
  * @param config The Playwright config.
  */
 export default async function globalSetup(config: FullConfig) {
+	execSync(
+		process.env.E2E_RESET_COMMAND ?? 'pnpm wp creo-rombooking seed --reset',
+		{ stdio: 'inherit' }
+	);
+
 	const { baseURL, launchOptions } = config.projects[0].use;
 	const browser = await chromium.launch(launchOptions);
 

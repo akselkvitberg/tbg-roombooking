@@ -103,6 +103,8 @@ jobs:
 
       - name: Run Playwright
         run: pnpm test:e2e
+        env:
+          E2E_RESET_COMMAND: vendor/bin/wp --path=.tmp/wordpress creo-rombooking seed --reset
 
       - name: Upload report
         if: failure()
