@@ -13,7 +13,6 @@ Status: utkast, 24.09.2026. Målet er en klikkbar, men ekte, WordPress-plugin i 
 | BCC design system – `components.bcc.no/llms.txt` | ❌ Blokkert av nettverkspolicy (403 fra egress-proxy) | — |
 | BCC design system via npm | ✅ | `@bcc-code/component-library-vue@1.4.36` (Vue 3 + PrimeVue 4 + Tailwind 4, Storybook = components.bcc.no), `@bcc-code/design-tokens@5.2.10`, `@bcc-code/icons(-vue)@1.5.4`. README, typer, CSS og komponentliste er lest lokalt. |
 | `bcc-code/bcc-design` (kildekoden til components.bcc.no) | ✅ Klonet (offentlig) | `component-library/docs/**/*.mdx` (farger, typografi, tokens, spacing, ikoner) og komponentstories – samme innhold som `llms.txt` genereres fra. |
-| `bcc-code/bcc-wp` | ✅ Klonet (offentlig) | `bcc-login`-pluginen definerer rollen `bcc-login-member` («Member»). Ingen telefonnummer i brukerdata der. |
 | `creo-web/creo-wp` | ❌ Ingen tilgang | GitHub-kontoen er koblet til, men Claude GitHub-appen er bare installert for `akselkvitberg` og `bcc-code`, ikke for organisasjonen `creo-web`. |
 | WordPress-kjerne, Packagist, npm, WP Playground | ✅ Nåbare | Vi kan kjøre WP lokalt/CI (PHP 8.4, Node 22, Composer og Docker finnes i miljøet). |
 
@@ -90,8 +89,7 @@ tbg-roombooking/
   mobilvisning (ett rom om gangen).
 
 ### 3.2 Backend (WordPress)
-- **Roller:** `medlem` = innlogget bruker med capability `tbg_rb_book` (gis som standard til `bcc-login-member`
-  fra `bcc-login` hvis den finnes, ellers `subscriber`); `admin` = `tbg_rb_manage`
+- **Roller:** `medlem` = innlogget bruker med capability `tbg_rb_book` (gis som standard til `subscriber`); `admin` = `tbg_rb_manage`
   (gis til administrator + evt. egen rolle «Romansvarlig»). Ikke innlogget → innloggingsmelding.
 - **Personvern i API-et:** medlem-endepunktene returnerer aldri navn/formål på andres bookinger – kun status
   (`free|busy|requested|closed|mine`). Dette håndheves på serveren, ikke bare i UI.
