@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+    "generator": "WP-CLI\/2.10.0",
+    "source": "build\/creoRombookingPublic.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nb_NO",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Room booking": [
+                "Rombooking"
+            ],
+            "Book a room": [
+                "Book rom"
+            ],
+            "My bookings": [
+                "Mine bookinger"
+            ],
+            "Requests": [
+                "Foresp\u00f8rsler"
+            ],
+            "Overview": [
+                "Oversikt"
+            ],
+            "Rooms": [
+                "Rom"
+            ],
+            "See available times and book rooms in the church building.": [
+                "Se ledige tider og book rom i menighetshuset."
+            ],
+            "This part is not built yet.": [
+                "Denne delen er ikke laget enn\u00e5."
+            ]
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "creo-rombooking/app",
+  "title": "Room booking",
+  "category": "widgets",
+  "icon": "calendar-alt",
+  "description": "Room booking for members, with requests and conflict handling for administrators.",
+  "textdomain": "creo-rombooking",
+  "supports": {
+    "html": false,
+    "multiple": false,
+    "align": ["wide", "full"]
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    }
+  },
+  "editorScript": "creoRombookingEditor",
+  "editorStyle": "creoRombookingEditor"
+}

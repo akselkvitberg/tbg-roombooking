@@ -1,0 +1,45 @@
+{
+  "$schema": "https://getcomposer.org/schema.json",
+  "name": "akselkvitberg/tbg-roombooking",
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+    "phpcompatibility/phpcompatibility-wp": "*",
+    "phpunit/phpunit": "^9.6",
+    "squizlabs/php_codesniffer": "^3.7",
+    "wp-cli/i18n-command": "^2.6",
+    "wp-cli/wp-cli-bundle": "^2.10",
+    "wp-coding-standards/wpcs": "^3.0",
+    "yoast/phpunit-polyfills": "^1.0"
+  },
+  "scripts": {
+    "phpcs": [
+      "phpcs"
+    ],
+    "i18n-make-pot": [
+      "wp i18n make-pot --exclude=src,node_modules ./packages/creo-rombooking ./packages/creo-rombooking/languages/creo-rombooking.pot --skip-audit --allow-root"
+    ],
+    "i18n-make-mo": [
+      "wp i18n make-mo ./packages/creo-rombooking/languages --allow-root"
+    ],
+    "i18n-make-json": [
+      "wp i18n make-json ./packages/creo-rombooking/languages --pretty-print --no-purge --allow-root"
+    ],
+    "i18n-update-po": [
+      "wp i18n update-po ./packages/creo-rombooking/languages/creo-rombooking.pot ./packages/creo-rombooking/languages/ --allow-root"
+    ],
+    "i18n-all": [
+      "@i18n-make-pot",
+      "@i18n-update-po",
+      "@i18n-make-json",
+      "@i18n-make-mo"
+    ]
+  },
+  "config": {
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

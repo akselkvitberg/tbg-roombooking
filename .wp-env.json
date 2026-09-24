@@ -1,0 +1,20 @@
+{
+  "themes": [
+    "./vendor-theme/creo-wp/packages/creo"
+  ],
+  "plugins": [
+    "./packages/creo-rombooking"
+  ],
+  "config": {
+    "WP_DEBUG_LOG": "/var/www/html/tbg-roombooking/wp-debug.log",
+    "WP_ENVIRONMENT_TYPE": "local"
+  },
+  "mappings": {
+    "tbg-roombooking": ".",
+    "wp-cli.yml": "./wp-cli.yml"
+  },
+  "lifecycleScripts": {
+    "afterStart": "./bin/wp-env-setup.js",
+    "afterClean": "./bin/wp-env-setup.js"
+  }
+}

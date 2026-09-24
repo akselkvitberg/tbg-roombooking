@@ -1,0 +1,3 @@
+[submodule "vendor-theme/creo-wp"]
+	path = vendor-theme/creo-wp
+	url = https://github.com/akselkvitberg/creo-wp-fork.git

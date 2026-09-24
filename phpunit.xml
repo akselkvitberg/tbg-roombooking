@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<phpunit
+	bootstrap="tests/phpunit/bootstrap.php"
+	backupGlobals="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	convertDeprecationsToExceptions="true"
+	cacheResult="false"
+>
+	<php>
+		<const name="CREO_ROMBOOKING_TESTSUITE" value="true"/>
+	</php>
+	<testsuites>
+		<testsuite name="unit">
+			<directory suffix=".test.php">./tests/phpunit/</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

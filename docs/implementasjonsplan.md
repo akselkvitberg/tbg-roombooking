@@ -65,6 +65,7 @@ tbg-roombooking/
 ├── package.json, pnpm-workspace.yaml, tsconfig.json, .eslintrc, .phpcs.xml, .wp-env.json  # som i creo-wp
 ├── tools/scripts/                    # kopi av @creo-wp/scripts (webpack/Tailwind/PostCSS-grunnoppsett)
 ├── vendor-theme/creo-wp/             # git-submodul → creo-wp-fork, slik at wp-env kjører det ekte creo-temaet
+├── bin/                              # wp-env-oppsett, bygging av temaet, php-server.sh (uten Docker)
 ├── packages/creo-rombooking/
 │   ├── creo-rombooking.php           # plugin-header, konstanter, require av includes
 │   ├── includes/
@@ -205,12 +206,13 @@ Ingen SMS sendes lokalt. Meldingene lagres i hendelsesloggen og kan leses i fane
 **CI (GitHub Actions):** kodestil- og typesjekkene fra creo-wp, pluss en jobb som starter `wp-env` og kjører PHPUnit og
 Playwright. Skjermbilder og axe-rapport legges ved som artefakter.
 
-### 6.5 Claude-sesjoner i skyen
+### 6.5 Uten Docker-bygg (Claude-sesjoner i skyen)
 Docker kan startes med `dockerd`, og images hentes via registry-speilet `mirror.gcr.io` (Docker Hub gir 429 herfra).
-`wp-env` fungerer likevel ikke fullt her: images bygges med `apk update` over HTTPS, og byggcontainerne når verken
-sesjonens proxy eller stoler på dens sertifikat. I skyen kjøres derfor WordPress direkte på PHP 8.4
-(`php -S` + SQLite Database Integration), eller med `@wp-playground/cli`, med samme oppsettskript og eksempeldata.
-Playwright/axe og PHPUnit kjøres mot den instansen. Lokalt og i CI brukes vanlig `wp-env`.
+`wp-env` fungerer likevel ikke her: images bygges med `apk update` over HTTPS, og byggcontainerne når verken
+sesjonens proxy eller stoler på dens sertifikat. Derfor finnes `bin/php-server.sh`, som kjører WordPress med PHPs
+innebygde server mot MySQL (f.eks. `mysql:8`-containeren), med samme oppsettskript og eksempeldata.
+PHPUnit kjøres i en `php:8.2-cli`-container med `--network host` (PHPUnit 9.6 fra creo-wp sin lockfil gir
+deprecation-feil på PHP 8.4). Lokalt og i CI brukes vanlig `wp-env` / oppsettet fra creo-wp.
 
 ---
 

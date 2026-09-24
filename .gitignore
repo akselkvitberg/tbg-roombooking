@@ -1,0 +1,13 @@
+*.log
+.env
+.tmp
+.cache
+.DS_Store
+.wp-env
+.wp-env.*.json
+node_modules
+/releases
+/vendor
+/packages/*/build
+/test-results
+/playwright-report

@@ -1,0 +1,80 @@
+inputs:
+  wp-version:
+    default: 'latest'
+  symlink:
+    default: true
+
+outputs:
+  tag-name:
+    value: ${{ steps.latest-version.outputs.tag-name }}
+  archive-name:
+    value: ${{ steps.latest-version.outputs.archive-name }}
+
+runs:
+  using: composite
+  steps:
+
+    - name: Get latest tag and archive names
+      id: latest-version
+      shell: bash
+      run: bash .github/actions/setup-wp/latest-version.sh ${{ inputs.wp-version }}
+
+    - name: Log tag and archive names
+      shell: bash
+      run: |
+        echo "Tag name: ${{ steps.latest-version.outputs.tag-name }}"
+        echo "Archive name: ${{ steps.latest-version.outputs.archive-name }}"
+
+    - name: Start MySQL
+      shell: bash
+      run: sudo systemctl start mysql
+
+    - name: Create the database
+      shell: bash
+      run: |
+        while ! mysqladmin ping -h 127.0.0.1 --silent; do
+          sleep 1
+        done
+        mysqladmin create wordpress --user=root --password=root --host=127.0.0.1 --protocol=tcp
+
+    - name: Download WordPress
+      shell: bash
+      run: |
+        mkdir -p /tmp/wordpress/
+        curl -s https://wordpress.org/${{ steps.latest-version.outputs.archive-name }}.tar.gz > /tmp/wordpress.tar.gz
+        tar --strip-components=1 -zxmf /tmp/wordpress.tar.gz -C /tmp/wordpress/
+
+    - name: Setup wp-config.php
+      shell: bash
+      run: |
+        mv /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
+        sed -i "s/database_name_here/wordpress/" /tmp/wordpress/wp-config.php
+        sed -i "s/username_here/root/" /tmp/wordpress/wp-config.php
+        sed -i "s/password_here/root/" /tmp/wordpress/wp-config.php
+        sed -i "s|localhost|127.0.0.1|" /tmp/wordpress/wp-config.php
+        sed -i -E "s/(\(\s*'WP_DEBUG',)\s*(.*)(\s*\))/\1 true \3/" /tmp/wordpress/wp-config.php
+
+    - name: Create symlinks
+      if: ${{ inputs.symlink == 'true' }}
+      shell: bash
+      run: |
+        ln -s $GITHUB_WORKSPACE/vendor-theme/creo-wp/packages/creo /tmp/wordpress/wp-content/themes/creo
+        ln -s $GITHUB_WORKSPACE/packages/creo-rombooking /tmp/wordpress/wp-content/plugins/creo-rombooking
+
+    - name: Start the PHP server
+      shell: bash
+      run: nohup php -S 127.0.0.1:8889 -t /tmp/wordpress/ > php.log 2>&1 &
+
+    - name: Install WordPress core
+      shell: bash
+      run: |
+        while ! curl --output /dev/null --silent --head --fail http://127.0.0.1:8889; do
+          sleep 1
+        done
+        curl --data-urlencode "weblog_title=Website" \
+            --data-urlencode "user_name=admin" \
+            --data-urlencode "admin_password=password" \
+            --data-urlencode "admin_password2=password" \
+            --data-urlencode "admin_email=admin@example.com" \
+            --data-urlencode "Submit=Install+WordPress" \
+            http://127.0.0.1:8889/wp-admin/install.php?step=2 | grep "<h1>"

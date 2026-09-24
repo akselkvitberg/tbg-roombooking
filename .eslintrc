@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "extends": ["plugin:@wordpress/recommended"],
+  "ignorePatterns": ["packages/*/build/**", "vendor-theme/**", "vendor/**", ".tmp/**"],
+  "settings": {
+    "import/internal-regex": "^@(creo-wp|wordpress)/"
+  },
+  "rules": {
+    "@typescript-eslint/no-shadow": "off",
+    "jsdoc/valid-types": "off",
+		"curly": "off",
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always",
+        "alphabetize": { "caseInsensitive": true, "order": "asc" },
+        "groups": ["builtin", "external", "internal", "parent", "sibling"],
+        "pathGroups": [
+          { "pattern": "@creo-wp/**", "group": "internal", "position": "before" },
+          { "pattern": "@wordpress/**", "group": "internal", "position": "before" }
+        ]
+      }
+    ],
+    "prettier/prettier": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["bin/*.js", "tools/**/*.{js,cjs,mjs}"],
+      "rules": {
+        "no-console": "off",
+        "no-shadow": "off"
+      }
+    }
+  ]
+}

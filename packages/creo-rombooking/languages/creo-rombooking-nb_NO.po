@@ -1,0 +1,96 @@
+# Copyright (C) 2026 Creo Multiservice AS
+# This file is distributed under the same license as the Creo Rombooking plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Creo Rombooking 26.9.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/creo-rombooking\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Norwegian Bokmål\n"
+"Language: nb_NO\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-24T10:19:49+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: creo-rombooking\n"
+
+#. Plugin Name of the plugin
+#: creo-rombooking.php:4
+msgid "Creo Rombooking"
+msgstr "Creo Rombooking"
+
+#. Description of the plugin
+#: creo-rombooking.php:5
+#: build/creoRombookingEditor.js:1
+msgid "Room booking for members, with requests and conflict handling for administrators."
+msgstr "Rombooking for medlemmer, med forespørsler og konflikthåndtering for administratorer."
+
+#. Author of the plugin
+#: creo-rombooking.php:9
+msgid "Creo Multiservice AS"
+msgstr "Creo Multiservice AS"
+
+#: includes/class-creo-rombooking-block.php:54
+msgid "You must be logged in to book rooms."
+msgstr "Du må være innlogget for å booke rom."
+
+#: includes/class-creo-rombooking-block.php:56
+msgid "Log in"
+msgstr "Logg inn"
+
+#: includes/class-creo-rombooking-block.php:64
+msgid "Room booking is only available to members. Contact the administrator if you think this is wrong."
+msgstr "Rombooking er bare tilgjengelig for medlemmer. Ta kontakt med administrator hvis du mener dette er feil."
+
+#: includes/class-creo-rombooking-block.php:73
+msgid "Loading room booking…"
+msgstr "Laster rombooking …"
+
+#: build/creoRombookingEditor.js:1
+#: build/creoRombookingPublic.js:1
+msgid "Room booking"
+msgstr "Rombooking"
+
+#: build/creoRombookingEditor.js:1
+msgid "The booking calendar is shown here for logged-in members."
+msgstr "Bookingkalenderen vises her for innloggede medlemmer."
+
+#: build/creoRombookingPublic.js:1
+msgid "Book a room"
+msgstr "Book rom"
+
+#: build/creoRombookingPublic.js:1
+msgid "My bookings"
+msgstr "Mine bookinger"
+
+#: build/creoRombookingPublic.js:1
+msgid "Requests"
+msgstr "Forespørsler"
+
+#: build/creoRombookingPublic.js:1
+msgid "Overview"
+msgstr "Oversikt"
+
+#: build/creoRombookingPublic.js:1
+msgid "Rooms"
+msgstr "Rom"
+
+#: build/creoRombookingPublic.js:1
+msgid "See available times and book rooms in the church building."
+msgstr "Se ledige tider og book rom i menighetshuset."
+
+#: build/creoRombookingPublic.js:1
+msgid "This part is not built yet."
+msgstr "Denne delen er ikke laget ennå."
+
+#: blocks/app/block.json
+msgctxt "block title"
+msgid "Room booking"
+msgstr "Rombooking"
+
+#: blocks/app/block.json
+msgctxt "block description"
+msgid "Room booking for members, with requests and conflict handling for administrators."
+msgstr "Rombooking for medlemmer, med forespørsler og konflikthåndtering for administratorer."
