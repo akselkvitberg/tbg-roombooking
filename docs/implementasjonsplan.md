@@ -161,7 +161,60 @@ Forekomster «Utenfor åpningstid» utelates fra serier. Utløpte forslag ryddes
 
 ---
 
-## 6. Faser
+## 6. Lokal utvikling og testing
+
+### 6.1 Kom i gang
+```bash
+git clone --recurse-submodules <repo>/tbg-roombooking
+pnpm install
+pnpm wp-env start      # WordPress på localhost:8888, testinstans på :8889
+pnpm dev               # bygger og følger endringer, med automatisk oppdatering i nettleseren
+```
+Oppsettskriptet som kjører når `wp-env` starter (som `bin/wp-env-setup.js` i creo-wp):
+- bygger creo-temaet fra submodulen (byggmappen ligger ikke i git)
+- aktiverer temaet og pluginen, og lager siden «Rombooking» med blokken
+- legger inn eksempeldata fra prototypen: rom, åpningstider, unntak, bookinger, forespørsler og konflikter
+
+Tilbakestill dataene når som helst med `pnpm wp creo-rombooking seed --reset`.
+
+### 6.2 Testbrukere
+Lokalt finnes verken `bcc-login` eller tokens, så oppsettet lager faste brukere:
+
+| Bruker | Rolle | Telefon |
+|---|---|---|
+| `admin` / `password` | admin | har nummer |
+| `medlem` / `password` | medlem | har nummer (simulerer nummer fra tokenet) |
+| `medlem-uten-tlf` / `password` | medlem | mangler → feltet «Legg inn telefonnummer» vises |
+| `gjest` / `password` | innlogget, ikke medlem | får beskjed om manglende tilgang |
+
+Nummeret «fra tokenet» leses lokalt fra brukermeta, slik at begge variantene kan testes uten ekte innlogging.
+Ekte `bcc-login` kan kobles på med OIDC-nøkler i `.wp-env.override.json`, som i creo-wp.
+
+### 6.3 SMS
+Ingen SMS sendes lokalt. Meldingene lagres i hendelsesloggen og kan leses i fanen «SMS-logg» (admin) eller med
+`pnpm wp creo-rombooking sms-log`.
+
+### 6.4 Tester
+| Nivå | Verktøy | Kommando | Dekker |
+|---|---|---|---|
+| PHP | PHPUnit 9 i `wp-env` (som creo-wp) | `pnpm test:php` | ledighet (åpningstider, unntak, overlapp), serier, konflikthåndtering, rettigheter, at navn ikke lekker til medlemmer |
+| JS-enhetstester | `wp-scripts test-unit-js` (Jest) | `pnpm test:js` | dato/tid, forhåndsvisning av serier, tastaturnavigasjon |
+| Ende-til-ende + tilgjengelighet | Playwright + axe-core mot testinstansen (:8889) | `pnpm test:e2e` | alle skjermer i 1100 px og 360 px, lys og mørk modus, «book → admin godkjenner → SMS i loggen», tastatur, WCAG-sjekk |
+| Kodestil | PHPCS, ESLint, tsc, Stylelint (creo-wp-reglene) | `pnpm lint` | — |
+
+**CI (GitHub Actions):** kodestil- og typesjekkene fra creo-wp, pluss en jobb som starter `wp-env` og kjører PHPUnit og
+Playwright. Skjermbilder og axe-rapport legges ved som artefakter.
+
+### 6.5 Claude-sesjoner i skyen
+Docker kan startes med `dockerd`, og images hentes via registry-speilet `mirror.gcr.io` (Docker Hub gir 429 herfra).
+`wp-env` fungerer likevel ikke fullt her: images bygges med `apk update` over HTTPS, og byggcontainerne når verken
+sesjonens proxy eller stoler på dens sertifikat. I skyen kjøres derfor WordPress direkte på PHP 8.4
+(`php -S` + SQLite Database Integration), eller med `@wp-playground/cli`, med samme oppsettskript og eksempeldata.
+Playwright/axe og PHPUnit kjøres mot den instansen. Lokalt og i CI brukes vanlig `wp-env`.
+
+---
+
+## 7. Faser
 
 Rekkefølgen følger bestillingen: matrise i dagvisning (desktop og mobil) og skjema først, deretter admin-innboksen.
 
@@ -182,7 +235,7 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 
 ---
 
-## 7. Avklart
+## 8. Avklart
 | Spørsmål | Beslutning |
 |---|---|
 | Design | creo-temaet, ikke BCC-designsystemet |
@@ -192,7 +245,7 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Språk | Engelske kildestrenger + `nb_NO.po`; bare norsk i PoC-en |
 | Admin-skjermer | På nettsiden, bak admin-rollen |
 
-## 8. Åpne spørsmål
+## 9. Åpne spørsmål
 1. **Telefon i tokenet:** hvilket claim heter det, og er det tilgjengelig på serversiden (ID-token/brukerinfo lagret av
    `bcc-login`)? Kan verifiseres med en testbruker; frem til da brukes antakelsen over + reservefeltet.
 2. **SMS-leverandør**, og skal det sendes SMS også ved autogodkjenning?
