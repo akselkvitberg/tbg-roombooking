@@ -27,12 +27,17 @@ export default async function globalSetup(config: FullConfig) {
 
 	for (const user of users) {
 		const page = await browser.newPage({ baseURL });
+		// Only the site itself: the dashboard also loads e.g. avatars, which may never answer.
+		await page.route(
+			(url) => url.origin !== new URL(baseURL ?? '').origin,
+			(route) => route.abort()
+		);
 		await page.goto('/wp-login.php');
 		await page.fill('#user_login', user);
 		await page.fill('#user_pass', 'password');
 		await page.click('#wp-submit');
-		// The first request after a build can be slow with PHP's built-in server.
-		await page.waitForURL(/wp-admin|\/$/, { timeout: 60_000 });
+		// The login cookie is set when the redirect starts, so there is no need to wait for the page.
+		await page.waitForURL(/wp-admin|\/$/, { waitUntil: 'commit' });
 		await page.context().storageState({ path: storageState(user) });
 		await page.close();
 	}

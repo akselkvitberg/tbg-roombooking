@@ -1,6 +1,6 @@
 # Rombooking – implementasjonsplan (proof of concept)
 
-Status: utkast, 24.09.2026. Målet er en klikkbar, men ekte, WordPress-plugin i dette repoet
+Status: proof of concept ferdig (fase 0–9), 24.09.2026. Se også [flytting til creo-wp](flytting-til-creo-wp.md). Målet er en klikkbar, men ekte, WordPress-plugin i dette repoet
 (`tbg-roombooking`), bygget etter konvensjonene i `creo-wp` slik at den senere kan flyttes inn der som en ny pakke.
 
 ---
@@ -241,9 +241,9 @@ Rekkefølgen følger bestillingen: matrise i dagvisning (desktop og mobil) og sk
 | **6. Mine bookinger** (skjerm 5) | Forslag som venter på svar (Aksepter/Avslå + svarfrist), kommende bookinger og forespørsler (serier samlet), avslått/avbestilt siste 30 dager med begrunnelse, avbestilling «denne» eller «denne og alle senere», også fra matrisen | Designet i fase 6 i samme stil som admin-innboksen (mangler i prototypen) |
 | **7. Admin-matrise** (skjerm 7) | Fanen «Oversikt»: dagvisning med navn i cellene (navn, formål og antall i skjermlesernavnet), dra en booking til annet rom/tid (markør viser ny starttid), tastaturalternativ via bookingens detaljer («Flytt …»), avbestilling med begrunnelse (skjerm 9) | Flytting bekreftes alltid i en dialog med påkrevd begrunnelse |
 | **8. Rom-oppsett** (skjerm 8) | Fanen «Rom»: liste med rekkefølge (opp/ned-knapper), skjema med navn, plasser, godkjenning, aktiv, bilde fra mediebiblioteket, åpningstider per ukedag og rominstruks med advarsel mot koder/passord; stengte dager og sperrede tider med antall berørte bookinger | Rominstruksen vises på bekreftede bookinger under «Mine bookinger» |
-| **9. Kvalitet og overlevering** | Playwright-e2e + axe, bundle-størrelse, oversettelser, instruks for flytting til creo-wp | — |
+| **9. Kvalitet og overlevering** | Admin-fanene lastes som egen fil (medlemmer laster 67 KB i stedet for 139 KB JavaScript), axe i mørk modus på alle skjermer, oversettelser komplette, [instruks for flytting til creo-wp](flytting-til-creo-wp.md) | Kontrastfeil i mørk modus rettet |
 
-Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
+Fase 0–4 er kjernen i PoC-en. Alle fasene er levert som egne commits på grenen `claude/dreamy-curie-2qyxs8`.
 
 ---
 

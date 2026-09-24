@@ -1,15 +1,17 @@
-import { useEffect, useState } from '@wordpress/element';
+import { lazy, Suspense, useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import EmptyState from '../components/EmptyState';
 import Tabs, { Tab } from '../components/Tabs';
 import { Settings } from '../settings';
-import AdminInboxView from '../views/AdminInboxView';
-import AdminMatrixView from '../views/AdminMatrixView';
+import type { AdminTab } from '../views/AdminPanel';
 import BookView from '../views/BookView';
 import MyBookingsView from '../views/MyBookingsView';
-import RoomSetupView from '../views/RoomSetupView';
-import SmsLogView from '../views/SmsLogView';
+
+// The administrator's tabs are a separate file, loaded when first opened.
+const AdminPanel = lazy(
+	() =>
+		import(/* webpackChunkName: "creoRombookingAdmin" */ '../views/AdminPanel')
+);
 
 interface Props {
 	settings: Settings;
@@ -80,18 +82,16 @@ export default function App({ settings }: Props) {
 			>
 				{current.id === 'book' && <BookView settings={settings} />}
 				{current.id === 'mine' && <MyBookingsView settings={settings} />}
-				{current.id === 'requests' && <AdminInboxView settings={settings} />}
-				{current.id === 'admin-matrix' && (
-					<AdminMatrixView settings={settings} />
-				)}
-				{current.id === 'rooms' && <RoomSetupView settings={settings} />}
-				{current.id === 'sms' && <SmsLogView settings={settings} />}
-				{!['book', 'mine', 'requests', 'admin-matrix', 'rooms', 'sms'].includes(
-					current.id
-				) && (
-					<EmptyState title={current.label}>
-						{__('This part is not built yet.', 'creo-rombooking')}
-					</EmptyState>
+				{!['book', 'mine'].includes(current.id) && (
+					<Suspense
+						fallback={
+							<p className="creo-rombooking-loading" role="status">
+								{__('Loading…', 'creo-rombooking')}
+							</p>
+						}
+					>
+						<AdminPanel tab={current.id as AdminTab} settings={settings} />
+					</Suspense>
 				)}
 			</div>
 		</div>

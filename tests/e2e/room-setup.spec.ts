@@ -22,8 +22,17 @@ async function openRooms(page: Page) {
 const toast = (page: Page) =>
 	page.locator('.creo-rombooking-admin > [role=status]');
 
-const roomNames = (page: Page) =>
-	page.locator('.creo-rombooking-bookings h4').allInnerTexts();
+const names = (page: Page) => page.locator('.creo-rombooking-bookings h4');
+
+/**
+ * The room names, once the list has loaded.
+ *
+ * @param page The page.
+ */
+async function roomNames(page: Page) {
+	await expect(names(page).first()).toBeVisible();
+	return names(page).allInnerTexts();
+}
 
 test.describe('Room setup', () => {
 	as('admin');

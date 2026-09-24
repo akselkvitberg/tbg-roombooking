@@ -104,9 +104,10 @@ class Creo_Rombooking {
 		wp_enqueue_script( 'creoRombookingPublic' );
 		wp_enqueue_style( 'creoRombookingPublic' );
 
-		// Administrators choose room images from the media library.
 		if ( creo_rombooking_can_manage() ) {
+			// Administrators choose room images from the media library.
 			wp_enqueue_media();
+			$this->add_admin_translations();
 		}
 
 		$user  = wp_get_current_user();
@@ -129,6 +130,29 @@ class Creo_Rombooking {
 		);
 
 		wp_add_inline_script( 'creoRombookingPublic', "window.creoRombookingSettings = $settings;", 'before' );
+	}
+
+	/**
+	 * The administrator's tabs are a separate file that the app loads when an
+	 * administrator opens one. WordPress only loads translations for scripts
+	 * it prints itself, so the translations for that file are added here.
+	 */
+	protected function add_admin_translations() {
+		$asset = CREO_ROMBOOKING_PATH . '/build/creoRombookingAdmin.js';
+		if ( ! file_exists( $asset ) ) {
+			return;
+		}
+
+		wp_register_script( 'creoRombookingAdmin', CREO_ROMBOOKING_URI . '/build/creoRombookingAdmin.js', array(), (string) filemtime( $asset ), true );
+		$translations = load_script_textdomain( 'creoRombookingAdmin', 'creo-rombooking', CREO_ROMBOOKING_PATH . '/languages' );
+
+		if ( $translations ) {
+			wp_add_inline_script(
+				'creoRombookingPublic',
+				"wp.i18n.setLocaleData( ( $translations ).locale_data.messages, 'creo-rombooking' );",
+				'before'
+			);
+		}
 	}
 
 	/**

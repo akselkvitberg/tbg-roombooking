@@ -8,8 +8,11 @@ import {
 	seriesSummary,
 } from '../../lib/admin';
 import { capitalize, formatShortDate, formatTimeRange } from '../../lib/dates';
+import { ruleLabel } from '../../lib/mine';
 
 import KindTag from './KindTag';
+
+export { ruleLabel };
 
 interface Props {
 	items: RequestItem[];
@@ -30,14 +33,6 @@ export function whenLabel(item: RequestItem, locale: string): string {
 		);
 	}
 	return `${capitalize(formatShortDate(item.date, locale))} · ${time}`;
-}
-
-export function ruleLabel(rule: 'weekly' | 'biweekly' | 'monthly'): string {
-	return {
-		weekly: __('Weekly', 'creo-rombooking'),
-		biweekly: __('Every other week', 'creo-rombooking'),
-		monthly: __('Monthly', 'creo-rombooking'),
-	}[rule];
 }
 
 /**

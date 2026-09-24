@@ -8,8 +8,7 @@ import {
 	formatTimeRange,
 	parseDate,
 } from '../../lib/dates';
-import { closedText, Entry, laterInSeries } from '../../lib/mine';
-import { ruleLabel } from '../admin/RequestList';
+import { closedText, Entry, laterInSeries, ruleLabel } from '../../lib/mine';
 import Icon from '../Icon';
 
 import type { CancelTarget } from './CancelMineDialog';

@@ -2,7 +2,23 @@
 
 Proof of concept for rombooking for en lokal menighet, laget som en WordPress-plugin
 (`packages/creo-rombooking`) etter konvensjonene i [creo-wp](https://github.com/akselkvitberg/creo-wp-fork).
-Pluginen kan senere flyttes inn i creo-wp som en egen pakke. Se [implementasjonsplanen](docs/implementasjonsplan.md).
+Pluginen kan senere flyttes inn i creo-wp som en egen pakke. Se [implementasjonsplanen](docs/implementasjonsplan.md)
+og [instruksen for flytting til creo-wp](docs/flytting-til-creo-wp.md).
+
+## Innhold
+
+Appen monteres med blokken «Rombooking» (eller shortcoden `[creo_rombooking]`) og har disse fanene:
+
+| Fane | Hvem | Innhold |
+|---|---|---|
+| Book rom | medlemmer | Matrise per dag (rom × halvtimer) og uke (ett rom), mobilliste, bookingskjema med gjentakelse og forhåndsvisning |
+| Mine bookinger | medlemmer | Forslag fra admin (Aksepter/Avslå), kommende bookinger, avbestilling av én dato eller resten av serien, rominstruks |
+| Forespørsler | admin | Konflikter side om side, forslag til ledige rom, godkjenn, avslå, foreslå, flytt eller avbestill eksisterende, serier |
+| Oversikt | admin | Dagvisning med navn, dra-og-slipp til annet rom/tid, flytting og avbestilling fra bookingens detaljer |
+| Rom | admin | Rom, åpningstider, bilde, rominstruks, stengte dager og sperrede tider |
+| SMS-logg | admin | Meldingene som ville blitt sendt (ingen SMS-leverandør er koblet til ennå) |
+
+Alt er tilgjengelig med tastatur, testet med axe (WCAG 2.1 AA) i lys og mørk modus, på 1280 og 360 px.
 
 ## Oppsett
 
@@ -63,6 +79,7 @@ E2e-testene booker rom, så de tilbakestiller eksempeldataene først. Med `bin/p
 ## CI
 
 GitHub Actions kjører bygg, ESLint, Stylelint, tsc, Jest, PHPCS, PHPUnit (PHP 8.2) og
-Playwright med axe (WCAG 2.1 AA) på 1280 og 360 px, i lys og mørk modus.
+Playwright med axe (WCAG 2.1 AA) på 1280 og 360 px, i lys og mørk modus. Som i creo-wp kjører arbeidsflytene ved push
+til `main` og på pull requests.
 PHPUnit- og e2e-jobbene henter creo-temaet fra en privat submodul, og trenger derfor secret
 `CREO_WP_TOKEN`: en token med lesetilgang til `akselkvitberg/creo-wp-fork`.

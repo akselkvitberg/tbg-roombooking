@@ -105,3 +105,16 @@ export function formatDeadline(value: string, locale: string): string {
 		(time ?? '').slice(0, 5)
 	);
 }
+
+/**
+ * E.g. «Weekly».
+ *
+ * @param rule The repetition of a series.
+ */
+export function ruleLabel(rule: 'weekly' | 'biweekly' | 'monthly'): string {
+	return {
+		weekly: __('Weekly', 'creo-rombooking'),
+		biweekly: __('Every other week', 'creo-rombooking'),
+		monthly: __('Monthly', 'creo-rombooking'),
+	}[rule];
+}
