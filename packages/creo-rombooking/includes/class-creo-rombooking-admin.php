@@ -526,6 +526,103 @@ class Creo_Rombooking_Admin extends Creo_Rombooking_Service {
 	}
 
 	/**
+	 * Moves a booking or request to another room, date or time, for example
+	 * by dragging it in the overview. Only this date moves in a series.
+	 *
+	 * @param int   $booking_id The booking.
+	 * @param array $input      `roomId`, `date`, `start`, `end` and `reason`.
+	 * @return array{message: string}|WP_Error
+	 */
+	public function move_booking( $booking_id, array $input ) {
+		$booking = $this->find_booking( $booking_id );
+		if ( ! $booking ) {
+			return $this->not_found();
+		}
+		if ( ! in_array( $booking['status'], array( 'approved', 'requested' ), true ) ) {
+			return new WP_Error( 'creo_rombooking_handled', __( 'Only bookings and waiting requests can be moved.', 'creo-rombooking' ), array( 'status' => 409 ) );
+		}
+
+		$errors = array();
+		$room   = $this->find_room( (int) ( $input['roomId'] ?? 0 ) );
+		$date   = (string) ( $input['date'] ?? '' );
+		$start  = (int) ( $input['start'] ?? 0 );
+		$end    = (int) ( $input['end'] ?? 0 );
+		$reason = $this->reason( $input, true );
+
+		if ( is_wp_error( $reason ) ) {
+			$errors += $reason->get_error_data()['errors'];
+		}
+		if ( ! $room ) {
+			$errors['roomId'] = __( 'Choose a room.', 'creo-rombooking' );
+		} elseif ( $room['capacity'] && (int) $booking['people'] > $room['capacity'] ) {
+			/* translators: 1: room name, 2: number of people */
+			$errors['roomId'] = sprintf( __( '%1$s is too small for %2$d people.', 'creo-rombooking' ), $room['name'], $booking['people'] );
+		}
+		if ( ! Creo_Rombooking_Availability::is_date( $date ) || $date < creo_rombooking_today() ) {
+			$errors['date'] = __( 'Choose a date from today on.', 'creo-rombooking' );
+		}
+		if ( ! $this->is_slot_time( $start ) || ! $this->is_slot_time( $end ) || $end <= $start ) {
+			$errors['end'] = __( 'The end time must be after the start time.', 'creo-rombooking' );
+		}
+		if ( ! $errors && $room['id'] === (int) $booking['room_id'] && $date === $booking['date'] && $start === (int) $booking['start_min'] && $end === (int) $booking['end_min'] ) {
+			$errors['roomId'] = __( 'Choose another room or time.', 'creo-rombooking' );
+		}
+
+		if ( $errors ) {
+			return $this->validation_error( $errors );
+		}
+
+		$result = creo_rombooking_with_room_locks(
+			array( (int) $booking['room_id'], $room['id'] ),
+			function () use ( $booking, $room, $date, $start, $end, $reason ) {
+				$status = $this->check( $room['id'], $date, $start, $end, array( (int) $booking['id'] ) );
+				if ( $status !== 'free' ) {
+					return $this->validation_error( array( 'roomId' => $this->unavailable_message( $status ) ) );
+				}
+
+				$this->update_booking(
+					(int) $booking['id'],
+					array(
+						'room_id'   => $room['id'],
+						'date'      => $date,
+						'start_min' => $start,
+						'end_min'   => $end,
+					)
+				);
+				Creo_Rombooking_Notifier::log( (int) $booking['id'], 'moved', $reason );
+				return true;
+			}
+		);
+
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+
+		$to = Creo_Rombooking_Bookings::describe( $room['name'], $date, $start, $end );
+
+		Creo_Rombooking_Notifier::sms(
+			(int) $booking['user_id'],
+			sprintf(
+				/* translators: 1: old room, date and time, 2: new room, date and time, 3: the reason */
+				__( 'Room booking: Your booking (%1$s) has been moved to %2$s. Reason: %3$s', 'creo-rombooking' ),
+				$this->describe( $booking ),
+				$to,
+				$reason
+			),
+			(int) $booking['id']
+		);
+
+		return array(
+			'message' => sprintf(
+				/* translators: 1: new room, date and time, 2: name of the member */
+				__( 'The booking is moved to %1$s. %2$s gets a text message.', 'creo-rombooking' ),
+				$to,
+				$booking['user_name']
+			),
+		);
+	}
+
+	/**
 	 * Approves every waiting date in a series that is free.
 	 *
 	 * @param int $series_id The series.

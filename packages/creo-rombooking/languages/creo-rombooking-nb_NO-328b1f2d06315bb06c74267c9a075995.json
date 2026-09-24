@@ -780,6 +780,39 @@
             "%2$d date from %1$s": [
                 "%2$d dato fra %1$s",
                 "%2$d datoer fra %1$s"
+            ],
+            "Choose another room or time.": [
+                "Velg et annet rom eller en annen tid."
+            ],
+            "The booking is part of a series. Only this date is moved.": [
+                "Bookingen er en del av en serie. Bare denne datoen flyttes."
+            ],
+            "Move the booking": [
+                "Flytt bookingen"
+            ],
+            "Booking by %s": [
+                "Booking av %s"
+            ],
+            "Move\u2026": [
+                "Flytt \u2026"
+            ],
+            "Approve or decline the request under Requests.": [
+                "Godkjenn eller avsl\u00e5 foresp\u00f8rselen under Foresp\u00f8rsler."
+            ],
+            "Go to Requests": [
+                "G\u00e5 til Foresp\u00f8rsler"
+            ],
+            "%d people": [
+                "%d personer"
+            ],
+            "Choose a booking to see who booked it, move it or cancel it. With a keyboard: the up and down arrows move, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en booking for \u00e5 se hvem som har booket, flytte eller avbestille den. Med tastatur: pil opp og ned flytter, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "Choose a booking to see who booked it, move it or cancel it, or drag it to another room or time. With a keyboard: the arrow keys move, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en booking for \u00e5 se hvem som har booket, flytte eller avbestille den, eller dra den til et annet rom eller en annen tid. Med tastatur: piltastene flytter, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "%s. Choose to see details, move or cancel.": [
+                "%s. Velg for \u00e5 se detaljer, flytte eller avbestille."
             ]
         }
     }

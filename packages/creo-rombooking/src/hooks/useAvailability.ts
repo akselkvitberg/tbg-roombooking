@@ -15,10 +15,18 @@ interface State {
  * Loads the rooms once, and the availability for a date range. While a new
  * range loads, the previous one stays visible.
  *
- * @param from The first date.
- * @param to   The last date.
+ * @param from              The first date.
+ * @param to                The last date.
+ * @param fetchAvailability Loads the availability; the administrator's version includes names.
  */
-export default function useAvailability(from: string, to: string): State {
+export default function useAvailability(
+	from: string,
+	to: string,
+	fetchAvailability: (
+		from: string,
+		to: string
+	) => Promise<Availability> = getAvailability
+): State {
 	const [rooms, setRooms] = useState<Room[] | null>(null);
 	const [availability, setAvailability] = useState<Availability | null>(null);
 	const [loading, setLoading] = useState(true);
@@ -32,7 +40,7 @@ export default function useAvailability(from: string, to: string): State {
 
 		Promise.all([
 			rooms ? Promise.resolve(rooms) : getRooms(),
-			getAvailability(from, to),
+			fetchAvailability(from, to),
 		])
 			.then(([loadedRooms, loadedAvailability]) => {
 				if (!cancelled) {

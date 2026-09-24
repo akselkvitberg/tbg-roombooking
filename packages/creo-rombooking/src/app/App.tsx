@@ -5,6 +5,7 @@ import EmptyState from '../components/EmptyState';
 import Tabs, { Tab } from '../components/Tabs';
 import { Settings } from '../settings';
 import AdminInboxView from '../views/AdminInboxView';
+import AdminMatrixView from '../views/AdminMatrixView';
 import BookView from '../views/BookView';
 import MyBookingsView from '../views/MyBookingsView';
 import SmsLogView from '../views/SmsLogView';
@@ -79,8 +80,13 @@ export default function App({ settings }: Props) {
 				{current.id === 'book' && <BookView settings={settings} />}
 				{current.id === 'mine' && <MyBookingsView settings={settings} />}
 				{current.id === 'requests' && <AdminInboxView settings={settings} />}
+				{current.id === 'admin-matrix' && (
+					<AdminMatrixView settings={settings} />
+				)}
 				{current.id === 'sms' && <SmsLogView settings={settings} />}
-				{!['book', 'mine', 'requests', 'sms'].includes(current.id) && (
+				{!['book', 'mine', 'requests', 'admin-matrix', 'sms'].includes(
+					current.id
+				) && (
 					<EmptyState title={current.label}>
 						{__('This part is not built yet.', 'creo-rombooking')}
 					</EmptyState>

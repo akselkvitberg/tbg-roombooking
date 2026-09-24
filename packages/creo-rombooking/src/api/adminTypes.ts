@@ -117,3 +117,11 @@ export interface SmsLog {
 	total: number;
 	pages: number;
 }
+
+export interface MoveInput {
+	roomId: number;
+	date: string;
+	start: number;
+	end: number;
+	reason: string;
+}

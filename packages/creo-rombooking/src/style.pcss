@@ -213,7 +213,7 @@
 	}
 
 	& .creo-rombooking-matrix-row {
-		@apply grid h-14 border-0 border-t border-solid border-gray-300 dark:border-gray-600;
+		@apply relative grid h-14 border-0 border-t border-solid border-gray-300 dark:border-gray-600;
 		grid-template-columns: 176px repeat(var(--creo-rombooking-slots), minmax(0, 1fr));
 
 		&.is-head {
@@ -324,6 +324,18 @@
 
 	& .creo-rombooking-segment-time {
 		@apply font-normal tabular-nums;
+	}
+
+	/* Dragging bookings in the administrator's overview */
+
+	& .creo-rombooking-segment[draggable="true"] {
+		cursor: grab;
+	}
+
+	& .creo-rombooking-drop {
+		@apply pointer-events-none absolute bottom-1 top-1 z-20 flex items-center overflow-hidden rounded-md border-2 border-dashed border-dark-green bg-light-green-60 px-1 text-xs font-semibold tabular-nums text-dark-green dark:border-light-green dark:bg-slate-700 dark:text-light-green;
+		left: calc(176px + (100% - 176px) * var(--creo-rombooking-drop-start));
+		width: calc((100% - 176px) * var(--creo-rombooking-drop-length));
 	}
 
 	/* Week */

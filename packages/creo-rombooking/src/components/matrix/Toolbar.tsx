@@ -11,12 +11,15 @@ interface Props {
 	view: View;
 	/** E.g. «Onsdag 30. september 2026» or «Storsalen · Uke 40 · 28. sep.–4. okt. 2026». */
 	heading: string;
+	/** Whether the day and week toggle is shown. */
+	canChangeView?: boolean;
 	onDateChange: (date: string) => void;
 	onViewChange: (view: View) => void;
 }
 
 export default function Toolbar(props: Props) {
 	const { date, today, view, heading, onDateChange, onViewChange } = props;
+	const canChangeView = props.canChangeView ?? true;
 	const step = view === 'week' ? 7 : 1;
 
 	return (
@@ -78,26 +81,28 @@ export default function Toolbar(props: Props) {
 				{heading}
 			</h2>
 
-			<div
-				className="creo-rombooking-toggle"
-				role="group"
-				aria-label={__('View', 'creo-rombooking')}
-			>
-				<button
-					type="button"
-					aria-pressed={view === 'day'}
-					onClick={() => onViewChange('day')}
+			{canChangeView && (
+				<div
+					className="creo-rombooking-toggle"
+					role="group"
+					aria-label={__('View', 'creo-rombooking')}
 				>
-					{__('Day', 'creo-rombooking')}
-				</button>
-				<button
-					type="button"
-					aria-pressed={view === 'week'}
-					onClick={() => onViewChange('week')}
-				>
-					{__('Week', 'creo-rombooking')}
-				</button>
-			</div>
+					<button
+						type="button"
+						aria-pressed={view === 'day'}
+						onClick={() => onViewChange('day')}
+					>
+						{__('Day', 'creo-rombooking')}
+					</button>
+					<button
+						type="button"
+						aria-pressed={view === 'week'}
+						onClick={() => onViewChange('week')}
+					>
+						{__('Week', 'creo-rombooking')}
+					</button>
+				</div>
+			)}
 		</div>
 	);
 }

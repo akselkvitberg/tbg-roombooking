@@ -81,14 +81,19 @@ function actionText(segment: Segment): string {
  *
  * @param where   The room (day view) or the date (week view).
  * @param segment The segment.
+ * @param action  Replaces what happens when chosen, e.g. for administrators.
  */
-export function segmentLabel(where: string, segment: Segment): string {
+export function segmentLabel(
+	where: string,
+	segment: Segment,
+	action?: string
+): string {
 	return sprintf(
 		/* translators: 1: room or date, 2: time range, 3: status, 4: what happens when chosen */
 		__('%1$s, %2$s, %3$s. %4$s', 'creo-rombooking'),
 		where,
 		formatTimeRange(segment.start, segment.end),
 		statusLabel(segment.status),
-		actionText(segment)
+		action ?? actionText(segment)
 	);
 }

@@ -13,6 +13,32 @@ export interface MatrixRow {
 	segments: Segment[];
 }
 
+/**
+ * What the administrator's overview adds: who booked, and moving bookings
+ * by dragging them to another room or time.
+ */
+export interface AdminOptions {
+	text: (segment: Segment) => string | undefined;
+	description: (segment: Segment) => string | undefined;
+	actionable: (segment: Segment) => boolean;
+	/** Whether a segment can be dragged. */
+	canMove: (segment: Segment) => boolean;
+	/** A segment was dropped on a room, starting at a minute. */
+	onDrop: (
+		segment: Segment,
+		from: MatrixRow,
+		to: MatrixRow,
+		start: number
+	) => void;
+}
+
+interface Drag {
+	segment: Segment;
+	row: number;
+	/** Where in the segment it was grabbed, in minutes from its start. */
+	offset: number;
+}
+
 interface Props {
 	rows: MatrixRow[];
 	date: string;
@@ -24,6 +50,7 @@ interface Props {
 	helpId: string;
 	onChoose: (row: MatrixRow, index: number) => void;
 	onDayChange: (days: number) => void;
+	admin?: AdminOptions;
 }
 
 /**
@@ -71,6 +98,13 @@ export default function DayMatrix(props: Props) {
 	};
 	const buttons = useRef(new Map<string, HTMLButtonElement>());
 	const shouldFocus = useRef(false);
+	const drag = useRef<Drag | null>(null);
+	const [dropTarget, setDropTarget] = useState<{
+		row: number;
+		start: number;
+		end: number;
+	} | null>(null);
+	const { admin } = props;
 
 	const row = Math.min(position.row, rows.length - 1);
 	const tabStop =
@@ -111,6 +145,62 @@ export default function DayMatrix(props: Props) {
 			props.onDayChange(result.type === 'next-day' ? 1 : -1);
 		}
 	};
+
+	/**
+	 * The slot under the pointer in a row, where a dragged booking would start.
+	 *
+	 * @param event The drag event over the row.
+	 */
+	const startAt = (event: React.DragEvent<HTMLElement>): number | null => {
+		const current = drag.current;
+		const cells = event.currentTarget.querySelector<HTMLElement>(
+			'.creo-rombooking-matrix-rowhead'
+		);
+		if (!current || !cells) {
+			return null;
+		}
+		const rect = event.currentTarget.getBoundingClientRect();
+		const left = rect.left + cells.offsetWidth;
+		const fraction = (event.clientX - left) / (rect.right - left);
+		const length = current.segment.end - current.segment.start;
+		const pointer = dayStart + fraction * (dayEnd - dayStart) - current.offset;
+		const snapped = Math.round((pointer - dayStart) / slot) * slot + dayStart;
+		return Math.min(Math.max(snapped, dayStart), dayEnd - length);
+	};
+
+	const dropProps = (rowIndex: number) =>
+		admin
+			? {
+					onDragOver: (event: React.DragEvent<HTMLElement>) => {
+						const start = startAt(event);
+						if (start === null || !drag.current) {
+							return;
+						}
+						event.preventDefault();
+						event.dataTransfer.dropEffect = 'move';
+						const end =
+							start + drag.current.segment.end - drag.current.segment.start;
+						if (dropTarget?.row !== rowIndex || dropTarget.start !== start) {
+							setDropTarget({ row: rowIndex, start, end });
+						}
+					},
+					onDrop: (event: React.DragEvent<HTMLElement>) => {
+						const start = startAt(event);
+						const current = drag.current;
+						event.preventDefault();
+						setDropTarget(null);
+						drag.current = null;
+						if (start !== null && current) {
+							admin.onDrop(
+								current.segment,
+								rows[current.row],
+								rows[rowIndex],
+								start
+							);
+						}
+					},
+			  }
+			: {};
 
 	const hours: number[] = [];
 	for (let minute = dayStart; minute < dayEnd; minute += 60) {
@@ -158,6 +248,7 @@ export default function DayMatrix(props: Props) {
 						key={matrixRow.room.id}
 						className="creo-rombooking-matrix-row"
 						role="row"
+						{...dropProps(rowIndex)}
 					>
 						<div className="creo-rombooking-matrix-rowhead" role="rowheader">
 							<span className="creo-rombooking-room-name">
@@ -193,6 +284,37 @@ export default function DayMatrix(props: Props) {
 										where={matrixRow.room.name}
 										isTabStop={key === tabStopKey}
 										detail={detailFor(span)}
+										text={admin?.text(segment)}
+										description={admin?.description(segment)}
+										actionable={admin?.actionable(segment)}
+										onDragStart={
+											admin?.canMove(segment)
+												? (event) => {
+														const rect =
+															event.currentTarget.getBoundingClientRect();
+														const fraction =
+															(event.clientX - rect.left) / rect.width;
+														drag.current = {
+															segment,
+															row: rowIndex,
+															offset:
+																Math.floor(
+																	(fraction * (segment.end - segment.start)) /
+																		slot
+																) * slot,
+														};
+														event.dataTransfer.effectAllowed = 'move';
+														event.dataTransfer.setData(
+															'text/plain',
+															String(segment.period.booking?.id ?? '')
+														);
+												  }
+												: undefined
+										}
+										onDragEnd={() => {
+											drag.current = null;
+											setDropTarget(null);
+										}}
 										onChoose={() => props.onChoose(matrixRow, index)}
 										onKeyDown={onKeyDown}
 										onFocus={() => {
@@ -209,6 +331,22 @@ export default function DayMatrix(props: Props) {
 								</div>
 							);
 						})}
+						{dropTarget?.row === rowIndex && (
+							<div
+								className="creo-rombooking-drop"
+								aria-hidden="true"
+								style={
+									{
+										'--creo-rombooking-drop-start':
+											(dropTarget.start - dayStart) / (dayEnd - dayStart),
+										'--creo-rombooking-drop-length':
+											(dropTarget.end - dropTarget.start) / (dayEnd - dayStart),
+									} as React.CSSProperties
+								}
+							>
+								{formatTime(dropTarget.start)}
+							</div>
+						)}
 					</div>
 				))}
 			</div>

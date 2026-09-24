@@ -151,7 +151,7 @@ Forekomster «Utenfor åpningstid» utelates fra serier. Utløpte forslag ryddes
   - `POST admin/series/{id}/approve-free|reject-rest` (fase 4)
   - `POST admin/bookings/{id}/cancel` (påkrevd begrunnelse, valgfritt forslag om annet rom) (fase 4)
   - `GET admin/check?roomId=&date=&start=&end=&ignore=` (er rommet ledig?) · `GET admin/sms-log?page=` (fase 4)
-  - `GET admin/availability` (samme perioder, med navn og formål) · `PATCH bookings/{id}` (flytt rom/tid, fase 7)
+  - `GET admin/availability` (samme perioder, med navn og formål) · `POST admin/bookings/{id}/move` (flytt rom/dato/tid, fase 7)
   - CRUD for `rooms`, `opening-hours`, `closures` (fase 8)
 
 ---
@@ -238,7 +238,7 @@ Rekkefølgen følger bestillingen: matrise i dagvisning (desktop og mobil) og sk
 | **4. Admin-innboks** (skjerm 6, 9) | Forespørsler med konflikter øverst, side om side, forslag til ledige rom, alle fire handlinger, serie-handlinger, avbestillingsdialog med påkrevd begrunnelse, SMS-logg | Alle flytene i prototypen fungerer mot ekte data |
 | **5. Ukevisning** (skjerm 2) | WeekMatrix med blokker, ett rom om gangen (romvelger), dagene som kolonner, tastatur (opp/ned i dagen, venstre/høyre mellom dager, Page Up/Down bytter uke) | Mobil: sideveis rulling i gridet, valgt dag i synsfeltet |
 | **6. Mine bookinger** (skjerm 5) | Forslag som venter på svar (Aksepter/Avslå + svarfrist), kommende bookinger og forespørsler (serier samlet), avslått/avbestilt siste 30 dager med begrunnelse, avbestilling «denne» eller «denne og alle senere», også fra matrisen | Designet i fase 6 i samme stil som admin-innboksen (mangler i prototypen) |
-| **7. Admin-matrise** (skjerm 7) | Navn i cellene, dra til annet rom + tastaturalternativ | — |
+| **7. Admin-matrise** (skjerm 7) | Fanen «Oversikt»: dagvisning med navn i cellene (navn, formål og antall i skjermlesernavnet), dra en booking til annet rom/tid (markør viser ny starttid), tastaturalternativ via bookingens detaljer («Flytt …»), avbestilling med begrunnelse (skjerm 9) | Flytting bekreftes alltid i en dialog med påkrevd begrunnelse |
 | **8. Rom-oppsett** (skjerm 8) | Liste + skjema, åpningstider per ukedag, unntak, bilde via mediebiblioteket, rominstruks med advarsel mot koder/passord | — |
 | **9. Kvalitet og overlevering** | Playwright-e2e + axe, bundle-størrelse, oversettelser, instruks for flytting til creo-wp | — |
 
@@ -266,6 +266,8 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Flytt eksisterende (fase 4) | Bare mulig når forespørselen kolliderer med nøyaktig én booking; rom med nok plass som er ledige samme tid foreslås |
 | Svar på forslag (fase 6) | «Aksepter» flytter bookingen til foreslått rom/tid og bekrefter den, hvis tiden fortsatt er ledig. «Avslå» avbestiller bookingen/forespørselen. Ubesvarte forslag utløper (WP-Cron hver time, og når listen leses), og medlemmet får SMS |
 | Avbestilling (fase 6) | Medlemmet kan avbestille til bookingen starter, uten begrunnelse, og får SMS som kvittering. Admin varsles ikke |
+| Flytting i oversikten (fase 7) | Dra-og-slipp åpner flyttedialogen utfylt med nytt rom og ny starttid (samme varighet); tastaturbrukere åpner bookingen og velger «Flytt …». Begrunnelse er påkrevd og sendes på SMS. I serier flyttes bare den ene datoen |
+| Avbestilling fra admin (skjerm 9) | Åpnes fra bookingens detaljer i oversikten, og fra konfliktene i innboksen |
 | Ukevisning (fase 5) | Ett rom om gangen, som i prototypen. Uke 1 følger ISO 8601. På mobil (ikke i prototypen) ruller dagene sideveis inne i gridet |
 | Innsendte forespørsler (fase 4) | Innboksen viser forespørsler fra i dag og fremover, eldste først innen hver gruppe |
 
@@ -274,5 +276,4 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
    `bcc-login`)? Kan verifiseres med en testbruker; frem til da brukes antakelsen over + reservefeltet.
 2. **SMS-leverandør**, og skal det sendes SMS også ved autogodkjenning?
 3. **Svarfrist** for forslag: 24 t / 48 t / 3 dager fra prototypen er brukt, med 48 t som standard. Ok?
-4. **Avbestilling fra admin utenfor konflikter** (skjerm 9): dialogen og API-et er ferdige i fase 4, men åpnes foreløpig bare
-   fra konfliktflyten. Planen er å åpne den fra admin-matrisen (fase 7). Trengs den et annet sted også?
+

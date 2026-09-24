@@ -4,7 +4,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { formatDayAndMonth } from '../../lib/dates';
 import { indexAt, navigate } from '../../lib/navigation';
 
-import type { MatrixRow } from './DayMatrix';
+import type { AdminOptions, MatrixRow } from './DayMatrix';
 import SegmentButton from './SegmentButton';
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
 	helpId: string;
 	onChoose: (row: MatrixRow, index: number) => void;
 	onDayChange: (days: number) => void;
+	admin?: Pick<AdminOptions, 'text' | 'description' | 'actionable'>;
 }
 
 /**
@@ -98,6 +99,9 @@ export default function MobileDayList(props: Props) {
 						isTabStop={segment.start === tabStop}
 						detail="full"
 						layout="list"
+						text={props.admin?.text(segment)}
+						description={props.admin?.description(segment)}
+						actionable={props.admin?.actionable(segment)}
 						onChoose={() => props.onChoose(row, segmentIndex)}
 						onKeyDown={onKeyDown}
 						onFocus={() => {

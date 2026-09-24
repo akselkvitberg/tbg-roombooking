@@ -169,6 +169,7 @@ class Creo_Rombooking_REST {
 		$this->register_action( '/admin/series/(?P<id>\d+)/approve-free', fn( $admin, $id ) => $admin->approve_free( $id ) );
 		$this->register_action( '/admin/series/(?P<id>\d+)/reject-rest', fn( $admin, $id, $params ) => $admin->reject_rest( $id, $params ) );
 		$this->register_action( '/admin/bookings/(?P<id>\d+)/cancel', fn( $admin, $id, $params ) => $admin->cancel_booking( $id, $params ) );
+		$this->register_action( '/admin/bookings/(?P<id>\d+)/move', fn( $admin, $id, $params ) => $admin->move_booking( $id, $params ) );
 
 		register_rest_route(
 			self::NAMESPACE,

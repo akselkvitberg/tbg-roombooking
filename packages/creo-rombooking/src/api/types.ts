@@ -31,6 +31,7 @@ export interface Period {
 		id: number;
 		purpose: string;
 		seriesId: number | null;
+		people?: number;
 		userId?: number;
 		userName?: string;
 	};

@@ -5,10 +5,11 @@ import type {
 	ActionResult,
 	Alternative,
 	ProposalInput,
+	MoveInput,
 	RequestItem,
 	SmsLog,
 } from './adminTypes';
-import type { OccurrenceStatus } from './types';
+import type { Availability, OccurrenceStatus } from './types';
 
 const NAMESPACE = '/creo-rombooking/v1/admin';
 
@@ -80,3 +81,15 @@ export function getSmsLog(page: number): Promise<SmsLog> {
 		path: addQueryArgs(`${NAMESPACE}/sms-log`, { page }),
 	});
 }
+
+export function getAdminAvailability(
+	from: string,
+	to: string
+): Promise<Availability> {
+	return apiFetch<Availability>({
+		path: addQueryArgs(`${NAMESPACE}/availability`, { from, to }),
+	});
+}
+
+export const moveBooking = (id: number, input: MoveInput) =>
+	post(`bookings/${id}/move`, input);

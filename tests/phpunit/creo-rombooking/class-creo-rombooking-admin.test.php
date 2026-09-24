@@ -430,6 +430,101 @@ class Creo_Rombooking_Admin_Test extends WP_UnitTestCase {
 		$this->assertNull( $this->item( "series-$series_id" ) );
 	}
 
+	public function test_move_booking() {
+		$id    = $this->book(
+			array(
+				'roomId' => $this->rooms['Møterom 2'],
+				'date'   => $this->day( 1 ),
+				'start'  => 720,
+				'end'    => 780,
+			)
+		)[0]['id'];
+		$admin = new Creo_Rombooking_Admin();
+		$input = array(
+			'roomId' => $this->rooms['Barnerom'],
+			'date'   => $this->day( 1 ),
+			'start'  => 780,
+			'end'    => 840,
+			'reason' => 'Møterom 2 skal males.',
+		);
+
+		$this->assertArrayHasKey( 'reason', $admin->move_booking( $id, array_merge( $input, array( 'reason' => '' ) ) )->get_error_data()['errors'] );
+		$this->assertArrayHasKey(
+			'roomId',
+			$admin->move_booking(
+				$id,
+				array_merge(
+					$input,
+					array(
+						'roomId' => $this->rooms['Kafé'],
+						'date'   => $this->day( 0 ),
+					)
+				)
+			)->get_error_data()['errors'],
+			'Kafé is closed on Mondays.'
+		);
+
+		$result = $admin->move_booking( $id, $input );
+
+		$this->assertStringStartsWith( 'The booking is moved to Barnerom', $result['message'] );
+		$booking = $this->booking( $id );
+		$this->assertSame( (string) $this->rooms['Barnerom'], $booking['room_id'] );
+		$this->assertSame( '780', $booking['start_min'] );
+		$this->assertSame( 'approved', $booking['status'] );
+		$this->assertStringContainsString( 'has been moved to Barnerom', $this->last_sms_to( $this->member ) );
+		$this->assertStringEndsWith( 'Reason: Møterom 2 skal males.', $this->last_sms_to( $this->member ) );
+	}
+
+	public function test_a_booking_can_be_moved_to_overlap_its_own_time() {
+		$id = $this->book(
+			array(
+				'roomId' => $this->rooms['Møterom 2'],
+				'date'   => $this->day( 1 ),
+				'start'  => 720,
+				'end'    => 780,
+			)
+		)[0]['id'];
+
+		$result = ( new Creo_Rombooking_Admin() )->move_booking(
+			$id,
+			array(
+				'roomId' => $this->rooms['Møterom 2'],
+				'date'   => $this->day( 1 ),
+				'start'  => 750,
+				'end'    => 810,
+				'reason' => 'Senere start.',
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( '750', $this->booking( $id )['start_min'] );
+	}
+
+	public function test_a_booking_cannot_be_moved_onto_another() {
+		$id = $this->book(
+			array(
+				'roomId' => $this->rooms['Møterom 2'],
+				'date'   => $this->day( 0 ),
+				'start'  => 720,
+				'end'    => 780,
+			)
+		)[0]['id'];
+
+		// The weekly work meeting in Møterom 1 is 09:00–10:00.
+		$result = ( new Creo_Rombooking_Admin() )->move_booking(
+			$id,
+			array(
+				'roomId' => $this->rooms['Møterom 1'],
+				'date'   => $this->day( 0 ),
+				'start'  => 540,
+				'end'    => 600,
+				'reason' => 'x',
+			)
+		);
+
+		$this->assertSame( 'The room is not free at that time.', $result->get_error_data()['errors']['roomId'] );
+	}
+
 	public function test_sms_log() {
 		$this->approval();
 
