@@ -1,0 +1,24 @@
+{
+    "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+    "generator": "WP-CLI\/2.10.0",
+    "source": "build\/creoRombookingEditor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nb_NO",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Room booking for members, with requests and conflict handling for administrators.": [
+                "Rombooking for medlemmer, med foresp\u00f8rsler og konflikth\u00e5ndtering for administratorer."
+            ],
+            "Room booking": [
+                "Rombooking"
+            ],
+            "The booking calendar is shown here for logged-in members.": [
+                "Bookingkalenderen vises her for innloggede medlemmer."
+            ]
+        }
+    }
+}

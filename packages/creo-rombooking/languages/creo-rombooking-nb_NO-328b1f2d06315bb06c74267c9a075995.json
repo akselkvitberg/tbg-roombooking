@@ -1,0 +1,490 @@
+{
+    "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+    "generator": "WP-CLI\/2.10.0",
+    "source": "build\/creoRombookingPublic.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nb_NO",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Room booking": [
+                "Rombooking"
+            ],
+            "Book a room": [
+                "Book rom"
+            ],
+            "My bookings": [
+                "Mine bookinger"
+            ],
+            "Requests": [
+                "Foresp\u00f8rsler"
+            ],
+            "Overview": [
+                "Oversikt"
+            ],
+            "Rooms": [
+                "Rom"
+            ],
+            "Close": [
+                "Lukk"
+            ],
+            "Your booking": [
+                "Din booking"
+            ],
+            "New booking": [
+                "Ny booking"
+            ],
+            "This time is booked": [
+                "Tidsrommet er opptatt"
+            ],
+            "Your request goes to the administrator, who decides whether it can be approved. You get a text message with the answer.": [
+                "Foresp\u00f8rselen sendes til admin, som avgj\u00f8r om den kan godkjennes. Du f\u00e5r SMS med svaret."
+            ],
+            "Room": [
+                "Rom"
+            ],
+            "Date": [
+                "Dato"
+            ],
+            "Time": [
+                "Tid"
+            ],
+            "Available": [
+                "Ledig"
+            ],
+            "Booked": [
+                "Opptatt"
+            ],
+            "Requested": [
+                "Forespurt"
+            ],
+            "Closed": [
+                "Stengt"
+            ],
+            "Outside opening hours": [
+                "Utenfor \u00e5pningstid"
+            ],
+            "%1$s, %2$s, %3$s. %4$s": [
+                "%1$s, %2$s, %3$s. %4$s"
+            ],
+            "Choose to see details.": [
+                "Velg for detaljer."
+            ],
+            "Your request is waiting for approval. Choose to see details.": [
+                "Foresp\u00f8rselen din venter p\u00e5 godkjenning. Velg for detaljer."
+            ],
+            "This time has passed.": [
+                "Tiden har passert."
+            ],
+            "Choose to book.": [
+                "Velg for \u00e5 booke."
+            ],
+            "Choose to send a request to the administrator.": [
+                "Velg for \u00e5 sende foresp\u00f8rsel til admin."
+            ],
+            "Waiting for approval. Choose to send your own request to the administrator.": [
+                "Venter p\u00e5 godkjenning. Velg for \u00e5 sende egen foresp\u00f8rsel til admin."
+            ],
+            "%d place": [
+                "%d plass",
+                "%d plasser"
+            ],
+            "approval": [
+                "godkjenning"
+            ],
+            "automatic": [
+                "auto"
+            ],
+            "Rooms and times, %s": [
+                "Rom og tider, %s"
+            ],
+            "Legend": [
+                "Forklaring"
+            ],
+            "Times in %1$s, %2$s": [
+                "Tider i %1$s, %2$s"
+            ],
+            "Choose date": [
+                "Velg dato"
+            ],
+            "Previous day": [
+                "Forrige dag"
+            ],
+            "Next day": [
+                "Neste dag"
+            ],
+            "Today": [
+                "I dag"
+            ],
+            "View": [
+                "Visning"
+            ],
+            "Day": [
+                "Dag"
+            ],
+            "Week": [
+                "Uke"
+            ],
+            "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en ledig tid for \u00e5 booke. Med tastatur: pil opp og ned flytter, Home og End g\u00e5r til f\u00f8rste og siste tid, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en ledig tid for \u00e5 booke. Med tastatur: piltastene flytter, Home og End g\u00e5r til start og slutt p\u00e5 raden, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "Could not load available times.": [
+                "Kunne ikke laste ledige tider."
+            ],
+            "Try again": [
+                "Pr\u00f8v igjen"
+            ],
+            "Loading available times\u2026": [
+                "Laster ledige tider \u2026"
+            ],
+            "There are no rooms to book yet.": [
+                "Det er ingen rom \u00e5 booke enn\u00e5."
+            ],
+            "The end time must be after the start time.": [
+                "Til-tiden m\u00e5 v\u00e6re etter fra-tiden."
+            ],
+            "The end date must be after the start date.": [
+                "Sluttdatoen m\u00e5 v\u00e6re etter startdatoen."
+            ],
+            "The number of times must be between 2 and %d.": [
+                "Antall ganger m\u00e5 v\u00e6re mellom 2 og %d."
+            ],
+            "Enter a Norwegian mobile number with 8 digits.": [
+                "Skriv et norsk mobilnummer med 8 siffer."
+            ],
+            "Book %d times": [
+                "Book %d ganger"
+            ],
+            "Book the room": [
+                "Book rommet"
+            ],
+            "Send %d requests": [
+                "Send %d foresp\u00f8rsler"
+            ],
+            "Send request": [
+                "Send foresp\u00f8rsel"
+            ],
+            "Book and send request": [
+                "Book og send foresp\u00f8rsel"
+            ],
+            "Goes to the administrator": [
+                "G\u00e5r til admin"
+            ],
+            "The time is booked. The administrator considers the request, and you get a text message with the answer.": [
+                "Tidsrommet er opptatt. Admin vurderer foresp\u00f8rselen, og du f\u00e5r SMS med svaret."
+            ],
+            "The available ones must be approved too, because %s needs approval.": [
+                "De ledige m\u00e5 ogs\u00e5 godkjennes, fordi %s krever godkjenning."
+            ],
+            "The available ones are confirmed right away.": [
+                "De ledige bekreftes med en gang."
+            ],
+            "Partly to the administrator": [
+                "Delvis til admin"
+            ],
+            "%1$d of %2$d date is in conflict and is sent to the administrator. %3$s You get a text message.": [
+                "%1$d av %2$d forekomst er i konflikt og sendes til admin. %3$s Du f\u00e5r SMS.",
+                "%1$d av %2$d forekomster er i konflikt og sendes til admin. %3$s Du f\u00e5r SMS."
+            ],
+            "Needs approval": [
+                "Krever godkjenning"
+            ],
+            "%s is approved by the administrator. You get a text message when the request has been handled.": [
+                "%s godkjennes av admin. Du f\u00e5r SMS n\u00e5r foresp\u00f8rselen er behandlet."
+            ],
+            "Approved automatically": [
+                "Autogodkjennes"
+            ],
+            "%s is confirmed right away when the time is available. You get a text message as a receipt.": [
+                "%s bekreftes med en gang n\u00e5r tiden er ledig. Du f\u00e5r SMS som kvittering."
+            ],
+            "Could not send. Try again.": [
+                "Kunne ikke sende. Pr\u00f8v igjen."
+            ],
+            "Correct the errors before you send": [
+                "Rett opp f\u00f8r du sender"
+            ],
+            "From": [
+                "Fra"
+            ],
+            "To": [
+                "Til"
+            ],
+            "Purpose": [
+                "Form\u00e5l"
+            ],
+            "(optional)": [
+                "(valgfritt)"
+            ],
+            "%1$d of %2$d characters": [
+                "%1$d av %2$d tegn"
+            ],
+            "Repeat": [
+                "Gjenta"
+            ],
+            "Does not repeat": [
+                "Nei"
+            ],
+            "Weekly": [
+                "Ukentlig"
+            ],
+            "Every other week": [
+                "Annenhver uke"
+            ],
+            "Monthly": [
+                "M\u00e5nedlig"
+            ],
+            "Ends": [
+                "Slutter"
+            ],
+            "After a number of times": [
+                "Etter antall ganger"
+            ],
+            "Number of times": [
+                "Antall ganger"
+            ],
+            "On a date": [
+                "P\u00e5 dato"
+            ],
+            "End date": [
+                "Sluttdato"
+            ],
+            "Mobile number": [
+                "Mobilnummer"
+            ],
+            "We send the answer by text message. The number is saved for next time.": [
+                "Vi sender svar p\u00e5 SMS. Nummeret lagres til neste gang."
+            ],
+            "Cancel": [
+                "Avbryt"
+            ],
+            "Sending\u2026": [
+                "Sender \u2026"
+            ],
+            "Conflict \u2013 goes to the administrator": [
+                "Konflikt \u2013 g\u00e5r til admin"
+            ],
+            "Outside opening hours \u2013 left out": [
+                "Utenfor \u00e5pningstid \u2013 utelates"
+            ],
+            "Preview of the dates": [
+                "Forh\u00e5ndsvisning av forekomster"
+            ],
+            "%d available": [
+                "%d ledig",
+                "%d ledige"
+            ],
+            "%d conflict": [
+                "%d konflikt",
+                "%d konflikter"
+            ],
+            "%d left out": [
+                "%d utelates",
+                "%d utelates"
+            ],
+            "Status": [
+                "Status"
+            ],
+            "Confirmed": [
+                "Bekreftet"
+            ],
+            "Waiting for approval": [
+                "Venter p\u00e5 godkjenning"
+            ],
+            "Enter how many people will use the room.": [
+                "Skriv hvor mange personer som skal bruke rommet."
+            ],
+            "%1$s has room for %2$d person.": [
+                "%1$s har plass til %2$d person.",
+                "%1$s har plass til %2$d personer."
+            ],
+            "Number of people": [
+                "Antall personer"
+            ],
+            "Reason: %s": [
+                "Begrunnelse: %s"
+            ],
+            "%1$s at %2$s": [
+                "%1$s kl. %2$s"
+            ],
+            "Could not save. Try again.": [
+                "Kunne ikke lagre. Pr\u00f8v igjen."
+            ],
+            "Series": [
+                "Serie"
+            ],
+            "Decline": [
+                "Avsl\u00e5"
+            ],
+            "Text message log": [
+                "SMS-logg"
+            ],
+            "Loading\u2026": [
+                "Laster \u2026"
+            ],
+            "Previous week": [
+                "Forrige uke"
+            ],
+            "Next week": [
+                "Neste uke"
+            ],
+            "%1$s, week %2$d": [
+                "%1$s, uke %2$d"
+            ],
+            "%s (today)": [
+                "%s (i dag)"
+            ],
+            "Week %d": [
+                "Uke %d"
+            ],
+            "Choose an available time to book. With a keyboard: the up and down arrows move within a day, the left and right arrows change day, Home and End go to the start and end of the day, Page Up and Page Down change week, and Enter opens.": [
+                "Velg en ledig tid for \u00e5 booke. Med tastatur: pil opp og ned flytter innenfor en dag, pil venstre og h\u00f8yre bytter dag, Home og End g\u00e5r til start og slutt p\u00e5 dagen, Page Up og Page Down bytter uke, og Enter \u00e5pner."
+            ],
+            "Choose room": [
+                "Velg rom"
+            ],
+            "Cancel the booking?": [
+                "Avbestille bookingen?"
+            ],
+            "What do you want to cancel?": [
+                "Hva vil du avbestille?"
+            ],
+            "Only this date": [
+                "Bare denne datoen"
+            ],
+            "This and all later dates": [
+                "Denne og alle senere datoer"
+            ],
+            "%d date in the series": [
+                "%d dato i serien",
+                "%d datoer i serien"
+            ],
+            "The rest of the series": [
+                "Resten av serien"
+            ],
+            "The time becomes available for others. You get a text message as a receipt.": [
+                "Tiden blir ledig for andre. Du f\u00e5r SMS som kvittering."
+            ],
+            "Keep the booking": [
+                "Behold bookingen"
+            ],
+            "Cancel the dates": [
+                "Avbestill datoene"
+            ],
+            "Cancel the booking": [
+                "Avbestill bookingen"
+            ],
+            "Cancel the booking\u2026": [
+                "Avbestill bookingen \u2026"
+            ],
+            "All your bookings are listed under My bookings.": [
+                "Alle bookingene dine st\u00e5r under Mine bookinger."
+            ],
+            "The proposal was not answered in time": [
+                "Forslaget ble ikke besvart i tide"
+            ],
+            "You declined the proposal": [
+                "Du avslo forslaget"
+            ],
+            "Declined by the administrator": [
+                "Avsl\u00e5tt av admin"
+            ],
+            "Cancelled by you": [
+                "Avbestilt av deg"
+            ],
+            "Cancelled by the administrator": [
+                "Avbestilt av admin"
+            ],
+            "Next: %1$s \u00b7 %2$d date left": [
+                "Neste: %1$s \u00b7 %2$d dato igjen",
+                "Neste: %1$s \u00b7 %2$d datoer igjen"
+            ],
+            "%d waiting for approval": [
+                "%d venter p\u00e5 godkjenning",
+                "%d venter p\u00e5 godkjenning"
+            ],
+            "Show the dates": [
+                "Vis datoene"
+            ],
+            "Cancel %s": [
+                "Avbestill %s"
+            ],
+            "Your booking of %s is cancelled \u2013 new proposal": [
+                "Bookingen din av %s er avbestilt \u2013 nytt forslag"
+            ],
+            "Proposal instead of %s": [
+                "Forslag i stedet for %s"
+            ],
+            "Waiting for your answer": [
+                "Venter p\u00e5 svar fra deg"
+            ],
+            "You had": [
+                "Du hadde"
+            ],
+            "You asked for": [
+                "Du ba om"
+            ],
+            "The administrator proposes": [
+                "Admin foresl\u00e5r"
+            ],
+            "Message from the administrator": [
+                "Melding fra admin"
+            ],
+            "Answer by %s. Without an answer, the proposal expires.": [
+                "Svar innen %s. Uten svar utl\u00f8per forslaget."
+            ],
+            "Accept": [
+                "Aksepter"
+            ],
+            "Decline the proposal?": [
+                "Avsl\u00e5 forslaget?"
+            ],
+            "Go back": [
+                "Tilbake"
+            ],
+            "Decline the proposal": [
+                "Avsl\u00e5 forslaget"
+            ],
+            "Your booking stays cancelled. You can book another time.": [
+                "Bookingen din forblir avbestilt. Du kan booke en annen tid."
+            ],
+            "Your request is closed. You can book another time.": [
+                "Foresp\u00f8rselen din avsluttes. Du kan booke en annen tid."
+            ],
+            "Could not load your bookings.": [
+                "Kunne ikke hente bookingene dine."
+            ],
+            "Proposals to answer": [
+                "Forslag du m\u00e5 svare p\u00e5"
+            ],
+            "You have no upcoming bookings": [
+                "Du har ingen kommende bookinger"
+            ],
+            "Bookings and requests you make are shown here.": [
+                "Bookinger og foresp\u00f8rsler du lager, vises her."
+            ],
+            "Upcoming": [
+                "Kommende"
+            ],
+            "Declined or cancelled": [
+                "Avsl\u00e5tt eller avbestilt"
+            ],
+            "a booking\u0004Cancel": [
+                "Avbestill"
+            ],
+            "%2$d date from %1$s": [
+                "%2$d dato fra %1$s",
+                "%2$d datoer fra %1$s"
+            ],
+            "Room instructions": [
+                "Rominstruks"
+            ]
+        }
+    }
+}

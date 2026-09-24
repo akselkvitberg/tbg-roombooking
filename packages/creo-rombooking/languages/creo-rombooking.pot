@@ -1,0 +1,2036 @@
+# Copyright (C) 2026 Creo Multiservice AS
+# This file is distributed under the same license as the Creo Rombooking plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Creo Rombooking 26.9.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/creo-rombooking\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-24T15:59:55+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: creo-rombooking\n"
+
+#. Plugin Name of the plugin
+#: creo-rombooking.php
+msgid "Creo Rombooking"
+msgstr ""
+
+#. Description of the plugin
+#: creo-rombooking.php
+#: build/creoRombookingEditor.js:1
+msgid "Room booking for members, with requests and conflict handling for administrators."
+msgstr ""
+
+#. Author of the plugin
+#: creo-rombooking.php
+msgid "Creo Multiservice AS"
+msgstr ""
+
+#. translators: %s: date
+#: includes/class-creo-rombooking-admin.php:101
+msgid "The booking on %s is approved."
+msgstr ""
+
+#. translators: %s: room, date and time
+#: includes/class-creo-rombooking-admin.php:109
+#: includes/class-creo-rombooking-admin.php:1035
+msgid "Room booking: Your request is approved. %s."
+msgstr ""
+
+#. translators: %s: name of the member
+#: includes/class-creo-rombooking-admin.php:115
+msgid "The booking is approved. %s gets a text message."
+msgstr ""
+
+#. translators: %s: date
+#: includes/class-creo-rombooking-admin.php:145
+msgid "The date %s is declined."
+msgstr ""
+
+#. translators: 1: room, date and time, 2: the reason
+#: includes/class-creo-rombooking-admin.php:154
+msgid "Room booking: Your request for %1$s is declined. Reason: %2$s"
+msgstr ""
+
+#. translators: %s: name of the member
+#: includes/class-creo-rombooking-admin.php:163
+msgid "The request is declined. %s gets a text message with the reason."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:190
+#: includes/class-creo-rombooking-admin.php:556
+#: includes/class-creo-rombooking-bookings.php:57
+msgid "Choose a room."
+msgstr ""
+
+#. translators: 1: room name, 2: number of people
+#: includes/class-creo-rombooking-admin.php:193
+#: includes/class-creo-rombooking-admin.php:295
+#: includes/class-creo-rombooking-admin.php:559
+#: includes/class-creo-rombooking-admin.php:1112
+#: build/creoRombookingAdmin.js:15
+#: build/creoRombookingAdmin.js:20
+#: build/creoRombookingAdmin.js:41
+msgid "%1$s is too small for %2$d people."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:197
+#: includes/class-creo-rombooking-admin.php:562
+#: includes/class-creo-rombooking-rooms.php:136
+msgid "Choose a date from today on."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:201
+#: includes/class-creo-rombooking-admin.php:565
+#: includes/class-creo-rombooking-bookings.php:71
+#: includes/class-creo-rombooking-rooms.php:139
+#: build/creoRombookingAdmin.js:14
+#: build/creoRombookingAdmin.js:40
+#: build/creoRombookingPublic.js:2
+msgid "The end time must be after the start time."
+msgstr ""
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-admin.php:206
+msgid "The message can be at most %d characters."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:210
+#: build/creoRombookingAdmin.js:14
+msgid "Choose another room or time than the request."
+msgstr ""
+
+#. translators: 1: requested room, date and time, 2: proposed room, date and time, 3: optional message, 4: deadline
+#: includes/class-creo-rombooking-admin.php:244
+msgid "Room booking: We cannot give you %1$s. We propose %2$s instead.%3$s Answer by %4$s under «My bookings»."
+msgstr ""
+
+#. translators: 1: proposed room, date and time, 2: name of the member, 3: deadline
+#: includes/class-creo-rombooking-admin.php:256
+msgid "The proposal has been sent: %1$s. %2$s gets a text message and must answer by %3$s."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:280
+msgid "Only a request that conflicts with exactly one booking can be solved by moving it."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:292
+#: includes/class-creo-rombooking-admin.php:1107
+msgid "Choose another room."
+msgstr ""
+
+#. translators: 1: room, date and time, 2: new room, 3: the reason
+#. translators: 1: old room, date and time, 2: new room, date and time, 3: the reason
+#: includes/class-creo-rombooking-admin.php:334
+#: includes/class-creo-rombooking-admin.php:607
+msgid "Room booking: Your booking (%1$s) has been moved to %2$s. Reason: %3$s"
+msgstr ""
+
+#. translators: 1: name of the owner of the moved booking, 2: new room
+#: includes/class-creo-rombooking-admin.php:346
+msgid "The booking of %1$s has been moved to %2$s, and the request is approved. Both get a text message."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:368
+#: includes/class-creo-rombooking-admin.php:407
+msgid "The request no longer conflicts with a booking. Approve it instead."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:380
+msgid "A proposal can only be attached when one booking is cancelled."
+msgstr ""
+
+#. translators: %s: names of the owners of the cancelled bookings
+#: includes/class-creo-rombooking-admin.php:440
+msgid "The request is approved, and the booking of %s is cancelled. Both get a text message."
+msgstr ""
+
+#. translators: 1: room, 2: deadline
+#: includes/class-creo-rombooking-admin.php:446
+#: includes/class-creo-rombooking-admin.php:519
+msgid "A proposal of %1$s is attached, with a deadline of %2$s."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:469
+msgid "Only approved bookings can be cancelled."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:472
+msgid "The booking has already taken place."
+msgstr ""
+
+#. translators: %s: name of the member
+#: includes/class-creo-rombooking-admin.php:515
+msgid "The booking is cancelled. %s gets a text message with the reason."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:542
+msgid "Only bookings and waiting requests can be moved."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:568
+#: build/creoRombookingAdmin.js:40
+msgid "Choose another room or time."
+msgstr ""
+
+#. translators: 1: new room, date and time, 2: name of the member
+#: includes/class-creo-rombooking-admin.php:618
+msgid "The booking is moved to %1$s. %2$s gets a text message."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:655
+msgid "No waiting dates in the series are free."
+msgstr ""
+
+#. translators: %d: number of bookings
+#: includes/class-creo-rombooking-admin.php:659
+msgid "%d booking in the series is approved."
+msgid_plural "%d bookings in the series are approved."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: name of the member
+#: includes/class-creo-rombooking-admin.php:695
+msgid "The rest of the series is declined. %s gets a text message with the reason."
+msgstr ""
+
+#. translators: 1: the confirmation, 2: name of the member
+#: includes/class-creo-rombooking-admin.php:982
+msgid "%1$s %2$s gets a text message when the whole series has been handled."
+msgstr ""
+
+#. translators: 1: number approved, 2: number declined, 3: name of the member
+#: includes/class-creo-rombooking-admin.php:990
+msgid "The series has been handled: %1$d approved and %2$d declined. %3$s gets a text message."
+msgstr ""
+
+#. translators: 1: room, first date and time, 2: number approved, 3: number declined
+#: includes/class-creo-rombooking-admin.php:1013
+msgid "Room booking: Your series (%1$s) has been handled: %2$d approved, %3$d declined."
+msgstr ""
+
+#. translators: %s: the reason
+#: includes/class-creo-rombooking-admin.php:1020
+#: build/creoRombookingPublic.js:24
+msgid "Reason: %s"
+msgstr ""
+
+#. translators: 1: room, date and time, 2: the reason
+#: includes/class-creo-rombooking-admin.php:1049
+msgid "Room booking: Your booking (%1$s) is cancelled. Reason: %2$s"
+msgstr ""
+
+#. translators: 1: room, 2: deadline
+#: includes/class-creo-rombooking-admin.php:1057
+msgid "We propose %1$s at the same time instead. Answer by %2$s under «My bookings»."
+msgstr ""
+
+#. translators: 1: date, 2: time
+#: includes/class-creo-rombooking-admin.php:1164
+#: build/creoRombookingAdmin.js:4
+#: build/creoRombookingAdmin.js:11
+#: build/creoRombookingPublic.js:20
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:1182
+msgid "The time is booked. Solve the conflict first."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:1240
+#: build/creoRombookingAdmin.js:18
+msgid "Write a reason. It is sent as a text message."
+msgstr ""
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-admin.php:1244
+#: includes/class-creo-rombooking-rooms.php:146
+msgid "The reason can be at most %d characters."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:1258
+msgid "Choose a deadline."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:1267
+msgid "The request has already been handled."
+msgstr ""
+
+#: includes/class-creo-rombooking-admin.php:1274
+#: includes/class-creo-rombooking-service.php:146
+#: build/creoRombookingAdmin.js:14
+#: build/creoRombookingAdmin.js:40
+msgid "The room is closed at that time."
+msgstr ""
+
+#: includes/class-creo-rombooking-block.php:54
+#: includes/class-creo-rombooking-rest.php:335
+msgid "You must be logged in to book rooms."
+msgstr ""
+
+#: includes/class-creo-rombooking-block.php:56
+msgid "Log in"
+msgstr ""
+
+#: includes/class-creo-rombooking-block.php:64
+msgid "Room booking is only available to members. Contact the administrator if you think this is wrong."
+msgstr ""
+
+#: includes/class-creo-rombooking-block.php:73
+msgid "Loading room booking…"
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:61
+msgid "Choose a date."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:63
+msgid "The date has passed. Choose a later date."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:65
+msgid "You can book at most one year ahead."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:69
+msgid "Choose a start and end time."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:73
+msgid "The time has passed. Choose a later time."
+msgstr ""
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-bookings.php:79
+msgid "The purpose can be at most %d characters."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:84
+#: build/creoRombookingPublic.js:1
+msgid "Enter how many people will use the room."
+msgstr ""
+
+#. translators: 1: room name, 2: capacity
+#: includes/class-creo-rombooking-bookings.php:88
+#: build/creoRombookingPublic.js:2
+#: build/creoRombookingPublic.js:10
+msgid "%1$s has room for %2$d person."
+msgid_plural "%1$s has room for %2$d people."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-creo-rombooking-bookings.php:100
+#: build/creoRombookingPublic.js:3
+msgid "The end date must be after the start date."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:102
+#: includes/class-creo-rombooking-bookings.php:138
+msgid "A series can go at most one year ahead."
+msgstr ""
+
+#. translators: %d: maximum number of occurrences
+#: includes/class-creo-rombooking-bookings.php:108
+#: build/creoRombookingPublic.js:3
+msgid "The number of times must be between 2 and %d."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:117
+#: build/creoRombookingPublic.js:3
+msgid "Enter a Norwegian mobile number with 8 digits."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:176
+msgid "The room is closed at the chosen time. Choose another time or room."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:177
+msgid "All the dates are outside the opening hours. Change the time or the room."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:269
+msgid "The booking is confirmed. You will get a text message."
+msgstr ""
+
+#. translators: %d: number of bookings
+#: includes/class-creo-rombooking-bookings.php:271
+msgid "%d bookings are confirmed. You will get a text message."
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:274
+msgid "The request has been sent to the administrator. You will get a text message when it has been handled."
+msgstr ""
+
+#. translators: %d: number of requests
+#: includes/class-creo-rombooking-bookings.php:276
+msgid "%d requests have been sent to the administrator. You will get a text message when they have been handled."
+msgstr ""
+
+#. translators: 1: e.g. «3 bookings are confirmed», 2: e.g. «1 has been sent to the administrator»
+#: includes/class-creo-rombooking-bookings.php:280
+msgid "%1$s, and %2$s. You will get a text message."
+msgstr ""
+
+#. translators: %d: number of bookings
+#: includes/class-creo-rombooking-bookings.php:282
+msgid "%d booking is confirmed"
+msgid_plural "%d bookings are confirmed"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of requests
+#: includes/class-creo-rombooking-bookings.php:284
+msgid "%d has been sent to the administrator"
+msgid_plural "%d have been sent to the administrator"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of dates
+#: includes/class-creo-rombooking-bookings.php:291
+msgid "%d date was left out because the room is closed."
+msgid_plural "%d dates were left out because the room is closed."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: when the series starts, 2: number of dates
+#: includes/class-creo-rombooking-bookings.php:312
+msgid "%1$s (%2$d times)"
+msgstr ""
+
+#. translators: %s: room, date and time
+#: includes/class-creo-rombooking-bookings.php:317
+#: includes/class-creo-rombooking-mine.php:178
+msgid "Room booking: Your booking is confirmed. %s."
+msgstr ""
+
+#. translators: %s: room, date and time
+#: includes/class-creo-rombooking-bookings.php:321
+msgid "Room booking: We have received your request. %s. You will get a text message when the administrator has handled it."
+msgstr ""
+
+#. translators: 1: room, date and time, 2: confirmed, 3: waiting for approval
+#: includes/class-creo-rombooking-bookings.php:324
+msgid "Room booking: %1$s. %2$d confirmed, %3$d waiting for approval."
+msgstr ""
+
+#. translators: 1: room, 2: date, 3: time range
+#: includes/class-creo-rombooking-bookings.php:356
+msgid "%1$s, %2$s at %3$s"
+msgstr ""
+
+#: includes/class-creo-rombooking-bookings.php:386
+#: includes/class-creo-rombooking-rooms.php:426
+#: includes/class-creo-rombooking-service.php:175
+msgid "Correct the errors before you send."
+msgstr ""
+
+#: includes/class-creo-rombooking-mine.php:97
+msgid "The booking has started or already been handled, so it cannot be cancelled."
+msgstr ""
+
+#. translators: %s: room, date and time
+#: includes/class-creo-rombooking-mine.php:115
+msgid "Room booking: You have cancelled %s."
+msgstr ""
+
+#. translators: 1: room, date and time, 2: number of later dates
+#: includes/class-creo-rombooking-mine.php:118
+msgid "Room booking: You have cancelled %1$s and %2$d later date in the series."
+msgid_plural "Room booking: You have cancelled %1$s and %2$d later dates in the series."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-creo-rombooking-mine.php:126
+msgid "The booking is cancelled."
+msgstr ""
+
+#. translators: %d: number of bookings
+#: includes/class-creo-rombooking-mine.php:128
+msgid "%d booking is cancelled."
+msgid_plural "%d bookings are cancelled."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-creo-rombooking-mine.php:151
+msgid "The proposed time is no longer free. Decline the proposal and book another time."
+msgstr ""
+
+#: includes/class-creo-rombooking-mine.php:182
+msgid "The proposal is accepted, and the booking is confirmed. You will get a text message."
+msgstr ""
+
+#: includes/class-creo-rombooking-mine.php:201
+msgid "The proposal is declined."
+msgstr ""
+
+#. translators: %s: room, date and time
+#: includes/class-creo-rombooking-mine.php:245
+msgid "Room booking: The proposal of %s was not answered in time and has expired."
+msgstr ""
+
+#: includes/class-creo-rombooking-mine.php:376
+msgid "The proposal was not found."
+msgstr ""
+
+#: includes/class-creo-rombooking-mine.php:379
+msgid "The deadline for answering has passed."
+msgstr ""
+
+#: includes/class-creo-rombooking-mine.php:382
+msgid "The proposal has already been answered."
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:316
+msgid "Room booking is only available to members."
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:326
+msgid "Only administrators can do this."
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:348
+msgid "The date must be in the format YYYY-MM-DD."
+msgstr ""
+
+#: includes/class-creo-rombooking-rest.php:462
+msgid "The last date must be on or after the first date."
+msgstr ""
+
+#. translators: %d: number of days
+#: includes/class-creo-rombooking-rest.php:469
+msgid "You can get at most %d days at a time."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:46
+#: includes/class-creo-rombooking-rooms.php:124
+msgid "The room was not found."
+msgstr ""
+
+#. translators: %s: room name
+#: includes/class-creo-rombooking-rooms.php:82
+#: build/creoRombookingAdmin.js:48
+msgid "%s is saved."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:103
+msgid "The order must include every room once."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:110
+msgid "The order is saved."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:142
+msgid "Choose closed or blocked."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:178
+msgid "The closure is saved."
+msgstr ""
+
+#. translators: %d: number of bookings
+#: includes/class-creo-rombooking-rooms.php:182
+msgid "%d booking is in the period. It has not been changed; move or cancel it in the overview."
+msgid_plural "%d bookings are in the period. They have not been changed; move or cancel them in the overview."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-creo-rombooking-rooms.php:225
+msgid "The closure was not found."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:228
+msgid "The closure is removed."
+msgstr ""
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-rooms.php:246
+msgid "Write a name of at most %d characters."
+msgstr ""
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-rooms.php:250
+msgid "The description can be at most %d characters."
+msgstr ""
+
+#. translators: %d: maximum number of characters
+#: includes/class-creo-rombooking-rooms.php:254
+msgid "The instructions can be at most %d characters."
+msgstr ""
+
+#. translators: %d: maximum number of places
+#: includes/class-creo-rombooking-rooms.php:258
+msgid "Write the number of places, from 1 to %d."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:261
+msgid "Choose how bookings are approved."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:264
+msgid "Choose an image."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:274
+#: build/creoRombookingAdmin.js:47
+msgid "The closing time must be after the opening time."
+msgstr ""
+
+#: includes/class-creo-rombooking-rooms.php:279
+msgid "The opening hours of a day overlap."
+msgstr ""
+
+#: includes/class-creo-rombooking-service.php:147
+#: build/creoRombookingAdmin.js:14
+#: build/creoRombookingAdmin.js:20
+#: build/creoRombookingAdmin.js:40
+msgid "The room is not free at that time."
+msgstr ""
+
+#: includes/class-creo-rombooking-service.php:187
+msgid "The booking was not found."
+msgstr ""
+
+#: includes/helpers.php:156
+msgid "Many are booking right now. Try again."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:1
+msgid "Conflicts"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:1
+#: build/creoRombookingAdmin.js:21
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:26
+msgid "Series"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:1
+#: build/creoRombookingAdmin.js:21
+msgid "To approve"
+msgstr ""
+
+#. translators: %d: number of requests
+#: build/creoRombookingAdmin.js:2
+msgid "%d waiting"
+msgid_plural "%d waiting"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of conflicts
+#. translators: %d: number of dates
+#: build/creoRombookingAdmin.js:3
+#: build/creoRombookingAdmin.js:7
+#: build/creoRombookingPublic.js:13
+msgid "%d conflict"
+msgid_plural "%d conflicts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/creoRombookingAdmin.js:4
+msgid "manual approval"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:4
+msgid "automatic approval"
+msgstr ""
+
+#. translators: %d: number of places
+#. translators: %d: number of people the room fits
+#: build/creoRombookingAdmin.js:5
+#: build/creoRombookingPublic.js:15
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of dates
+#: build/creoRombookingAdmin.js:6
+#: build/creoRombookingPublic.js:12
+msgid "%d available"
+msgid_plural "%d available"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of dates
+#: build/creoRombookingAdmin.js:8
+#: build/creoRombookingPublic.js:14
+msgid "%d left out"
+msgid_plural "%d left out"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of dates
+#: build/creoRombookingAdmin.js:9
+msgid "%d approved"
+msgid_plural "%d approved"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of dates
+#: build/creoRombookingAdmin.js:10
+msgid "%d declined"
+msgid_plural "%d declined"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of days
+#: build/creoRombookingAdmin.js:12
+msgid "%d days"
+msgstr ""
+
+#. translators: %d: number of hours
+#: build/creoRombookingAdmin.js:13
+msgid "%d hours"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:13
+msgid "Deadline for answer"
+msgstr ""
+
+#. translators: %s: date and time
+#: build/creoRombookingAdmin.js:14
+msgid "Answer by %s. Without an answer, the proposal is deleted."
+msgstr ""
+
+#. translators: %s: name of the member
+#: build/creoRombookingAdmin.js:16
+msgid "Propose another room or time to %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:16
+#: build/creoRombookingAdmin.js:20
+#: build/creoRombookingAdmin.js:41
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingAdmin.js:45
+#: build/creoRombookingPublic.js:9
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:16
+#: build/creoRombookingPublic.js:18
+#: build/creoRombookingPublic.js:23
+msgid "Room"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:16
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingAdmin.js:41
+#: build/creoRombookingAdmin.js:47
+#: build/creoRombookingPublic.js:9
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:17
+msgid "Date"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:16
+#: build/creoRombookingAdmin.js:41
+#: build/creoRombookingAdmin.js:47
+#: build/creoRombookingAdmin.js:48
+#: build/creoRombookingPublic.js:9
+msgid "From"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:16
+#: build/creoRombookingAdmin.js:41
+#: build/creoRombookingAdmin.js:47
+#: build/creoRombookingAdmin.js:48
+#: build/creoRombookingPublic.js:9
+msgid "To"
+msgstr ""
+
+#. translators: 1: room name, 2: number of places, 3: number of people wanted
+#: build/creoRombookingAdmin.js:17
+msgid "%1$s has %2$s (%3$d wanted)"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+msgid "Message"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+#: build/creoRombookingAdmin.js:47
+#: build/creoRombookingAdmin.js:48
+#: build/creoRombookingAdmin.js:51
+#: build/creoRombookingPublic.js:10
+msgid "(optional)"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+msgid "Sent by text message. Do not write codes or passwords."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+msgid "Send proposal"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+#: build/creoRombookingAdmin.js:21
+#: build/creoRombookingAdmin.js:25
+#: build/creoRombookingAdmin.js:42
+#: build/creoRombookingPublic.js:11
+msgid "Cancel"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+#: build/creoRombookingAdmin.js:34
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingPublic.js:11
+#: build/creoRombookingPublic.js:17
+msgid "Available"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+#: build/creoRombookingPublic.js:17
+msgid "Booked"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+#: build/creoRombookingPublic.js:17
+msgid "Outside opening hours"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:17
+msgid "(required)"
+msgstr ""
+
+#. translators: %s: name of the member
+#: build/creoRombookingAdmin.js:18
+msgid "Sent by text message to %s. Do not write sensitive information, codes or passwords."
+msgstr ""
+
+#. translators: %s: name of the owner of the booking
+#: build/creoRombookingAdmin.js:19
+msgid "Cancel the booking of %s?"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:20
+#: build/creoRombookingAdmin.js:28
+#: build/creoRombookingAdmin.js:29
+#: build/creoRombookingAdmin.js:30
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:18
+msgid "Time"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:20
+#: build/creoRombookingAdmin.js:28
+#: build/creoRombookingAdmin.js:29
+#: build/creoRombookingAdmin.js:30
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:10
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:18
+msgid "Purpose"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:20
+msgid "Replaced by"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:20
+#: build/creoRombookingAdmin.js:21
+#: build/creoRombookingAdmin.js:42
+#: build/creoRombookingAdmin.js:47
+msgid "Reason"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:20
+msgid "Attach a proposal of another room"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:20
+msgid "Other room, same time"
+msgstr ""
+
+#. translators: 1: room name, 2: number of places, 3: number of people needed
+#: build/creoRombookingAdmin.js:21
+#: build/creoRombookingAdmin.js:42
+msgid "%1$s has %2$s (%3$d needed)"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:21
+#: build/creoRombookingAdmin.js:35
+msgid "Conflict"
+msgstr ""
+
+#. translators: %s: name of the owner of the booking
+#. translators: %s: name of the member
+#: build/creoRombookingAdmin.js:22
+#: build/creoRombookingAdmin.js:40
+msgid "Move the booking of %s"
+msgstr ""
+
+#. translators: 1: date and time, 2: number of people
+#: build/creoRombookingAdmin.js:23
+msgid "%1$s · %2$d person. When the booking has been moved, the new request is approved."
+msgid_plural "%1$s · %2$d people. When the booking has been moved, the new request is approved."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/creoRombookingAdmin.js:23
+#: build/creoRombookingAdmin.js:53
+#: build/creoRombookingAdmin.js:54
+msgid "New room"
+msgstr ""
+
+#. translators: %s: number of places
+#: build/creoRombookingAdmin.js:24
+msgid "%s · free at the same time"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:24
+msgid "No room with enough places is free at the same time."
+msgstr ""
+
+#. translators: %s: name of the owner of the booking
+#: build/creoRombookingAdmin.js:25
+msgid "Reason to %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:25
+msgid "Move and approve"
+msgstr ""
+
+#. translators: 1: rule, e.g. «Weekly», 2: first date, 3: time
+#: build/creoRombookingAdmin.js:26
+msgid "%1$s from %2$s · %3$s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:26
+msgid "Waiting requests"
+msgstr ""
+
+#. translators: 1: name of the member, 2: date and time
+#: build/creoRombookingAdmin.js:27
+msgid "%1$s · Sent %2$s"
+msgstr ""
+
+#. translators: 1: first date, 2: number of dates
+#: build/creoRombookingAdmin.js:28
+msgid "from %1$s, %2$d time"
+msgid_plural "from %1$s, %2$d times"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/creoRombookingAdmin.js:28
+msgid "The room needs approval"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+#: build/creoRombookingAdmin.js:39
+msgid "Decline the rest of the series"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+msgid "Decline the request"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+msgid "Decline the rest"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+msgid "Decline request"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+msgid "Approve and cancel"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+msgid "New request"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+msgid "Waiting"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+#: build/creoRombookingAdmin.js:29
+#: build/creoRombookingAdmin.js:30
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingAdmin.js:48
+msgid "Name"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+#: build/creoRombookingAdmin.js:29
+#: build/creoRombookingAdmin.js:30
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:9
+msgid "Number of people"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:28
+#: build/creoRombookingAdmin.js:29
+#: build/creoRombookingAdmin.js:35
+msgid "Sent"
+msgstr ""
+
+#. translators: %s: time range
+#: build/creoRombookingAdmin.js:29
+msgid "Overlaps %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:29
+msgid "Choose how to solve the conflict. Everyone affected gets a text message."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:29
+msgid "No conflict"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingAdmin.js:30
+msgid "The time is available. %s is set to manual approval."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "The time is available now."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "The room is closed at this time"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "The request cannot be approved. Propose another room or time, or decline it."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "Solve the conflict"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "Approve and cancel existing"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "Move existing booking"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "Propose another room or time"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+#: build/creoRombookingAdmin.js:38
+#: build/creoRombookingPublic.js:31
+msgid "Decline"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+#: build/creoRombookingAdmin.js:37
+msgid "Approve"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "Existing booking"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgid "Confirmed (series)"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:23
+msgid "Confirmed"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:30
+msgctxt "when the booking was made"
+msgid "Booked"
+msgstr ""
+
+#. translators: %s: date
+#: build/creoRombookingAdmin.js:31
+msgid "Recurring since %s"
+msgstr ""
+
+#. translators: %s: room names
+#: build/creoRombookingAdmin.js:32
+msgid "Too small: %s."
+msgstr ""
+
+#. translators: %s: room names
+#: build/creoRombookingAdmin.js:33
+msgid "Booked or closed: %s."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:33
+msgid "Free rooms with enough places"
+msgstr ""
+
+#. translators: 1: number of places, 2: time range
+#: build/creoRombookingAdmin.js:34
+msgid "At least %1$s · %2$s"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingAdmin.js:35
+msgid "Propose %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "Propose"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "No other rooms with enough places are free at this time. Propose another time."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "Dates"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:14
+msgid "Status"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "Action"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingAdmin.js:45
+#: build/creoRombookingPublic.js:17
+msgid "Closed"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+#: build/creoRombookingPublic.js:11
+msgid "Outside opening hours – left out"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "Approved"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "Declined"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "Cancelled"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:35
+msgid "Proposal sent"
+msgstr ""
+
+#. translators: 1: name, 2: purpose
+#: build/creoRombookingAdmin.js:36
+msgid "Booked: %1$s – %2$s"
+msgstr ""
+
+#. translators: %s: date
+#: build/creoRombookingAdmin.js:37
+msgid "Approve %s"
+msgstr ""
+
+#. translators: %s: date
+#: build/creoRombookingAdmin.js:38
+msgid "Decline %s"
+msgstr ""
+
+#. translators: %d: number of dates
+#: build/creoRombookingAdmin.js:39
+msgid "Approve all available (%d)"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+#: build/creoRombookingPublic.js:31
+msgid "Requests"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+msgid "Everything has been handled"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingAdmin.js:45
+#: build/creoRombookingAdmin.js:54
+#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:23
+#: build/creoRombookingPublic.js:31
+msgid "Close"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+msgid "Could not load the requests."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+#: build/creoRombookingAdmin.js:45
+#: build/creoRombookingAdmin.js:54
+#: build/creoRombookingPublic.js:23
+#: build/creoRombookingPublic.js:31
+msgid "Try again"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+msgid "Loading requests…"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+msgid "No requests are waiting"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:39
+msgid "New requests and conflicts are shown here, with conflicts first."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:42
+msgid "The booking is part of a series. Only this date is moved."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:42
+msgid "Move the booking"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:42
+#: build/creoRombookingPublic.js:19
+msgid "Cancel the booking"
+msgstr ""
+
+#. translators: %s: name of the member
+#: build/creoRombookingAdmin.js:43
+msgid "Booking by %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:43
+msgid "Move…"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:14
+msgid "Cancel the booking…"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:43
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:23
+msgid "Waiting for approval"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:43
+msgid "Approve or decline the request under Requests."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:43
+msgid "Go to Requests"
+msgstr ""
+
+#. translators: %d: number of people
+#: build/creoRombookingAdmin.js:44
+msgid "%d people"
+msgstr ""
+
+#. translators: %s: who booked, why and how many
+#: build/creoRombookingAdmin.js:45
+msgid "%s. Choose to see details, move or cancel."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+#: build/creoRombookingPublic.js:23
+msgid "Could not load available times."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+#: build/creoRombookingPublic.js:23
+msgid "Loading available times…"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+#: build/creoRombookingPublic.js:23
+msgid "There are no rooms to book yet."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+msgid "Choose a booking to see who booked it, move it or cancel it. With a keyboard: the up and down arrows move, Page Up and Page Down change day, and Enter opens."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+msgid "Choose a booking to see who booked it, move it or cancel it, or drag it to another room or time. With a keyboard: the arrow keys move, Page Up and Page Down change day, and Enter opens."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+msgid "Blocked"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+msgid "the whole day"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+msgid "Closed and blocked times"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:45
+msgid "Closed: the room cannot be used, e.g. during maintenance. Blocked: the room is set aside, e.g. for cleaning. Members see the reason in the matrix. Existing bookings are not changed."
+msgstr ""
+
+#. translators: %s: date and time
+#: build/creoRombookingAdmin.js:46
+msgid "Remove %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:46
+msgid "Remove"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingAdmin.js:47
+msgid "%s has no closed or blocked times ahead."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Add a closed or blocked time"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Type"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "The whole day"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Shown to members, e.g. «Maintenance». Do not write codes or passwords."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Add"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Image"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Choose an image of the room"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Use the image"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Change the image"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Choose an image"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Remove the image"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "The media library could not be opened."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Write a name of at most 100 characters."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:47
+msgid "Write the number of places, from 1 to 9999."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Correct before you save"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "About the room"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Number of places"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Description"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Approval"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Automatic when the time is available"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "The administrator approves"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "The room can be booked"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Rooms are not deleted, so that earlier bookings are kept. Turn this off for a room that is no longer used."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Opening hours"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Outside the opening hours, the room is shown as closed and cannot be booked."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+#: build/creoRombookingPublic.js:17
+msgid "Day"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:48
+msgid "Open"
+msgstr ""
+
+#. translators: %s: weekday
+#: build/creoRombookingAdmin.js:49
+msgid "Open on %s"
+msgstr ""
+
+#. translators: %s: weekday
+#: build/creoRombookingAdmin.js:50
+msgid "Opens on %s"
+msgstr ""
+
+#. translators: %s: weekday
+#: build/creoRombookingAdmin.js:51
+msgid "Closes on %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:51
+#: build/creoRombookingPublic.js:23
+msgid "Room instructions"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:51
+msgid "Never write codes or passwords"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:51
+msgid "Everyone with a confirmed booking of the room sees the instructions under My bookings. Write how to get in and what to do afterwards, but not door codes, alarm codes, passwords or where keys are hidden."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:51
+msgid "Instructions"
+msgstr ""
+
+#. translators: 1: characters used, 2: maximum
+#: build/creoRombookingAdmin.js:52
+#: build/creoRombookingPublic.js:11
+msgid "%1$d of %2$d characters"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:52
+msgid "Create the room"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:52
+msgid "Save the room"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingAdmin.js:53
+msgid "%s is moved."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:53
+#: build/creoRombookingPublic.js:31
+msgid "Rooms"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingAdmin.js:54
+msgid "Edit %s"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:54
+msgid "Back to the rooms"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:54
+msgid "Could not load the rooms."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:54
+#: build/creoRombookingAdmin.js:57
+#: build/creoRombookingPublic.js:31
+msgid "Loading…"
+msgstr ""
+
+#. translators: %d: number of closed or blocked times
+#: build/creoRombookingAdmin.js:55
+msgid "%d closures ahead"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:55
+msgid "Cannot be booked"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingAdmin.js:56
+msgid "Move %s up"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingAdmin.js:57
+msgid "Move %s down"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+msgid "Edit"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+#: build/creoRombookingPublic.js:31
+msgid "Text message log"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+msgid "No text messages are sent yet. This is what would have been sent, newest first."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+msgid "Could not load the log."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+msgid "No text messages yet"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+msgid "Messages about bookings, approvals and cancellations are shown here."
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+msgid "Pages"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:57
+msgid "Newer"
+msgstr ""
+
+#. translators: 1: page, 2: number of pages
+#: build/creoRombookingAdmin.js:58
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: build/creoRombookingAdmin.js:58
+msgid "Older"
+msgstr ""
+
+#: build/creoRombookingEditor.js:1
+#: build/creoRombookingPublic.js:31
+msgid "Room booking"
+msgstr ""
+
+#: build/creoRombookingEditor.js:1
+msgid "The booking calendar is shown here for logged-in members."
+msgstr ""
+
+#. translators: %d: number of bookings
+#: build/creoRombookingPublic.js:4
+msgid "Book %d times"
+msgstr ""
+
+#: build/creoRombookingPublic.js:4
+msgid "Book the room"
+msgstr ""
+
+#. translators: %d: number of requests
+#: build/creoRombookingPublic.js:5
+msgid "Send %d requests"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Send request"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Book and send request"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Goes to the administrator"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "The time is booked. The administrator considers the request, and you get a text message with the answer."
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:6
+msgid "The available ones must be approved too, because %s needs approval."
+msgstr ""
+
+#: build/creoRombookingPublic.js:6
+msgid "The available ones are confirmed right away."
+msgstr ""
+
+#: build/creoRombookingPublic.js:6
+msgid "Partly to the administrator"
+msgstr ""
+
+#. translators: 1: dates in conflict, 2: all included dates, 3: what happens to the available dates
+#: build/creoRombookingPublic.js:7
+msgid "%1$d of %2$d date is in conflict and is sent to the administrator. %3$s You get a text message."
+msgid_plural "%1$d of %2$d dates are in conflict and are sent to the administrator. %3$s You get a text message."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/creoRombookingPublic.js:7
+msgid "Needs approval"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:8
+msgid "%s is approved by the administrator. You get a text message when the request has been handled."
+msgstr ""
+
+#: build/creoRombookingPublic.js:8
+msgid "Approved automatically"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:9
+msgid "%s is confirmed right away when the time is available. You get a text message as a receipt."
+msgstr ""
+
+#: build/creoRombookingPublic.js:9
+msgid "Could not send. Try again."
+msgstr ""
+
+#: build/creoRombookingPublic.js:9
+msgid "Correct the errors before you send"
+msgstr ""
+
+#: build/creoRombookingPublic.js:9
+msgid "This time is booked"
+msgstr ""
+
+#: build/creoRombookingPublic.js:9
+msgid "Your request goes to the administrator, who decides whether it can be approved. You get a text message with the answer."
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Repeat"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Does not repeat"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+#: build/creoRombookingPublic.js:20
+msgid "Weekly"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+#: build/creoRombookingPublic.js:20
+msgid "Every other week"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+#: build/creoRombookingPublic.js:20
+msgid "Monthly"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Ends"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "After a number of times"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Number of times"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "On a date"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "End date"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Mobile number"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "We send the answer by text message. The number is saved for next time."
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Sending…"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Conflict – goes to the administrator"
+msgstr ""
+
+#: build/creoRombookingPublic.js:11
+msgid "Preview of the dates"
+msgstr ""
+
+#: build/creoRombookingPublic.js:14
+#: build/creoRombookingPublic.js:17
+msgid "Your booking"
+msgstr ""
+
+#: build/creoRombookingPublic.js:14
+msgid "All your bookings are listed under My bookings."
+msgstr ""
+
+#: build/creoRombookingPublic.js:14
+msgid "New booking"
+msgstr ""
+
+#: build/creoRombookingPublic.js:15
+msgid "approval"
+msgstr ""
+
+#: build/creoRombookingPublic.js:15
+msgid "automatic"
+msgstr ""
+
+#. translators: %s: date, e.g. «wednesday 23 September»
+#: build/creoRombookingPublic.js:16
+msgid "Rooms and times, %s"
+msgstr ""
+
+#: build/creoRombookingPublic.js:16
+msgid "Legend"
+msgstr ""
+
+#. translators: 1: room name, 2: date
+#: build/creoRombookingPublic.js:17
+msgid "Times in %1$s, %2$s"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Choose date"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Previous week"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Previous day"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Next week"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Next day"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Today"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "View"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Week"
+msgstr ""
+
+#: build/creoRombookingPublic.js:17
+msgid "Requested"
+msgstr ""
+
+#. translators: 1: room or date, 2: time range, 3: status, 4: what happens when chosen
+#: build/creoRombookingPublic.js:18
+msgid "%1$s, %2$s, %3$s. %4$s"
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "Choose to see details."
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "Your request is waiting for approval. Choose to see details."
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "This time has passed."
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "Choose to book."
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "Choose to send a request to the administrator."
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "Waiting for approval. Choose to send your own request to the administrator."
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "Cancel the booking?"
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "What do you want to cancel?"
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "Only this date"
+msgstr ""
+
+#: build/creoRombookingPublic.js:18
+msgid "This and all later dates"
+msgstr ""
+
+#. translators: %d: number of dates
+#: build/creoRombookingPublic.js:19
+msgid "%d date in the series"
+msgid_plural "%d dates in the series"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/creoRombookingPublic.js:19
+msgid "The rest of the series"
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "The time becomes available for others. You get a text message as a receipt."
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "Keep the booking"
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "Cancel the dates"
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "Could not save. Try again."
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "The proposal was not answered in time"
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "You declined the proposal"
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "Declined by the administrator"
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "Cancelled by you"
+msgstr ""
+
+#: build/creoRombookingPublic.js:19
+msgid "Cancelled by the administrator"
+msgstr ""
+
+#. translators: 1: room name, 2: week number
+#: build/creoRombookingPublic.js:21
+msgid "%1$s, week %2$d"
+msgstr ""
+
+#. translators: %s: date
+#: build/creoRombookingPublic.js:22
+msgid "%s (today)"
+msgstr ""
+
+#. translators: %d: week number
+#: build/creoRombookingPublic.js:23
+msgid "Week %d"
+msgstr ""
+
+#: build/creoRombookingPublic.js:23
+msgid "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens."
+msgstr ""
+
+#: build/creoRombookingPublic.js:23
+msgid "Choose an available time to book. With a keyboard: the up and down arrows move within a day, the left and right arrows change day, Home and End go to the start and end of the day, Page Up and Page Down change week, and Enter opens."
+msgstr ""
+
+#: build/creoRombookingPublic.js:23
+msgid "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens."
+msgstr ""
+
+#: build/creoRombookingPublic.js:23
+msgid "Choose room"
+msgstr ""
+
+#: build/creoRombookingPublic.js:24
+#: build/creoRombookingPublic.js:28
+msgctxt "a booking"
+msgid "Cancel"
+msgstr ""
+
+#. translators: 1: first date, 2: number of dates
+#: build/creoRombookingPublic.js:25
+msgid "%2$d date from %1$s"
+msgid_plural "%2$d dates from %1$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: next date, 2: number of dates
+#: build/creoRombookingPublic.js:26
+msgid "Next: %1$s · %2$d date left"
+msgid_plural "Next: %1$s · %2$d dates left"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of dates
+#: build/creoRombookingPublic.js:27
+msgid "%d waiting for approval"
+msgid_plural "%d waiting for approval"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/creoRombookingPublic.js:27
+msgid "Show the dates"
+msgstr ""
+
+#. translators: %s: date
+#: build/creoRombookingPublic.js:28
+msgid "Cancel %s"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:29
+msgid "Your booking of %s is cancelled – new proposal"
+msgstr ""
+
+#. translators: %s: room name
+#: build/creoRombookingPublic.js:30
+msgid "Proposal instead of %s"
+msgstr ""
+
+#: build/creoRombookingPublic.js:30
+msgid "Waiting for your answer"
+msgstr ""
+
+#: build/creoRombookingPublic.js:30
+msgid "You had"
+msgstr ""
+
+#: build/creoRombookingPublic.js:30
+msgid "You asked for"
+msgstr ""
+
+#: build/creoRombookingPublic.js:30
+msgid "The administrator proposes"
+msgstr ""
+
+#: build/creoRombookingPublic.js:30
+msgid "Message from the administrator"
+msgstr ""
+
+#. translators: %s: date and time
+#: build/creoRombookingPublic.js:31
+msgid "Answer by %s. Without an answer, the proposal expires."
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Accept"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Decline the proposal?"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Go back"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Decline the proposal"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Your booking stays cancelled. You can book another time."
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Your request is closed. You can book another time."
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "My bookings"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Could not load your bookings."
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Proposals to answer"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "You have no upcoming bookings"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Bookings and requests you make are shown here."
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Book a room"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Upcoming"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Declined or cancelled"
+msgstr ""
+
+#: build/creoRombookingPublic.js:31
+msgid "Overview"
+msgstr ""
+
+#: blocks/app/block.json
+msgctxt "block title"
+msgid "Room booking"
+msgstr ""
+
+#: blocks/app/block.json
+msgctxt "block description"
+msgid "Room booking for members, with requests and conflict handling for administrators."
+msgstr ""

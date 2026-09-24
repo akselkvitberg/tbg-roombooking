@@ -1,0 +1,621 @@
+{
+    "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+    "generator": "WP-CLI\/2.10.0",
+    "source": "build\/creoRombookingAdmin.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nb_NO",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Requests": [
+                "Foresp\u00f8rsler"
+            ],
+            "Rooms": [
+                "Rom"
+            ],
+            "Close": [
+                "Lukk"
+            ],
+            "Room": [
+                "Rom"
+            ],
+            "Date": [
+                "Dato"
+            ],
+            "Time": [
+                "Tid"
+            ],
+            "Available": [
+                "Ledig"
+            ],
+            "Booked": [
+                "Opptatt"
+            ],
+            "Closed": [
+                "Stengt"
+            ],
+            "Outside opening hours": [
+                "Utenfor \u00e5pningstid"
+            ],
+            "%d place": [
+                "%d plass",
+                "%d plasser"
+            ],
+            "Day": [
+                "Dag"
+            ],
+            "Could not load available times.": [
+                "Kunne ikke laste ledige tider."
+            ],
+            "Try again": [
+                "Pr\u00f8v igjen"
+            ],
+            "Loading available times\u2026": [
+                "Laster ledige tider \u2026"
+            ],
+            "There are no rooms to book yet.": [
+                "Det er ingen rom \u00e5 booke enn\u00e5."
+            ],
+            "The end time must be after the start time.": [
+                "Til-tiden m\u00e5 v\u00e6re etter fra-tiden."
+            ],
+            "From": [
+                "Fra"
+            ],
+            "To": [
+                "Til"
+            ],
+            "Purpose": [
+                "Form\u00e5l"
+            ],
+            "(optional)": [
+                "(valgfritt)"
+            ],
+            "%1$d of %2$d characters": [
+                "%1$d av %2$d tegn"
+            ],
+            "Cancel": [
+                "Avbryt"
+            ],
+            "Outside opening hours \u2013 left out": [
+                "Utenfor \u00e5pningstid \u2013 utelates"
+            ],
+            "%d available": [
+                "%d ledig",
+                "%d ledige"
+            ],
+            "%d conflict": [
+                "%d konflikt",
+                "%d konflikter"
+            ],
+            "%d left out": [
+                "%d utelates",
+                "%d utelates"
+            ],
+            "Status": [
+                "Status"
+            ],
+            "Confirmed": [
+                "Bekreftet"
+            ],
+            "Waiting for approval": [
+                "Venter p\u00e5 godkjenning"
+            ],
+            "Number of people": [
+                "Antall personer"
+            ],
+            "%1$s is too small for %2$d people.": [
+                "%1$s er for lite for %2$d personer."
+            ],
+            "Choose another room or time than the request.": [
+                "Velg et annet rom eller en annen tid enn foresp\u00f8rselen."
+            ],
+            "%1$s at %2$s": [
+                "%1$s kl. %2$s"
+            ],
+            "Write a reason. It is sent as a text message.": [
+                "Skriv en begrunnelse. Den sendes p\u00e5 SMS."
+            ],
+            "The room is closed at that time.": [
+                "Rommet er stengt i dette tidsrommet."
+            ],
+            "The room is not free at that time.": [
+                "Rommet er ikke ledig i dette tidsrommet."
+            ],
+            "Conflicts": [
+                "Konflikter"
+            ],
+            "Series": [
+                "Serie"
+            ],
+            "To approve": [
+                "Til godkjenning"
+            ],
+            "%d waiting": [
+                "%d venter p\u00e5 behandling",
+                "%d venter p\u00e5 behandling"
+            ],
+            "manual approval": [
+                "manuell godkjenning"
+            ],
+            "automatic approval": [
+                "autogodkjenning"
+            ],
+            "%d approved": [
+                "%d godkjent",
+                "%d godkjent"
+            ],
+            "%d declined": [
+                "%d avsl\u00e5tt",
+                "%d avsl\u00e5tt"
+            ],
+            "%d days": [
+                "%d dager"
+            ],
+            "%d hours": [
+                "%d timer"
+            ],
+            "Deadline for answer": [
+                "Svarfrist"
+            ],
+            "Answer by %s. Without an answer, the proposal is deleted.": [
+                "Svar innen %s. Uten svar slettes forslaget."
+            ],
+            "Propose another room or time to %s": [
+                "Foresl\u00e5 annet rom eller tid til %s"
+            ],
+            "%1$s has %2$s (%3$d wanted)": [
+                "%1$s har %2$s (%3$d \u00f8nsket)"
+            ],
+            "Message": [
+                "Melding"
+            ],
+            "Sent by text message. Do not write codes or passwords.": [
+                "Sendes p\u00e5 SMS. Ikke skriv koder eller passord."
+            ],
+            "Send proposal": [
+                "Send forslag"
+            ],
+            "(required)": [
+                "(p\u00e5krevd)"
+            ],
+            "Sent by text message to %s. Do not write sensitive information, codes or passwords.": [
+                "Sendes p\u00e5 SMS til %s. Ikke skriv sensitive opplysninger, koder eller passord."
+            ],
+            "Cancel the booking of %s?": [
+                "Avbestille bookingen til %s?"
+            ],
+            "Replaced by": [
+                "Erstattes av"
+            ],
+            "Reason": [
+                "Begrunnelse"
+            ],
+            "Attach a proposal of another room": [
+                "Legg ved et forslag om et annet rom"
+            ],
+            "Other room, same time": [
+                "Annet rom, samme tid"
+            ],
+            "%1$s has %2$s (%3$d needed)": [
+                "%1$s har %2$s (%3$d trengs)"
+            ],
+            "Conflict": [
+                "Konflikt"
+            ],
+            "Move the booking of %s": [
+                "Flytt bookingen til %s"
+            ],
+            "%1$s \u00b7 %2$d person. When the booking has been moved, the new request is approved.": [
+                "%1$s \u00b7 %2$d person. N\u00e5r bookingen er flyttet, godkjennes den nye foresp\u00f8rselen.",
+                "%1$s \u00b7 %2$d personer. N\u00e5r bookingen er flyttet, godkjennes den nye foresp\u00f8rselen."
+            ],
+            "New room": [
+                "Nytt rom"
+            ],
+            "%s \u00b7 free at the same time": [
+                "%s \u00b7 ledig i samme tidsrom"
+            ],
+            "No room with enough places is free at the same time.": [
+                "Ingen rom med nok plass er ledige i samme tidsrom."
+            ],
+            "Reason to %s": [
+                "Begrunnelse til %s"
+            ],
+            "Move and approve": [
+                "Flytt og godkjenn"
+            ],
+            "%1$s from %2$s \u00b7 %3$s": [
+                "%1$s fra %2$s \u00b7 %3$s"
+            ],
+            "Waiting requests": [
+                "Foresp\u00f8rsler som venter"
+            ],
+            "%1$s \u00b7 Sent %2$s": [
+                "%1$s \u00b7 Sendt %2$s"
+            ],
+            "from %1$s, %2$d time": [
+                "fra %1$s, %2$d gang",
+                "fra %1$s, %2$d ganger"
+            ],
+            "The room needs approval": [
+                "Rommet krever godkjenning"
+            ],
+            "Decline the rest of the series": [
+                "Avsl\u00e5 resten av serien"
+            ],
+            "Decline the request": [
+                "Avsl\u00e5 foresp\u00f8rselen"
+            ],
+            "Decline the rest": [
+                "Avsl\u00e5 resten"
+            ],
+            "Decline request": [
+                "Avsl\u00e5 foresp\u00f8rsel"
+            ],
+            "Approve and cancel": [
+                "Godkjenn og avbestill"
+            ],
+            "New request": [
+                "Ny foresp\u00f8rsel"
+            ],
+            "Waiting": [
+                "Venter"
+            ],
+            "Name": [
+                "Navn"
+            ],
+            "Sent": [
+                "Sendt"
+            ],
+            "Overlaps %s": [
+                "Overlapper %s"
+            ],
+            "Choose how to solve the conflict. Everyone affected gets a text message.": [
+                "Velg hvordan konflikten skal l\u00f8ses. Alle ber\u00f8rte f\u00e5r SMS."
+            ],
+            "No conflict": [
+                "Ingen konflikt"
+            ],
+            "The time is available. %s is set to manual approval.": [
+                "Tidsrommet er ledig. %s er satt til manuell godkjenning."
+            ],
+            "The time is available now.": [
+                "Tidsrommet er ledig n\u00e5."
+            ],
+            "The room is closed at this time": [
+                "Rommet er stengt i dette tidsrommet"
+            ],
+            "The request cannot be approved. Propose another room or time, or decline it.": [
+                "Foresp\u00f8rselen kan ikke godkjennes. Foresl\u00e5 et annet rom eller en annen tid, eller avsl\u00e5 den."
+            ],
+            "Solve the conflict": [
+                "L\u00f8s konflikten"
+            ],
+            "Approve and cancel existing": [
+                "Godkjenn og avbestill eksisterende"
+            ],
+            "Move existing booking": [
+                "Flytt eksisterende booking"
+            ],
+            "Propose another room or time": [
+                "Foresl\u00e5 annet rom eller tid"
+            ],
+            "Decline": [
+                "Avsl\u00e5"
+            ],
+            "Approve": [
+                "Godkjenn"
+            ],
+            "Existing booking": [
+                "Eksisterende booking"
+            ],
+            "Confirmed (series)": [
+                "Bekreftet (serie)"
+            ],
+            "Recurring since %s": [
+                "Fast serie siden %s"
+            ],
+            "Too small: %s.": [
+                "For lite: %s."
+            ],
+            "Booked or closed: %s.": [
+                "Opptatt eller stengt: %s."
+            ],
+            "Free rooms with enough places": [
+                "Ledige rom med nok plass"
+            ],
+            "At least %1$s \u00b7 %2$s": [
+                "Minst %1$s \u00b7 %2$s"
+            ],
+            "Propose %s": [
+                "Foresl\u00e5 %s"
+            ],
+            "Propose": [
+                "Foresl\u00e5"
+            ],
+            "No other rooms with enough places are free at this time. Propose another time.": [
+                "Ingen andre rom med nok plass er ledige i dette tidsrommet. Foresl\u00e5 et annet tidspunkt."
+            ],
+            "Dates": [
+                "Forekomster"
+            ],
+            "Action": [
+                "Handling"
+            ],
+            "Approved": [
+                "Godkjent"
+            ],
+            "Declined": [
+                "Avsl\u00e5tt"
+            ],
+            "Cancelled": [
+                "Avbestilt"
+            ],
+            "Proposal sent": [
+                "Forslag sendt"
+            ],
+            "Booked: %1$s \u2013 %2$s": [
+                "Opptatt: %1$s \u2013 %2$s"
+            ],
+            "Approve %s": [
+                "Godkjenn %s"
+            ],
+            "Decline %s": [
+                "Avsl\u00e5 %s"
+            ],
+            "Approve all available (%d)": [
+                "Godkjenn alle ledige (%d)"
+            ],
+            "Everything has been handled": [
+                "Alt er behandlet"
+            ],
+            "Could not load the requests.": [
+                "Kunne ikke hente foresp\u00f8rslene."
+            ],
+            "Loading requests\u2026": [
+                "Henter foresp\u00f8rsler \u2026"
+            ],
+            "No requests are waiting": [
+                "Ingen foresp\u00f8rsler venter"
+            ],
+            "New requests and conflicts are shown here, with conflicts first.": [
+                "Nye foresp\u00f8rsler og konflikter vises her, med konflikter \u00f8verst."
+            ],
+            "Text message log": [
+                "SMS-logg"
+            ],
+            "No text messages are sent yet. This is what would have been sent, newest first.": [
+                "Ingen SMS sendes enn\u00e5. Her er det som ville blitt sendt, nyeste f\u00f8rst."
+            ],
+            "Could not load the log.": [
+                "Kunne ikke hente loggen."
+            ],
+            "Loading\u2026": [
+                "Laster \u2026"
+            ],
+            "No text messages yet": [
+                "Ingen SMS enn\u00e5"
+            ],
+            "Messages about bookings, approvals and cancellations are shown here.": [
+                "Meldinger om bookinger, godkjenninger og avbestillinger vises her."
+            ],
+            "Pages": [
+                "Sider"
+            ],
+            "Newer": [
+                "Nyere"
+            ],
+            "Page %1$d of %2$d": [
+                "Side %1$d av %2$d"
+            ],
+            "Older": [
+                "Eldre"
+            ],
+            "when the booking was made\u0004Booked": [
+                "Booket"
+            ],
+            "Cancel the booking": [
+                "Avbestill bookingen"
+            ],
+            "Cancel the booking\u2026": [
+                "Avbestill bookingen \u2026"
+            ],
+            "Choose another room or time.": [
+                "Velg et annet rom eller en annen tid."
+            ],
+            "The booking is part of a series. Only this date is moved.": [
+                "Bookingen er en del av en serie. Bare denne datoen flyttes."
+            ],
+            "Move the booking": [
+                "Flytt bookingen"
+            ],
+            "Booking by %s": [
+                "Booking av %s"
+            ],
+            "Move\u2026": [
+                "Flytt \u2026"
+            ],
+            "Approve or decline the request under Requests.": [
+                "Godkjenn eller avsl\u00e5 foresp\u00f8rselen under Foresp\u00f8rsler."
+            ],
+            "Go to Requests": [
+                "G\u00e5 til Foresp\u00f8rsler"
+            ],
+            "%d people": [
+                "%d personer"
+            ],
+            "Choose a booking to see who booked it, move it or cancel it. With a keyboard: the up and down arrows move, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en booking for \u00e5 se hvem som har booket, flytte eller avbestille den. Med tastatur: pil opp og ned flytter, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "Choose a booking to see who booked it, move it or cancel it, or drag it to another room or time. With a keyboard: the arrow keys move, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en booking for \u00e5 se hvem som har booket, flytte eller avbestille den, eller dra den til et annet rom eller en annen tid. Med tastatur: piltastene flytter, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "%s. Choose to see details, move or cancel.": [
+                "%s. Velg for \u00e5 se detaljer, flytte eller avbestille."
+            ],
+            "%s is saved.": [
+                "%s er lagret."
+            ],
+            "The closing time must be after the opening time.": [
+                "Stengetiden m\u00e5 v\u00e6re etter \u00e5pningstiden."
+            ],
+            "Room instructions": [
+                "Rominstruks"
+            ],
+            "Blocked": [
+                "Sperret"
+            ],
+            "the whole day": [
+                "hele dagen"
+            ],
+            "Closed and blocked times": [
+                "Stengte dager og sperrede tider"
+            ],
+            "Closed: the room cannot be used, e.g. during maintenance. Blocked: the room is set aside, e.g. for cleaning. Members see the reason in the matrix. Existing bookings are not changed.": [
+                "Stengt: rommet kan ikke brukes, for eksempel ved vedlikehold. Sperret: rommet er satt av, for eksempel til rengj\u00f8ring. Medlemmene ser begrunnelsen i matrisen. Eksisterende bookinger endres ikke."
+            ],
+            "Remove %s": [
+                "Fjern %s"
+            ],
+            "Remove": [
+                "Fjern"
+            ],
+            "%s has no closed or blocked times ahead.": [
+                "%s har ingen stengte dager eller sperrede tider fremover."
+            ],
+            "Add a closed or blocked time": [
+                "Legg til stengt dag eller sperret tid"
+            ],
+            "Type": [
+                "Type"
+            ],
+            "The whole day": [
+                "Hele dagen"
+            ],
+            "Shown to members, e.g. \u00abMaintenance\u00bb. Do not write codes or passwords.": [
+                "Vises for medlemmene, for eksempel \u00abVedlikehold\u00bb. Ikke skriv koder eller passord."
+            ],
+            "Add": [
+                "Legg til"
+            ],
+            "Image": [
+                "Bilde"
+            ],
+            "Choose an image of the room": [
+                "Velg et bilde av rommet"
+            ],
+            "Use the image": [
+                "Bruk bildet"
+            ],
+            "Change the image": [
+                "Bytt bilde"
+            ],
+            "Choose an image": [
+                "Velg bilde"
+            ],
+            "Remove the image": [
+                "Fjern bildet"
+            ],
+            "The media library could not be opened.": [
+                "Mediebiblioteket kunne ikke \u00e5pnes."
+            ],
+            "Write a name of at most 100 characters.": [
+                "Skriv et navn p\u00e5 maks 100 tegn."
+            ],
+            "Write the number of places, from 1 to 9999.": [
+                "Skriv antall plasser, fra 1 til 9999."
+            ],
+            "Correct before you save": [
+                "Rett opp f\u00f8r du lagrer"
+            ],
+            "About the room": [
+                "Om rommet"
+            ],
+            "Number of places": [
+                "Antall plasser"
+            ],
+            "Description": [
+                "Beskrivelse"
+            ],
+            "Approval": [
+                "Godkjenning"
+            ],
+            "Automatic when the time is available": [
+                "Automatisk n\u00e5r tiden er ledig"
+            ],
+            "The administrator approves": [
+                "Admin godkjenner"
+            ],
+            "The room can be booked": [
+                "Rommet kan bookes"
+            ],
+            "Rooms are not deleted, so that earlier bookings are kept. Turn this off for a room that is no longer used.": [
+                "Rom slettes ikke, slik at tidligere bookinger beholdes. Sl\u00e5 av dette for et rom som ikke brukes lenger."
+            ],
+            "Opening hours": [
+                "\u00c5pningstider"
+            ],
+            "Outside the opening hours, the room is shown as closed and cannot be booked.": [
+                "Utenfor \u00e5pningstiden vises rommet som stengt og kan ikke bookes."
+            ],
+            "Open": [
+                "\u00c5pent"
+            ],
+            "Open on %s": [
+                "\u00c5pent p\u00e5 %s"
+            ],
+            "Opens on %s": [
+                "\u00c5pner p\u00e5 %s"
+            ],
+            "Closes on %s": [
+                "Stenger p\u00e5 %s"
+            ],
+            "Never write codes or passwords": [
+                "Skriv aldri koder eller passord"
+            ],
+            "Everyone with a confirmed booking of the room sees the instructions under My bookings. Write how to get in and what to do afterwards, but not door codes, alarm codes, passwords or where keys are hidden.": [
+                "Alle som har en bekreftet booking av rommet, ser instruksen under Mine bookinger. Skriv hvordan man kommer inn og hva man skal gj\u00f8re etterp\u00e5, men ikke d\u00f8rkoder, alarmkoder, passord eller hvor n\u00f8kler ligger gjemt."
+            ],
+            "Instructions": [
+                "Instruks"
+            ],
+            "Create the room": [
+                "Opprett rommet"
+            ],
+            "Save the room": [
+                "Lagre rommet"
+            ],
+            "%s is moved.": [
+                "%s er flyttet."
+            ],
+            "Edit %s": [
+                "Rediger %s"
+            ],
+            "Back to the rooms": [
+                "Tilbake til rommene"
+            ],
+            "Could not load the rooms.": [
+                "Kunne ikke hente rommene."
+            ],
+            "%d closures ahead": [
+                "%d unntak fremover"
+            ],
+            "Cannot be booked": [
+                "Kan ikke bookes"
+            ],
+            "Move %s up": [
+                "Flytt %s opp"
+            ],
+            "Move %s down": [
+                "Flytt %s ned"
+            ],
+            "Edit": [
+                "Rediger"
+            ]
+        }
+    }
+}

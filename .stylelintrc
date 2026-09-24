@@ -1,0 +1,18 @@
+{
+  "extends": ["@wordpress/stylelint-config"],
+  "ignoreFiles": ["packages/*/build/**", "vendor-theme/**"],
+  "rules": {
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"]
+    }],
+    "at-rule-empty-line-before": null,
+    "no-descending-specificity": null,
+    "selector-class-pattern": null,
+    "value-keyword-case": ["lower", {
+      "ignoreFunctions": "/theme/"
+    }],
+    "length-zero-no-unit": [true, {
+      "ignore": ["custom-properties"]
+    }]
+  }
+}

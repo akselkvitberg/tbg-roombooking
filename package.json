@@ -1,0 +1,46 @@
+{
+  "private": true,
+  "name": "tbg-roombooking",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r --parallel --stream --color dev",
+    "build": "pnpm -r --parallel --stream --color build",
+    "build:theme": "./bin/build-theme.sh",
+    "wp": "wp-env run cli wp --",
+    "lint": "pnpm lint:js && pnpm lint:css && pnpm lint:types && pnpm lint:php",
+    "lint:js": "wp-scripts lint-js",
+    "lint:css": "wp-scripts lint-style",
+    "lint:types": "tsc",
+    "lint:php": "npm run composer phpcs",
+    "test:php": "wp-env run --env-cwd=tbg-roombooking tests-cli vendor/bin/phpunit",
+    "test:js": "wp-scripts test-unit-js --config jest.config.cjs",
+    "composer": "wp-env run --env-cwd=tbg-roombooking tests-cli composer",
+    "i18n-update": "npm run composer run-script i18n-all",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "1.63.0",
+    "@types/jest": "^29.5.0",
+    "@wordpress/env": "10.5.0",
+    "@wordpress/scripts": "30.4.0",
+    "react": "^18.0.0",
+    "typescript": "5.5.4"
+  },
+  "packageManager": "pnpm@9.12.3",
+  "engines": {
+    "pnpm": "^9",
+    "node": "^18 || ^20 || ^22"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "^18.3.3",
+      "@types/react-dom": "^18.3.0",
+      "@types/webpack": "^5.28.0",
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0",
+      "tailwindcss": "3.3.2",
+      "@types/minimatch": "5.1.2"
+    }
+  }
+}

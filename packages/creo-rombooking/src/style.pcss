@@ -1,0 +1,1068 @@
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * The app is placed inside the theme's `.prose` content. `not-prose` on the
+ * root opts out of the typography styles, and all rules below are scoped to
+ * `.creo-rombooking` so they win over the theme's `.prose a[href]` links.
+ */
+.creo-rombooking {
+	box-sizing: border-box;
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+
+	& *,
+	& *::before,
+	& *::after {
+		box-sizing: border-box;
+	}
+
+	/* One visible focus style for all controls, in the theme's colors. */
+	& :focus {
+		outline: none;
+	}
+
+	& :focus-visible {
+		outline: 2px solid var(--wp--preset--color--dark-green);
+		outline-offset: 2px;
+	}
+
+	/* The theme's form styles add a blue focus ring; use the theme's green instead. */
+	& input,
+	& select,
+	& textarea,
+	& input:focus,
+	& select:focus,
+	& textarea:focus {
+		--tw-ring-color: var(--wp--preset--color--dark-green);
+	}
+
+	& .creo-rombooking-button,
+	& a.creo-rombooking-button[href] {
+		@apply inline-flex cursor-pointer items-center whitespace-nowrap rounded-full border-2 border-transparent px-3 py-1.5 text-sm font-medium no-underline transition-colors;
+		@apply text-white bg-dark-green hover:bg-dark-green-80 dark:text-black dark:bg-light-green dark:hover:bg-light-green-80;
+	}
+
+	& .creo-rombooking-notice {
+		@apply rounded border border-solid border-gray-300 bg-white p-6 dark:border-gray-600 dark:bg-slate-800;
+	}
+
+	& .creo-rombooking-notice > p {
+		@apply m-0;
+	}
+
+	& .creo-rombooking-notice > p + p {
+		@apply mt-4;
+	}
+
+	& .creo-rombooking-loading {
+		@apply m-0 py-8 text-center text-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-tabs {
+		@apply mb-6 flex flex-wrap gap-1 border-0 border-b border-solid border-gray-300 dark:border-gray-600;
+	}
+
+	& .creo-rombooking-tab {
+		@apply -mb-px cursor-pointer border-0 border-b-2 border-solid border-transparent bg-transparent px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300;
+		@apply hover:text-dark-green dark:hover:text-light-green;
+
+		&.is-selected {
+			@apply border-dark-green text-dark-green dark:border-light-green dark:text-light-green;
+		}
+	}
+
+	& .creo-rombooking-sr {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	& .creo-rombooking-icon {
+		@apply block flex-none;
+	}
+
+	& .creo-rombooking-muted {
+		@apply m-0 text-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-help {
+		@apply m-0 text-xs text-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-button.is-secondary {
+		@apply border border-solid border-gray-400 bg-white text-gray-900 hover:bg-gray-100 dark:border-gray-500 dark:bg-slate-800 dark:text-gray-100 dark:hover:bg-slate-700;
+	}
+
+	& .creo-rombooking-button:disabled {
+		@apply cursor-default opacity-60;
+	}
+
+	& .creo-rombooking-icon-button {
+		@apply inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-slate-700;
+	}
+
+	& .creo-rombooking-icon-button.is-outlined {
+		@apply border border-solid border-gray-400 dark:border-gray-500;
+	}
+
+	& .creo-rombooking-input {
+		@apply h-10 rounded border border-solid border-gray-400 bg-white px-3 text-base text-gray-900 dark:border-gray-500 dark:bg-slate-800 dark:text-gray-100;
+	}
+
+	& .creo-rombooking-field {
+		@apply flex flex-col gap-1.5;
+
+		& > label {
+			@apply text-sm font-medium;
+		}
+	}
+
+	& .creo-rombooking-book {
+		@apply flex flex-col gap-4;
+	}
+
+	/* Toolbar */
+
+	& .creo-rombooking-toolbar {
+		@apply flex flex-wrap items-center gap-3;
+	}
+
+	& .creo-rombooking-datenav {
+		@apply flex flex-wrap items-center gap-2;
+	}
+
+	& .creo-rombooking-heading {
+		@apply m-0 flex-grow text-base font-semibold;
+	}
+
+	& .creo-rombooking-toggle {
+		@apply inline-flex gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-slate-800;
+
+		& button {
+			@apply min-h-[36px] cursor-pointer rounded-md border-0 bg-transparent px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-slate-700;
+		}
+
+		& button[aria-pressed="true"] {
+			@apply bg-white font-semibold text-gray-900 shadow dark:bg-slate-600 dark:text-white;
+			box-shadow: inset 0 -2px 0 var(--wp--preset--color--dark-green);
+		}
+	}
+
+	/* Legend */
+
+	& .creo-rombooking-legend {
+		@apply m-0 flex list-none flex-wrap items-center gap-x-5 gap-y-2 p-0 text-sm;
+
+		& li {
+			@apply m-0 flex items-center gap-2;
+		}
+	}
+
+	& .creo-rombooking-swatch {
+		@apply flex h-6 w-8 flex-none items-center justify-center rounded border border-solid border-transparent;
+	}
+
+	/* Status colors, shared by the matrix, the list and the legend. */
+
+	& .creo-rombooking-segment,
+	& .creo-rombooking-swatch {
+
+		&.is-free {
+			@apply border-gray-400 bg-white text-dark-green dark:border-gray-500 dark:bg-slate-900 dark:text-light-green;
+		}
+
+		&.is-busy {
+			@apply bg-gray-200 text-gray-900 dark:bg-slate-600 dark:text-white;
+		}
+
+		&.is-requested,
+		&.is-mine-requested {
+			@apply border border-dashed border-amber-700 bg-amber-50 text-amber-900 dark:border-amber-400 dark:bg-amber-900 dark:text-amber-50;
+		}
+
+		&.is-closed {
+			@apply text-gray-700 dark:text-gray-200;
+			background: repeating-linear-gradient(135deg, #f3f4f6 0 5px, #e5e7eb 5px 10px);
+		}
+
+		&.is-mine {
+			@apply bg-dark-green text-white dark:bg-light-green dark:text-black;
+		}
+	}
+
+	/* Matrix */
+
+	& .creo-rombooking-matrix-scroll {
+		@apply overflow-x-auto rounded-lg border border-solid border-gray-300 bg-white dark:border-gray-600 dark:bg-slate-900;
+	}
+
+	& .creo-rombooking-matrix {
+		min-width: calc(176px + var(--creo-rombooking-slots) * 26px);
+
+		&[aria-busy="true"] {
+			@apply opacity-60;
+		}
+	}
+
+	& .creo-rombooking-matrix-row {
+		@apply relative grid h-14 border-0 border-t border-solid border-gray-300 dark:border-gray-600;
+		grid-template-columns: 176px repeat(var(--creo-rombooking-slots), minmax(0, 1fr));
+
+		&.is-head {
+			@apply h-9 border-t-0 bg-gray-50 dark:bg-slate-800;
+		}
+	}
+
+	& .creo-rombooking-matrix-rowhead {
+		@apply sticky left-0 z-10 flex min-w-0 flex-col justify-center border-0 border-r border-solid border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-slate-900;
+	}
+
+	& .creo-rombooking-matrix-row.is-head .creo-rombooking-matrix-rowhead {
+		@apply bg-gray-50 text-xs font-medium text-gray-600 dark:bg-slate-800 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-room-name {
+		@apply whitespace-nowrap text-sm font-medium;
+	}
+
+	& .creo-rombooking-room-meta {
+		@apply whitespace-nowrap text-xs text-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-matrix-hour {
+		@apply flex items-center border-0 border-l border-solid border-gray-300 pl-1 text-xs tabular-nums text-gray-600 dark:border-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-matrix-cell {
+		@apply relative min-w-0 border-0 border-l border-solid border-gray-100 dark:border-slate-800;
+
+		&[data-hour-start] {
+			@apply border-gray-300 dark:border-gray-600;
+		}
+	}
+
+	/* Segments */
+
+	& .creo-rombooking-segment {
+		@apply relative flex h-full w-full cursor-pointer items-center gap-1 overflow-hidden border-0 p-0 px-1.5 text-left text-xs font-medium;
+
+		/* A ring in the page color inside the outline keeps focus visible on every status color. */
+		&:focus-visible {
+			z-index: 3;
+			outline-width: 3px;
+			outline-offset: -3px;
+			box-shadow: inset 0 0 0 5px #fff;
+		}
+
+		&.is-grid:not(.is-free) {
+			@apply rounded-md;
+		}
+
+		&.is-free {
+			@apply justify-center border-0 px-0;
+
+			&.is-grid .creo-rombooking-icon {
+				opacity: 0;
+			}
+
+			&:hover,
+			&:focus-visible {
+				@apply bg-light-green-60 dark:bg-slate-700;
+
+				& .creo-rombooking-icon {
+					opacity: 1;
+				}
+			}
+		}
+
+		&.is-busy:hover {
+			@apply bg-gray-300 dark:bg-slate-500;
+		}
+
+		&.is-requested:hover,
+		&.is-mine-requested:hover {
+			@apply bg-amber-100 dark:bg-amber-800;
+		}
+
+		&.is-mine:hover {
+			@apply bg-dark-green-80 dark:bg-light-green-80;
+		}
+
+		&.is-closed,
+		&.is-past {
+			@apply cursor-not-allowed;
+		}
+
+		&.is-free.is-past {
+			@apply bg-gray-50 dark:bg-slate-800;
+
+			& .creo-rombooking-icon {
+				display: none;
+			}
+		}
+	}
+
+	& .creo-rombooking-matrix-cell:has(.creo-rombooking-segment:not(.is-free)) {
+		@apply px-0.5 py-1.5;
+	}
+
+	& .creo-rombooking-segment-text {
+		@apply flex min-w-0 flex-col overflow-hidden;
+
+		& > span {
+			@apply overflow-hidden text-ellipsis whitespace-nowrap;
+		}
+	}
+
+	& .creo-rombooking-segment-time {
+		@apply font-normal tabular-nums;
+	}
+
+	/* Dragging bookings in the administrator's overview */
+
+	& .creo-rombooking-segment[draggable="true"] {
+		cursor: grab;
+	}
+
+	& .creo-rombooking-drop {
+		@apply pointer-events-none absolute bottom-1 top-1 z-20 flex items-center overflow-hidden rounded-md border-2 border-dashed border-dark-green bg-light-green-60 px-1 text-xs font-semibold tabular-nums text-dark-green dark:border-light-green dark:bg-slate-700 dark:text-light-green;
+		left: calc(176px + (100% - 176px) * var(--creo-rombooking-drop-start));
+		width: calc((100% - 176px) * var(--creo-rombooking-drop-length));
+	}
+
+	/* Week */
+
+	& .creo-rombooking-toggle.is-wrapping {
+		@apply flex-wrap self-start;
+	}
+
+	/* Positioned, so that hidden text for screen readers stays inside the scrolling area. */
+	& .creo-rombooking-week-scroll {
+		@apply relative overflow-x-auto rounded-lg border border-solid border-gray-300 bg-white dark:border-gray-600 dark:bg-slate-900;
+	}
+
+	& .creo-rombooking-week {
+		@apply grid;
+		grid-template-columns: 56px repeat(7, minmax(4.5rem, 1fr));
+
+		&[aria-busy="true"] {
+			@apply opacity-60;
+		}
+	}
+
+	& .creo-rombooking-week-times {
+		@apply sticky left-0 z-10 flex flex-col border-0 border-r border-solid border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-slate-800;
+	}
+
+	& .creo-rombooking-week-corner,
+	& .creo-rombooking-week-head {
+		@apply h-10 flex-none border-0 border-b border-solid border-gray-300 dark:border-gray-600;
+	}
+
+	& .creo-rombooking-week-time {
+		@apply flex-none px-1.5 pt-0.5 text-xs tabular-nums text-gray-600 dark:text-gray-300;
+		height: calc(2 * var(--creo-rombooking-slot-height));
+	}
+
+	& .creo-rombooking-week-day {
+		@apply flex min-w-0 flex-col border-0 border-l border-solid border-gray-300 first-of-type:border-l-0 dark:border-gray-600;
+	}
+
+	& .creo-rombooking-week-head {
+		@apply flex items-center justify-center gap-1 bg-gray-50 text-sm dark:bg-slate-800;
+
+		&.is-today {
+			@apply bg-light-green-60 dark:bg-slate-700;
+			box-shadow: inset 0 -2px 0 var(--wp--preset--color--dark-green);
+		}
+	}
+
+	& .creo-rombooking-week-cell {
+		@apply min-w-0 flex-none border-0 border-t border-solid border-gray-100 dark:border-slate-800;
+
+		&[data-hour-start] {
+			@apply border-gray-200 dark:border-slate-700;
+		}
+
+		& .creo-rombooking-segment.is-grid:not(.is-free) {
+			@apply items-start py-1;
+		}
+	}
+
+	& .creo-rombooking-week-cell:has(.creo-rombooking-segment:not(.is-free)) {
+		@apply px-1 py-0.5;
+	}
+
+	/* Narrow day columns: the icon goes above the text, so that the text gets the whole width. */
+	@media (width < 640px) {
+
+		& .creo-rombooking-week {
+			grid-template-columns: 48px repeat(7, minmax(5.5rem, 1fr));
+		}
+
+		& .creo-rombooking-week-cell .creo-rombooking-segment.is-grid:not(.is-free) {
+			@apply flex-col gap-0.5 px-1;
+		}
+	}
+
+	/* List on small screens */
+
+	& .creo-rombooking-list {
+		@apply m-0 flex list-none flex-col gap-1 p-0;
+
+		&[aria-busy="true"] {
+			@apply opacity-60;
+		}
+
+		& li {
+			@apply m-0;
+		}
+
+		& .creo-rombooking-segment {
+			@apply min-h-[44px] justify-start gap-3 rounded-md border border-solid px-3 text-sm;
+		}
+
+		& .creo-rombooking-segment.is-free {
+			@apply border-gray-300 dark:border-gray-600;
+		}
+
+		& .creo-rombooking-segment.is-busy,
+		& .creo-rombooking-segment.is-mine,
+		& .creo-rombooking-segment.is-closed {
+			@apply border-transparent;
+		}
+
+		& .creo-rombooking-segment-time {
+			@apply w-24 flex-none;
+		}
+	}
+
+	/* Messages */
+
+	& .creo-rombooking-message {
+		@apply flex items-start gap-3 rounded-lg border border-solid p-3;
+
+		& > div {
+			@apply flex min-w-0 flex-1 flex-col gap-0.5;
+		}
+
+		& p {
+			@apply m-0;
+		}
+
+		&.is-warning {
+			@apply border-amber-500 bg-amber-50 text-amber-900 dark:border-amber-400 dark:bg-amber-900 dark:text-amber-50;
+		}
+
+		&.is-error {
+			@apply border-red-300 bg-red-50 text-red-900 dark:border-red-400 dark:bg-red-900 dark:text-red-50;
+		}
+	}
+
+	/* Booking form */
+
+	& .creo-rombooking-grid2 {
+		@apply grid gap-4 sm:grid-cols-2;
+	}
+
+	& select.creo-rombooking-input {
+		@apply pr-8;
+	}
+
+	& .creo-rombooking-input-short {
+		@apply w-32;
+	}
+
+	& .creo-rombooking-field textarea.creo-rombooking-input {
+		@apply h-auto min-h-[4rem] py-2 leading-normal;
+		resize: vertical;
+	}
+
+	& .creo-rombooking-input[aria-invalid="true"] {
+		@apply border-2 border-red-700 dark:border-red-400;
+	}
+
+	& .creo-rombooking-input:disabled {
+		@apply cursor-not-allowed bg-gray-100 text-gray-500 dark:bg-slate-700 dark:text-gray-400;
+	}
+
+	& .creo-rombooking-optional {
+		@apply font-normal text-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-error {
+		@apply m-0 flex items-start gap-1 text-sm font-medium text-red-700 dark:text-red-300;
+	}
+
+	& .creo-rombooking-fieldset {
+		@apply m-0 min-w-0 border-0 p-0;
+
+		& legend {
+			@apply mb-1.5 p-0 text-sm font-medium;
+		}
+	}
+
+	& .creo-rombooking-pills {
+		@apply flex flex-wrap gap-2;
+	}
+
+	& .creo-rombooking-pill,
+	& .creo-rombooking-radio {
+		@apply inline-flex cursor-pointer items-center gap-2 text-sm font-medium;
+
+		/* The theme's form styles color checked radio buttons with the text color. */
+		& input {
+			@apply m-0 h-[18px] w-[18px] flex-none text-dark-green dark:text-light-green;
+			accent-color: currentcolor;
+		}
+	}
+
+	& .creo-rombooking-pill {
+		@apply min-h-[40px] rounded-lg border border-solid border-gray-400 px-3 dark:border-gray-500;
+
+		&:has(input:checked) {
+			@apply border-2 border-dark-green bg-light-green-60 px-[11px] dark:border-light-green dark:bg-slate-700;
+		}
+	}
+
+	& .creo-rombooking-ends {
+		@apply grid items-center gap-x-3 gap-y-2;
+		grid-template-columns: max-content minmax(0, 12rem);
+	}
+
+	& .creo-rombooking-live:empty {
+		display: none;
+	}
+
+	& .creo-rombooking-occurrences {
+		@apply overflow-hidden rounded-lg border border-solid border-gray-200 dark:border-gray-600;
+
+		& ul {
+			@apply m-0 max-h-56 list-none overflow-auto p-0;
+		}
+
+		& li {
+			@apply m-0 grid items-center gap-2 border-0 border-t border-solid border-gray-100 px-3 py-1.5 text-sm tabular-nums first:border-t-0 dark:border-slate-700;
+			grid-template-columns: 11rem 7rem minmax(0, 1fr);
+		}
+
+		& li.is-outside .creo-rombooking-occurrence-date,
+		& li.is-outside .creo-rombooking-occurrence-time {
+			@apply text-gray-600 line-through dark:text-gray-300;
+		}
+	}
+
+	& .creo-rombooking-occurrences-head {
+		@apply flex flex-wrap items-baseline justify-between gap-3 border-0 border-b border-solid border-gray-200 bg-gray-50 px-3 py-2.5 dark:border-gray-600 dark:bg-slate-900;
+
+		& h3 {
+			@apply m-0 text-sm font-semibold;
+		}
+	}
+
+	& .creo-rombooking-tag {
+		@apply inline-flex items-center gap-1 justify-self-start whitespace-nowrap rounded-full border border-solid px-2 py-0.5 text-xs font-medium;
+
+		&.is-free {
+			@apply border-green-300 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-900 dark:text-green-50;
+		}
+
+		&.is-conflict {
+			@apply border-amber-500 bg-amber-50 text-amber-900 dark:border-amber-400 dark:bg-amber-900 dark:text-amber-50;
+		}
+
+		&.is-outside {
+			@apply border-gray-300 bg-gray-100 text-gray-700 dark:border-gray-500 dark:bg-slate-700 dark:text-gray-200;
+		}
+
+		&.is-busy {
+			@apply border-gray-400 bg-gray-200 text-gray-900 dark:border-gray-500 dark:bg-slate-600 dark:text-gray-50;
+		}
+
+		&.is-info {
+			@apply border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-400 dark:bg-blue-900 dark:text-blue-50;
+		}
+
+		&.is-approved {
+			@apply border-dark-green bg-dark-green text-white dark:border-light-green dark:bg-light-green dark:text-black;
+		}
+
+		&.is-rejected {
+			@apply border-red-300 bg-red-50 text-red-900 dark:border-red-400 dark:bg-red-900 dark:text-red-50;
+		}
+	}
+
+	& .creo-rombooking-message.is-ok {
+		@apply border-green-300 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-900 dark:text-green-50;
+	}
+
+	& .creo-rombooking-message.is-info {
+		@apply border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-400 dark:bg-blue-900 dark:text-blue-50;
+	}
+
+	& .creo-rombooking-message ul {
+		@apply m-0 mt-1 list-disc pl-5;
+	}
+
+	& .creo-rombooking-message a {
+		@apply text-inherit underline;
+	}
+
+	& .creo-rombooking-message:focus {
+		outline: 2px solid currentcolor;
+	}
+
+	/* Dialog */
+
+	& .creo-rombooking-summary {
+		@apply m-0 grid gap-x-3 gap-y-2;
+		grid-template-columns: minmax(6rem, max-content) minmax(0, 1fr);
+
+		& dt {
+			@apply text-gray-600 dark:text-gray-300;
+		}
+
+		& dd {
+			@apply m-0;
+		}
+	}
+
+	& .creo-rombooking-empty {
+		@apply rounded border border-dashed border-gray-300 px-6 py-12 text-center dark:border-gray-600;
+	}
+
+	& .creo-rombooking-empty-title {
+		@apply m-0 text-lg font-semibold;
+	}
+
+	& .creo-rombooking-empty-text {
+		@apply mt-1 text-gray-600 dark:text-gray-300;
+	}
+
+	/* Administrator's views */
+
+	& .creo-rombooking-admin {
+		@apply flex flex-col gap-4 text-base;
+	}
+
+	& .creo-rombooking-admin-head {
+		@apply flex flex-col gap-1;
+
+		& h2 {
+			@apply m-0 text-2xl font-semibold;
+		}
+	}
+
+	& .creo-rombooking-inbox {
+		@apply grid items-start gap-6 md:grid-cols-[18rem_minmax(0,1fr)];
+	}
+
+	& .creo-rombooking-queue {
+		@apply flex flex-col gap-4;
+
+		& h3 {
+			@apply m-0 mb-2 text-xs font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300;
+		}
+
+		& ul {
+			@apply m-0 flex list-none flex-col gap-2 p-0;
+		}
+
+		& li {
+			@apply m-0;
+		}
+	}
+
+	& .creo-rombooking-queue-item {
+		@apply flex w-full cursor-pointer flex-col items-stretch gap-1 rounded-lg border border-solid border-gray-300 bg-white p-3 text-left text-sm text-gray-900 hover:border-gray-500 dark:border-gray-600 dark:bg-slate-800 dark:text-gray-100 dark:hover:border-gray-400;
+
+		&[aria-current="true"] {
+			@apply border-2 border-dark-green bg-light-green-60 p-[11px] dark:border-light-green dark:bg-slate-700;
+		}
+	}
+
+	& .creo-rombooking-queue-top {
+		@apply flex flex-wrap items-center justify-between gap-2;
+	}
+
+	& .creo-rombooking-detail {
+		@apply flex min-w-0 flex-col gap-4;
+	}
+
+	& .creo-rombooking-detail-head {
+		@apply flex flex-col gap-1.5;
+
+		& h3 {
+			@apply m-0 text-xl font-semibold;
+		}
+	}
+
+	& .creo-rombooking-actions {
+		@apply flex flex-wrap items-center gap-2;
+	}
+
+	& .creo-rombooking-compare {
+		@apply grid gap-4 sm:grid-cols-2;
+	}
+
+	& .creo-rombooking-card {
+		@apply flex flex-col gap-3 rounded-lg border border-solid border-gray-300 bg-white p-4 dark:border-gray-600 dark:bg-slate-800;
+
+		&.is-new {
+			@apply border-l-4 border-l-amber-500;
+		}
+
+		&.is-existing {
+			@apply border-l-4 border-l-gray-500;
+		}
+	}
+
+	& .creo-rombooking-card-head,
+	& .creo-rombooking-section-head {
+		@apply flex flex-wrap items-baseline justify-between gap-2;
+
+		& h4 {
+			@apply m-0 text-base font-semibold;
+		}
+	}
+
+	& .creo-rombooking-section {
+		@apply flex flex-col gap-2;
+	}
+
+	& .creo-rombooking-box {
+		@apply m-0 list-none overflow-hidden rounded-lg border border-solid border-gray-300 p-0 dark:border-gray-600;
+
+		& li {
+			@apply m-0 flex flex-wrap items-center gap-3 border-0 border-t border-solid border-gray-200 px-3 py-2 first:border-t-0 dark:border-slate-700;
+		}
+	}
+
+	& .creo-rombooking-grow {
+		@apply flex min-w-0 flex-1 flex-col;
+	}
+
+	& .creo-rombooking-button {
+		@apply gap-1.5;
+
+		&.is-danger {
+			@apply bg-red-700 text-white hover:bg-red-800 dark:bg-red-300 dark:text-black dark:hover:bg-red-200;
+		}
+
+		&.is-small {
+			@apply px-2.5 py-1 text-xs;
+		}
+	}
+
+	& .creo-rombooking-action-panel {
+		@apply flex flex-col gap-4 rounded-lg border border-solid border-gray-300 bg-gray-50 p-4 dark:border-gray-600 dark:bg-slate-900;
+
+		& h4 {
+			@apply m-0 text-base font-semibold;
+		}
+	}
+
+	& .creo-rombooking-check {
+		@apply flex flex-wrap items-center gap-2;
+	}
+
+	& .creo-rombooking-check:empty {
+		display: none;
+	}
+
+	& .creo-rombooking-help.is-with-icon {
+		@apply flex items-start gap-1;
+
+		& .creo-rombooking-icon {
+			@apply mt-px;
+		}
+	}
+
+	& .creo-rombooking-radio-cards {
+		@apply grid gap-2 sm:grid-cols-2;
+	}
+
+	& .creo-rombooking-radio-card {
+		@apply flex cursor-pointer items-start gap-3 rounded-lg border border-solid border-gray-400 bg-white p-3 text-sm dark:border-gray-500 dark:bg-slate-800;
+
+		& input {
+			@apply m-0 mt-0.5 h-[18px] w-[18px] flex-none text-dark-green dark:text-light-green;
+			accent-color: currentcolor;
+		}
+
+		& > span {
+			@apply flex flex-col;
+		}
+
+		&:has(input:checked) {
+			@apply border-2 border-dark-green p-[11px] dark:border-light-green;
+		}
+	}
+
+	& .creo-rombooking-table-scroll {
+		@apply overflow-x-auto rounded-lg border border-solid border-gray-300 dark:border-gray-600;
+	}
+
+	& .creo-rombooking-table {
+		@apply m-0 w-full border-collapse text-sm tabular-nums;
+
+		& th,
+		& td {
+			@apply border-0 border-t border-solid border-gray-200 px-3 py-2 text-left align-middle dark:border-slate-700;
+		}
+
+		& thead th {
+			@apply border-t-0 bg-gray-50 text-xs font-semibold text-gray-700 dark:bg-slate-900 dark:text-gray-300;
+		}
+
+		& tbody th {
+			@apply whitespace-nowrap font-medium;
+		}
+
+		& td .creo-rombooking-help {
+			@apply mt-0.5 block;
+		}
+	}
+
+	& .creo-rombooking-sms {
+		@apply m-0 flex list-none flex-col gap-2 p-0;
+
+		& li {
+			@apply m-0 flex flex-col gap-1 rounded-lg border border-solid border-gray-300 bg-white p-3 dark:border-gray-600 dark:bg-slate-800;
+		}
+
+		& p {
+			@apply m-0 text-sm;
+		}
+	}
+
+	& .creo-rombooking-sms-head {
+		@apply flex flex-wrap items-baseline justify-between gap-2 text-sm;
+	}
+
+	& .creo-rombooking-empty > .creo-rombooking-icon {
+		@apply mx-auto mb-2 text-dark-green dark:text-light-green;
+	}
+
+	/* My bookings */
+
+	& .creo-rombooking-section > h3 {
+		@apply m-0 text-lg font-semibold;
+	}
+
+	& .creo-rombooking-bookings {
+		@apply m-0 flex list-none flex-col gap-2 p-0;
+
+		&.is-closed .creo-rombooking-booking {
+			@apply bg-gray-50 dark:bg-slate-900;
+		}
+	}
+
+	& .creo-rombooking-booking {
+		@apply m-0 flex items-start gap-4 rounded-lg border border-solid border-gray-300 bg-white p-4 dark:border-gray-600 dark:bg-slate-800;
+
+		& h4 {
+			@apply m-0 text-base font-semibold;
+		}
+
+		& .creo-rombooking-grow {
+			@apply gap-1.5;
+		}
+
+		& .creo-rombooking-grow > p {
+			@apply m-0;
+		}
+
+		/* Tags keep their own width in the column. */
+		& .creo-rombooking-grow > .creo-rombooking-tag {
+			@apply self-start;
+		}
+	}
+
+	& .creo-rombooking-dateblock {
+		@apply flex w-14 flex-none flex-col items-center rounded-md border border-solid border-gray-300 py-1 text-xs uppercase text-gray-600 dark:border-gray-600 dark:text-gray-300;
+	}
+
+	& .creo-rombooking-dateblock-day {
+		@apply text-xl font-semibold leading-tight text-gray-900 dark:text-white;
+	}
+
+	& .creo-rombooking-details {
+		@apply text-sm;
+
+		& summary {
+			@apply cursor-pointer font-medium text-dark-green dark:text-light-green;
+		}
+
+		& ul {
+			@apply m-0 mt-2 flex list-none flex-col p-0;
+		}
+
+		& li {
+			@apply m-0 flex flex-wrap items-center gap-2 border-0 border-t border-solid border-gray-200 py-1.5 dark:border-slate-700;
+		}
+
+		& li > .creo-rombooking-grow {
+			@apply whitespace-nowrap;
+		}
+	}
+
+	& .creo-rombooking-card.is-proposal {
+		@apply border-l-4 border-l-amber-500;
+	}
+
+	& .creo-rombooking-proposal-part {
+		@apply rounded-md border border-solid border-gray-200 p-3 dark:border-gray-600;
+
+		& p {
+			@apply m-0;
+		}
+
+		&.is-proposed {
+			@apply border-2 border-dark-green bg-light-green-60 dark:border-light-green dark:bg-slate-700;
+		}
+	}
+
+	& .creo-rombooking-quote {
+		@apply m-0 border-0 border-l-4 border-solid border-gray-300 py-1 pl-3 dark:border-gray-500;
+
+		& p {
+			@apply m-0;
+		}
+	}
+
+	& .creo-rombooking-deadline {
+		@apply m-0 flex items-center gap-1.5 text-sm font-medium;
+	}
+
+	/* On narrow screens the button goes below the text. */
+	@media (width < 640px) {
+
+		& .creo-rombooking-booking {
+			@apply flex-wrap gap-3;
+
+			& > .creo-rombooking-grow {
+				flex-basis: calc(100% - 4.5rem);
+			}
+
+			& > .creo-rombooking-button {
+				@apply ml-[4.25rem];
+			}
+		}
+	}
+
+	/* Room setup */
+
+	& .creo-rombooking-room-thumb {
+		@apply h-14 w-20 flex-none rounded-md border border-solid border-gray-200 bg-gray-100 object-cover dark:border-gray-600 dark:bg-slate-700;
+	}
+
+	& .creo-rombooking-icon.is-up,
+	& .creo-rombooking-icon.is-down {
+		transform: rotate(90deg);
+	}
+
+	& .creo-rombooking-link-button {
+		@apply m-0 inline-flex cursor-pointer items-center gap-1 border-0 bg-transparent p-0 text-sm font-medium text-dark-green underline dark:text-light-green;
+	}
+
+	& .creo-rombooking-room-form {
+		@apply flex flex-col gap-6;
+	}
+
+	& .creo-rombooking-label {
+		@apply text-sm font-medium;
+	}
+
+	& .creo-rombooking-image-picker {
+		@apply flex flex-wrap items-center gap-4;
+
+		& img,
+		& .creo-rombooking-image-empty {
+			@apply h-24 w-36 rounded-md border border-solid border-gray-200 object-cover dark:border-gray-600;
+		}
+
+		& .creo-rombooking-image-empty {
+			@apply flex items-center justify-center bg-gray-100 text-gray-500 dark:bg-slate-700 dark:text-gray-300;
+		}
+	}
+
+	& .creo-rombooking-hours {
+		@apply max-w-xl;
+
+		& .creo-rombooking-table {
+			min-width: 22rem;
+		}
+
+		& .creo-rombooking-input {
+			@apply h-9 w-24;
+		}
+
+		& input[type="checkbox"] {
+			@apply h-[18px] w-[18px] text-dark-green dark:text-light-green;
+			accent-color: currentcolor;
+		}
+	}
+
+	& .creo-rombooking-instructions {
+		@apply m-0 mt-1 whitespace-pre-line;
+	}
+}
+
+.dark .creo-rombooking :focus-visible {
+	outline-color: var(--wp--preset--color--light-green);
+}
+
+.dark .creo-rombooking input,
+.dark .creo-rombooking select,
+.dark .creo-rombooking textarea,
+.dark .creo-rombooking input:focus,
+.dark .creo-rombooking select:focus,
+.dark .creo-rombooking textarea:focus {
+	--tw-ring-color: var(--wp--preset--color--light-green);
+}
+
+.dark .creo-rombooking .creo-rombooking-segment:focus-visible {
+	box-shadow: inset 0 0 0 5px #0f172a;
+}
+
+/*
+ * The dialog is placed in the browser's top layer, but stays inside
+ * `.creo-rombooking` in the DOM, so the scoped styles above apply.
+ */
+.creo-rombooking .creo-rombooking-dialog {
+	@apply w-[660px] max-w-[calc(100vw-2rem)] rounded-2xl border-0 bg-white p-0 text-gray-900 shadow-xl dark:bg-slate-800 dark:text-gray-100;
+
+	&::backdrop {
+		background: rgb(30 31 33 / 50%);
+	}
+}
+
+.creo-rombooking .creo-rombooking-dialog-head {
+	@apply flex items-center justify-between gap-3 border-0 border-b border-solid border-gray-200 py-3 pl-6 pr-4 dark:border-gray-600;
+}
+
+.creo-rombooking .creo-rombooking-dialog-title {
+	@apply m-0 text-xl font-semibold;
+}
+
+.creo-rombooking .creo-rombooking-dialog-body {
+	@apply flex flex-col gap-4 px-6 py-5;
+}
+
+.creo-rombooking .creo-rombooking-dialog-foot {
+	@apply flex flex-wrap justify-end gap-2 border-0 border-t border-solid border-gray-200 px-6 pb-5 pt-3 dark:border-gray-600;
+}
+
+.dark .creo-rombooking .creo-rombooking-segment.is-closed,
+.dark .creo-rombooking .creo-rombooking-swatch.is-closed {
+	background: repeating-linear-gradient(135deg, #1e293b 0 5px, #334155 5px 10px);
+}
