@@ -29,7 +29,7 @@ creo-paletten (`dark-green` `#004e48`, `light-green`, `warm-gray`, `rust`, `glac
 | Mørk modus | `darkMode: 'class'` (`html.dark`), bryter i menyen | Alle komponenter får `dark:`-varianter |
 | PHP | Ingen Composer-autoload; `includes/class-*.php` + `helpers.php`, WordPress Coding Standards (PHPCS), PHP ≥ 8.2, WP ≥ 6.4 | Samme struktur. Prefiks `creo_rombooking` legges til i `.phpcs.xml` |
 | Oppdatering/release | Hver pakke zippes av `bin/create-release-assets.js`; `includes/updater.php` sjekker `creo-wp.creoweb.no/<pakke>.json` | Kopier updater-mønsteret fra `creo-blocks`; pakken blir med i release automatisk |
-| i18n | Engelske kildestrenger + `languages/nb_NO.po` (også fr_FR, nl_NL, pl_PL) | Se åpent spørsmål 6 |
+| i18n | Engelske kildestrenger + `languages/nb_NO.po` (også fr_FR, nl_NL, pl_PL) | Samme: engelske kildestrenger, `nb_NO` levert i PoC-en |
 | Test/CI | PHPUnit 9 i `wp-env tests-cli`, ESLint/tsc/Stylelint/PHPCS i GitHub Actions | Samme verktøy; i tillegg Playwright + axe for tilgjengelighet |
 | Innlogging | `bcc-login` (valgfri) via `creo_has_bcc_login()` | Brukere er alltid innlogget; ikke innlogget → innloggingsmelding/lenke |
 | Innholdsbredde | `theme.json`: `contentSize` 768 px, `wideSize` 1280 px | Blokken/shortcoden bruker `alignwide`, og appen begrenser seg selv til maks 1100 px |
@@ -99,12 +99,21 @@ og legge pluginen til `option_active_plugins` i `tests/phpunit/bootstrap.php`.
   statuscelle, toast/`role="status"`. Knapper og skjemafelt følger temaets `.button`/`form.pcss`-stil, men klassene
   bygges i pluginens egen CSS (temaets klasser er purget).
 - Matrisen scroller horisontalt internt med klebrig romkolonne. Under ~640 px byttes til mobilvisning (ett rom om gangen).
-- Monteres via blokken `creo-rombooking/app` (med shortcode `[creo_rombooking]` som alternativ). Admin-skjermene
-  vises i den samme appen for brukere med admin-rettighet.
+- Monteres via blokken `creo-rombooking/app` (med shortcode `[creo_rombooking]` som alternativ). **Admin-skjermene
+  ligger på nettsiden, i den samme appen**, og vises bare for brukere med `creo_rombooking_manage` (fanene
+  «Forespørsler», «Matrise» og «Rom»). Ingen wp-admin-sider utover det WordPress trenger.
+- **Språk:** engelske kildestrenger via `@wordpress/i18n`/`__()` med text domain `creo-rombooking`, og
+  `languages/nb_NO.po`. PoC-en leverer bare norsk bokmål.
 
 ### 4.3 Backend (WordPress)
-- **Roller:** `medlem` = innlogget bruker med capability `creo_rombooking_book` (gis som standard til `subscriber`
-  og oppover); `admin` = `creo_rombooking_manage` (administrator + evt. egen rolle «Romansvarlig»).
+- **Roller:** `medlem` = innlogget bruker med **medlemskap** fra `bcc-login` (rollen `bcc-login-member`), gitt
+  capability `creo_rombooking_book`. `admin` = `creo_rombooking_manage` (administrator + evt. egen rolle «Romansvarlig»).
+  Oppslaget ligger bak én funksjon (`creo_rombooking_is_member()`), så kilden kan byttes uten å røre resten.
+  Uten `bcc-login` (lokal utvikling) regnes alle innloggede brukere som medlemmer.
+- **Telefonnummer:** antas å ligge som claim i tokenet fra `bcc-login` (f.eks. OIDC-standarden `phone_number`).
+  Leses bak `creo_rombooking_get_phone( $user_id )`. Finnes det ikke, viser bookingskjemaet feltet
+  «Legg inn telefonnummer» (påkrevd, valideres som norsk mobilnummer); nummeret lagres i brukermeta og gjenbrukes.
+  Må verifiseres mot et ekte token (se åpne spørsmål).
 - **Personvern i API-et:** endepunktene for medlemmer returnerer aldri navn eller formål på andres bookinger – bare
   status (`free|busy|requested|closed|mine`). Dette håndheves på serveren, ikke bare i grensesnittet.
 - **SMS:** `Notifier`-grensesnitt. PoC-en bruker en logg-implementasjon (lagres i hendelsesloggen og vises for admin).
@@ -161,7 +170,7 @@ Rekkefølgen følger bestillingen: matrise i dagvisning (desktop og mobil) og sk
 | **0. Oppsett** | creo-wp-lik monorepo, creo-temaet som submodul i wp-env, pakken `creo-rombooking` med webpack/Tailwind/TS, PHPCS/ESLint/tsc/PHPUnit, CI, seed-data fra prototypen | Tom app vises via blokk i creo-temaet (lys og mørk modus) uten å endre temaets stil |
 | **1. Domene + API (lesing)** | Tabeller, `Availability`, `GET rooms/availability` med personvernfiltrering | PHPUnit-tester for statusberegning (åpningstid, unntak, overlapp) |
 | **2. Matrise dag + mobil** (skjerm 1, 3) | DayMatrix, StatusCell, Legend, datovelger, dag/uke-bryter, tastaturnavigasjon, MobileDayList | Klikk/Enter på celle åpner skjema; axe uten feil |
-| **3. Bookingskjema** (skjerm 4) | BookingForm, validering, `Recurrence` + `preview`, melding om auto/manuell godkjenning, «opptatt → til admin», bekreftelse | Booking lagres og vises som «Din booking»/«Forespurt» |
+| **3. Bookingskjema** (skjerm 4) | BookingForm, validering, `Recurrence` + `preview`, melding om auto/manuell godkjenning, «opptatt → til admin», telefonnummerfelt når nummer mangler, bekreftelse | Booking lagres og vises som «Din booking»/«Forespurt» |
 | **4. Admin-innboks** (skjerm 6, 9) | Forespørsler med konflikter øverst, side om side, forslag til ledige rom, alle fire handlinger, serie-handlinger, avbestillingsdialog med påkrevd begrunnelse, SMS-logg | Alle flytene i prototypen fungerer mot ekte data |
 | **5. Ukevisning** (skjerm 2) | WeekMatrix med blokker | — |
 | **6. Mine bookinger** (skjerm 5) | Kommende/ventende, avbestilling denne/senere, forslagskort med Aksepter/Avslå + svarfrist | Design avklares først (mangler i prototypen) |
@@ -173,15 +182,21 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 
 ---
 
-## 7. Åpne spørsmål
-1. **Pakkenavn:** `creo-rombooking` (prefiks `creo_rombooking`) – ok, eller et annet navn?
-2. **Medlemmer:** er «medlem» alle innloggede brukere, eller skal det kobles til roller/medlemskap fra `bcc-login`?
-   Hvor ligger telefonnummer?
-3. **SMS-leverandør**, og skal det sendes SMS også ved autogodkjenning?
-4. **Admin-skjermene:** på nettsiden bak rolle (anbefalt, siden matrisen gjenbrukes) eller i wp-admin?
-5. **«Antall personer»** vises i prototypens admin-visning, men står ikke i feltlisten for skjemaet. Skal det være et
+## 7. Avklart
+| Spørsmål | Beslutning |
+|---|---|
+| Design | creo-temaet, ikke BCC-designsystemet |
+| Pakkenavn | `creo-rombooking`, prefiks `creo_rombooking` |
+| Hvem er medlem | Medlemskap fra `bcc-login` |
+| Telefonnummer | Fra tokenet; ellers feltet «Legg inn telefonnummer» ved booking |
+| Språk | Engelske kildestrenger + `nb_NO.po`; bare norsk i PoC-en |
+| Admin-skjermer | På nettsiden, bak admin-rollen |
+
+## 8. Åpne spørsmål
+1. **Telefon i tokenet:** hvilket claim heter det, og er det tilgjengelig på serversiden (ID-token/brukerinfo lagret av
+   `bcc-login`)? Kan verifiseres med en testbruker; frem til da brukes antakelsen over + reservefeltet.
+2. **SMS-leverandør**, og skal det sendes SMS også ved autogodkjenning?
+3. **«Antall personer»** vises i prototypens admin-visning, men står ikke i feltlisten for skjemaet. Skal det være et
    felt (brukes til forslag om rom med nok plass)?
-6. **Språk:** creo-wp bruker engelske kildestrenger med `nb_NO.po`. Anbefaling: gjør det samme, slik at pluginen passer
-   inn og kan oversettes, men lever bare `nb_NO` i PoC-en.
-7. **Svarfrist** for forslag: prototypen har 24 t / 48 t / 3 dager – ok som standardvalg?
-8. **Maks bookinghorisont:** hvor langt frem kan medlemmer booke, og hvor lange kan serier være?
+4. **Svarfrist** for forslag: prototypen har 24 t / 48 t / 3 dager – ok som standardvalg?
+5. **Maks bookinghorisont:** hvor langt frem kan medlemmer booke, og hvor lange kan serier være?
