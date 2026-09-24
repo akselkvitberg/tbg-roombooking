@@ -102,3 +102,27 @@ export function capitalize(text: string): string {
 export function toLanguageTag(locale: string): string {
 	return locale.replace('_', '-');
 }
+
+/**
+ * E.g. «lør. 26. sep.».
+ *
+ * @param date   The date.
+ * @param locale The locale, e.g. `nb-NO`.
+ */
+export function formatShortDate(date: string, locale: string): string {
+	return format(date, locale, {
+		weekday: 'short',
+		day: 'numeric',
+		month: 'short',
+	});
+}
+
+/**
+ * E.g. «26. sep.».
+ *
+ * @param date   The date.
+ * @param locale The locale, e.g. `nb-NO`.
+ */
+export function formatDayMonth(date: string, locale: string): string {
+	return format(date, locale, { day: 'numeric', month: 'short' });
+}

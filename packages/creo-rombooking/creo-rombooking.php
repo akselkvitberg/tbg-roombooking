@@ -30,6 +30,7 @@ require __DIR__ . '/includes/class-creo-rombooking-availability.php';
 require __DIR__ . '/includes/class-creo-rombooking-recurrence.php';
 require __DIR__ . '/includes/class-creo-rombooking-notifier.php';
 require __DIR__ . '/includes/class-creo-rombooking-bookings.php';
+require __DIR__ . '/includes/class-creo-rombooking-admin.php';
 require __DIR__ . '/includes/class-creo-rombooking-rest.php';
 require __DIR__ . '/includes/class-creo-rombooking-block.php';
 require __DIR__ . '/includes/class-creo-rombooking.php';

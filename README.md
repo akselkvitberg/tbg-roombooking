@@ -35,7 +35,7 @@ Alle navn og telefonnumre i eksempeldataene er oppdiktet.
 
 ```bash
 pnpm wp creo-rombooking seed --reset   # tilbakestill eksempeldata
-pnpm wp creo-rombooking sms-log        # vis SMS-er som ville blitt sendt
+pnpm wp creo-rombooking sms-log        # vis SMS-er som ville blitt sendt (også i fanen «SMS-logg» som admin)
 pnpm lint                              # ESLint, Stylelint, tsc og PHPCS
 pnpm test:php                          # PHPUnit i wp-env
 pnpm test:js                           # Jest (ren logikk i appen)

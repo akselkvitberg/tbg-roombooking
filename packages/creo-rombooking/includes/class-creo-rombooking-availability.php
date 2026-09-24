@@ -250,14 +250,16 @@ class Creo_Rombooking_Availability {
 	 * @param string[] $dates   The dates (Y-m-d).
 	 * @param int      $start   Start minute.
 	 * @param int      $end     End minute.
+	 * @param int[]    $ignore  Bookings to leave out, e.g. the request being handled.
 	 * @return array<string, array{status: string, conflictWith: int|null}> By date.
 	 */
-	public function check( $room_id, array $dates, $start, $end ) {
+	public function check( $room_id, array $dates, $start, $end, array $ignore = array() ) {
 		if ( ! $dates ) {
 			return array();
 		}
 
 		$room_id  = (int) $room_id;
+		$ignore   = array_map( 'intval', $ignore );
 		$from     = min( $dates );
 		$to       = max( $dates );
 		$hours    = $this->load_opening_hours( array( $room_id ) )[ $room_id ] ?? array();
@@ -270,7 +272,11 @@ class Creo_Rombooking_Availability {
 
 		foreach ( $dates as $date ) {
 			$weekday = (int) ( new DateTimeImmutable( $date ) )->format( 'w' );
-			$periods = $details->calculate( $hours[ $weekday ] ?? array(), $closures[ $date ] ?? array(), $bookings[ $date ] ?? array() );
+			$day     = array_filter(
+				$bookings[ $date ] ?? array(),
+				fn( $booking ) => ! in_array( (int) $booking['id'], $ignore, true )
+			);
+			$periods = $details->calculate( $hours[ $weekday ] ?? array(), $closures[ $date ] ?? array(), $day );
 			$status  = 'free';
 			$with    = null;
 

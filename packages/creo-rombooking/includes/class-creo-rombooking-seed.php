@@ -255,7 +255,9 @@ class Creo_Rombooking_Seed {
 		);
 
 		foreach ( $bookings as list( $room, $date, $from, $to, $owner, $purpose, $people, $status ) ) {
-			$this->insert_booking( $this->owner( $owner ), $room, $this->date( $date ), $from, $to, $purpose, $people, $status );
+			$id = $this->insert_booking( $this->owner( $owner ), $room, $this->date( $date ), $from, $to, $purpose, $people, $status );
+			// Requests were sent some days ago, so that the oldest is handled first.
+			$this->sent_ago( 'bookings', $id, $status === 'requested' ? 90 : 300 );
 		}
 
 		return count( $bookings );
@@ -270,11 +272,13 @@ class Creo_Rombooking_Seed {
 		$count = 0;
 
 		// Conflicts with the Saturday birthday party in Storsalen.
-		$this->insert_booking( $this->owner( 'Jonas Prøvesen' ), 'storsal', $this->date( '2026-09-26' ), '11:00', '15:00', 'Konsertøving for koret', 50, 'requested', null, true );
+		$id = $this->insert_booking( $this->owner( 'Jonas Prøvesen' ), 'storsal', $this->date( '2026-09-26' ), '11:00', '15:00', 'Konsertøving for koret', 50, 'requested', null, true );
+		$this->sent_ago( 'bookings', $id, 46 );
 		++$count;
 
 		// Conflicts with the weekly work meeting in Møterom 1.
-		$this->insert_booking( $this->owner( 'Mari Testrud' ), 'm1', $this->date( '2026-10-01' ), '09:00', '10:30', 'Planleggingsmøte for basaren', 6, 'requested', null, true );
+		$id = $this->insert_booking( $this->owner( 'Mari Testrud' ), 'm1', $this->date( '2026-10-01' ), '09:00', '10:30', 'Planleggingsmøte for basaren', 6, 'requested', null, true );
+		$this->sent_ago( 'bookings', $id, 20 );
 		++$count;
 
 		// Eight Tuesdays in Gymsal: one falls on a closed day and one conflicts.
@@ -287,9 +291,11 @@ class Creo_Rombooking_Seed {
 			if ( $this->is_closed( 'gym', $date ) ) {
 				continue;
 			}
-			$this->insert_booking( $user_id, 'gym', $date, '16:00', '17:30', 'Lek og idrett for barn', 25, 'requested', $series_id, true );
+			$id = $this->insert_booking( $user_id, 'gym', $date, '16:00', '17:30', 'Lek og idrett for barn', 25, 'requested', $series_id, true );
+			$this->sent_ago( 'bookings', $id, 64 );
 			++$count;
 		}
+		$this->sent_ago( 'series', $series_id, 64 );
 
 		return $count;
 	}
@@ -396,6 +402,23 @@ class Creo_Rombooking_Seed {
 		);
 
 		return (int) $wpdb->insert_id;
+	}
+
+	/**
+	 * Moves the time a row was created back.
+	 *
+	 * @param string $table The table: `bookings` or `series`.
+	 * @param int    $id    The row.
+	 * @param int    $hours Hours back.
+	 */
+	protected function sent_ago( $table, $id, $hours ) {
+		global $wpdb;
+
+		$wpdb->update( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			Creo_Rombooking_Schema::table( $table ),
+			array( 'created_at' => current_datetime()->modify( "-$hours hours" )->format( 'Y-m-d H:i:s' ) ),
+			array( 'id' => $id )
+		);
 	}
 
 	/**

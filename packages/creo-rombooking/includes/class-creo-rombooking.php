@@ -97,6 +97,7 @@ class Creo_Rombooking {
 				'restNamespace' => 'creo-rombooking/v1',
 				'today'         => creo_rombooking_today(),
 				'locale'        => str_replace( '_', '-', determine_locale() ),
+				'timezone'      => wp_timezone_string(),
 				'user'          => array(
 					'id'          => $user->ID,
 					'name'        => $user->display_name,

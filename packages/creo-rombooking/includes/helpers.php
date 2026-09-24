@@ -132,3 +132,36 @@ function creo_rombooking_get_phone( $user_id = null ) {
 function creo_rombooking_today() {
 	return wp_date( 'Y-m-d' );
 }
+
+/**
+ * Runs a callback while holding a lock on each room, so that changes to the
+ * same room happen one at a time and two people cannot get the same time.
+ *
+ * @param int[]    $room_ids The rooms.
+ * @param callable $callback Returns the result.
+ * @return mixed|WP_Error The callback's result, or an error when a room stays locked.
+ */
+function creo_rombooking_with_room_locks( array $room_ids, callable $callback ) {
+	global $wpdb;
+
+	$room_ids = array_unique( array_map( 'intval', $room_ids ) );
+	// Always lock in the same order, so that two requests cannot wait for each other.
+	sort( $room_ids );
+	$held = array();
+
+	try {
+		foreach ( $room_ids as $room_id ) {
+			$lock = 'creo_rombooking_room_' . $room_id;
+			if ( ! $wpdb->get_var( $wpdb->prepare( 'SELECT GET_LOCK(%s, 10)', $lock ) ) ) { // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				return new WP_Error( 'creo_rombooking_busy', __( 'Many are booking right now. Try again.', 'creo-rombooking' ), array( 'status' => 503 ) );
+			}
+			$held[] = $lock;
+		}
+
+		return $callback();
+	} finally {
+		foreach ( $held as $lock ) {
+			$wpdb->query( $wpdb->prepare( 'SELECT RELEASE_LOCK(%s)', $lock ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		}
+	}
+}

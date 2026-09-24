@@ -144,10 +144,15 @@ Forekomster «Utenfor åpningstid» utelates fra serier. Utløpte forslag ryddes
   andres bookinger, heller ikke administratorer i medlemsvisningen.
 - `POST bookings/preview` (forekomster med Ledig/Konflikt/Utenfor) · `POST bookings`
 - `GET me/bookings` · `POST bookings/{id}/cancel` (`scope=this|following`) · `POST proposals/{id}/accept|decline`
-- Admin: `GET requests` (konflikter først) · `POST requests/{id}/approve|reject|propose|move-existing|approve-and-cancel-existing`
-  · `POST series/{id}/approve-free` · `GET admin/availability` (samme perioder, med navn og formål) · `PATCH bookings/{id}` (flytt rom/tid)
-  · `POST bookings/{id}/admin-cancel` (påkrevd begrunnelse, valgfritt forslag) · CRUD for `rooms`, `opening-hours`, `closures`
-  · `GET rooms/{id}/suggestions?date=&from=&to=&capacity=` (ledige rom med nok plass)
+- Admin (alle under `admin/`, krever `creo_rombooking_manage`):
+  - `GET admin/requests`: konflikter, serier, til godkjenning, med eksisterende booking, forslag til ledige rom med nok
+    plass og rom den eksisterende bookingen kan flyttes til (fase 4)
+  - `POST admin/requests/{id}/approve|reject|propose|move-existing|approve-and-cancel-existing` (fase 4)
+  - `POST admin/series/{id}/approve-free|reject-rest` (fase 4)
+  - `POST admin/bookings/{id}/cancel` (påkrevd begrunnelse, valgfritt forslag om annet rom) (fase 4)
+  - `GET admin/check?roomId=&date=&start=&end=&ignore=` (er rommet ledig?) · `GET admin/sms-log?page=` (fase 4)
+  - `GET admin/availability` (samme perioder, med navn og formål) · `PATCH bookings/{id}` (flytt rom/tid, fase 7)
+  - CRUD for `rooms`, `opening-hours`, `closures` (fase 8)
 
 ---
 
@@ -255,9 +260,16 @@ Fase 0–4 er kjernen i PoC-en. Hver fase leveres som egen PR.
 | Månedlig gjentakelse (fase 3) | Samme dato hver måned; måneder uten datoen (f.eks. 31.) hoppes over |
 | Telefonnummer ved booking (fase 3) | Norsk mobilnummer (8 siffer, starter med 4 eller 9), lagres som `+47 XXX XX XXX` |
 | Antall personer | Påkrevd felt i skjemaet, maks rommets kapasitet. Brukes til forslag om rom med nok plass i admin-innboksen |
+| Forslag (fase 4) | Når admin foreslår annet rom/tid, eller avbestiller med forslag, får bookingen status `proposed` og et forslag med svarfrist (24 t / 48 t / 3 dager, 48 t valgt). Tiden holdes ikke av før medlemmet svarer; svaret sjekker på nytt at den er ledig (fase 6) |
+| Konflikt i admin (fase 4) | En forespørsel er i konflikt når den overlapper en **godkjent** booking. Å godkjenne én av to forespørsler til samme tid gjør den andre til en konflikt |
+| SMS for serier (fase 4) | Beslutninger på enkeltdatoer i en serie gir én samlet SMS når ingen datoer venter lenger; «Avslå resten» tar med begrunnelsen |
+| Flytt eksisterende (fase 4) | Bare mulig når forespørselen kolliderer med nøyaktig én booking; rom med nok plass som er ledige samme tid foreslås |
+| Innsendte forespørsler (fase 4) | Innboksen viser forespørsler fra i dag og fremover, eldste først innen hver gruppe |
 
 ## 9. Åpne spørsmål
 1. **Telefon i tokenet:** hvilket claim heter det, og er det tilgjengelig på serversiden (ID-token/brukerinfo lagret av
    `bcc-login`)? Kan verifiseres med en testbruker; frem til da brukes antakelsen over + reservefeltet.
 2. **SMS-leverandør**, og skal det sendes SMS også ved autogodkjenning?
-3. **Svarfrist** for forslag: prototypen har 24 t / 48 t / 3 dager – ok som standardvalg?
+3. **Svarfrist** for forslag: 24 t / 48 t / 3 dager fra prototypen er brukt, med 48 t som standard. Ok?
+4. **Avbestilling fra admin utenfor konflikter** (skjerm 9): dialogen og API-et er ferdige i fase 4, men åpnes foreløpig bare
+   fra konfliktflyten. Planen er å åpne den fra admin-matrisen (fase 7). Trengs den et annet sted også?

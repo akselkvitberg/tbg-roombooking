@@ -318,6 +318,320 @@
             ],
             "Number of people": [
                 "Antall personer"
+            ],
+            "%1$s is too small for %2$d people.": [
+                "%1$s er for lite for %2$d personer."
+            ],
+            "Choose another room or time than the request.": [
+                "Velg et annet rom eller en annen tid enn foresp\u00f8rselen."
+            ],
+            "%1$s at %2$s": [
+                "%1$s kl. %2$s"
+            ],
+            "Write a reason. It is sent as a text message.": [
+                "Skriv en begrunnelse. Den sendes p\u00e5 SMS."
+            ],
+            "The room is closed at that time.": [
+                "Rommet er stengt i dette tidsrommet."
+            ],
+            "The room is not free at that time.": [
+                "Rommet er ikke ledig i dette tidsrommet."
+            ],
+            "Could not save. Try again.": [
+                "Kunne ikke lagre. Pr\u00f8v igjen."
+            ],
+            "Conflicts": [
+                "Konflikter"
+            ],
+            "Series": [
+                "Serie"
+            ],
+            "To approve": [
+                "Til godkjenning"
+            ],
+            "%d waiting": [
+                "%d venter p\u00e5 behandling",
+                "%d venter p\u00e5 behandling"
+            ],
+            "manual approval": [
+                "manuell godkjenning"
+            ],
+            "automatic approval": [
+                "autogodkjenning"
+            ],
+            "%d approved": [
+                "%d godkjent",
+                "%d godkjent"
+            ],
+            "%d declined": [
+                "%d avsl\u00e5tt",
+                "%d avsl\u00e5tt"
+            ],
+            "%d days": [
+                "%d dager"
+            ],
+            "%d hours": [
+                "%d timer"
+            ],
+            "Deadline for answer": [
+                "Svarfrist"
+            ],
+            "Answer by %s. Without an answer, the proposal is deleted.": [
+                "Svar innen %s. Uten svar slettes forslaget."
+            ],
+            "Propose another room or time to %s": [
+                "Foresl\u00e5 annet rom eller tid til %s"
+            ],
+            "%1$s has %2$s (%3$d wanted)": [
+                "%1$s har %2$s (%3$d \u00f8nsket)"
+            ],
+            "Message": [
+                "Melding"
+            ],
+            "Sent by text message. Do not write codes or passwords.": [
+                "Sendes p\u00e5 SMS. Ikke skriv koder eller passord."
+            ],
+            "Send proposal": [
+                "Send forslag"
+            ],
+            "(required)": [
+                "(p\u00e5krevd)"
+            ],
+            "Sent by text message to %s. Do not write sensitive information, codes or passwords.": [
+                "Sendes p\u00e5 SMS til %s. Ikke skriv sensitive opplysninger, koder eller passord."
+            ],
+            "Cancel the booking of %s?": [
+                "Avbestille bookingen til %s?"
+            ],
+            "Replaced by": [
+                "Erstattes av"
+            ],
+            "Reason": [
+                "Begrunnelse"
+            ],
+            "Attach a proposal of another room": [
+                "Legg ved et forslag om et annet rom"
+            ],
+            "Other room, same time": [
+                "Annet rom, samme tid"
+            ],
+            "%1$s has %2$s (%3$d needed)": [
+                "%1$s har %2$s (%3$d trengs)"
+            ],
+            "Conflict": [
+                "Konflikt"
+            ],
+            "Move the booking of %s": [
+                "Flytt bookingen til %s"
+            ],
+            "%1$s \u00b7 %2$d person. When the booking has been moved, the new request is approved.": [
+                "%1$s \u00b7 %2$d person. N\u00e5r bookingen er flyttet, godkjennes den nye foresp\u00f8rselen.",
+                "%1$s \u00b7 %2$d personer. N\u00e5r bookingen er flyttet, godkjennes den nye foresp\u00f8rselen."
+            ],
+            "New room": [
+                "Nytt rom"
+            ],
+            "%s \u00b7 free at the same time": [
+                "%s \u00b7 ledig i samme tidsrom"
+            ],
+            "No room with enough places is free at the same time.": [
+                "Ingen rom med nok plass er ledige i samme tidsrom."
+            ],
+            "Reason to %s": [
+                "Begrunnelse til %s"
+            ],
+            "Move and approve": [
+                "Flytt og godkjenn"
+            ],
+            "%1$s from %2$s \u00b7 %3$s": [
+                "%1$s fra %2$s \u00b7 %3$s"
+            ],
+            "Waiting requests": [
+                "Foresp\u00f8rsler som venter"
+            ],
+            "%1$s \u00b7 Sent %2$s": [
+                "%1$s \u00b7 Sendt %2$s"
+            ],
+            "from %1$s, %2$d time": [
+                "fra %1$s, %2$d gang",
+                "fra %1$s, %2$d ganger"
+            ],
+            "The room needs approval": [
+                "Rommet krever godkjenning"
+            ],
+            "Decline the rest of the series": [
+                "Avsl\u00e5 resten av serien"
+            ],
+            "Decline the request": [
+                "Avsl\u00e5 foresp\u00f8rselen"
+            ],
+            "Decline the rest": [
+                "Avsl\u00e5 resten"
+            ],
+            "Decline request": [
+                "Avsl\u00e5 foresp\u00f8rsel"
+            ],
+            "Approve and cancel": [
+                "Godkjenn og avbestill"
+            ],
+            "New request": [
+                "Ny foresp\u00f8rsel"
+            ],
+            "Waiting": [
+                "Venter"
+            ],
+            "Name": [
+                "Navn"
+            ],
+            "Sent": [
+                "Sendt"
+            ],
+            "Overlaps %s": [
+                "Overlapper %s"
+            ],
+            "Choose how to solve the conflict. Everyone affected gets a text message.": [
+                "Velg hvordan konflikten skal l\u00f8ses. Alle ber\u00f8rte f\u00e5r SMS."
+            ],
+            "No conflict": [
+                "Ingen konflikt"
+            ],
+            "The time is available. %s is set to manual approval.": [
+                "Tidsrommet er ledig. %s er satt til manuell godkjenning."
+            ],
+            "The time is available now.": [
+                "Tidsrommet er ledig n\u00e5."
+            ],
+            "The room is closed at this time": [
+                "Rommet er stengt i dette tidsrommet"
+            ],
+            "The request cannot be approved. Propose another room or time, or decline it.": [
+                "Foresp\u00f8rselen kan ikke godkjennes. Foresl\u00e5 et annet rom eller en annen tid, eller avsl\u00e5 den."
+            ],
+            "Solve the conflict": [
+                "L\u00f8s konflikten"
+            ],
+            "Approve and cancel existing": [
+                "Godkjenn og avbestill eksisterende"
+            ],
+            "Move existing booking": [
+                "Flytt eksisterende booking"
+            ],
+            "Propose another room or time": [
+                "Foresl\u00e5 annet rom eller tid"
+            ],
+            "Decline": [
+                "Avsl\u00e5"
+            ],
+            "Approve": [
+                "Godkjenn"
+            ],
+            "Existing booking": [
+                "Eksisterende booking"
+            ],
+            "Confirmed (series)": [
+                "Bekreftet (serie)"
+            ],
+            "Recurring since %s": [
+                "Fast serie siden %s"
+            ],
+            "Too small: %s.": [
+                "For lite: %s."
+            ],
+            "Booked or closed: %s.": [
+                "Opptatt eller stengt: %s."
+            ],
+            "Free rooms with enough places": [
+                "Ledige rom med nok plass"
+            ],
+            "At least %1$s \u00b7 %2$s": [
+                "Minst %1$s \u00b7 %2$s"
+            ],
+            "Propose %s": [
+                "Foresl\u00e5 %s"
+            ],
+            "Propose": [
+                "Foresl\u00e5"
+            ],
+            "No other rooms with enough places are free at this time. Propose another time.": [
+                "Ingen andre rom med nok plass er ledige i dette tidsrommet. Foresl\u00e5 et annet tidspunkt."
+            ],
+            "Dates": [
+                "Forekomster"
+            ],
+            "Action": [
+                "Handling"
+            ],
+            "Approved": [
+                "Godkjent"
+            ],
+            "Declined": [
+                "Avsl\u00e5tt"
+            ],
+            "Cancelled": [
+                "Avbestilt"
+            ],
+            "Proposal sent": [
+                "Forslag sendt"
+            ],
+            "Booked: %1$s \u2013 %2$s": [
+                "Opptatt: %1$s \u2013 %2$s"
+            ],
+            "Approve %s": [
+                "Godkjenn %s"
+            ],
+            "Decline %s": [
+                "Avsl\u00e5 %s"
+            ],
+            "Approve all available (%d)": [
+                "Godkjenn alle ledige (%d)"
+            ],
+            "Everything has been handled": [
+                "Alt er behandlet"
+            ],
+            "Could not load the requests.": [
+                "Kunne ikke hente foresp\u00f8rslene."
+            ],
+            "Loading requests\u2026": [
+                "Henter foresp\u00f8rsler \u2026"
+            ],
+            "No requests are waiting": [
+                "Ingen foresp\u00f8rsler venter"
+            ],
+            "New requests and conflicts are shown here, with conflicts first.": [
+                "Nye foresp\u00f8rsler og konflikter vises her, med konflikter \u00f8verst."
+            ],
+            "Text message log": [
+                "SMS-logg"
+            ],
+            "No text messages are sent yet. This is what would have been sent, newest first.": [
+                "Ingen SMS sendes enn\u00e5. Her er det som ville blitt sendt, nyeste f\u00f8rst."
+            ],
+            "Could not load the log.": [
+                "Kunne ikke hente loggen."
+            ],
+            "Loading\u2026": [
+                "Laster \u2026"
+            ],
+            "No text messages yet": [
+                "Ingen SMS enn\u00e5"
+            ],
+            "Messages about bookings, approvals and cancellations are shown here.": [
+                "Meldinger om bookinger, godkjenninger og avbestillinger vises her."
+            ],
+            "Pages": [
+                "Sider"
+            ],
+            "Newer": [
+                "Nyere"
+            ],
+            "Page %1$d of %2$d": [
+                "Side %1$d av %2$d"
+            ],
+            "Older": [
+                "Eldre"
+            ],
+            "when the booking was made\u0004Booked": [
+                "Booket"
             ]
         }
     }

@@ -4,7 +4,9 @@ import { __ } from '@wordpress/i18n';
 import EmptyState from '../components/EmptyState';
 import Tabs, { Tab } from '../components/Tabs';
 import { Settings } from '../settings';
+import AdminInboxView from '../views/AdminInboxView';
 import BookView from '../views/BookView';
+import SmsLogView from '../views/SmsLogView';
 
 interface Props {
 	settings: Settings;
@@ -20,7 +22,8 @@ function getTabs(isAdmin: boolean): Tab[] {
 		tabs.push(
 			{ id: 'requests', label: __('Requests', 'creo-rombooking') },
 			{ id: 'admin-matrix', label: __('Overview', 'creo-rombooking') },
-			{ id: 'rooms', label: __('Rooms', 'creo-rombooking') }
+			{ id: 'rooms', label: __('Rooms', 'creo-rombooking') },
+			{ id: 'sms', label: __('Text message log', 'creo-rombooking') }
 		);
 	}
 
@@ -72,9 +75,10 @@ export default function App({ settings }: Props) {
 				tabIndex={0}
 				className="creo-rombooking-panel"
 			>
-				{current.id === 'book' ? (
-					<BookView settings={settings} />
-				) : (
+				{current.id === 'book' && <BookView settings={settings} />}
+				{current.id === 'requests' && <AdminInboxView settings={settings} />}
+				{current.id === 'sms' && <SmsLogView settings={settings} />}
+				{!['book', 'requests', 'sms'].includes(current.id) && (
 					<EmptyState title={current.label}>
 						{__('This part is not built yet.', 'creo-rombooking')}
 					</EmptyState>

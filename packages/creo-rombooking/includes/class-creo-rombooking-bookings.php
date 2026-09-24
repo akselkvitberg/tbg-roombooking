@@ -193,54 +193,56 @@ class Creo_Rombooking_Bookings {
 	 * @return array|WP_Error The result, or the validation errors.
 	 */
 	public function create( array $input, $user_id ) {
-		global $wpdb;
-
 		$validated = $this->validate( $input, $user_id );
 		if ( $validated['errors'] ) {
 			return $this->validation_error( $validated['errors'] );
 		}
 
-		$data = $validated['data'];
-		$lock = 'creo_rombooking_room_' . $data['room']['id'];
-
-		// Serialize bookings per room, so that two members cannot get the same free time approved.
-		if ( ! $wpdb->get_var( $wpdb->prepare( 'SELECT GET_LOCK(%s, 10)', $lock ) ) ) { // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			return new WP_Error( 'creo_rombooking_busy', __( 'Many are booking right now. Try again.', 'creo-rombooking' ), array( 'status' => 503 ) );
-		}
-
-		try {
-			$preview = $this->preview( $data );
-			if ( $preview['errors'] ) {
-				return $this->validation_error( $preview['errors'] );
-			}
-
-			if ( $data['phone'] ) {
-				update_user_meta( $user_id, 'creo_rombooking_phone', $data['phone'] );
-			}
-
-			$series_id = $data['repeat'] !== 'none' ? $this->insert_series( $data, $user_id ) : null;
-			$auto      = $data['room']['approval'] === 'auto';
-			$created   = array();
-
-			foreach ( $preview['occurrences'] as $occurrence ) {
-				if ( $occurrence['status'] === 'outside' ) {
-					continue;
+		$data   = $validated['data'];
+		$result = creo_rombooking_with_room_locks(
+			array( $data['room']['id'] ),
+			function () use ( $data, $user_id ) {
+				$preview = $this->preview( $data );
+				if ( $preview['errors'] ) {
+					return $this->validation_error( $preview['errors'] );
 				}
 
-				$approved  = $auto && $occurrence['status'] === 'free';
-				$created[] = array(
-					'id'     => $this->insert_booking( $data, $user_id, $occurrence, $approved ? 'approved' : 'requested', $series_id ),
-					'date'   => $occurrence['date'],
-					'status' => $approved ? 'approved' : 'requested',
+				if ( $data['phone'] ) {
+					update_user_meta( $user_id, 'creo_rombooking_phone', $data['phone'] );
+				}
+
+				$series_id = $data['repeat'] !== 'none' ? $this->insert_series( $data, $user_id ) : null;
+				$auto      = $data['room']['approval'] === 'auto';
+				$created   = array();
+
+				foreach ( $preview['occurrences'] as $occurrence ) {
+					if ( $occurrence['status'] === 'outside' ) {
+						continue;
+					}
+
+					$approved  = $auto && $occurrence['status'] === 'free';
+					$created[] = array(
+						'id'     => $this->insert_booking( $data, $user_id, $occurrence, $approved ? 'approved' : 'requested', $series_id ),
+						'date'   => $occurrence['date'],
+						'status' => $approved ? 'approved' : 'requested',
+					);
+				}
+
+				return array(
+					'created' => $created,
+					'skipped' => $preview['counts']['outside'],
 				);
 			}
-		} finally {
-			$wpdb->query( $wpdb->prepare( 'SELECT RELEASE_LOCK(%s)', $lock ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		);
+
+		if ( is_wp_error( $result ) ) {
+			return $result;
 		}
 
+		$created   = $result['created'];
+		$skipped   = $result['skipped'];
 		$approved  = count( wp_list_filter( $created, array( 'status' => 'approved' ) ) );
 		$requested = count( $created ) - $approved;
-		$skipped   = $preview['counts']['outside'];
 
 		Creo_Rombooking_Notifier::sms( $user_id, $this->sms_text( $data, $approved, $requested ), $created[0]['id'] );
 
@@ -303,13 +305,7 @@ class Creo_Rombooking_Bookings {
 	 * @return string
 	 */
 	protected function sms_text( array $data, $approved, $requested ) {
-		$when = sprintf(
-			/* translators: 1: room, 2: date, 3: time range */
-			__( '%1$s, %2$s at %3$s', 'creo-rombooking' ),
-			$data['room']['name'],
-			wp_date( 'l j. F', ( new DateTimeImmutable( $data['date'], wp_timezone() ) )->getTimestamp() ),
-			self::format_minutes( $data['start'] ) . '–' . self::format_minutes( $data['end'] )
-		);
+		$when = self::describe( $data['room']['name'], $data['date'], $data['start'], $data['end'] );
 
 		if ( $data['repeat'] !== 'none' ) {
 			/* translators: 1: when the series starts, 2: number of dates */
@@ -343,6 +339,33 @@ class Creo_Rombooking_Bookings {
 		}
 
 		return sprintf( '+47 %s %s %s', substr( $digits, 0, 3 ), substr( $digits, 3, 2 ), substr( $digits, 5 ) );
+	}
+
+	/**
+	 * Describes a room and time for messages.
+	 *
+	 * @param string $room_name The room.
+	 * @param string $date      The date (Y-m-d).
+	 * @param int    $start     Start minute.
+	 * @param int    $end       End minute.
+	 * @return string E.g. «Kafé, saturday 26. september at 11:00–15:00».
+	 */
+	public static function describe( $room_name, $date, $start, $end ) {
+		return sprintf(
+			/* translators: 1: room, 2: date, 3: time range */
+			__( '%1$s, %2$s at %3$s', 'creo-rombooking' ),
+			$room_name,
+			self::format_date( $date ),
+			self::format_minutes( $start ) . '–' . self::format_minutes( $end )
+		);
+	}
+
+	/**
+	 * @param string $date The date (Y-m-d).
+	 * @return string E.g. «saturday 26. september», in the site's language.
+	 */
+	public static function format_date( $date ) {
+		return wp_date( 'l j. F', ( new DateTimeImmutable( $date, wp_timezone() ) )->getTimestamp() );
 	}
 
 	/**

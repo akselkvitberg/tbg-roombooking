@@ -4,6 +4,8 @@ export interface Settings {
 	today: string;
 	/** BCP 47 language tag, e.g. `nb-NO`. */
 	locale: string;
+	/** The site's timezone, e.g. `Europe/Oslo` or `+02:00`. */
+	timezone: string;
 	user: {
 		id: number;
 		name: string;

@@ -83,6 +83,82 @@ class Creo_Rombooking_REST {
 
 		register_rest_route(
 			self::NAMESPACE,
+			'/admin/requests',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => fn() => rest_ensure_response( ( new Creo_Rombooking_Admin() )->get_requests() ),
+				'permission_callback' => array( $this, 'can_manage' ),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/admin/check',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'admin_check' ),
+				'permission_callback' => array( $this, 'can_manage' ),
+				'args'                => array(
+					'roomId' => array(
+						'type'     => 'integer',
+						'required' => true,
+					),
+					'date'   => array(
+						'type'              => 'string',
+						'required'          => true,
+						'validate_callback' => array( $this, 'validate_date' ),
+					),
+					'start'  => array(
+						'type'     => 'integer',
+						'required' => true,
+					),
+					'end'    => array(
+						'type'     => 'integer',
+						'required' => true,
+					),
+					'ignore' => array(
+						'type'  => 'array',
+						'items' => array( 'type' => 'integer' ),
+					),
+				),
+			)
+		);
+
+		// Actions on a request: approve, reject, propose, move-existing, approve-and-cancel-existing.
+		$request_actions = array(
+			'approve'                     => fn( $admin, $id ) => $admin->approve( $id ),
+			'reject'                      => fn( $admin, $id, $params ) => $admin->reject( $id, $params ),
+			'propose'                     => fn( $admin, $id, $params ) => $admin->propose( $id, $params ),
+			'move-existing'               => fn( $admin, $id, $params ) => $admin->move_existing( $id, $params ),
+			'approve-and-cancel-existing' => fn( $admin, $id, $params ) => $admin->approve_and_cancel_existing( $id, $params ),
+		);
+		foreach ( $request_actions as $action => $handler ) {
+			$this->register_action( '/admin/requests/(?P<id>\d+)/' . $action, $handler );
+		}
+
+		$this->register_action( '/admin/series/(?P<id>\d+)/approve-free', fn( $admin, $id ) => $admin->approve_free( $id ) );
+		$this->register_action( '/admin/series/(?P<id>\d+)/reject-rest', fn( $admin, $id, $params ) => $admin->reject_rest( $id, $params ) );
+		$this->register_action( '/admin/bookings/(?P<id>\d+)/cancel', fn( $admin, $id, $params ) => $admin->cancel_booking( $id, $params ) );
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/admin/sms-log',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => fn( WP_REST_Request $request ) => rest_ensure_response( ( new Creo_Rombooking_Admin() )->sms_log( $request['page'] ) ),
+				'permission_callback' => array( $this, 'can_manage' ),
+				'args'                => array(
+					'page' => array(
+						'type'    => 'integer',
+						'default' => 1,
+						'minimum' => 1,
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
 			'/admin/availability',
 			array(
 				'methods'             => WP_REST_Server::READABLE,
@@ -91,6 +167,45 @@ class Creo_Rombooking_REST {
 				'args'                => $range_args,
 			)
 		);
+	}
+
+	/**
+	 * Registers a POST route for an administrator's action on a booking or series.
+	 *
+	 * @param string   $route   The route, with an `id` parameter.
+	 * @param callable $handler Gets the admin service, the ID and the parameters; returns the result or an error.
+	 */
+	protected function register_action( $route, callable $handler ) {
+		register_rest_route(
+			self::NAMESPACE,
+			$route,
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => function ( WP_REST_Request $request ) use ( $handler ) {
+					$result = $handler( new Creo_Rombooking_Admin(), (int) $request['id'], $request->get_params() );
+					return is_wp_error( $result ) ? $result : rest_ensure_response( $result );
+				},
+				'permission_callback' => array( $this, 'can_manage' ),
+			)
+		);
+	}
+
+	/**
+	 * GET /admin/check: whether a room is free at a time, for proposals and moves.
+	 *
+	 * @param WP_REST_Request $request The request.
+	 * @return WP_REST_Response
+	 */
+	public function admin_check( WP_REST_Request $request ) {
+		$status = ( new Creo_Rombooking_Admin() )->check(
+			(int) $request['roomId'],
+			$request['date'],
+			(int) $request['start'],
+			(int) $request['end'],
+			(array) ( $request['ignore'] ?? array() )
+		);
+
+		return rest_ensure_response( array( 'status' => $status ) );
 	}
 
 	/**
