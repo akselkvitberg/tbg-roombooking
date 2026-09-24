@@ -1,0 +1,29 @@
+import { chromium, FullConfig } from '@playwright/test';
+
+export const users = ['medlem', 'admin', 'gjest'] as const;
+export type User = (typeof users)[number];
+
+export const storageState = (user: User) => `test-results/.auth/${user}.json`;
+
+/**
+ * Logs in each test user once and saves the cookies.
+ *
+ * @param config The Playwright config.
+ */
+export default async function globalSetup(config: FullConfig) {
+	const { baseURL, launchOptions } = config.projects[0].use;
+	const browser = await chromium.launch(launchOptions);
+
+	for (const user of users) {
+		const page = await browser.newPage({ baseURL });
+		await page.goto('/wp-login.php');
+		await page.fill('#user_login', user);
+		await page.fill('#user_pass', 'password');
+		await page.click('#wp-submit');
+		await page.waitForURL(/wp-admin|\/$/);
+		await page.context().storageState({ path: storageState(user) });
+		await page.close();
+	}
+
+	await browser.close();
+}

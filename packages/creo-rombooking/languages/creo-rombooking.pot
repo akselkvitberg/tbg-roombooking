@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-24T10:55:40+00:00\n"
+"POT-Creation-Date: 2026-09-24T11:06:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: creo-rombooking\n"
@@ -69,7 +69,7 @@ msgid "You can get at most %d days at a time."
 msgstr ""
 
 #: build/creoRombookingEditor.js:1
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Room booking"
 msgstr ""
 
@@ -78,26 +78,207 @@ msgid "The booking calendar is shown here for logged-in members."
 msgstr ""
 
 #: build/creoRombookingPublic.js:1
+msgid "Close"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Your booking"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "New booking"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "This time is booked"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Your request goes to the administrator, who decides whether it can be approved. You get a text message with the answer."
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:4
+#: build/creoRombookingPublic.js:5
+msgid "Room"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
+msgid "Date"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Time"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "You can see and cancel your bookings under My bookings."
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "The booking form comes in the next version."
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Available"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Booked"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Requested"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Closed"
+msgstr ""
+
+#: build/creoRombookingPublic.js:1
+msgid "Outside opening hours"
+msgstr ""
+
+#. translators: 1: room or date, 2: time range, 3: status, 4: what happens when chosen
+#: build/creoRombookingPublic.js:2
+msgid "%1$s, %2$s, %3$s. %4$s"
+msgstr ""
+
+#: build/creoRombookingPublic.js:2
+msgid "Choose to see details."
+msgstr ""
+
+#: build/creoRombookingPublic.js:2
+msgid "Your request is waiting for approval. Choose to see details."
+msgstr ""
+
+#: build/creoRombookingPublic.js:2
+msgid "This time has passed."
+msgstr ""
+
+#: build/creoRombookingPublic.js:2
+msgid "Choose to book."
+msgstr ""
+
+#: build/creoRombookingPublic.js:2
+msgid "Choose to send a request to the administrator."
+msgstr ""
+
+#: build/creoRombookingPublic.js:2
+msgid "Waiting for approval. Choose to send your own request to the administrator."
+msgstr ""
+
+#. translators: %d: number of people the room fits
+#: build/creoRombookingPublic.js:3
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/creoRombookingPublic.js:3
+msgid "approval"
+msgstr ""
+
+#: build/creoRombookingPublic.js:3
+msgid "automatic"
+msgstr ""
+
+#. translators: %s: date, e.g. «wednesday 23 September»
+#: build/creoRombookingPublic.js:4
+msgid "Rooms and times, %s"
+msgstr ""
+
+#: build/creoRombookingPublic.js:4
+msgid "Legend"
+msgstr ""
+
+#. translators: 1: room name, 2: date
+#: build/creoRombookingPublic.js:5
+msgid "Times in %1$s, %2$s"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Choose date"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Previous day"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Next day"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Today"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "View"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Day"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Week"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens."
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens."
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Week view"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "The week view comes in a later version."
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Could not load available times."
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Try again"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "Loading available times…"
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
+msgid "There are no rooms to book yet."
+msgstr ""
+
+#: build/creoRombookingPublic.js:5
 msgid "Book a room"
 msgstr ""
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "My bookings"
 msgstr ""
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Requests"
 msgstr ""
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Overview"
 msgstr ""
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Rooms"
 msgstr ""
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "This part is not built yet."
 msgstr ""
 

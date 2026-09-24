@@ -2,6 +2,8 @@ export interface Settings {
 	restNamespace: string;
 	/** Today's date in the site's timezone (Y-m-d). */
 	today: string;
+	/** BCP 47 language tag, e.g. `nb-NO`. */
+	locale: string;
 	user: {
 		id: number;
 		name: string;

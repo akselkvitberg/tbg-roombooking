@@ -30,6 +30,136 @@
             ],
             "This part is not built yet.": [
                 "Denne delen er ikke laget enn\u00e5."
+            ],
+            "Close": [
+                "Lukk"
+            ],
+            "Your booking": [
+                "Din booking"
+            ],
+            "New booking": [
+                "Ny booking"
+            ],
+            "This time is booked": [
+                "Tidsrommet er opptatt"
+            ],
+            "Your request goes to the administrator, who decides whether it can be approved. You get a text message with the answer.": [
+                "Foresp\u00f8rselen sendes til admin, som avgj\u00f8r om den kan godkjennes. Du f\u00e5r SMS med svaret."
+            ],
+            "Room": [
+                "Rom"
+            ],
+            "Date": [
+                "Dato"
+            ],
+            "Time": [
+                "Tid"
+            ],
+            "You can see and cancel your bookings under My bookings.": [
+                "Du kan se og avbestille bookingene dine under Mine bookinger."
+            ],
+            "The booking form comes in the next version.": [
+                "Bookingskjemaet kommer i neste versjon."
+            ],
+            "Available": [
+                "Ledig"
+            ],
+            "Booked": [
+                "Opptatt"
+            ],
+            "Requested": [
+                "Forespurt"
+            ],
+            "Closed": [
+                "Stengt"
+            ],
+            "Outside opening hours": [
+                "Utenfor \u00e5pningstid"
+            ],
+            "%1$s, %2$s, %3$s. %4$s": [
+                "%1$s, %2$s, %3$s. %4$s"
+            ],
+            "Choose to see details.": [
+                "Velg for detaljer."
+            ],
+            "Your request is waiting for approval. Choose to see details.": [
+                "Foresp\u00f8rselen din venter p\u00e5 godkjenning. Velg for detaljer."
+            ],
+            "This time has passed.": [
+                "Tiden har passert."
+            ],
+            "Choose to book.": [
+                "Velg for \u00e5 booke."
+            ],
+            "Choose to send a request to the administrator.": [
+                "Velg for \u00e5 sende foresp\u00f8rsel til admin."
+            ],
+            "Waiting for approval. Choose to send your own request to the administrator.": [
+                "Venter p\u00e5 godkjenning. Velg for \u00e5 sende egen foresp\u00f8rsel til admin."
+            ],
+            "%d place": [
+                "%d plass",
+                "%d plasser"
+            ],
+            "approval": [
+                "godkjenning"
+            ],
+            "automatic": [
+                "auto"
+            ],
+            "Rooms and times, %s": [
+                "Rom og tider, %s"
+            ],
+            "Legend": [
+                "Forklaring"
+            ],
+            "Times in %1$s, %2$s": [
+                "Tider i %1$s, %2$s"
+            ],
+            "Choose date": [
+                "Velg dato"
+            ],
+            "Previous day": [
+                "Forrige dag"
+            ],
+            "Next day": [
+                "Neste dag"
+            ],
+            "Today": [
+                "I dag"
+            ],
+            "View": [
+                "Visning"
+            ],
+            "Day": [
+                "Dag"
+            ],
+            "Week": [
+                "Uke"
+            ],
+            "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en ledig tid for \u00e5 booke. Med tastatur: pil opp og ned flytter, Home og End g\u00e5r til f\u00f8rste og siste tid, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens.": [
+                "Velg en ledig tid for \u00e5 booke. Med tastatur: piltastene flytter, Home og End g\u00e5r til start og slutt p\u00e5 raden, Page Up og Page Down bytter dag, og Enter \u00e5pner."
+            ],
+            "Week view": [
+                "Ukevisning"
+            ],
+            "The week view comes in a later version.": [
+                "Ukevisningen kommer i en senere versjon."
+            ],
+            "Could not load available times.": [
+                "Kunne ikke laste ledige tider."
+            ],
+            "Try again": [
+                "Pr\u00f8v igjen"
+            ],
+            "Loading available times\u2026": [
+                "Laster ledige tider \u2026"
+            ],
+            "There are no rooms to book yet.": [
+                "Det er ingen rom \u00e5 booke enn\u00e5."
             ]
         }
     }

@@ -96,6 +96,7 @@ class Creo_Rombooking {
 			array(
 				'restNamespace' => 'creo-rombooking/v1',
 				'today'         => creo_rombooking_today(),
+				'locale'        => str_replace( '_', '-', determine_locale() ),
 				'user'          => array(
 					'id'          => $user->ID,
 					'name'        => $user->display_name,

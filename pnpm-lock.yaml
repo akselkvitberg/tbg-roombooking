@@ -17,6 +17,15 @@ importers:
 
   .:
     devDependencies:
+      '@axe-core/playwright':
+        specifier: ^4.10.0
+        version: 4.13.0(playwright-core@1.63.0)
+      '@playwright/test':
+        specifier: 1.63.0
+        version: 1.63.0
+      '@types/jest':
+        specifier: ^29.5.0
+        version: 29.5.14
       '@wordpress/env':
         specifier: 10.5.0
         version: 10.5.0
@@ -47,6 +56,9 @@ importers:
       '@wordpress/i18n':
         specifier: wp-6.7
         version: 5.8.2
+      '@wordpress/url':
+        specifier: wp-6.7
+        version: 4.8.1
       classnames:
         specifier: ^2.3.2
         version: 2.5.1
@@ -86,7 +98,7 @@ importers:
         version: 14.1.0(postcss@8.5.28)
       postcss-loader:
         specifier: ^6.2.1
-        version: 6.2.1(postcss@8.5.28)(webpack@5.111.1(postcss@8.5.28)(webpack-cli@5.1.4))
+        version: 6.2.1(postcss@8.5.28)(webpack@5.111.1)
       postcss-nesting:
         specifier: ^10.1.2
         version: 10.2.0(postcss@8.5.28)
@@ -131,6 +143,11 @@ packages:
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
+
+  '@axe-core/playwright@4.13.0':
+    resolution: {integrity: sha512-6YLx+kxXu5GJceG4ozFg+33a2EMTdjYwWGloJ3sb9Kta5pp+ZNS53uxGVog5JetIY8s++P5UrtX+cri+u0VAVg==}
+    peerDependencies:
+      playwright-core: '>= 1.0.0'
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -1763,6 +1780,9 @@ packages:
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
 
+  '@types/jest@29.5.14':
+    resolution: {integrity: sha512-ZN+4sdnLUbo8EVvVc2ao0GFW6oVrQRPn4K2lglySj7APvSrgzxHiNNK99us4WDMi57xxA2yggblIAMNhXOotLQ==}
+
   '@types/jsdom@20.0.1':
     resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
 
@@ -2521,9 +2541,9 @@ packages:
     resolution: {integrity: sha512-1jHpsam603sVmgmrV8ndAlaOpwK4CVhAeB9myz5CgRvPN7qukja8T672W+LkVxyAW8oPC1A/msSo9RXSRaoOFQ==}
     engines: {node: '>=18.12.0'}
 
-  '@wordpress/url@4.56.0':
-    resolution: {integrity: sha512-GOblMrPZTAHkt4pZH983pbzuUo8ArGTyCgPG3Hdxmg5BOi+haLMrCaL0bpvYRd7cCho7Vsdq0iy8L9WuRKnoCA==}
-    engines: {node: '>=18.12.0'}
+  '@wordpress/url@4.8.1':
+    resolution: {integrity: sha512-YZcNOlJAUhkxMWlmkkc6mvSdXukkleq8j5Z8p8kBWQX9Wxng84ygyBSMiqFeFvAIs8nNDXBrqG9zGGRxMW6q/g==}
+    engines: {node: '>=18.12.0', npm: '>=8.19.2'}
 
   '@wordpress/warning@2.58.0':
     resolution: {integrity: sha512-9bZlORhyMY2nbWozeyC5kqJsFzEPP4DCLhGmjtbv+YWGHttUrxUZEfrKdqO+rUODA8rP5zeIly1nCQOUnkw4Lg==}
@@ -7838,6 +7858,11 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
+  '@axe-core/playwright@4.13.0(playwright-core@1.63.0)':
+    dependencies:
+      axe-core: 4.13.0
+      playwright-core: 1.63.0
+
   '@babel/code-frame@7.29.7':
     dependencies:
       '@babel/helper-validator-identifier': 7.29.7
@@ -9921,6 +9946,11 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
+  '@types/jest@29.5.14':
+    dependencies:
+      expect: 29.7.0
+      pretty-format: 29.7.0
+
   '@types/jsdom@20.0.1':
     dependencies:
       '@types/node': 26.6.2
@@ -10393,7 +10423,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.29.7
       '@wordpress/i18n': 5.8.2
-      '@wordpress/url': 4.56.0
+      '@wordpress/url': 4.8.1
 
   '@wordpress/autop@4.56.0': {}
 
@@ -10941,7 +10971,7 @@ snapshots:
       npm-packlist: 3.0.0
       postcss: 8.5.28
       postcss-import: 16.2.0(postcss@8.5.28)
-      postcss-loader: 6.2.1(postcss@8.5.28)(webpack@5.111.1(postcss@8.5.28)(webpack-cli@5.1.4))
+      postcss-loader: 6.2.1(postcss@8.5.28)(webpack@5.111.1)
       prettier: wp-prettier@3.0.3
       puppeteer-core: 23.11.1
       react: 18.3.1
@@ -11058,8 +11088,9 @@ snapshots:
     dependencies:
       '@wordpress/is-shallow-equal': 5.56.0
 
-  '@wordpress/url@4.56.0':
+  '@wordpress/url@4.8.1':
     dependencies:
+      '@babel/runtime': 7.29.7
       remove-accents: 0.5.0
 
   '@wordpress/warning@2.58.0': {}
@@ -15024,7 +15055,7 @@ snapshots:
     optionalDependencies:
       postcss: 8.5.28
 
-  postcss-loader@6.2.1(postcss@8.5.28)(webpack@5.111.1(postcss@8.5.28)(webpack-cli@5.1.4)):
+  postcss-loader@6.2.1(postcss@8.5.28)(webpack@5.111.1):
     dependencies:
       cosmiconfig: 7.1.0
       klona: 2.0.6

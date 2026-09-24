@@ -48,7 +48,7 @@ msgid "Loading room booking…"
 msgstr "Laster rombooking …"
 
 #: build/creoRombookingEditor.js:1
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Room booking"
 msgstr "Rombooking"
 
@@ -56,27 +56,27 @@ msgstr "Rombooking"
 msgid "The booking calendar is shown here for logged-in members."
 msgstr "Bookingkalenderen vises her for innloggede medlemmer."
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Book a room"
 msgstr "Book rom"
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "My bookings"
 msgstr "Mine bookinger"
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Requests"
 msgstr "Forespørsler"
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Overview"
 msgstr "Oversikt"
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "Rooms"
 msgstr "Rom"
 
-#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
 msgid "This part is not built yet."
 msgstr "Denne delen er ikke laget ennå."
 
@@ -110,3 +110,184 @@ msgstr "Sluttdatoen kan ikke være før startdatoen."
 #: includes/class-creo-rombooking-rest.php:183
 msgid "You can get at most %d days at a time."
 msgstr "Du kan hente maks %d dager om gangen."
+
+#: build/creoRombookingPublic.js:1
+msgid "Close"
+msgstr "Lukk"
+
+#: build/creoRombookingPublic.js:1
+msgid "Your booking"
+msgstr "Din booking"
+
+#: build/creoRombookingPublic.js:1
+msgid "New booking"
+msgstr "Ny booking"
+
+#: build/creoRombookingPublic.js:1
+msgid "This time is booked"
+msgstr "Tidsrommet er opptatt"
+
+#: build/creoRombookingPublic.js:1
+msgid "Your request goes to the administrator, who decides whether it can be approved. You get a text message with the answer."
+msgstr "Forespørselen sendes til admin, som avgjør om den kan godkjennes. Du får SMS med svaret."
+
+#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:4
+#: build/creoRombookingPublic.js:5
+msgid "Room"
+msgstr "Rom"
+
+#: build/creoRombookingPublic.js:1
+#: build/creoRombookingPublic.js:5
+msgid "Date"
+msgstr "Dato"
+
+#: build/creoRombookingPublic.js:1
+msgid "Time"
+msgstr "Tid"
+
+#: build/creoRombookingPublic.js:1
+msgid "You can see and cancel your bookings under My bookings."
+msgstr "Du kan se og avbestille bookingene dine under Mine bookinger."
+
+#: build/creoRombookingPublic.js:1
+msgid "The booking form comes in the next version."
+msgstr "Bookingskjemaet kommer i neste versjon."
+
+#: build/creoRombookingPublic.js:1
+msgid "Available"
+msgstr "Ledig"
+
+#: build/creoRombookingPublic.js:1
+msgid "Booked"
+msgstr "Opptatt"
+
+#: build/creoRombookingPublic.js:1
+msgid "Requested"
+msgstr "Forespurt"
+
+#: build/creoRombookingPublic.js:1
+msgid "Closed"
+msgstr "Stengt"
+
+#: build/creoRombookingPublic.js:1
+msgid "Outside opening hours"
+msgstr "Utenfor åpningstid"
+
+#. translators: 1: room or date, 2: time range, 3: status, 4: what happens when chosen
+#: build/creoRombookingPublic.js:2
+msgid "%1$s, %2$s, %3$s. %4$s"
+msgstr "%1$s, %2$s, %3$s. %4$s"
+
+#: build/creoRombookingPublic.js:2
+msgid "Choose to see details."
+msgstr "Velg for detaljer."
+
+#: build/creoRombookingPublic.js:2
+msgid "Your request is waiting for approval. Choose to see details."
+msgstr "Forespørselen din venter på godkjenning. Velg for detaljer."
+
+#: build/creoRombookingPublic.js:2
+msgid "This time has passed."
+msgstr "Tiden har passert."
+
+#: build/creoRombookingPublic.js:2
+msgid "Choose to book."
+msgstr "Velg for å booke."
+
+#: build/creoRombookingPublic.js:2
+msgid "Choose to send a request to the administrator."
+msgstr "Velg for å sende forespørsel til admin."
+
+#: build/creoRombookingPublic.js:2
+msgid "Waiting for approval. Choose to send your own request to the administrator."
+msgstr "Venter på godkjenning. Velg for å sende egen forespørsel til admin."
+
+#. translators: %d: number of people the room fits
+#: build/creoRombookingPublic.js:3
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d plass"
+msgstr[1] "%d plasser"
+
+#: build/creoRombookingPublic.js:3
+msgid "approval"
+msgstr "godkjenning"
+
+#: build/creoRombookingPublic.js:3
+msgid "automatic"
+msgstr "auto"
+
+#. translators: %s: date, e.g. «wednesday 23 September»
+#: build/creoRombookingPublic.js:4
+msgid "Rooms and times, %s"
+msgstr "Rom og tider, %s"
+
+#: build/creoRombookingPublic.js:4
+msgid "Legend"
+msgstr "Forklaring"
+
+#. translators: 1: room name, 2: date
+#: build/creoRombookingPublic.js:5
+msgid "Times in %1$s, %2$s"
+msgstr "Tider i %1$s, %2$s"
+
+#: build/creoRombookingPublic.js:5
+msgid "Choose date"
+msgstr "Velg dato"
+
+#: build/creoRombookingPublic.js:5
+msgid "Previous day"
+msgstr "Forrige dag"
+
+#: build/creoRombookingPublic.js:5
+msgid "Next day"
+msgstr "Neste dag"
+
+#: build/creoRombookingPublic.js:5
+msgid "Today"
+msgstr "I dag"
+
+#: build/creoRombookingPublic.js:5
+msgid "View"
+msgstr "Visning"
+
+#: build/creoRombookingPublic.js:5
+msgid "Day"
+msgstr "Dag"
+
+#: build/creoRombookingPublic.js:5
+msgid "Week"
+msgstr "Uke"
+
+#: build/creoRombookingPublic.js:5
+msgid "Choose an available time to book. With a keyboard: the up and down arrows move, Home and End go to the first and last time, Page Up and Page Down change day, and Enter opens."
+msgstr "Velg en ledig tid for å booke. Med tastatur: pil opp og ned flytter, Home og End går til første og siste tid, Page Up og Page Down bytter dag, og Enter åpner."
+
+#: build/creoRombookingPublic.js:5
+msgid "Choose an available time to book. With a keyboard: the arrow keys move, Home and End go to the start and end of the row, Page Up and Page Down change day, and Enter opens."
+msgstr "Velg en ledig tid for å booke. Med tastatur: piltastene flytter, Home og End går til start og slutt på raden, Page Up og Page Down bytter dag, og Enter åpner."
+
+#: build/creoRombookingPublic.js:5
+msgid "Week view"
+msgstr "Ukevisning"
+
+#: build/creoRombookingPublic.js:5
+msgid "The week view comes in a later version."
+msgstr "Ukevisningen kommer i en senere versjon."
+
+#: build/creoRombookingPublic.js:5
+msgid "Could not load available times."
+msgstr "Kunne ikke laste ledige tider."
+
+#: build/creoRombookingPublic.js:5
+msgid "Try again"
+msgstr "Prøv igjen"
+
+#: build/creoRombookingPublic.js:5
+msgid "Loading available times…"
+msgstr "Laster ledige tider …"
+
+#: build/creoRombookingPublic.js:5
+msgid "There are no rooms to book yet."
+msgstr "Det er ingen rom å booke ennå."

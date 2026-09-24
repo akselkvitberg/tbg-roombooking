@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import EmptyState from '../components/EmptyState';
 import Tabs, { Tab } from '../components/Tabs';
 import { Settings } from '../settings';
+import BookView from '../views/BookView';
 
 interface Props {
 	settings: Settings;
@@ -71,9 +72,13 @@ export default function App({ settings }: Props) {
 				tabIndex={0}
 				className="creo-rombooking-panel"
 			>
-				<EmptyState title={current.label}>
-					{__('This part is not built yet.', 'creo-rombooking')}
-				</EmptyState>
+				{current.id === 'book' ? (
+					<BookView settings={settings} />
+				) : (
+					<EmptyState title={current.label}>
+						{__('This part is not built yet.', 'creo-rombooking')}
+					</EmptyState>
+				)}
 			</div>
 		</div>
 	);

@@ -13,11 +13,15 @@
     "lint:types": "tsc",
     "lint:php": "npm run composer phpcs",
     "test:php": "wp-env run --env-cwd=tbg-roombooking tests-cli vendor/bin/phpunit",
-    "test:js": "wp-scripts test-unit-js",
+    "test:js": "wp-scripts test-unit-js --config jest.config.cjs",
     "composer": "wp-env run --env-cwd=tbg-roombooking tests-cli composer",
-    "i18n-update": "npm run composer run-script i18n-all"
+    "i18n-update": "npm run composer run-script i18n-all",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "1.63.0",
+    "@types/jest": "^29.5.0",
     "@wordpress/env": "10.5.0",
     "@wordpress/scripts": "30.4.0",
     "react": "^18.0.0",

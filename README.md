@@ -38,6 +38,8 @@ pnpm wp creo-rombooking seed --reset   # tilbakestill eksempeldata
 pnpm wp creo-rombooking sms-log        # vis SMS-er som ville blitt sendt
 pnpm lint                              # ESLint, Stylelint, tsc og PHPCS
 pnpm test:php                          # PHPUnit i wp-env
+pnpm test:js                           # Jest (ren logikk i appen)
+pnpm test:e2e                          # Playwright + axe mot http://localhost:8888
 pnpm i18n-update                       # oppdater .pot/.po/.mo/.json
 ```
 
@@ -53,8 +55,12 @@ bin/php-server.sh              # http://localhost:8888
 bin/php-server.sh --reset      # start på nytt
 ```
 
+Playwright kan bruke en forhåndsinstallert Chromium med
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/sti/til/chromium pnpm test:e2e`, og en annen adresse med `WP_BASE_URL`.
+
 ## CI
 
-GitHub Actions kjører bygg, ESLint, Stylelint, tsc, PHPCS og PHPUnit (PHP 8.2).
-PHPUnit-jobben henter creo-temaet fra en privat submodul, og trenger derfor secret
+GitHub Actions kjører bygg, ESLint, Stylelint, tsc, Jest, PHPCS, PHPUnit (PHP 8.2) og
+Playwright med axe (WCAG 2.1 AA) på 1280 og 360 px, i lys og mørk modus.
+PHPUnit- og e2e-jobbene henter creo-temaet fra en privat submodul, og trenger derfor secret
 `CREO_WP_TOKEN`: en token med lesetilgang til `akselkvitberg/creo-wp-fork`.
